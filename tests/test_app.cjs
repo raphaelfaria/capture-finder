@@ -148,7 +148,9 @@ assert.ok(run('CAPTURES.every(c=>/^https:\\/\\/cloud\\.neuraldsp\\.com\\/cloud\\
 
 // Generic layout heuristics (no gear-specific code): signal-flow knob order; blocks side by side
 // (switches → knobs → EQ); knobs on one row when it fits, else two read column by column.
-assert.equal(run('gOrder(ampById("fryette-sigx").controls.filter(c=>c.kind==="knob"&&available(c,1))).map(c=>c.label).join(",")'), 'Gain 1,Gain 2,Bass,Middle,Treble,Presence,Master');
+assert.equal(run('gOrder(ampById("fryette-sigx").controls.filter(c=>c.kind==="knob"&&available(c,1))).map(c=>c.label).join(",")'), 'Gain 1,Gain 2,Bass,Middle,Treble,Presence,Depth,Master'); // channel 1 is Rhythm (channels run clean → lead)
+assert.equal(run('ampById("fryette-sigx").channels.map(c=>c.name).join(",")'), 'Rhythm,Lead');
+assert.equal(run('ampById("peavey-5150-signature").channels.map(c=>c.name).join(",")'), 'Rhythm,Lead');
 assert.equal(run('gOrder(ampById("ada-mp-1-preamp").controls.filter(c=>c.kind==="knob")).map(c=>c.label).join(",")'), 'Overdrive 1,Overdrive 2,Bass,Mid,Treble,Presence,Program no,Master Gain');
 // "Volume" is the gain stage without a gain knob, the output level after one
 assert.equal(run('gOrder([{label:"Treble"},{label:"Volume"},{label:"Bass"}]).map(c=>c.label).join(",")'), 'Volume,Bass,Treble');

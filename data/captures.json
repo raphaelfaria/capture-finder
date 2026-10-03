@@ -13047,7 +13047,7 @@
     "downloads": 220,
     "description": "This is a capture of Bogner® Fish Preamp®\n\nSettings:\nChannel: Clean\nTreble: 8\nMiddle: 5\nBass: 8\nJazz/Funk: Funk\nVolume: 8\nPresence: 5\nMaster Vol: 10",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "treble": 8,
         "middle": 5,
@@ -13058,7 +13058,7 @@
         "mastervol": 10
       },
       "byChannel": {
-        "2": {
+        "1": {
           "treble": 8,
           "middle": 5,
           "bass": 8,
@@ -13102,7 +13102,7 @@
     "downloads": 120,
     "description": "This is a capture of Bogner® Fish Preamp®\n\nSettings:\nChannel: Clean\nTreble: 8\nMiddle: 5\nBass: 8\nJazz/Funk: Jazz\nVolume: 8\nPresence: 5\nMaster Vol: 10",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "treble": 8,
         "middle": 5,
@@ -13113,7 +13113,7 @@
         "mastervol": 10
       },
       "byChannel": {
-        "2": {
+        "1": {
           "treble": 8,
           "middle": 5,
           "bass": 8,
@@ -13157,7 +13157,7 @@
     "downloads": 79,
     "description": "This is a capture of Bogner® Fish Preamp®\n\nSettings:\nChannel: Brown\nTreble: 5\nMiddle: 8\nBass: 8\nJazz/Funk: N/A\nBrown Volume: 7.8\nBrown Gain: 2\nPresence: 5\nMaster Vol: 10",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "treble": 5,
         "middle": 8,
@@ -13168,7 +13168,7 @@
         "mastervol": 10
       },
       "byChannel": {
-        "1": {
+        "2": {
           "treble": 5,
           "middle": 8,
           "bass": 8,
@@ -13181,7 +13181,7 @@
       "notApplicable": [
         {
           "key": "jazzfunk",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -13217,7 +13217,7 @@
     "downloads": 79,
     "description": "This is a capture of Bogner® Fish Preamp®\n\nSettings:\nChannel: Brown\nTreble: 5\nMiddle: 8\nBass: 8\nJazz/Funk: N/A\nBrown Volume: 7.8\nBrown Gain: 8\nPresence: 5\nMaster Vol: 10",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "treble": 5,
         "middle": 8,
@@ -13228,7 +13228,7 @@
         "mastervol": 10
       },
       "byChannel": {
-        "1": {
+        "2": {
           "treble": 5,
           "middle": 8,
           "bass": 8,
@@ -13241,7 +13241,7 @@
       "notApplicable": [
         {
           "key": "jazzfunk",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -13512,7 +13512,7 @@
     "downloads": 173,
     "description": "This is a capture of Bogner® Fish Preamp® with Mesa Boogie® 2:Ninety Simul-Class® power amp with TAD® 6L6GC-STR tubes.\n\nSettings:\nChannel: Clean\nTreble: 8\nMiddle: 5\nBass: 5\nJazz/Funk: Funk\nVolume: 5\n\nPower amp: Mesa Boogie® 2:Ninety Simul-Class®\nLevel: 2.5\nPresence: 2.5\nModern: ON\nHalf: OFF\nDeep: ON",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "treble": 8,
         "middle": 5,
@@ -13521,7 +13521,7 @@
         "volume": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "treble": 8,
           "middle": 5,
           "bass": 5,
@@ -13568,7 +13568,7 @@
     "downloads": 126,
     "description": "This is a capture of Bogner® Fish Preamp® with  Mesa Boogie® 2:Ninety Simul-Class® power amp.\n\nSettings:\nChannel: Clean\nTreble: 8\nMiddle: 5\nBass: 5\nJazz/Funk: Middle\nVolume: 5\n\nPower amp: Mesa Boogie® 2:Ninety Simul-Class®\nPresence: 2.5\nModern: ON\nHalf: OFF\nDeep: ON",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "treble": 8,
         "middle": 5,
@@ -13577,7 +13577,7 @@
         "volume": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "treble": 8,
           "middle": 5,
           "bass": 5,
@@ -13848,7 +13848,7 @@
     "downloads": 147,
     "description": "This is a capture of Bogner® Fish Preamp® with Mesa Boogie® 2:Ninety Simul-Class® power amp.\n\nSettings:\nChannel: Brown\nTreble: 6\nMiddle: 8\nBass: 5\nVolume: 5\nGain: 8\n\nPower amp: Mesa Boogie® 2:Ninety Simul-Class®\nLevel: 2.5\nPresence: 2.5\nModern: OFF\nHalf: OFF\nDeep: ON",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "treble": 6,
         "middle": 8,
@@ -13857,7 +13857,7 @@
         "gain": 8
       },
       "byChannel": {
-        "1": {
+        "2": {
           "treble": 6,
           "middle": 8,
           "bass": 5,
@@ -13904,7 +13904,7 @@
     "downloads": 195,
     "description": "This is a capture of Bogner® Fish Preamp® with Mesa Boogie® 2:Ninety Simul-Class® power amp.\n\nSettings:\nChannel: Brown\nTreble: 8\nMiddle: 5\nBass: 6\nVolume: 5\nGain: 8\n\nPower amp: Mesa Boogie® 2:Ninety Simul-Class®\nLevel: 2.5\nPresence: 2.5\nModern: OFF\nHalf: OFF\nDeep: ON",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "treble": 8,
         "middle": 5,
@@ -13913,7 +13913,7 @@
         "gain": 8
       },
       "byChannel": {
-        "1": {
+        "2": {
           "treble": 8,
           "middle": 5,
           "bass": 6,
@@ -49632,7 +49632,7 @@
     "downloads": 1405,
     "description": "This is a capture of Cornford® Hellcat® amp.\n\nSettings:\nChannel: Modern\nModern CH.1: 10\nVintage CH.2: N/A\nBass: 7\nMiddle: 8\nTreble: 7\nMaster CH.1: 6\nMaster CH.2: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "modernch1": 10,
         "bass": 7,
@@ -49641,7 +49641,7 @@
         "masterch1": 6
       },
       "byChannel": {
-        "1": {
+        "2": {
           "modernch1": 10,
           "bass": 7,
           "middle": 8,
@@ -49652,11 +49652,11 @@
       "notApplicable": [
         {
           "key": "vintagech2",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "masterch2",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -49691,7 +49691,7 @@
     "downloads": 61,
     "description": "This is a capture of Cornford® Hellcat® amp.\n\nSettings:\nChannel: Vintage\nModern CH.1: N/A\nVintage CH.2: 5\nBass: 7\nMiddle: 3.5\nTreble: 7\nMaster CH.1: N/A\nMaster CH.2: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "vintagech2": 5,
         "bass": 7,
@@ -49700,7 +49700,7 @@
         "masterch2": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "vintagech2": 5,
           "bass": 7,
           "middle": 3.5,
@@ -49711,11 +49711,11 @@
       "notApplicable": [
         {
           "key": "modernch1",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "masterch1",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -49750,7 +49750,7 @@
     "downloads": 41,
     "description": "This is a capture of Cornford® Hellcat® amp.\n\nSettings:\nChannel: Vintage\nModern CH.1: N/A\nVintage CH.2: 8\nBass: 7\nMiddle: 3.5\nTreble: 7\nMaster CH.1: N/A\nMaster CH.2: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "vintagech2": 8,
         "bass": 7,
@@ -49759,7 +49759,7 @@
         "masterch2": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "vintagech2": 8,
           "bass": 7,
           "middle": 3.5,
@@ -49770,11 +49770,11 @@
       "notApplicable": [
         {
           "key": "modernch1",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "masterch1",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -49809,7 +49809,7 @@
     "downloads": 53,
     "description": "This is a capture of Cornford® Hellcat® amp.\n\nSettings:\nChannel: Vintage\nModern CH.1: N/A\nVintage CH.2: 10\nBass: 7\nMiddle: 3.5\nTreble: 7\nMaster CH.1: N/A\nMaster CH.2: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "vintagech2": 10,
         "bass": 7,
@@ -49818,7 +49818,7 @@
         "masterch2": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "vintagech2": 10,
           "bass": 7,
           "middle": 3.5,
@@ -49829,11 +49829,11 @@
       "notApplicable": [
         {
           "key": "modernch1",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "masterch1",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -49982,7 +49982,7 @@
     "downloads": 45,
     "description": "This is a capture of Carvin® X-100B IV®\n\nSettings:\nChannel: Rhy\n75Hz: 1dB\n150Hz: -2dB\n500Hz: 5dB\n1.5kHz: 11dB\n3kHz: 9dB\nPresence: 6\nTreble: 4\nMid: 5.5\nBass: 7\nMaster: 6\nLead: N/A\nDrive: N/A\nRhythm: 3\nFS Boost: On\nGain: N/A\nChannel: Off\nBright: Off",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "75hz": 1,
         "150hz": -2,
@@ -50000,7 +50000,7 @@
         "bright": false
       },
       "byChannel": {
-        "2": {
+        "1": {
           "75hz": 1,
           "150hz": -2,
           "500hz": 5,
@@ -50020,15 +50020,15 @@
       "notApplicable": [
         {
           "key": "lead",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "drive",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "gain",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -50065,7 +50065,7 @@
     "downloads": 29,
     "description": "This is a capture of Carvin® X-100B IV®\n\nSettings:\nChannel: Rhy\n75Hz: N/A\n150Hz: N/A\n500Hz: N/A\n1.5kHz: N/A\n3kHz: N/A\nPresence: 7\nTreble: 6\nMid: 4.5\nBass: 2.5\nMaster: 3\nLead: 9\nDrive: 7\nRhythm: 3\nFS Boost: On\nGain: Off\nChannel: On\nBright: N/A",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "presence": 7,
         "treble": 6,
@@ -50080,7 +50080,7 @@
         "channelswitch": true
       },
       "byChannel": {
-        "2": {
+        "1": {
           "presence": 7,
           "treble": 6,
           "mid": 4.5,
@@ -50097,27 +50097,27 @@
       "notApplicable": [
         {
           "key": "75hz",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "150hz",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "500hz",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "15khz",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "3khz",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "bright",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -50154,7 +50154,7 @@
     "downloads": 30,
     "description": "This is a capture of Carvin® X-100B IV®\n\nSettings:\nChannel: Lead\n75Hz: 7dB\n150Hz: 0\n500Hz: -4dB\n1.5kHz: -4dB\n3kHz: 6dB\nPresence: 7\nTreble: 6.5\nMid: 5.5\nBass: 3\nMaster: 7\nLead: 8.5\nDrive: 7\nRhythm: N/A\nFS Boost: On\nGain: Off\nChannel: On\nBright: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "75hz": 7,
         "150hz": 0,
@@ -50173,7 +50173,7 @@
         "channelswitch": true
       },
       "byChannel": {
-        "1": {
+        "2": {
           "75hz": 7,
           "150hz": 0,
           "500hz": -4,
@@ -50194,11 +50194,11 @@
       "notApplicable": [
         {
           "key": "rhythm",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bright",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -50235,7 +50235,7 @@
     "downloads": 48,
     "description": "This is a capture of Carvin® X-100B IV®\n\nSettings:\nChannel: Lead\n75Hz: N/A\n150Hz: N/A\n500Hz: N/A\n1.5kHz: N/A\n3kHz: N/A\nPresence: 6\nTreble: 5\nMid: 5\nBass: 5\nMaster: 6.5\nLead: N/A\nDrive: N/A\nRhythm: 3\nFS Boost: On\nGain: N/A\nChannel: N/A\nBright: On",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "bright": true,
         "presence": 6,
@@ -50247,7 +50247,7 @@
         "fsboost": true
       },
       "byChannel": {
-        "1": {
+        "2": {
           "presence": 6,
           "treble": 5,
           "mid": 5,
@@ -50260,35 +50260,35 @@
       "notApplicable": [
         {
           "key": "75hz",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "150hz",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "500hz",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "15khz",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "3khz",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "lead",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "drive",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "gain",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -65815,7 +65815,7 @@
     "downloads": 1369,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Lead\nCH Mode: Brit\nGain 1: 6.5\nGain 2: 6.5\nBoost: On\nGain More/Less: More\nPower Shift: 100W\nMaster: 3.5\nScoop/Wood: Scoop\nTreble: 5\nMiddle: 5\nBass: 6.5\nPresence: 5.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "chmode": "Brit",
         "gain1": 6.5,
@@ -65831,7 +65831,7 @@
         "presence": 5.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "chmode": "Brit",
           "gain1": 6.5,
           "gain2": 6.5,
@@ -65880,7 +65880,7 @@
     "downloads": 60,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Lead\nCH Mode: Blow\nGain 1: 7\nGain 2: 10\nBoost: On\nGain More/Less: More\nPower Shift: 100W\nMaster: 4\nScoop/Wood: Wood\nTreble: 6\nMiddle: 4\nBass: 8\nPresence: 5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "chmode": "Blow",
         "gain1": 7,
@@ -65896,7 +65896,7 @@
         "presence": 5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "chmode": "Blow",
           "gain1": 7,
           "gain2": 10,
@@ -65945,7 +65945,7 @@
     "downloads": 59,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Lead\nCH Mode: Brown\nGain 1: 10\nGain 2: N/A\nBoost: Off\nGain More/Less: More\nPower Shift: 100W\nMaster: 3.5\nScoop/Wood: Wood\nTreble: 3\nMiddle: 6\nBass: 7.5\nPresence: 2.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "chmode": "Brown",
         "gain1": 10,
@@ -65960,7 +65960,7 @@
         "presence": 2.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "chmode": "Brown",
           "gain1": 10,
           "boost": false,
@@ -65977,7 +65977,7 @@
       "notApplicable": [
         {
           "key": "gain2",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -66013,7 +66013,7 @@
     "downloads": 47,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Rhythm\nCH Mode: Burn\nGain 1: 5.5\nGain 2: 8\nBoost: On\nGain More/Less: More\nPower Shift: 100W\nMaster: 3.5\nScoop/Wood: Wood\nTreble: 6.5\nMiddle: 6.5\nBass: 7\nPresence: 3.5\nDepth: 7.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "chmode": "Burn",
         "gain1": 5.5,
@@ -66030,7 +66030,7 @@
         "depth": 7.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "chmode": "Burn",
           "gain1": 5.5,
           "gain2": 8,
@@ -66080,7 +66080,7 @@
     "downloads": 53,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Rhythm\nCH Mode: Burn\nGain 1: 5\nGain 2: 8\nBoost: On\nGain More/Less: More\nPower Shift: 100W\nMaster: 3.5\nScoop/Wood: Wood\nTreble: 6.5\nMiddle: 6.5\nBass: 7\nPresence: 3.5\nDepth: 8\n\nPedal 1: Xotic Effects® BB-Preamp®\nGain: 1\nVolume: 6.5\nTreble: 4.5\nBass: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "chmode": "Burn",
         "gain1": 5,
@@ -66097,7 +66097,7 @@
         "depth": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "chmode": "Burn",
           "gain1": 5,
           "gain2": 8,
@@ -66147,7 +66147,7 @@
     "downloads": 61,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Rhythm\nCH Mode: Live\nGain 1: 9\nGain 2: N/A\nBoost: Off\nGain More/Less: More\nPower Shift: 100W\nMaster: 3.5\nScoop/Wood: Scoop\nTreble: 6\nMiddle: 8\nBass: 5\nPresence: 5.5\nDepth: 8\n\nPedal 1: Xotic Effects® BB-Preamp®\nGain: 1\nVolume: 6.5\nTreble: 4.5\nBass: 7.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "chmode": "Live",
         "gain1": 9,
@@ -66163,7 +66163,7 @@
         "depth": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "chmode": "Live",
           "gain1": 9,
           "boost": false,
@@ -66181,7 +66181,7 @@
       "notApplicable": [
         {
           "key": "gain2",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -66217,7 +66217,7 @@
     "downloads": 83,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Rhythm\nCH Mode: Live\nGain 1: 10\nGain 2: 10\nBoost: On\nGain More/Less: Less\nPower Shift: 100W\nMaster: 3.5\nScoop/Wood: Wood\nTreble: 5.5\nMiddle: 8\nBass: 5\nPresence: 5.5\nDepth: 7.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "chmode": "Live",
         "gain1": 10,
@@ -66234,7 +66234,7 @@
         "depth": 7.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "chmode": "Live",
           "gain1": 10,
           "gain2": 10,
@@ -66284,7 +66284,7 @@
     "downloads": 91,
     "description": "This is a capture of Fryette® SigX® amp.\n\nSettings:\nChannel: Rhythm\nCH Mode: Vintage\nGain 1: 10\nGain 2: 6.5\nBoost: On\nGain More/Less: More\nPower Shift: 100W\nMaster: 3.5\nScoop/Wood: Wood\nTreble: 5\nMiddle: 8\nBass: 5\nPresence: 0\nDepth: 7",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "chmode": "Vintage",
         "gain1": 10,
@@ -66301,7 +66301,7 @@
         "depth": 7
       },
       "byChannel": {
-        "2": {
+        "1": {
           "chmode": "Vintage",
           "gain1": 10,
           "gain2": 6.5,
@@ -80486,7 +80486,7 @@
     "downloads": 764,
     "description": "PV 505Sig 1\n\nThis is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Lead\nBright: N/A\nCrunch: N/A\nRhythm Pre Gain: N/A\nLead Pre Gain: 3\nLow: 7.5\nMid: 3.5\nHigh: 7\nRhythm Post Gain: N/A\nLead Post Gain: 7\nResonance: 8\nPresence: 3\nPedal1: Boss® SD-1®\nDrive: 0\nLevel: 10\nTone: 6\nPedal2: BBE® Sonic Stomp®\nLow contour: 6\nProcess: 5\nIn efx loop",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "leadpregain": 3,
         "low": 7.5,
@@ -80497,7 +80497,7 @@
         "presence": 3
       },
       "byChannel": {
-        "1": {
+        "2": {
           "leadpregain": 3,
           "low": 7.5,
           "mid": 3.5,
@@ -80510,19 +80510,19 @@
       "notApplicable": [
         {
           "key": "bright",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "crunch",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpregain",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpostgain",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -80559,7 +80559,7 @@
     "downloads": 622,
     "description": "This is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Lead\nBright: N/A\nCrunch: N/A\nRhythm Pre Gain: N/A\nLead Pre Gain: 6\nLow: 6.5\nMid: 10\nHigh: 6.5\nRhythm Post Gain: N/A\nLead Post Gain: 3\nResonance: 8\nPresence: 7\nPedal1: Xotic Effects® BB-Preamp®\nGain: 2\nVolume: 3.5\nTreble: 8\nBass: 7.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "leadpregain": 6,
         "low": 6.5,
@@ -80570,7 +80570,7 @@
         "presence": 7
       },
       "byChannel": {
-        "1": {
+        "2": {
           "leadpregain": 6,
           "low": 6.5,
           "mid": 10,
@@ -80583,19 +80583,19 @@
       "notApplicable": [
         {
           "key": "bright",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "crunch",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpregain",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpostgain",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -80632,7 +80632,7 @@
     "downloads": 845,
     "description": "This is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Lead\nBright: N/A\nCrunch: N/A\nRhythm Pre Gain: N/A\nLead Pre Gain: 6\nLow: 7\nMid: 9\nHigh: 7\nRhythm Post Gain: N/A\nLead Post Gain: 6\nResonance: 8\nPresence: 6\nPedal1: Mad Professor Simble\nLevel 4\nSensitivity 2.5\nContour 8\nAccent 9",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "leadpregain": 6,
         "low": 7,
@@ -80643,7 +80643,7 @@
         "presence": 6
       },
       "byChannel": {
-        "1": {
+        "2": {
           "leadpregain": 6,
           "low": 7,
           "mid": 9,
@@ -80656,19 +80656,19 @@
       "notApplicable": [
         {
           "key": "bright",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "crunch",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpregain",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpostgain",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -80705,7 +80705,7 @@
     "downloads": 655,
     "description": "This is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Lead\nBright: N/A\nCrunch: N/A\nRhythm Pre Gain: N/A\nLead Pre Gain: 2.5\nLow: 10\nMid: 10\nHigh: 10\nRhythm Post Gain: N/A\nLead Post Gain: 5\nResonance: 10\nPresence: 8\nPedal1: Mad Professor Simble\nLevel 6\nSensitivity 4.5\nContour 5\nAccent 5.5\nPedal2: BBE® Sonic Stomp®\nLow contour: 3\nProcess: 0\nIn efx loop\nPedal3: Boss® GE-7®\n100Hz: 0dB\n200Hz 2dB\n400hz 1dB\n800hz: 0dB\n1.6kHz: 0dB\n3.2kHz: 0dB\n6.4kHz: 0dB\nLevel: 0",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "leadpregain": 2.5,
         "low": 10,
@@ -80716,7 +80716,7 @@
         "presence": 8
       },
       "byChannel": {
-        "1": {
+        "2": {
           "leadpregain": 2.5,
           "low": 10,
           "mid": 10,
@@ -80729,19 +80729,19 @@
       "notApplicable": [
         {
           "key": "bright",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "crunch",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpregain",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "rhythmpostgain",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -80778,7 +80778,7 @@
     "downloads": 919,
     "description": "This is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Rhythm\nBright: On\nCrunch: On\nRhythm Pre Gain: 6\nLead Pre Gain: N/A\nLow 5.5\nMid 4\nHigh 8\nRhythm Post Gain 4\nLead Post Gain N/A\nResonance 4\nPresence 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "bright": true,
         "crunch": true,
@@ -80791,7 +80791,7 @@
         "presence": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "bright": true,
           "crunch": true,
           "rhythmpregain": 6,
@@ -80806,11 +80806,11 @@
       "notApplicable": [
         {
           "key": "leadpregain",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "leadpostgain",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -80847,7 +80847,7 @@
     "downloads": 798,
     "description": "This is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Rhythm\nBright: On\nCrunch: On\nRhythm Pre Gain: 6\nLead Pre Gain: N/A\nLow: 7\nMid: 3.5\nHigh: 7.5\nRhythm Post Gain: 5\nLead Post Gain: N/A\nResonance: 8.5\nPresence: 7\nPedal1: MXR Classic Distortion\nTone: 6.5\nOutput/Level 8\nDistortion: 2",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "bright": true,
         "crunch": true,
@@ -80860,7 +80860,7 @@
         "presence": 7
       },
       "byChannel": {
-        "2": {
+        "1": {
           "bright": true,
           "crunch": true,
           "rhythmpregain": 6,
@@ -80875,11 +80875,11 @@
       "notApplicable": [
         {
           "key": "leadpregain",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "leadpostgain",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -80916,7 +80916,7 @@
     "downloads": 581,
     "description": "This is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Rhythm\nBright: On\nCrunch: On\nRhythm Pre Gain: 7\nLead Pre Gain: N/A\nLow: 8\nMid: 6\nHigh: 8\nRhythm Post Gain: 5.5\nLead Post Gain: N/A\nResonance: 6\nPresence: 4\nPedal1: Xotic Effects® BB-Preamp®\nGain: 2.5\nVolume: 2.5\nTreble: 7.5\nBass: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "bright": true,
         "crunch": true,
@@ -80929,7 +80929,7 @@
         "presence": 4
       },
       "byChannel": {
-        "2": {
+        "1": {
           "bright": true,
           "crunch": true,
           "rhythmpregain": 7,
@@ -80944,11 +80944,11 @@
       "notApplicable": [
         {
           "key": "leadpregain",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "leadpostgain",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -80985,7 +80985,7 @@
     "downloads": 1232,
     "description": "This is a capture of Peavey® 5150® Signature® amp.\n\nSettings:\nChannel: Rhythm\nBright: On\nCrunch: On\nRhythm Pre Gain: 7\nLead Pre Gain: N/A\nLow: 6.5\nMid: 8\nHigh: 7.5\nRhythm Post Gain: 6\nLead Post Gain: N/A\nResonance: 7\nPresence: 3.5\nPedal1:  Boss® GE-7®\n100Hz: -6dB\n200Hz: -8dB\n400Hz: 0dB\n800Hz: 0dB\n1.6kHz: 0dB\n3.2kHz: 4dB\n6.4kHz: 0dB\nLevel: 0dB\nPedal2: Boss® SD-1®\nGain: 1.5\nLevel 4\nTone 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "bright": true,
         "crunch": true,
@@ -80998,7 +80998,7 @@
         "presence": 3.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "bright": true,
           "crunch": true,
           "rhythmpregain": 7,
@@ -81013,11 +81013,11 @@
       "notApplicable": [
         {
           "key": "leadpregain",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "leadpostgain",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -83023,7 +83023,7 @@
     "downloads": 1434,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Modded Ibanez® TS5®\nSettings:\n\nPurple Channel\nAgression: Off\nBright: Engaged\nCut: Engaged\nFat: Disabled\nGain: 6\nTreble: 6\nMids: 4.5\nBass: 5.5\nLevel: 10\nPresence: 6\nDepth: 7\nMaster: 4.5\n\n\nModded Ibanez® TS5®\nSettings:\n\nLevel: 10\nTone: 5.6\nGain: 4.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "agression": false,
         "bright": "Engaged",
@@ -83039,7 +83039,7 @@
         "master": 4.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "agression": false,
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83084,7 +83084,7 @@
     "downloads": 569,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Lichtlaerm Audio® The King In Yellow™\nSettings:\n\nRed Channel\nAgression: Off\nBright: Engaged\nCut: Engaged\nFat: Disengaged\nGain: 6.5\nTreble: 7\nMids: 3.5\nBass: 6\nLevel: 10\nPresence: 8\nDepth: 8\n\n\nLichtlaerm Audio® The King In Yellow™\nSettings:\n\nLevel: 10\nGain: 2\nLow: 5\nLo Mid: 4\nHi Mid: 6\nHigh: 6\nBlend: 0%\nClip: Left Position\nPolarity: Right Position",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "agression": false,
         "bright": "Engaged",
@@ -83099,7 +83099,7 @@
         "depth": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "agression": false,
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83143,7 +83143,7 @@
     "downloads": 503,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Lichtlaerm Audio® The King In Yellow™, Boss® HM-2®\nSettings:\n\nRed Channel\nAgression: Off\nBright: Engaged\nCut: Engaged\nFat: Disengaged\nGain: 6\nTreble: 6.5\nMids: 4\nBass: 6\nLevel: 10\nPresence: 8\nDepth: 8\n\n\nLichtlaerm Audio® The King In Yellow™\nSettings:\n\nBoss HM: 2 20% blend\nLevel: 8\nGain: 0\nLow: 5\nLo Mid: 4\nHi Mid: 5\nHigh: 6\nLevel: 10\nL Color Mix: 4\nH color Mix: 8\nDist: 0\n\n\nBoss® HM-2®\nSettings:\n\n(No specific settings captured)",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "agression": false,
         "bright": "Engaged",
@@ -83158,7 +83158,7 @@
         "depth": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "agression": false,
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83202,7 +83202,7 @@
     "downloads": 936,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Fortin® TS808®\nSettings:\n\nPurple channel\nAggression: Off\nBright: Engaged\nCut: Engaged\nFat: Engaged\nGain: 6\nTreble: 6\nMids: 2\nBass: 6\nLevel: 10\nPresence: 8.5\nDepth: 5\n\n\nFortin® TS808®\nSettings:\n\nGain: 0\nTone: 8\nLevel: 7.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "aggression": false,
         "bright": "Engaged",
@@ -83217,7 +83217,7 @@
         "depth": 5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "aggression": false,
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83261,7 +83261,7 @@
     "downloads": 1170,
     "description": "Captured Device: Revv Amplification® Generator 120® MK3\nSettings:\n\nPurple Channel\nAgression: Red\nBright: Engaged\nCut: Engaged\nFat: Disengaged\nGain: 8\nTreble: 7.5\nMid: 3.5\nBass: 6\nLevel: 10\nPresence: 8.5\nDepth: 4.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "agression": "Red",
         "bright": "Engaged",
@@ -83276,7 +83276,7 @@
         "depth": 4.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "agression": "Red",
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83320,7 +83320,7 @@
     "downloads": 2394,
     "description": "Captured Device: Revv Amplification® Generator 120® MK3\nSettings:\n\nRed Channel\nAgression: Red\nBright: Engaged\nCut: Engaged\nFat: Disengaged\nGain: 7.5\nTreble: 7.8\nMid: 4\nBass: 6\nLevel: 10\nPresence: 8.5\nDepth: 4.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "agression": "Red",
         "bright": "Engaged",
@@ -83335,7 +83335,7 @@
         "depth": 4.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "agression": "Red",
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83379,7 +83379,7 @@
     "downloads": 707,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Modded Ibanez® TS5®\nSettings:\n\nRed Channel\nAgression: Off\nBright: Engaged\nCut: Engaged\nFat: Disabled\nGain: 6.5\nTreble: 7.5\nMids: 4\nBass: 5.5\nLevel: 10\nPresence: 7.5\nDepth: 6.5\n\n\nModded Ibanez® TS5®\nSettings:\n\nLevel: 10\nTone: 8\nGain: 3",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "agression": false,
         "bright": "Engaged",
@@ -83394,7 +83394,7 @@
         "depth": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "agression": false,
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83438,7 +83438,7 @@
     "downloads": 661,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Abominable Electronics® Hellmouth®\nSettings:\n\nRed Channel\nBright: Engaged\nCut: Engaged\nFat: Disabled\nGain: 6\nTreble: 8\nMids: 2.5\nBass: 5.5\nLevel: 10\nPresence: 7.5\nDepth: 7.5\n\n\nAbominable Electronics® Hellmouth®\nSettings:\n\nLevel: 10\nTone: 8\nGain: 2\nTS: 808 Mode\nMore Gain: Disabled\nClipping: Engaged",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "bright": "Engaged",
         "cut": "Engaged",
@@ -83452,7 +83452,7 @@
         "depth": 7.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "bright": "Engaged",
           "cut": "Engaged",
           "fat": "Disabled",
@@ -83495,7 +83495,7 @@
     "downloads": 484,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Abominable Electronics® Hellmouth®\nSettings:\n\nPurple Channel\nAgression: Red\nBright: Engaged\nCut: Engaged\nFat: Disabled\nGain: 7\nTreble: 8.2\nMids: 2.5\nBass: 6\nLevel: 10\nPresence: 8\nDepth: 7\n\n\nAbominable Electronics® Hellmouth®\nSettings:\n\nLevel: 6\nTone: 8\nGain: 1\nTS: 808 Mode\nMore Gain: Engaged\nClipping: Engaged",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "agression": "Red",
         "bright": "Engaged",
@@ -83510,7 +83510,7 @@
         "depth": 7
       },
       "byChannel": {
-        "1": {
+        "2": {
           "agression": "Red",
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83554,7 +83554,7 @@
     "downloads": 664,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Lichtlaerm Audio® Aquaria™\nSettings:\n\nPurple Channel\nAgression: Blue\nBright: Engaged\nCut: Engaged\nFat: Disabled\nGain: 7\nTreble: 8.2\nMids: 2.5\nBass: 6\nLevel: 10\nPresence: 8\nDepth: 7\n\n\nLichtlaerm Audio® Aquaria™\nSettings:\n\nLevel: 8\nClean: 0\nGain: 2\nTone: 7\nClip: Middle Position\nBoost: 4\nBass: 4\nLo Mid: 4\nHi Mid: 6\nHigh: 6",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "agression": "Blue",
         "bright": "Engaged",
@@ -83569,7 +83569,7 @@
         "depth": 7
       },
       "byChannel": {
-        "1": {
+        "2": {
           "agression": "Blue",
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83613,7 +83613,7 @@
     "downloads": 451,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, This Heavy Earth® GRIM3®\nSettings:\n\nRed Channel\nBright: Engaged\nCut: Engaged\nFat: Engaged\nAggression: Blue\nGain: 6\nTreble: 7.8\nMids: 2\nBass: 6\nLevel: 10\nPresence: 8\nDepth: 7\n\n\nThis Heavy Earth® GRIM3®\nSettings:\n\nLevel: 10\nBite: 6\nBlend: 100%\nGain: 1.5\nLow: 4.5\nHigh: 5.5\nTight: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "bright": "Engaged",
         "cut": "Engaged",
@@ -83628,7 +83628,7 @@
         "depth": 7
       },
       "byChannel": {
-        "2": {
+        "1": {
           "bright": "Engaged",
           "cut": "Engaged",
           "fat": "Engaged",
@@ -83672,7 +83672,7 @@
     "downloads": 521,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Obsidian Audio® The Devil™\nSettings:\n\nRed Channel\nAggression: Blue\nBright: Engaged\nCut: Engaged\nFat: Disengaged\nGain: 6\nTreble: 6.5\nMids: 4\nBass: 6\nLevel: 10\nPresence: 7.5\nDepth: 7\n\n\nObsidian Audio® The Devil™\nSettings:\n\nLevel: 10\nGain: 2\nLow: 7\nMid: 4\nHigh: 6\nGate: 0",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "aggression": "Blue",
         "bright": "Engaged",
@@ -83687,7 +83687,7 @@
         "depth": 7
       },
       "byChannel": {
-        "2": {
+        "1": {
           "aggression": "Blue",
           "bright": "Engaged",
           "cut": "Engaged",
@@ -83731,7 +83731,7 @@
     "downloads": 457,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Boss® MT-2®\nSettings:\n\nAgression: Blue\nBright: Engaged\nCut: Engaged\nFat: Engaged\nPurple Channel\nGain: 6.5\nTreble: 8\nMid: 3.5\nBass: 7\nLevel: 10\nPresence: 7.5\nDepth: 6.5\n\n\nBoss® MT-2®\nSettings:\n\nLevel: 10\nLow: 4\nHigh: 7.5\nMid: 1.5khz\nMid: 4.5\nDist: 0",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "agression": "Blue",
         "bright": "Engaged",
@@ -83746,7 +83746,7 @@
         "depth": 6.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "gain": 6.5,
           "treble": 8,
           "mid": 3.5,
@@ -83786,7 +83786,7 @@
     "downloads": 577,
     "description": "Captured Devices: Revv Amplification® Generator 120® MK3, Gollmer® The Blues®\nSettings:\n\nRed Channel\nAgression Red\nBright: Engaged\nCut: Engaged\nFat: Disengaged\nGain: 6\nTreble: 6.5\nMids: 4.5\nBass: 7\nLevel: 10\nPresence: 8\nDepth: 8\n\n\nGollmer® The Blues®\nSettings:\n\nGain: 5\nTone: 7\nLevel: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "bright": "Engaged",
         "cut": "Engaged",
@@ -83800,7 +83800,7 @@
         "depth": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "bright": "Engaged",
           "cut": "Engaged",
           "fat": "Disengaged",
@@ -86835,14 +86835,14 @@
     "downloads": 2591,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Lead\nVolume: 4.8\nTone: 10\nMid-Bite: 9.7\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 4.8,
         "tone": 10,
         "midbite": 9.7
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 4.8,
           "tone": 10,
           "midbite": 9.7
@@ -86851,11 +86851,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -86890,14 +86890,14 @@
     "downloads": 198,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Rhythm\nVolume: 4.5\nTone: N/A\nMid-Bite: N/A\nTreble: 6.5\nBass: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "volume": 4.5,
         "treble": 6.5,
         "bass": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "volume": 4.5,
           "treble": 6.5,
           "bass": 5
@@ -86906,11 +86906,11 @@
       "notApplicable": [
         {
           "key": "tone",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "midbite",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -86945,14 +86945,14 @@
     "downloads": 203,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Rhythm\nVolume: 6\nTone: N/A\nMid-Bite: N/A\nTreble: 6.5\nBass: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "volume": 6,
         "treble": 6.5,
         "bass": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "volume": 6,
           "treble": 6.5,
           "bass": 5
@@ -86961,11 +86961,11 @@
       "notApplicable": [
         {
           "key": "tone",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "midbite",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -87000,14 +87000,14 @@
     "downloads": 179,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Rhythm\nVolume: 7.5\nTone: N/A\nMid-Bite: N/A\nTreble: 5\nBass: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "volume": 7.5,
         "treble": 5,
         "bass": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "volume": 7.5,
           "treble": 5,
           "bass": 5
@@ -87016,11 +87016,11 @@
       "notApplicable": [
         {
           "key": "tone",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "midbite",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -87086,14 +87086,14 @@
     "downloads": 145,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\nSettings:\nChannel: Lead\nVolume: 6\nTone: 8.2\nMid-Bite: 7.5\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6,
         "tone": 8.2,
         "midbite": 7.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6,
           "tone": 8.2,
           "midbite": 7.5
@@ -87102,11 +87102,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -87141,14 +87141,14 @@
     "downloads": 169,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Lead\nVolume: 6\nTone: 8.2\nMid-Bite: 7.5\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6,
         "tone": 8.2,
         "midbite": 7.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6,
           "tone": 8.2,
           "midbite": 7.5
@@ -87157,11 +87157,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -87196,14 +87196,14 @@
     "downloads": 161,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Lead\nVolume: 3\nTone: 3.5\nMid-Bite: 4\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 3,
         "tone": 3.5,
         "midbite": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 3,
           "tone": 3.5,
           "midbite": 4
@@ -87212,11 +87212,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -87251,14 +87251,14 @@
     "downloads": 161,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Lead\nVolume: 4.5\nTone: 6\nMid-Bite: 4.5\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 4.5,
         "tone": 6,
         "midbite": 4.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 4.5,
           "tone": 6,
           "midbite": 4.5
@@ -87267,11 +87267,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -87306,14 +87306,14 @@
     "downloads": 154,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Lead\nVolume: 2\nTone: 6\nMid-Bite: 5\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 2,
         "tone": 6,
         "midbite": 5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 2,
           "tone": 6,
           "midbite": 5
@@ -87322,11 +87322,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -87361,14 +87361,14 @@
     "downloads": 236,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Lead\nVolume: 10\nTone: 3\nMid-Bite: 5\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 10,
         "tone": 3,
         "midbite": 5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 10,
           "tone": 3,
           "midbite": 5
@@ -87377,11 +87377,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -87416,14 +87416,14 @@
     "downloads": 226,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Lead\nVolume: 10\nTone: 6\nMid-Bite: 7\nTreble: N/A\nBass: N/A",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 10,
         "tone": 6,
         "midbite": 7
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 10,
           "tone": 6,
           "midbite": 7
@@ -87432,11 +87432,11 @@
       "notApplicable": [
         {
           "key": "treble",
-          "channel": 1
+          "channel": 2
         },
         {
           "key": "bass",
-          "channel": 1
+          "channel": 2
         }
       ]
     },
@@ -87471,14 +87471,14 @@
     "downloads": 375,
     "description": "This is a capture of Tone King® Imperial MKII® amp.\n\nSettings:\nChannel: Rhythm\nVolume: 3\nTone: N/A\nMid-Bite: N/A\nTreble: 6\nBass: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "volume": 3,
         "treble": 6,
         "bass": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "volume": 3,
           "treble": 6,
           "bass": 5
@@ -87487,11 +87487,11 @@
       "notApplicable": [
         {
           "key": "tone",
-          "channel": 2
+          "channel": 1
         },
         {
           "key": "midbite",
-          "channel": 2
+          "channel": 1
         }
       ]
     },
@@ -97602,7 +97602,7 @@
     "downloads": 66,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 6.5\nTreble: 5\nMiddle: 5\nBass: 3.5\nGain: 6.5\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 6.5\nMaster: 4\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6.5,
         "treble": 5,
@@ -97618,7 +97618,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6.5,
           "treble": 5,
           "middle": 5,
@@ -97666,7 +97666,7 @@
     "downloads": 121,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 6.5\nTreble: 7\nMiddle: 8\nBass: 8\nGain: 6.5\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 6.5\nMaster: 4\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6.5,
         "treble": 7,
@@ -97682,7 +97682,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6.5,
           "treble": 7,
           "middle": 8,
@@ -97730,7 +97730,7 @@
     "downloads": 47,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 8\nTreble: 3.5\nMiddle: 4\nBass: 6.5\nGain: 8\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 6.5\nMaster: 4\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 8,
         "treble": 3.5,
@@ -97746,7 +97746,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 8,
           "treble": 3.5,
           "middle": 4,
@@ -97794,7 +97794,7 @@
     "downloads": 43,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 8\nTreble: 5\nMiddle: 6.5\nBass: 6.5\nGain: 8\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 6.5\nMaster: 4\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 8,
         "treble": 5,
@@ -97810,7 +97810,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 8,
           "treble": 5,
           "middle": 6.5,
@@ -97858,7 +97858,7 @@
     "downloads": 50,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 9\nTreble: 5\nMiddle: 5\nBass: 5\nGain: 10\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 6.5\nMaster: 4\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "treble": 5,
@@ -97874,7 +97874,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "treble": 5,
           "middle": 5,
@@ -97922,7 +97922,7 @@
     "downloads": 33,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 9\nTreble: 5\nMiddle: 5\nBass: 3\nGain: 10\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 6.5\nMaster: 4\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "treble": 5,
@@ -97938,7 +97938,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "treble": 5,
           "middle": 5,
@@ -97986,7 +97986,7 @@
     "downloads": 39,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 9\nTreble: 5\nMiddle: 8\nBass: 4\nGain: 10\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 6.5\nMaster: 4\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "treble": 5,
@@ -98002,7 +98002,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "treble": 5,
           "middle": 8,
@@ -98050,7 +98050,7 @@
     "downloads": 42,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp 1959 channel.\n\nSettings:\nVolume: 9\nTreble: 8.5\nMiddle: 8\nBass: 8\nGain: 10\nPresence position: 1\nPresence: 5\nResonance position: 1\nResonance: 6\nPPIM Master: 7\nMaster: 5\nLo Mid: 1",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "treble": 8.5,
@@ -98066,7 +98066,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "treble": 8.5,
           "middle": 8,
@@ -98114,7 +98114,7 @@
     "downloads": 138,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 8\nGain: 6\nTreble: 6.5\nMiddle: 6.5\nBass: 6.5\nBright: 4\nPresence position: 1\nPresence: 3\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6\nLo Mid: 1",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright_1": 3,
@@ -98133,7 +98133,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright_1": 3,
           "volume": 8,
@@ -98184,7 +98184,7 @@
     "downloads": 48,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 1\nBright: 1\nVolume: 7\nGain: 6.5\nTreble: 7\nMiddle: 6.5\nBass: 5\nBright: N/A\nPresence position: 1\nPresence: 3\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6\nLo Mid: 1",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright_1": 1,
@@ -98202,7 +98202,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright_1": 1,
           "volume": 7,
@@ -98252,7 +98252,7 @@
     "downloads": 47,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 1\nBright: 2\nVolume: 7\nGain: 6.5\nTreble: 7\nMiddle: 6\nBass: 5\nBright: 8\nPresence position: 1\nPresence: 3\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6\nLo Mid: 1",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright_1": 2,
@@ -98271,7 +98271,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright_1": 2,
           "volume": 7,
@@ -98322,7 +98322,7 @@
     "downloads": 46,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 2\nBright: 1\nVolume: 9\nGain: 5\nTreble: 6\nMiddle: 6\nBass: 5\nBright: 5\nPresence position: 1\nPresence: 3\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6\nLo Mid: 1",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright_1": 1,
@@ -98341,7 +98341,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright_1": 1,
           "volume": 9,
@@ -98392,7 +98392,7 @@
     "downloads": 62,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 2\nBright: 2\nVolume: 9\nGain: 5\nTreble: 7\nMiddle: 6.5\nBass: 5\nBright: 5\nPresence position: 1\nPresence: 3\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6\nLo Mid: 1",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright_1": 2,
@@ -98411,7 +98411,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright_1": 2,
           "volume": 9,
@@ -98462,7 +98462,7 @@
     "downloads": 96,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 8\nGain: 5\nTreble: 6.5\nMiddle: 6\nBass: 5.2\nBright: 5.5\nPresence position: 1\nPresence: 3\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6\nLo Mid: 1",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright_1": 3,
@@ -98481,7 +98481,7 @@
         "lomid": 1
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright_1": 3,
           "volume": 8,
@@ -98532,7 +98532,7 @@
     "downloads": 69,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 8.5\nGain: 5\nTreble: 5\nMiddle: 4\nBass: 10\nBright: 6\nPresence position: 2\nPresence: 2\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6.5\nLo Mid: 3",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright_1": 3,
@@ -98551,7 +98551,7 @@
         "lomid": 3
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright_1": 3,
           "volume": 8.5,
@@ -98602,7 +98602,7 @@
     "downloads": 65,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp clean channel.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 10\nGain: 8\nTreble: 5\nMiddle: 4\nBass: 8.5\nBright: 4\nPresence position: 2\nPresence: 2\nResonance position: 1\nResonance: 6.5\nPPIM Master: 6.5\nMaster: 6.5\nLo Mid: 3",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright_1": 3,
@@ -98621,7 +98621,7 @@
         "lomid": 3
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright_1": 3,
           "volume": 10,
@@ -101008,7 +101008,7 @@
     "downloads": 33,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 5\nGain1: 5\nTreble: 2\nMiddle: 3\nBass: 2",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 5,
         "gain1": 5,
@@ -101017,7 +101017,7 @@
         "bass": 2
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 5,
           "gain1": 5,
           "treble": 2,
@@ -101059,7 +101059,7 @@
     "downloads": 178,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 6.5\nGain1: 6.5\nTreble: 0\nMiddle: 5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6.5,
         "gain1": 6.5,
@@ -101068,7 +101068,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6.5,
           "gain1": 6.5,
           "treble": 0,
@@ -101110,7 +101110,7 @@
     "downloads": 33,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 10\nGain1: 6.5\nTreble: 0\nMiddle: 5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 10,
         "gain1": 6.5,
@@ -101119,7 +101119,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 10,
           "gain1": 6.5,
           "treble": 0,
@@ -101161,7 +101161,7 @@
     "downloads": 35,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 10\nGain1: 10\nTreble: 0\nMiddle: 5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 10,
         "gain1": 10,
@@ -101170,7 +101170,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 10,
           "gain1": 10,
           "treble": 0,
@@ -101212,7 +101212,7 @@
     "downloads": 23,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 6.5\nGain1: 6.5\nTreble: 5\nMiddle: 2\nBass: 3.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6.5,
         "gain1": 6.5,
@@ -101221,7 +101221,7 @@
         "bass": 3.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6.5,
           "gain1": 6.5,
           "treble": 5,
@@ -101263,7 +101263,7 @@
     "downloads": 23,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 9\nGain1: 6.5\nTreble: 5\nMiddle: 2\nBass: 3.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "gain1": 6.5,
@@ -101272,7 +101272,7 @@
         "bass": 3.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "gain1": 6.5,
           "treble": 5,
@@ -101314,7 +101314,7 @@
     "downloads": 31,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 9.5\nGain1: 9.5\nTreble: 5\nMiddle: 2\nBass: 3.5",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9.5,
         "gain1": 9.5,
@@ -101323,7 +101323,7 @@
         "bass": 3.5
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9.5,
           "gain1": 9.5,
           "treble": 5,
@@ -101365,7 +101365,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 8\nGain1: 5\nTreble: 2\nMiddle: 3\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 8,
         "gain1": 5,
@@ -101374,7 +101374,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 8,
           "gain1": 5,
           "treble": 2,
@@ -101416,7 +101416,7 @@
     "downloads": 19,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 10\nGain1: 5\nTreble: 2\nMiddle: 3\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 10,
         "gain1": 5,
@@ -101425,7 +101425,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 10,
           "gain1": 5,
           "treble": 2,
@@ -101467,7 +101467,7 @@
     "downloads": 19,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 6.5\nGain1: 6.5\nTreble: 2\nMiddle: 3\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6.5,
         "gain1": 6.5,
@@ -101476,7 +101476,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6.5,
           "gain1": 6.5,
           "treble": 2,
@@ -101518,7 +101518,7 @@
     "downloads": 27,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 6\nGain1: 8.5\nTreble: 2\nMiddle: 5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6,
         "gain1": 8.5,
@@ -101527,7 +101527,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6,
           "gain1": 8.5,
           "treble": 2,
@@ -101569,7 +101569,7 @@
     "downloads": 26,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 9\nGain1: 9\nTreble: 2\nMiddle: 5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "gain1": 9,
@@ -101578,7 +101578,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "gain1": 9,
           "treble": 2,
@@ -101620,7 +101620,7 @@
     "downloads": 30,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 6.5\nGain1: 6.5\nTreble: 2\nMiddle: 6.5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 6.5,
         "gain1": 6.5,
@@ -101629,7 +101629,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 6.5,
           "gain1": 6.5,
           "treble": 2,
@@ -101671,7 +101671,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 9\nGain1: 6.5\nTreble: 2\nMiddle: 6.5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "gain1": 6.5,
@@ -101680,7 +101680,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "gain1": 6.5,
           "treble": 2,
@@ -101722,7 +101722,7 @@
     "downloads": 28,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s 1959 channel preamp section.\n\nSettings:\nVolume: 9\nGain1: 9.5\nTreble: 2\nMiddle: 6.5\nBass: 4",
     "settings": {
-      "channel": 1,
+      "channel": 2,
       "values": {
         "volume": 9,
         "gain1": 9.5,
@@ -101731,7 +101731,7 @@
         "bass": 4
       },
       "byChannel": {
-        "1": {
+        "2": {
           "volume": 9,
           "gain1": 9.5,
           "treble": 2,
@@ -101773,7 +101773,7 @@
     "downloads": 28,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 1\nVolume: 8.5\nGain1: 6\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 1,
@@ -101785,7 +101785,7 @@
         "brightlevel": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 1,
           "volume": 8.5,
@@ -101830,7 +101830,7 @@
     "downloads": 26,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 1\nVolume: 6.5\nGain1: 5\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 6",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 1,
@@ -101842,7 +101842,7 @@
         "brightlevel": 6
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 1,
           "volume": 6.5,
@@ -101887,7 +101887,7 @@
     "downloads": 31,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 1\nVolume: 10\nGain1: 10\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 6",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 1,
@@ -101899,7 +101899,7 @@
         "brightlevel": 6
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 1,
           "volume": 10,
@@ -101944,7 +101944,7 @@
     "downloads": 34,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 1\nVolume: 10\nGain1: 10\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 6",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 1,
@@ -101956,7 +101956,7 @@
         "brightlevel": 6
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 1,
           "volume": 10,
@@ -102001,7 +102001,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 2\nVolume: 8\nGain1: 5\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 2,
@@ -102013,7 +102013,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 2,
           "volume": 8,
@@ -102058,7 +102058,7 @@
     "downloads": 46,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 2\nVolume: 8\nGain1: 5\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 2,
@@ -102070,7 +102070,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 2,
           "volume": 8,
@@ -102115,7 +102115,7 @@
     "downloads": 20,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 2\nVolume: 10\nGain1: 8\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 2,
@@ -102127,7 +102127,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 2,
           "volume": 10,
@@ -102172,7 +102172,7 @@
     "downloads": 29,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 2\nVolume: 10\nGain1: 8\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 2,
@@ -102184,7 +102184,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 2,
           "volume": 10,
@@ -102229,7 +102229,7 @@
     "downloads": 57,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 2\nVolume: 6.5\nGain1: 6.5\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 2,
@@ -102241,7 +102241,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 2,
           "volume": 6.5,
@@ -102286,7 +102286,7 @@
     "downloads": 27,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 2\nVolume: 6.5\nGain1: 6.5\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 2,
@@ -102298,7 +102298,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 2,
           "volume": 6.5,
@@ -102343,7 +102343,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 2\nVolume: 10\nGain1: 8\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 2,
@@ -102355,7 +102355,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 2,
           "volume": 10,
@@ -102400,7 +102400,7 @@
     "downloads": 23,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 1\nVolume: 8.5\nGain1: 6\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 1,
@@ -102412,7 +102412,7 @@
         "brightlevel": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 1,
           "volume": 8.5,
@@ -102457,7 +102457,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 2\nVolume: 10\nGain1: 8\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 8",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 2,
@@ -102469,7 +102469,7 @@
         "brightlevel": 8
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 2,
           "volume": 10,
@@ -102514,7 +102514,7 @@
     "downloads": 24,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 4.5\nGain1: 5\nTreble: 3.5\nMiddle: 3.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102526,7 +102526,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 4.5,
@@ -102571,7 +102571,7 @@
     "downloads": 21,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 4.5\nGain1: 5\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102583,7 +102583,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 4.5,
@@ -102628,7 +102628,7 @@
     "downloads": 25,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 8\nGain1: 5\nTreble: 3.5\nMiddle: 3.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102640,7 +102640,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 8,
@@ -102685,7 +102685,7 @@
     "downloads": 23,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 8\nGain1: 5\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102697,7 +102697,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 8,
@@ -102742,7 +102742,7 @@
     "downloads": 34,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 10\nGain1: 6\nTreble: 3.5\nMiddle: 3.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102754,7 +102754,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 10,
@@ -102799,7 +102799,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 10\nGain1: 6\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102811,7 +102811,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 10,
@@ -102856,7 +102856,7 @@
     "downloads": 23,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 10\nGain1: 10\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 7",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102868,7 +102868,7 @@
         "brightlevel": 7
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 10,
@@ -102913,7 +102913,7 @@
     "downloads": 31,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 10\nGain1: 10\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 7",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -102925,7 +102925,7 @@
         "brightlevel": 7
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 10,
@@ -102970,7 +102970,7 @@
     "downloads": 21,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 6.5\nGain1: 5\nTreble: 3.5\nMiddle: 3.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 3,
@@ -102982,7 +102982,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 3,
           "volume": 6.5,
@@ -103027,7 +103027,7 @@
     "downloads": 23,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 1\nVolume: 10\nGain1: 6.5\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 1,
@@ -103039,7 +103039,7 @@
         "brightlevel": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 1,
           "volume": 10,
@@ -103084,7 +103084,7 @@
     "downloads": 28,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 3\nVolume: 10\nGain1: 10\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 3,
@@ -103096,7 +103096,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 3,
           "volume": 10,
@@ -103141,7 +103141,7 @@
     "downloads": 21,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 10\nGain1: 6\nTreble: 3.5\nMiddle: 3.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 3,
@@ -103153,7 +103153,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 3,
           "volume": 10,
@@ -103198,7 +103198,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 10\nGain1: 6\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 3,
@@ -103210,7 +103210,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 3,
           "volume": 10,
@@ -103255,7 +103255,7 @@
     "downloads": 70,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 9.5\nGain1: 9.5\nTreble: 3.5\nMiddle: 3.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 3,
@@ -103267,7 +103267,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 3,
           "volume": 9.5,
@@ -103312,7 +103312,7 @@
     "downloads": 22,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 3\nVolume: 9.5\nGain1: 9.5\nTreble: 3.5\nMiddle: 6.5\nBass: 6\nBright Level: 6.5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 3,
@@ -103324,7 +103324,7 @@
         "brightlevel": 6.5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 3,
           "volume": 9.5,
@@ -103369,7 +103369,7 @@
     "downloads": 33,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 1\nVolume: 10\nGain1: 6.5\nTreble: 3\nMiddle: 6.5\nBass: 6.5\nBright Level: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 1,
@@ -103381,7 +103381,7 @@
         "brightlevel": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 1,
           "volume": 10,
@@ -103426,7 +103426,7 @@
     "downloads": 28,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 1\nVolume: 10\nGain1: 10\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 1,
@@ -103438,7 +103438,7 @@
         "brightlevel": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 1,
           "volume": 10,
@@ -103483,7 +103483,7 @@
     "downloads": 27,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 1\nBright: 1\nVolume: 10\nGain1: 10\nTreble: 3\nMiddle: 6\nBass: 6.5\nBright Level: 5",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 1,
         "bright": 1,
@@ -103495,7 +103495,7 @@
         "brightlevel": 5
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 1,
           "bright": 1,
           "volume": 10,
@@ -103540,7 +103540,7 @@
     "downloads": 111,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 1\nVolume: 10\nGain1: 8\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 6",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 1,
@@ -103552,7 +103552,7 @@
         "brightlevel": 6
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 1,
           "volume": 10,
@@ -103597,7 +103597,7 @@
     "downloads": 26,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 1\nVolume: 10\nGain1: 8\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 6",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 1,
@@ -103609,7 +103609,7 @@
         "brightlevel": 6
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 1,
           "volume": 10,
@@ -103654,7 +103654,7 @@
     "downloads": 45,
     "description": "This is a capture of Hermansson® modded Hiwatt® Custom PA100® amp’s Clean channel preamp section.\n\nSettings:\nMid Shift: 2\nBright: 1\nVolume: 6.5\nGain1: 5\nTreble: 3\nMiddle: 3.5\nBass: 6.5\nBright Level: 6",
     "settings": {
-      "channel": 2,
+      "channel": 1,
       "values": {
         "midshift": 2,
         "bright": 1,
@@ -103666,7 +103666,7 @@
         "brightlevel": 6
       },
       "byChannel": {
-        "2": {
+        "1": {
           "midshift": 2,
           "bright": 1,
           "volume": 6.5,

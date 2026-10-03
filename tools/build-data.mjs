@@ -429,6 +429,26 @@ export function parseSettings(row, definition, parsed = null) {
 // switches. A label repeated with numbers, or with on/off values, in one capture is several
 // controls numbered by position (e.g. "Volume 1"/"Volume 2", "Pull Bright 1"/"Pull Bright 2"). Each control only applies to the channels it was recorded on, and switches keep the
 // options each channel actually uses (channelOptions) when channels differ.
+// Channel order for generic gear: explicit numbers first ("1", "1 Clean", "2, Lead"), then single
+// letters (A, B), then named channels from clean to high gain — clean/normal, rhythm/crunch (and the
+// usual mid-gain colours), names it doesn't know, lead/distortion, and purple (a step above red) —
+// with a trailing number and then the name breaking ties.
+const CHANNEL_TIERS = [
+  [0, /\b(clean|normal|jazz|funk|cool|pure|crystal|green)\b/i],
+  [1, /\b(rhythm|rhy|crunch|vintage|classic|plexi|brown|edge|blues|rock|drive|white|blue|orange|yellow)\b/i],
+  [3, /\b(lead|solo|dist|distortion|dirty|high[ -]?gain|hi[ -]?gain|ultra|modern|metal|overdrive|hot|red)\b/i],
+  [4, /\bpurple\b/i],
+];
+export function channelSortKey(name) {
+  const s = String(name).trim(), lead = s.match(/^(\d{1,2})(?:\b|[,.:\s])/);
+  if (isDigits(s) && Number(s) <= 99 && s.length <= 2) return [0, Number(s), 0, ''];
+  if (lead) return [0, Number(lead[1]), 0, s.toLowerCase()];
+  if (/^[a-z]$/i.test(s)) return [1, s.toUpperCase().charCodeAt(0), 0, ''];
+  const tier = CHANNEL_TIERS.find(([, re]) => re.test(s)), num = s.match(/(?:^|\D)(\d{1,2})\s*$/); // "Lead 2", not a year like "1959"
+  return [2, tier ? tier[0] : 2, num ? Number(num[1]) : 0, s.toLowerCase()];
+}
+export const channelOrder = (a, b) => { const x = channelSortKey(a), y = channelSortKey(b); for (let i = 0; i < 4; i++) if (x[i] !== y[i]) return x[i] < y[i] ? -1 : 1; return 0; };
+
 export function inferAmp(identity, rows, valueAliases = null) {
   const alias = valueAliaser(valueAliases);
   const labels = new Map(), channels = [];
@@ -453,7 +473,7 @@ export function inferAmp(identity, rows, valueAliases = null) {
       labels.get(key).numSlots = Math.max(labels.get(key).numSlots, vals.length - lines.length);
     }
   }
-  channels.sort((a, b) => isDigits(a) !== isDigits(b) ? (isDigits(a) ? -1 : 1) : isDigits(a) ? Number(a) - Number(b) : a.toLowerCase() < b.toLowerCase() ? -1 : a.toLowerCase() > b.toLowerCase() ? 1 : 0);
+  channels.sort(channelOrder);
   const numericChannels = channels.length && channels.every((c) => isDigits(c) && Number(c) >= 1 && Number(c) <= 9);
   // Source aliases are not guaranteed hardware channel counts.
   const channelDefs = channels.length ? channels.map((c, i) => ({ n: numericChannels ? Number(c) : i + 1, name: c, aliases: [c] })) : null;
@@ -493,8 +513,6 @@ export function inferAmp(identity, rows, valueAliases = null) {
         if (part.slot) { control.key = key + '_' + part.slot; control.label = label + ' ' + part.slot; }
         const frequency = /^\d+(?:\.\d+)?\s*(?:k?Hz)$/i.test(label);
         Object.assign(control, { kind: frequency ? 'fader' : 'knob', min: Math.min(0, ...vals), max: Math.max(10, ...vals), step: 0.1 });
-        // Main control: gain/drive/volume, or the effect's own amount (distortion, fuzz, sustain, compression).
-        if (/gain|drive|volume|dist|fuzz|sustain|^sus$|compression|input\/comp/i.test(label) && !controls.some((c) => c.primary)) control.primary = true;
         const d = control.min <= 5 && 5 <= control.max ? 5 : control.min;
         defFor = () => d;
       } else {
@@ -525,6 +543,15 @@ export function inferAmp(identity, rows, valueAliases = null) {
       } else defaults.global[control.key] = defFor(null);
       controls.push(control);
     }
+  }
+  // Main control, one per channel: the first gain/drive/volume knob the channel has, or the effect's
+  // own amount (distortion, fuzz, sustain, compression).
+  const isMain = (c) => c.kind === 'knob' && /gain|drive|volume|dist|fuzz|sustain|^sus$|compression|input\/comp/i.test(c.label);
+  for (const n of channelDefs ? channelDefs.map((c) => c.n) : [null]) {
+    const here = controls.filter((c) => n === null || !c.channels || c.channels.includes(n));
+    const hasMain = (m) => controls.some((c) => c.primary && (!c.channels || c.channels.includes(m)));
+    // never one that would give another channel a second main control
+    if (!here.some((c) => c.primary)) { const main = here.find((c) => isMain(c) && (!c.channels || c.channels.every((m) => m === n || !hasMain(m)))); if (main) main.primary = true; }
   }
   return { ...identity, panel: 'generic', channels: channelDefs, controls, defaults, definitionSource: 'capture descriptions', ...(valueAliases ? { valueAliases } : {}),
     defaultsNote: 'Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.' };

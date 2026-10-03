@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { ROOT, ampIdentity, brandInfo, channelsFromDescription, inferAmp, parseSettings, settingLines, sourceAmpName, toCapture } from '../build-data.mjs';
+import { ROOT, ampIdentity, brandInfo, channelsFromDescription, inferAmp, parseSettings, settingLines, sourceAmpName, toCapture , channelOrder } from '../build-data.mjs';
 
 const CUSTOMS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/custom-amps.json'), 'utf8'));
 const CUSTOM = Object.fromEntries(CUSTOMS.map((d) => [d.id, d]));
@@ -179,4 +179,18 @@ test('app capture records keep the raw API fields they need', () => {
   assert.deepEqual([c.id, c.deviceType, c.instrument, c.gainType, c.captureType, c.likes, c.published, c.settings], ['p1', 'Amp Combo', 'Guitar', '2', 'Neural Capture V2', 3, true, null]);
   assert.deepEqual(c.tags, ['x']);
   assert.ok('description' in c);
+});
+
+test('generic channels run from clean to high gain; explicit numbers and letters win', () => {
+  const order = (names) => [...names].sort(channelOrder);
+  assert.deepEqual(order(['Lead', 'Rhythm']), ['Rhythm', 'Lead']);
+  assert.deepEqual(order(['Lead', 'Crunch', 'Clean']), ['Clean', 'Crunch', 'Lead']);
+  assert.deepEqual(order(['Modern', 'Vintage']), ['Vintage', 'Modern']);
+  assert.deepEqual(order(['Red', 'Blue', 'Green', 'Purple']), ['Green', 'Blue', 'Red', 'Purple']);
+  assert.deepEqual(order(['Shark', 'Brown', 'Strato', 'Clean']), ['Clean', 'Brown', 'Shark', 'Strato']); // unknown names between rhythm and lead
+  assert.deepEqual(order(['Lead 2', 'Lead 1', 'Clean']), ['Clean', 'Lead 1', 'Lead 2']);
+  assert.deepEqual(order(['VH', '1959', 'Clean']), ['Clean', '1959', 'VH']); // a year is a name, not a number
+  assert.deepEqual(order(['3 Lead', '1 Clean', '2 Crunch']), ['1 Clean', '2 Crunch', '3 Lead']);
+  assert.deepEqual(order(['2', '10', '1']), ['1', '2', '10']);
+  assert.deepEqual(order(['B', 'A']), ['A', 'B']);
 });

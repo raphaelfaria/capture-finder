@@ -3604,11 +3604,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "overdrive2",
@@ -5174,16 +5174,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Brown",
+        "name": "Clean",
         "aliases": [
-          "Brown"
+          "Clean"
         ]
       },
       {
         "n": 2,
-        "name": "Clean",
+        "name": "Brown",
         "aliases": [
-          "Clean"
+          "Brown"
         ]
       },
       {
@@ -5278,7 +5278,7 @@
           }
         ],
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -5293,11 +5293,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
-          2,
+          1,
           3
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "presence",
@@ -5350,8 +5350,9 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
-        ]
+          2
+        ],
+        "primary": true
       },
       {
         "key": "browngain",
@@ -5366,7 +5367,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
+          2
         ]
       },
       {
@@ -5383,7 +5384,8 @@
         "step": 0.1,
         "channels": [
           4
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "stratogain",
@@ -5448,19 +5450,19 @@
           "treble": 5,
           "middle": 5,
           "bass": 5,
+          "jazzfunk": "Funk",
+          "volume": 5,
           "presence": 5,
-          "mastervol": 5,
-          "brownvolume": 5,
-          "browngain": 5
+          "mastervol": 5
         },
         "2": {
           "treble": 5,
           "middle": 5,
           "bass": 5,
-          "jazzfunk": "Funk",
-          "volume": 5,
           "presence": 5,
-          "mastervol": 5
+          "mastervol": 5,
+          "brownvolume": 5,
+          "browngain": 5
         },
         "3": {
           "treble": 5,
@@ -5497,16 +5499,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Brown",
+        "name": "Clean",
         "aliases": [
-          "Brown"
+          "Clean"
         ]
       },
       {
         "n": 2,
-        "name": "Clean",
+        "name": "Brown",
         "aliases": [
-          "Clean"
+          "Brown"
         ]
       },
       {
@@ -5601,7 +5603,7 @@
           }
         ],
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -5616,13 +5618,13 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2,
           3,
           4
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "brightdark",
@@ -5660,7 +5662,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1,
+          2,
           3,
           4
         ]
@@ -5673,15 +5675,15 @@
           "treble": 5,
           "middle": 5,
           "bass": 5,
-          "volume": 5,
-          "gain": 5
+          "jazzfunk": "Funk",
+          "volume": 5
         },
         "2": {
           "treble": 5,
           "middle": 5,
           "bass": 5,
-          "jazzfunk": "Funk",
-          "volume": 5
+          "volume": 5,
+          "gain": 5
         },
         "3": {
           "treble": 5,
@@ -6080,16 +6082,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Lead",
+        "name": "Rhy",
         "aliases": [
-          "Lead"
+          "Rhy"
         ]
       },
       {
         "n": 2,
-        "name": "Rhy",
+        "name": "Lead",
         "aliases": [
-          "Rhy"
+          "Lead"
         ]
       }
     ],
@@ -6334,11 +6336,11 @@
         ],
         "channelOptions": {
           "1": [
-            true
-          ],
-          "2": [
             true,
             false
+          ],
+          "2": [
+            true
           ]
         },
         "channels": [
@@ -6366,12 +6368,12 @@
           }
         ],
         "channelOptions": {
-          "2": [
+          "1": [
             false
           ]
         },
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -6403,11 +6405,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "gain",
@@ -6459,6 +6461,7 @@
           "rhythm": 5,
           "fsboost": true,
           "channelswitch": true,
+          "bright": false,
           "lead": 5,
           "drive": 5,
           "gain": false
@@ -6477,7 +6480,6 @@
           "rhythm": 5,
           "fsboost": true,
           "channelswitch": true,
-          "bright": false,
           "lead": 5,
           "drive": 5,
           "gain": false
@@ -6499,16 +6501,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Modern",
+        "name": "Vintage",
         "aliases": [
-          "Modern"
+          "Vintage"
         ]
       },
       {
         "n": 2,
-        "name": "Vintage",
+        "name": "Modern",
         "aliases": [
-          "Vintage"
+          "Modern"
         ]
       }
     ],
@@ -6526,7 +6528,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
+          2
         ]
       },
       {
@@ -6593,7 +6595,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
+          2
         ]
       },
       {
@@ -6609,7 +6611,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -6625,7 +6627,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       }
     ],
@@ -6633,18 +6635,18 @@
       "channel": 1,
       "ch": {
         "1": {
-          "modernch1": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "masterch1": 5
-        },
-        "2": {
           "bass": 5,
           "middle": 5,
           "treble": 5,
           "vintagech2": 5,
           "masterch2": 5
+        },
+        "2": {
+          "modernch1": 5,
+          "bass": 5,
+          "middle": 5,
+          "treble": 5,
+          "masterch1": 5
         }
       },
       "global": {}
@@ -6733,12 +6735,12 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2,
           3
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bass",
@@ -6927,12 +6929,12 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2,
           3
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bass",
@@ -8321,11 +8323,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           2,
           3
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "gain_minusplus",
@@ -8707,13 +8709,13 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2,
           3,
           4
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "volume",
@@ -8958,10 +8960,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "master",
@@ -9183,10 +9185,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bass",
@@ -9586,11 +9588,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bass",
@@ -10500,10 +10502,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "contour",
@@ -10758,7 +10760,8 @@
         "step": 0.1,
         "channels": [
           1
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "preshape",
@@ -10961,11 +10964,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "low",
@@ -11396,11 +11399,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "volume",
@@ -11663,16 +11666,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Lead",
+        "name": "Rhythm",
         "aliases": [
-          "Lead"
+          "Rhythm"
         ]
       },
       {
         "n": 2,
-        "name": "Rhythm",
+        "name": "Lead",
         "aliases": [
-          "Rhythm"
+          "Lead"
         ]
       }
     ],
@@ -11714,14 +11717,14 @@
         ],
         "channelOptions": {
           "1": [
-            "Brit",
-            "Blow",
-            "Brown"
-          ],
-          "2": [
             "Burn",
             "Live",
             "Vintage"
+          ],
+          "2": [
+            "Brit",
+            "Blow",
+            "Brown"
           ]
         },
         "channels": [
@@ -11741,11 +11744,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "gain2",
@@ -11809,11 +11812,11 @@
         ],
         "channelOptions": {
           "1": [
-            "More"
-          ],
-          "2": [
             "More",
             "Less"
+          ],
+          "2": [
+            "More"
           ]
         },
         "channels": [
@@ -11963,7 +11966,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       }
     ],
@@ -11971,20 +11974,6 @@
       "channel": 1,
       "ch": {
         "1": {
-          "chmode": "Brit",
-          "gain1": 5,
-          "gain2": 5,
-          "boost": true,
-          "gainmoreless": "More",
-          "powershift": "100W",
-          "master": 5,
-          "scoopwood": "Scoop",
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "presence": 5
-        },
-        "2": {
           "chmode": "Burn",
           "gain1": 5,
           "gain2": 5,
@@ -11998,6 +11987,20 @@
           "bass": 5,
           "presence": 5,
           "depth": 5
+        },
+        "2": {
+          "chmode": "Brit",
+          "gain1": 5,
+          "gain2": 5,
+          "boost": true,
+          "gainmoreless": "More",
+          "powershift": "100W",
+          "master": 5,
+          "scoopwood": "Scoop",
+          "treble": 5,
+          "middle": 5,
+          "bass": 5,
+          "presence": 5
         }
       },
       "global": {}
@@ -12204,16 +12207,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "1959",
+        "name": "Clean",
         "aliases": [
-          "1959"
+          "Clean"
         ]
       },
       {
         "n": 2,
-        "name": "Clean",
+        "name": "1959",
         "aliases": [
-          "Clean"
+          "1959"
         ]
       },
       {
@@ -12244,13 +12247,13 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2,
           3,
           4
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "treble",
@@ -12473,7 +12476,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -12489,7 +12492,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2,
+          1,
           3
         ]
       },
@@ -12506,7 +12509,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -12589,7 +12592,10 @@
           "resonance": 5,
           "ppimmaster": 5,
           "master": 5,
-          "lomid": 5
+          "lomid": 5,
+          "midshift": 5,
+          "bright_1": 5,
+          "bright_2": 5
         },
         "2": {
           "volume": 5,
@@ -12603,10 +12609,7 @@
           "resonance": 5,
           "ppimmaster": 5,
           "master": 5,
-          "lomid": 5,
-          "midshift": 5,
-          "bright_1": 5,
-          "bright_2": 5
+          "lomid": 5
         },
         "3": {
           "volume": 5,
@@ -12775,16 +12778,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "1959",
+        "name": "Clean",
         "aliases": [
-          "1959"
+          "Clean"
         ]
       },
       {
         "n": 2,
-        "name": "Clean",
+        "name": "1959",
         "aliases": [
-          "Clean"
+          "1959"
         ]
       },
       {
@@ -12815,13 +12818,13 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2,
           3,
           4
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "gain1",
@@ -12912,7 +12915,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -12928,7 +12931,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2,
+          1,
           3
         ]
       },
@@ -12945,7 +12948,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -13005,17 +13008,17 @@
           "gain1": 5,
           "treble": 5,
           "middle": 5,
-          "bass": 5
+          "bass": 5,
+          "midshift": 5,
+          "bright": 5,
+          "brightlevel": 5
         },
         "2": {
           "volume": 5,
           "gain1": 5,
           "treble": 5,
           "middle": 5,
-          "bass": 5,
-          "midshift": 5,
-          "bright": 5,
-          "brightlevel": 5
+          "bass": 5
         },
         "3": {
           "volume": 5,
@@ -13408,10 +13411,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       }
     ],
     "defaults": {
@@ -15267,11 +15270,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bass",
@@ -16003,11 +16006,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "pullbright_1",
@@ -16778,11 +16781,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "power",
@@ -17089,11 +17092,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bite",
@@ -17501,11 +17504,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "kill",
@@ -17886,10 +17889,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "dirtyhi",
@@ -18026,11 +18029,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "treble",
@@ -18176,10 +18179,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "treble",
@@ -18260,7 +18263,8 @@
         "step": 0.1,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "shape",
@@ -18492,10 +18496,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "pullboost",
@@ -18534,7 +18538,8 @@
         "step": 0.1,
         "channels": [
           1
-        ]
+        ],
+        "primary": true
       }
     ],
     "defaults": {
@@ -18684,10 +18689,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "drive_2",
@@ -18703,7 +18708,8 @@
         "step": 0.1,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bass_1",
@@ -19020,16 +19026,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Lead",
+        "name": "Rhythm",
         "aliases": [
-          "Lead"
+          "Rhythm"
         ]
       },
       {
         "n": 2,
-        "name": "Rhythm",
+        "name": "Lead",
         "aliases": [
-          "Rhythm"
+          "Lead"
         ]
       }
     ],
@@ -19046,10 +19052,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
-          1
-        ]
+          2
+        ],
+        "primary": true
       },
       {
         "key": "low",
@@ -19115,7 +19121,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
+          2
         ]
       },
       {
@@ -19172,12 +19178,12 @@
           }
         ],
         "channelOptions": {
-          "2": [
+          "1": [
             true
           ]
         },
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -19200,12 +19206,12 @@
           }
         ],
         "channelOptions": {
-          "2": [
+          "1": [
             true
           ]
         },
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -19221,8 +19227,9 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
-        ]
+          1
+        ],
+        "primary": true
       },
       {
         "key": "rhythmpostgain",
@@ -19237,7 +19244,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       }
     ],
@@ -19245,15 +19252,6 @@
       "channel": 1,
       "ch": {
         "1": {
-          "leadpregain": 5,
-          "low": 5,
-          "mid": 5,
-          "high": 5,
-          "leadpostgain": 5,
-          "resonance": 5,
-          "presence": 5
-        },
-        "2": {
           "low": 5,
           "mid": 5,
           "high": 5,
@@ -19263,6 +19261,15 @@
           "crunch": true,
           "rhythmpregain": 5,
           "rhythmpostgain": 5
+        },
+        "2": {
+          "leadpregain": 5,
+          "low": 5,
+          "mid": 5,
+          "high": 5,
+          "leadpostgain": 5,
+          "resonance": 5,
+          "presence": 5
         }
       },
       "global": {}
@@ -19346,16 +19353,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Purple",
+        "name": "Red",
         "aliases": [
-          "Purple"
+          "Red"
         ]
       },
       {
         "n": 2,
-        "name": "Red",
+        "name": "Purple",
         "aliases": [
-          "Red"
+          "Purple"
         ]
       }
     ],
@@ -19386,12 +19393,12 @@
         "channelOptions": {
           "1": [
             false,
-            "Red",
-            "Blue"
+            "Red"
           ],
           "2": [
             false,
-            "Red"
+            "Red",
+            "Blue"
           ]
         },
         "channels": [
@@ -19479,11 +19486,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "treble",
@@ -19600,7 +19607,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
+          2
         ]
       },
       {
@@ -19624,10 +19631,10 @@
         ],
         "channelOptions": {
           "1": [
-            false
+            "Blue"
           ],
           "2": [
-            "Blue"
+            false
           ]
         },
         "channels": [
@@ -19668,8 +19675,7 @@
           "level": 5,
           "presence": 5,
           "depth": 5,
-          "master": 5,
-          "aggression": false,
+          "aggression": "Blue",
           "mid": 5
         },
         "2": {
@@ -19684,7 +19690,8 @@
           "level": 5,
           "presence": 5,
           "depth": 5,
-          "aggression": "Blue",
+          "master": 5,
+          "aggression": false,
           "mid": 5
         }
       },
@@ -19897,10 +19904,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "mid",
@@ -20151,16 +20158,16 @@
     "channels": [
       {
         "n": 1,
-        "name": "Lead",
+        "name": "Rhythm",
         "aliases": [
-          "Lead"
+          "Rhythm"
         ]
       },
       {
         "n": 2,
-        "name": "Rhythm",
+        "name": "Lead",
         "aliases": [
-          "Rhythm"
+          "Lead"
         ]
       }
     ],
@@ -20177,11 +20184,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "tone",
@@ -20196,7 +20203,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
+          2
         ]
       },
       {
@@ -20212,7 +20219,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          1
+          2
         ]
       },
       {
@@ -20228,7 +20235,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       },
       {
@@ -20244,7 +20251,7 @@
         "max": 10,
         "step": 0.1,
         "channels": [
-          2
+          1
         ]
       }
     ],
@@ -20253,13 +20260,13 @@
       "ch": {
         "1": {
           "volume": 5,
-          "tone": 5,
-          "midbite": 5
+          "treble": 5,
+          "bass": 5
         },
         "2": {
           "volume": 5,
-          "treble": 5,
-          "bass": 5
+          "tone": 5,
+          "midbite": 5
         }
       },
       "global": {}
@@ -20682,12 +20689,12 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2,
           3
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "treble",
@@ -20986,11 +20993,11 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1,
           2
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "bass",
@@ -21506,10 +21513,10 @@
         "min": 0,
         "max": 10,
         "step": 0.1,
-        "primary": true,
         "channels": [
           1
-        ]
+        ],
+        "primary": true
       },
       {
         "key": "tone",
@@ -21606,7 +21613,8 @@
         "step": 0.1,
         "channels": [
           2
-        ]
+        ],
+        "primary": true
       }
     ],
     "defaults": {
