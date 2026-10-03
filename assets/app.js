@@ -1436,8 +1436,54 @@ function prefixPedal(html, pre){
 }
 // Header menus: a field-like button and a popup list like the search's (brand, model, count).
 const chainShort = (list) => chainLabel(list, p => { const d = p.id && gearDef(p.id); return d ? d.model : p.name; });
+// Preamps captured on their own and through a power amp: an entry "<preamp> + <power amp>" whose id
+// extends the preamp's and whose captures say "… with <power amp> power amp". The family is the
+// standalone preamp plus each power amp version, in that order (only when there are at least two).
+const VARIANTS = new Map();
+function ampFamily(def){
+  if (VARIANTS.has(def.id)) return VARIANTS.get(def.id);
+  const powered = (d) => / \+ /.test(d.model) && CAPTURES.some(c => c.ampId === d.id && /\bpower\s*amp\b/i.test(String(c.description || '').split('\n')[0]));
+  const base = powered(def) ? AMP_DEFS.find(p => def.id.startsWith(p.id+'-')) : def;
+  const fam = base ? [base, ...AMP_DEFS.filter(k => k.id.startsWith(base.id+'-') && powered(k))] : [def];
+  const list = fam.length > 1 ? fam : [];
+  VARIANTS.set(def.id, list);
+  return list;
+}
+const powerAmpOf = (fam, d) => d === fam[0] ? null : d.model.split(' + ').slice(1).join(' + ');
+// a power tube (6L6: straight glass with a domed top, micas and plate inside, bakelite base, octal pins
+// round the key post) or a 12AX7 (round top, twin plates, 9-pin
+// miniature leads); both drawn on their pins, without a socket
+const tubeIcon = (big) => '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (big
+  ? '<path d="M7 15.2V6.6a5 5 0 0 1 10 0v8.6"/><path d="M7.6 6.4h8.8M7.6 13.4h8.8" stroke-width="1"/><rect x="9.6" y="7.4" width="4.8" height="5.2" rx=".4" stroke-width="1.1"/><path d="M6.4 15.2h11.2v2.2l-1 1.8H7.4l-1-1.8z" fill="currentColor"/><path d="M8.7 19.2v3M10.3 19.2v3.3M13.7 19.2v3.3M15.3 19.2v3" stroke-width="1.1"/><path d="M12 19.2v4" stroke-width="2.2" stroke-linecap="butt"/>'
+  : '<path d="M7.6 17.5V8.6a4.4 4.4 0 0 1 8.8 0v8.9z"/><path d="M12 4.2V2.6"/><path d="M9.9 9.5v5.5M14.1 9.5v5.5"/><path d="M8.8 17.5V21.5M10.4 17.5V22M12 17.5V22M13.6 17.5V22M15.2 17.5V21.5" stroke-width="1.1"/>')
+  + '</svg>';
+// The power amp button (top of the bench's right-hand buttons): goes straight to the other version of a
+// two-entry family, or opens a small list of the family's entries.
+function variantHTML(def){
+  const fam = ampFamily(def);
+  if (!fam.length) return '';
+  const onPower = def !== fam[0], name = (d) => d.brand+' '+d.model;
+  if (fam.length === 2) {
+    const to = onPower ? fam[0] : fam[1], tip = onPower ? 'Preamp only (without the power amp)' : 'With the '+powerAmpOf(fam, to)+' power amp';
+    return '<button id="var-btn" class="infobtn" data-tip="'+esc(tip)+'" aria-label="'+esc(tip+': open '+name(to))+'" data-act="amp" data-id="'+esc(to.id)+'">'+tubeIcon(!onPower)+'</button>';
+  }
+  const open = state.menu === 'variant', items = headerMenuItems('variant'), active = Math.max(0, Math.min(state.menuActive, items.length - 1));
+  let h = '<div class="hmenu varmenu"><button id="variant-btn" class="infobtn varbtn" data-tip="Preamp and power amp versions" aria-haspopup="listbox" aria-expanded="'+open+'"'+(open ? ' aria-controls="variant-list" aria-activedescendant="variant-opt-'+active+'"' : '')
+    + ' aria-label="Preamp and power amp versions" data-act="menu" data-menu="variant">'+tubeIcon(!onPower)+'</button>';
+  if (open) h += '<div id="variant-list" class="amppop varpop" role="listbox" aria-label="Preamp and power amp versions">'+items.map((it, i) =>
+    '<button id="variant-opt-'+i+'" class="ampopt'+(i === active ? ' active' : '')+'" role="option" tabindex="-1" aria-selected="'+!!it.selected+'" data-act="menu-pick" data-menu="variant" data-v="'+esc(it.v)+'">'
+    + '<span style="display:flex;flex-direction:column;gap:1px;flex-grow:1;min-width:0"><span style="font-size:11.5px;color:var(--muted)">'+esc(it.top)+'</span>'
+    + '<span class="cond" style="font-size:17px;font-weight:700;line-height:1.15;overflow-wrap:anywhere">'+esc(it.main)+'</span></span>'
+    + '<span style="font-size:11.5px;color:var(--dim);white-space:nowrap">'+esc(it.right)+'</span></button>').join('')+'</div>';
+  return h + '</div>';
+}
 function headerMenuItems(kind){
   const { def, as } = cur();
+  if (kind === 'variant') {
+    const fam = ampFamily(def);
+    return fam.map(d => { const pa = powerAmpOf(fam, d), n = CAPTURES.filter(c => c.ampId === d.id).length;
+      return { v:d.id, top:pa ? 'With power amp' : 'Preamp only', main:pa || d.model, right:n+' '+(n === 1 ? 'capture' : 'captures'), selected:d === def }; });
+  }
   if (kind === 'chain') {
     const curKey = chainKey(chainOf(as)), opts = chainOpts(def.id);
     if (!opts.length && !chainOf(as).length) return [];
@@ -1465,6 +1511,7 @@ function hmenuHTML(kind, label, value, items, aria){
 function menuPick(kind, v){
   update({ menu:null });
   if (kind === 'chain') setChain(v);
+  else if (kind === 'variant') { if (v !== cur().def.id) pickAmp(v); }
   else if (v) openWithPedal(v, cur().def.id);
   requestAnimationFrame(() => { const b = el(kind+'-btn'); if (b) b.focus(); });
 }
@@ -1526,9 +1573,9 @@ function renderStage(){
   // weight editing: the panel is dimmed and locked; each control's weight floats over it (placeWeights)
   if (state.weightsOpen && !chain.length) cab = cab.replace(/^<div class="cab/, '<div inert class="wedit cab');
   const custom = !!state.weights[def.id];
-  h += '<div class="bench'+(chain.length ? ' withchain' : '')+'">'+cab+'<div class="infowrap"><button id="wt-btn" class="infobtn'+(custom ? ' custom' : '')+'" aria-label="'+esc('Matching weights'+(custom ? ' (edited for this gear)' : ''))+'" aria-pressed="'+state.weightsOpen+'" data-act="weights">'
+  h += '<div class="bench'+(chain.length ? ' withchain' : '')+'">'+cab+'<div class="infowrap">'+variantHTML(def)+'<button id="wt-btn" class="infobtn'+(custom ? ' custom' : '')+'" data-tip="'+(state.weightsOpen ? 'Done editing weights' : 'Edit matching weights'+(custom ? ' (edited)' : ''))+'" aria-label="'+esc('Matching weights'+(custom ? ' (edited for this gear)' : ''))+'" aria-pressed="'+state.weightsOpen+'" data-act="weights">'
     + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>'
-    + '<button id="info-btn" class="infobtn" aria-label="Matching details and notes" aria-haspopup="dialog" aria-expanded="'+state.infoOpen+'"'+(state.infoOpen ? ' aria-controls="info-pop"' : '')+' data-act="info">'
+    + '<button id="info-btn" class="infobtn" data-tip="Matching details and notes" aria-label="Matching details and notes" aria-haspopup="dialog" aria-expanded="'+state.infoOpen+'"'+(state.infoOpen ? ' aria-controls="info-pop"' : '')+' data-act="info">'
     + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg></button>'
     + '</div></div>' + (state.infoOpen ? '<div id="info-pop" class="infopop" role="dialog" aria-modal="true" aria-labelledby="info-h">'+renderInfo()+'</div>' : '');
   return h;
@@ -2161,7 +2208,7 @@ el('drawer-root').addEventListener('keydown', (e) => {
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && state.infoOpen && !state.openId) { e.preventDefault(); update({ infoOpen:false }); } });
 // header menus: ↑/↓ move (and open), Enter or Space picks, Escape closes
 document.addEventListener('keydown', (e) => {
-  const b = e.target.closest && e.target.closest('.hmenubtn'); if (!b) return;
+  const b = e.target.closest && e.target.closest('.hmenubtn, .varbtn'); if (!b) return;
   const k = b.dataset.menu, items = headerMenuItems(k), open = state.menu === k;
   if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const d = e.key === 'ArrowDown' ? 1 : -1; update({ menu:k, menuActive:open ? Math.max(0, Math.min(items.length - 1, state.menuActive + d)) : Math.max(0, items.findIndex(x => x.selected)) }); }
   else if ((e.key === 'Enter' || e.key === ' ') && open) { e.preventDefault(); const it = items[Math.min(state.menuActive, items.length - 1)]; if (it) menuPick(k, it.v); }

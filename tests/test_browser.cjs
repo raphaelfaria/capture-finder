@@ -251,6 +251,31 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.locator('#reset').click();
     await page.waitForFunction(()=>(!cur().as.chain || !cur().as.chain.length) && !document.querySelector('.chainpedal'));
 
+    // Preamp ⇄ power amp version: one button above the weights button goes straight to the other entry
+    // (a power tube on the preamp, a 12AX7 on the power amp version); with several versions it opens a list.
+    await go(url+'?amp=custom-audio-amplifiers-3-se-preamp');
+    assert.equal(await page.getAttribute('#var-btn', 'data-tip'), 'With the Mesa/Boogie 2:90 power amp');
+    await page.hover('#var-btn');
+    await page.waitForFunction(()=>getComputedStyle(document.querySelector('#var-btn'), '::before').opacity === '1');
+    await page.click('#var-btn');
+    await page.waitForFunction(()=>location.search === '?amp=custom-audio-amplifiers-3-se-preamp-mesa-boogie-2-90-simulclass');
+    assert.equal(await page.getAttribute('#var-btn', 'data-tip'), 'Preamp only (without the power amp)');
+    assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('.infowrap > *')].map(e => e.id)), ['var-btn', 'wt-btn', 'info-btn']);
+    assert.ok(await page.evaluate(()=>[...document.querySelectorAll('.infobtn')].every(b => b.dataset.tip)));
+    await page.click('#var-btn');
+    await page.waitForFunction(()=>location.search === '?amp=custom-audio-amplifiers-3-se-preamp');
+    await go(url+'?amp=mesa-boogie-quad-preamp-mesa-boogie-2-90-simulclass'); // no standalone version
+    assert.equal(await page.locator('#var-btn, #variant-btn').count(), 0);
+    await go(url+'?amp=bogner-fish-preamp');
+    await page.evaluate(()=>{ VARIANTS.set('bogner-fish-preamp', [ampById('bogner-fish-preamp'), ampById('bogner-fish-preamp-mesa-boogie-2-ninety-simul-class'), ampById('mesa-boogie-triaxis-preamp-mesa-boogie-2-90-simulclass')]); update({}); });
+    await page.click('#variant-btn');
+    await page.waitForSelector('#variant-list');
+    assert.equal(await page.locator('#variant-list [role=option]').count(), 3);
+    assert.equal(await page.getAttribute('#variant-opt-0', 'aria-selected'), 'true');
+    await page.keyboard.press('ArrowDown'); await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>location.search === '?amp=bogner-fish-preamp-mesa-boogie-2-ninety-simul-class');
+    await page.evaluate(()=>VARIANTS.clear());
+
     // Pedals marked "In efx loop" sit right of the gear, in an FX LOOP group; the others left of it.
     await go(url+'?amp=paul-reed-smith-mt15');
     await page.waitForSelector('#stage .chainloop');
