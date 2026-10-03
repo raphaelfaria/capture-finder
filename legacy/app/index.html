@@ -6,6 +6,8 @@
 <title>Capture Finder</title>
 <meta name="description" content="Dial in your gear. Find your capture. Unofficial reverse lookup for Cortex Cloud captures of amps, pedals and more, by their written settings.">
 <!--
+  FROZEN LEGACY APP — the pre-refactor app, kept only as the baseline the old tests and the visual
+  parity check compare against (npm run test:legacy:old). Not deployed. Its data now lives in public/data.
   Capture Finder — static app for GitHub Pages (no build step at runtime).
   assets/app.css and assets/app.js hold the styles and the app; the data is fetched from
   data/gear.json and data/captures.json (built by `npm run build:data`), so the page must be
@@ -63,7 +65,7 @@
 
 <script>
 // Fetch the gear and capture data, then start the app script (it reads window.CF_DATA).
-Promise.all(['data/gear.json', 'data/captures.json'].map(url => fetch(url).then(r => { if (!r.ok) throw new Error(url+' ('+r.status+')'); return r.json(); })))
+Promise.all(['../../public/data/gear.json', '../../public/data/captures.json'].map(url => fetch(url).then(r => { if (!r.ok) throw new Error(url+' ('+r.status+')'); return r.json(); })))
   .then(([gear, captures]) => {
     window.CF_DATA = { gear, captures };
     const app = document.createElement('script');

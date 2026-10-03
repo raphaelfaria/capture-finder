@@ -7,7 +7,10 @@ const { serve } = require('./server.cjs');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core');
 
 (async () => {
-  const server = await serve(path.join(__dirname, '..'));
+  // LEGACY_TARGET=old (default) serves the frozen legacy app; LEGACY_TARGET=new serves the new app's
+  // legacy-test build (dist-legacy/, npm run build:legacy-test), which exposes the old globals.
+  const target = process.env.LEGACY_TARGET === 'new' ? 'new' : 'old';
+  const server = await serve(path.join(__dirname, '..', '..', target === 'new' ? 'dist-legacy' : ''));
   const browser = await chromium.launch({headless:true, ...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {channel:'chrome'})});
   try {
     const page = await browser.newPage({viewport:{width:1280,height:900}});
@@ -15,7 +18,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     page.on('pageerror', error=>errors.push(error.message));
     page.on('request', request=>{if (/^https?:/.test(request.url()) && !/^http:\/\/(?:127\.0\.0\.1|localhost):/.test(request.url())) external.push(request.url());});
     // Served over http as on GitHub Pages; the app fetches its JSON data before starting.
-    const url = server.url;
+    const url = server.url + (target === 'new' ? '' : 'legacy/app/');
     const go = async (u) => { await page.goto(u); await page.waitForFunction(()=>window.CF_READY === true); };
     const topIs = (name, score) => page.waitForFunction(([n,s])=>{const c=document.querySelector('#results .mcard'); return c && c.querySelector('h3').textContent===n && c.querySelector('.mscore').firstChild.textContent===s;}, [name, String(score)]);
     await go(url);

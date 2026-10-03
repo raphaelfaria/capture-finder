@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "noUnusedLocals": false
+  },
+  "include": [
+    "unit",
+    "component",
+    "e2e",
+    "visual",
+    "../src",
+    "../shared",
+    "../tools"
+  ]
+}

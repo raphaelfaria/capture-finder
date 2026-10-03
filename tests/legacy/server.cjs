@@ -17,7 +17,7 @@ async function serve(root) {
   const url = `http://127.0.0.1:${port}/`;
   for (let i = 0; i < 100; i++) {
     if (child.exitCode !== null) throw new Error('http-server exited; run npm install first');
-    try { if ((await fetch(url)).ok) break; } catch (_) { /* not up yet */ }
+    try { await fetch(url); break; } catch (_) { /* not up yet (any response means it is serving) */ }
     await new Promise((r) => setTimeout(r, 100));
     if (i === 99) { stop(); throw new Error('http-server did not start'); }
   }

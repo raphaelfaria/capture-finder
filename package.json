@@ -1,25 +1,50 @@
 {
   "name": "capture-finder",
   "private": true,
-  "description": "Static reverse lookup for Neural Captures. The app (index.html + assets/ + data/) needs no build or install; these scripts serve it locally and maintain its data.",
+  "description": "Capture Finder: reverse lookup for Neural Captures by written gear settings. A Vite + Preact + TypeScript app deployed to GitHub Pages; tools/ maintain its data.",
   "type": "module",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "start": "npx http-server . -a 127.0.0.1 -p 8080 -c-1 -d false -o",
-    "captures": "node tools/har-to-captures.mjs",
-    "build:data": "node tools/build-data.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tests/tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:legacy:old": "node tests/legacy/test_app.cjs && node tests/legacy/test_browser.cjs",
+    "test:legacy:new": "npm run build:legacy-test && npm run build:bridge && LEGACY_TARGET=new node tests/legacy/test_app.cjs && LEGACY_TARGET=new node tests/legacy/test_browser.cjs",
+    "build:legacy-test": "vite build --mode legacy-test --outDir dist-legacy",
+    "build:bridge": "vite build --config vite.bridge.config.ts",
+    "captures": "tsx tools/har-to-captures/index.ts",
+    "build:data": "tsx tools/build-data/index.ts",
     "data": "npm run captures -- har/captures.har && npm run build:data",
-    "test": "node --test \"tools/tests/*.test.mjs\" && node tests/test_app.cjs",
-    "test:browser": "node tests/test_browser.cjs",
-    "test:all": "npm test && npm run test:browser",
     "verify:gear": "node .claude/skills/gear-panel-generator/scripts/verify-gear.cjs",
     "capture-values": "node .claude/skills/gear-panel-generator/scripts/capture-values.cjs",
     "artboard": "node .claude/skills/gear-panel-generator/scripts/make-artboard.mjs"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@preact/preset-vite": "^2.10.6",
+    "@testing-library/preact": "^3.2.4",
+    "@types/node": "^26.6.4",
+    "eslint": "^10.12.0",
     "http-server": "^14.1.1",
-    "playwright-core": "^1.63.0"
+    "jsdom": "^30.1.1",
+    "playwright-core": "^1.63.0",
+    "preact-render-to-string": "^6.8.0",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.11.3",
+    "preact": "^11.0.0"
   }
 }

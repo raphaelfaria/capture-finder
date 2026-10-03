@@ -3,16 +3,20 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const read = (file) => fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
-const GEAR = JSON.parse(read('data/gear.json'));
-const CF_DATA = { gear:GEAR, captures:JSON.parse(read('data/captures.json')) };
+// LEGACY_TARGET=old (default) runs the frozen legacy script (legacy/app/assets/app.js); LEGACY_TARGET=new
+// runs the new app through its legacy bridge (dist-bridge/bridge.js, npm run build:bridge).
+const ROOT = path.join(__dirname, '..', '..');
+const TARGET = process.env.LEGACY_TARGET === 'new' ? 'new' : 'old';
+const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
+const GEAR = JSON.parse(read('public/data/gear.json'));
+const CF_DATA = { gear:GEAR, captures:JSON.parse(read('public/data/captures.json')) };
 const nodes = new Map();
 function element(id) {
   if (!nodes.has(id)) nodes.set(id, {id, textContent:'', value:'', innerHTML:'', style:{}, setAttribute(){}, removeAttribute(){}, addEventListener(){}, querySelector(){return null;}, focus(){}});
   return nodes.get(id);
 }
 const context = vm.createContext({console, URLSearchParams, location:{search:''}, requestAnimationFrame(){return 1;}, window:{addEventListener(){}, CF_DATA}, document:{getElementById:element, addEventListener(){}, querySelectorAll(){return [];}, body:{style:{}}, activeElement:null}});
-vm.runInContext(read('assets/app.js'), context);
+vm.runInContext(read(TARGET === 'new' ? 'dist-bridge/bridge.js' : 'legacy/app/assets/app.js'), context);
 const run = code => vm.runInContext(code, context);
 // The starting settings are each channel's most downloaded capture: that capture scores 100 at them.
 const startScore = () => run('(()=>{ const { def, as } = cur(), f = (def.defaultsFrom || []).find(x => x.channel === (def.channels ? as.channel : null)) || (def.defaultsFrom || [])[0]; return settingsSimilarity(CAPTURES.find(c => c.ampId === def.id && c.name === f.name), def, as).score; })()');
