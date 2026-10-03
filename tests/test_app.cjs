@@ -17,7 +17,7 @@ const run = code => vm.runInContext(code, context);
 assert.equal(run('CAPTURES.length'), 2190);
 assert.equal(run('new Set(CAPTURES.map(c=>c.id)).size'), 2190);
 assert.equal(run('CAPTURES.some(c=>c.name.startsWith("DEMO"))'), false);
-assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 16);
+assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 18);
 assert.equal(run('AMP_DEFS.some(a=>a.id==="marshall-jcm800-2203")'), false);
 
 run('state.amp="marshall-jcm800-1987"');
@@ -174,8 +174,8 @@ const sig = run('renderStage()');
 assert.ok(sig.includes('class="gswitches" style="grid-template-rows:repeat(3,auto)"') && sig.includes('class="gknobs" style="grid-template-rows:repeat(2,auto)"'));
 assert.ok(sig.indexOf('>Gain 1<') < sig.indexOf('>Gain 2<') && sig.indexOf('>Gain 2<') < sig.indexOf('>Bass<') && sig.indexOf('>Bass<') < sig.indexOf('>Middle<'));
 // channels side by side as far as they fit without wrapping their blocks
-run('state.amp="bogner-fish-preamp-mesa-boogie-2-ninety-simul-class"');
-assert.ok(run('renderStage()').includes('grid-template-columns:repeat(4,minmax(0,1fr))'));
+run('state.amp="custom-audio-amplifiers-3-se-preamp"');
+assert.ok(run('renderStage()').includes('grid-template-columns:repeat(3,minmax(0,1fr))'));
 run('state.amp="mesa-boogie-studio-preamp-mesa-boogie-2-90-simulclass"');
 assert.ok(!run('renderStage()').includes('gbody wrapped')); // switches, knobs and EQ sliders in one row
 
@@ -208,6 +208,22 @@ const capsFor = (q) => JSON.parse(run('JSON.stringify(capEntries([], '+JSON.stri
 assert.equal(capsFor("CA John's Ch1 1")[0], "CA John's Ch1 1");
 assert.deepEqual(capsFor('brit 1987 2'), ['Brit 1987 2']);
 assert.equal(capsFor('hrdlx cha').length, 34);
+
+// Bogner Fish (alone, and into a Simul-Class 2:Ninety): four channels picked on the panel's own labels
+// (captures say "Clean" for Country), every knob once per channel(s), the rear-panel Presence/Master,
+// and the 2:Ninety's power section read past its "Power amp:" header.
+run('state.amp="bogner-fish-preamp"');
+assert.equal(run('CAPTURES.filter(c=>/^bogner-fish/.test(c.ampId||"")&&c.uninterpretedSettings.length).length'), 0);
+assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Bogna Fish 1").settings.channel'), 1);
+assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Fish 7").settings.values)'), JSON.stringify({ sharkvol:6.5, sharktreble:5, sharkbass:8, brightdark:'Dark', balls:5, presence:5, mastervol:10 }));
+assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Fish 1"),cur().def,cur().as).score'), 100);
+const fishStage = run('renderStage()');
+assert.ok(fishStage.includes('id="fs-ch-3"') && fishStage.includes('id="tab-1"') && fishStage.includes('REAR PANEL') && fishStage.includes('class="fsk fsoff"'));
+run('state.amp="bogner-fish-preamp-mesa-boogie-2-ninety-simul-class"');
+assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Fish+290 3").settings.values)'), JSON.stringify({ sharktreble:5, sharkbass:8, brightdark:'Bright', sharkvol:8, balls:2, level:3.5, powerPresence:1, modern:false, halfDrive:false, deep:false }));
+assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Bogna Fish+290 2").settings.values.jazzfunk'), 'Middle');
+assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Fish+290 1"),cur().def,cur().as).score'), 100);
+assert.ok(run('renderStage()').includes('Simul-Class 2:Ninety') && !run('renderStage()').includes('REAR PANEL'));
 
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');

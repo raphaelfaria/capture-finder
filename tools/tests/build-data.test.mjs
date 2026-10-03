@@ -194,3 +194,14 @@ test('generic channels run from clean to high gain; explicit numbers and letters
   assert.deepEqual(order(['2', '10', '1']), ['1', '2', '10']);
   assert.deepEqual(order(['B', 'A']), ['A', 'B']);
 });
+
+test('parse.readOn keeps reading past a named device header (paired with sections)', () => {
+  const d = 'This is a capture of Bogner® Fish Preamp® with Mesa Boogie® 2:Ninety® power amp.\n\nSettings:\nChannel: Clean\nVolume: 5\nPresence: 3\n\nPower amp: Mesa Boogie® 2:Ninety Simul-Class®\nPresence: 2.5\nDeep: ON';
+  assert.deepEqual(settingLines(row(d))[0].map((e) => e.label), ['Volume', 'Presence']); // the ® header ends the block by default
+  assert.deepEqual(settingLines(row(d), ['Power amp'])[0].map((e) => e.label), ['Volume', 'Presence', 'Power amp', 'Presence', 'Deep']);
+  const def = { id: 'x', channels: [{ n: 1, name: 'Clean', aliases: ['Clean'] }], parse: { readOn: ['Power amp'], sections: [{ startsAt: 'Power amp', rename: { Presence: 'Power Presence' } }] },
+    controls: [{ key: 'volume', label: 'Volume', kind: 'knob', scope: 'global', min: 0, max: 10, step: 0.1, weight: 1 }, { key: 'presence', label: 'Presence', kind: 'knob', scope: 'global', min: 0, max: 10, step: 0.1, weight: 1 },
+      { key: 'pp', label: 'Power Presence', kind: 'knob', scope: 'global', min: 0, max: 10, step: 0.1, weight: 1 }, { key: 'deep', label: 'Deep', kind: 'switch', scope: 'global', weight: 1, options: [{ v: true, label: 'ON' }, { v: false, label: 'OFF' }] }] };
+  const [s, rejected] = parseSettings(row(d), def);
+  assert.deepEqual([s.values.volume, s.values.presence, s.values.pp, s.values.deep, rejected], [5, 3, 2.5, true, []]);
+});

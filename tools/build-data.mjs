@@ -267,8 +267,11 @@ function channelToken(text) {
   return text.replace(/^(?:channel|ch\.?)\s*/i, '').trim();
 }
 
-/** Setting rows of the first amplifier block only, never the subsequent pedal settings. */
-export function settingLines(row) {
+/** Setting rows of the first amplifier block only, never the subsequent pedal settings. A device
+ *  header such as "Power amp: Mesa Boogie® 2:Ninety…" ends the block unless its label is in readOn
+ *  (parse.readOn): then the header is kept as a row and reading goes on (pair it with parse.sections). */
+export function settingLines(row, readOn = []) {
+  const keepReading = new Set(readOn.map(norm));
   const ls = lines(row.description || '');
   let channel = null;
   for (const line of ls) {
@@ -282,6 +285,8 @@ export function settingLines(row) {
     const line = rawLine.trim();
     if (!line) continue;
     if (/^(?:Pedal\s*\d+|Pedal settings|Over Drive)\s*:/i.test(line)) break;
+    const header = line.match(/^([^:]+):\s*(.*)$/);
+    if (active && header && keepReading.has(norm(header[1]))) { settings.push({ label: header[1].trim(), raw: header[2].trim() || '-', channel }); continue; }
     if (active && /[®™]/.test(line)) break;
     const start = line.match(/^(?:Settings|Amp settings|AMP(?:\s*\(Ch\.?\s*(\d+)\))?)\s*:\s*(.*)$/i);
     if (!active && /^(?:B7K|VU)(?:\s*\(Legacy\))?\s*:/i.test(line)) { active = true; continue; }
@@ -374,7 +379,8 @@ function valueAliaser(valueAliases) {
 }
 
 export function parseSettings(row, definition, parsed = null) {
-  let [entries, leftovers, token] = parsed || settingLines(row);
+  const readOn = (definition.parse && definition.parse.readOn) || [];
+  let [entries, leftovers, token] = parsed && !readOn.length ? parsed : settingLines(row, readOn);
   [entries, token, leftovers] = applyParseRules(definition.parse || {}, entries, token, leftovers);
   entries = entries.map(valueAliaser(definition.valueAliases));
   const values = {}, channelValues = new Map(), rejected = [...leftovers], collisions = new Set();

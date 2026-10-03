@@ -394,6 +394,30 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 @media (max-width:480px){.hrsec{zoom:.56}.hrgrille{height:48px}}
 @media (max-width:380px){.hrsec{zoom:.5}.hrface{padding:6px 4px}}
 
+/* ---------- Bogner Fish panel ---------- */
+.fsrack{position:relative;flex:none;width:753px;height:150px;max-width:none;border-radius:3px;background:#3a9ad6;border:1px solid #1d5f8a}
+.fsears i{position:absolute;width:13px;height:7px;border-radius:4px;background:var(--bg)}
+.fsears i:nth-child(1){left:3px;top:12px}.fsears i:nth-child(2){left:3px;bottom:12px}.fsears i:nth-child(3){right:3px;top:12px}.fsears i:nth-child(4){right:3px;bottom:12px}
+.fssel{position:absolute;transform:translateY(-50%);min-height:24px;padding:2px 6px;border:0;border-radius:3px;background:transparent;color:#f4f9fc;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.04em;white-space:nowrap}
+.fssel.rev{transform:translate(-100%,-50%)}
+.fssel:hover{background:rgba(255,255,255,.15)}
+.fssel.on{background:#f4f9fc;color:#1d5f8a}
+.fsled{position:absolute;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #1f4e6c;transform:translateX(-50%)}
+.fsk{position:absolute;width:40px;height:40px;transform:translate(-50%,-50%)}
+.fsk .ro{left:26px;top:28px}
+.fsplate{position:absolute;transform:translateX(-50%);width:50px;height:36px;padding-bottom:3px;box-sizing:border-box;display:flex;align-items:flex-end;justify-content:center;background:#f4f6f7;clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:6.5px;letter-spacing:.03em;color:#2b3a42;white-space:nowrap}
+.fsk .knob-in:focus-visible + .kwrap{outline:2px solid #fff;outline-offset:1px}
+.fstgl .tlbl{color:#dcefFA;font-weight:700}
+.fstgl .tlbl[aria-pressed=true]{color:#fff;text-decoration-color:#fff}
+.fstgl .tlbl:hover{background:rgba(255,255,255,.15)}
+.fsoff{opacity:.35}
+.fsname{position:absolute;left:540px;top:16px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:20px;letter-spacing:.08em;color:#f4f9fc;line-height:1}
+.fsname span{font-size:7.5px;letter-spacing:.12em;margin-top:3px}
+.fsrear{position:absolute;left:670px;top:5px;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:7px;letter-spacing:.06em;color:#dcefFA}
+@media (max-width:820px){.fsrack{zoom:.62}}
+@media (max-width:480px){.fsrack{zoom:.45}}
+@media (max-width:380px){.fsrack{zoom:.37}}
+
 /* ---------- generic panel ---------- */
 .gwrap{display:flex;flex-direction:column;gap:8px;min-width:0;max-width:100%}
 .gname{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em;color:#f0f0f0;padding:2px 4px 0}

@@ -807,6 +807,51 @@ function hotRodPanelHTML(def, as){
   return h + '</div></div>';
 }
 
+// Bogner Fish: the light-blue 2U rack face, traced from the front (0.7 scale). Top row (Brown and
+// Strato): BROWN VOL. · STRATO VOL. · TREBLE · MIDDLE · BASS · BROWN · STRATO; bottom row: Shark
+// (M. VOL. · TREBLE · BASS · BRIGHT/DARK · BALLS) and Country (TREBLE · MIDDLE · BASS · JAZZ/FUNK ·
+// VOLUME). White chicken-head knobs over white label plates. The printed channel labels (STRATO ▶,
+// BROWN ▶, SHARK ▶, ◀ COUNTRY) pick the channel, and the small triangle LEDs by each channel's level
+// knobs light for it; controls the channel doesn't use are dimmed. The logo becomes plain text; the
+// power switch, fish artwork and input jack are left out. Presence and Master, recorded by the
+// Fish-alone captures, sit on the rear panel: they are shown where the power switch is. The Fish +
+// 2:Ninety entry stacks the Simul-Class 2:Ninety face (s290PanelHTML) under it.
+const FS_KNOBS = [['brownvol', 97, 35], ['stratovol', 154, 35], ['treble24', 209, 35], ['middle24', 263, 35], ['bass24', 318, 35], ['browngain', 373, 35], ['stratogain', 427, 35],
+  ['sharkvol', 99, 101], ['sharktreble', 155, 101], ['sharkbass', 209, 101], ['balls', 318, 101], ['countrytreble', 398, 101], ['countrymiddle', 451, 101], ['countrybass', 505, 101], ['countryvol', 617, 101],
+  ['presence', 640, 35], ['mastervol', 700, 35]];
+const FS_SEL = [[4, 'STRATO', 27, 30, '▶'], [2, 'BROWN', 27, 50, '▶'], [3, 'SHARK', 27, 99, '▶'], [1, 'COUNTRY', 724, 99, '◀']];
+const FS_LED = [[2, 125, 15], [4, 179, 15], [2, 396, 15], [4, 451, 15], [3, 126, 81], [1, 424, 81]];
+const FS_LIT = { 1:'#4cdc5a', 2:'#ff7a2e', 3:'#ff3b30', 4:'#3fb7ff' };
+const fsOff = (c, as) => available(c, as.channel) ? '' : ' fsoff';
+const fsOffAria = (def, c, as) => available(c, as.channel) ? '' : ', not used on the '+chName(def, as.channel)+' channel';
+function fsKnobHTML(def, as, c, x, y){
+  const v = as.global[c.key], off = fsOff(c, as), angle = (-150 + (v - c.min)/(c.max - c.min)*300).toFixed(1);
+  return '<span class="fsplate'+off+'" style="left:'+x+'px;top:'+y+'px">'+esc(c.label)+'</span>'
+    + '<div class="fsk'+off+'" style="left:'+x+'px;top:'+y+'px"><label class="kctl" style="width:40px;height:40px"><input id="k-'+c.key+'-" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
+    + ' aria-label="'+esc(nice(c.label)+(c.channels ? ' ('+c.channels.map(n => chName(def, n)).join(' and ')+')' : ' (rear panel)')+fsOffAria(def, c, as))+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="">'
+    + '<span class="kwrap" style="width:40px;height:40px" data-drag="knob" data-ctrl="'+c.key+'" data-ch=""><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><g transform="rotate('+angle+' 20 20)">'
+    + '<circle cx="20" cy="20" r="11.5" fill="#eef1f3" stroke="#56646c" stroke-width="1.2"/><path d="M20 1.5 L25 20 L20 31 L15 20 Z" fill="#fbfcfc" stroke="#56646c" stroke-width="1.2" stroke-linejoin="round"/>'
+    + '<path d="M20 4 L20 15" stroke="#1e2a30" stroke-width="1.5" stroke-linecap="round"/></g></svg></span></label><span class="ro" aria-hidden="true">'+f1(v)+'</span></div>';
+}
+function fishPanelHTML(def, as){
+  const g = as.global, C = (k) => def.controls.find(c => c.key === k), n = as.channel;
+  let h = '<div class="fsrack" role="group" aria-label="'+esc('Bogner Fish front panel')+'"><span class="fsears" aria-hidden="true"><i></i><i></i><i></i><i></i></span>';
+  FS_SEL.forEach(([m, name, x, y, arrow]) => {
+    const on = m === n;
+    h += '<button id="fs-ch-'+m+'" class="fssel'+(on ? ' on' : '')+(arrow === '◀' ? ' rev' : '')+'" style="left:'+x+'px;top:'+y+'px" aria-pressed="'+on+'" aria-label="'+esc(chName(def, m)+' channel'+(on ? ', selected' : ''))+'" data-act="channel" data-n="'+m+'">'
+      + (arrow === '◀' ? arrow+' '+name : name+' '+arrow)+'</button>';
+  });
+  FS_LED.forEach(([m, x, y]) => { h += '<span class="fsled" style="left:'+x+'px;top:'+y+'px;'+(m === n ? 'border-top-color:'+FS_LIT[m] : '')+'" aria-hidden="true"></span>'; });
+  FS_KNOBS.forEach(([k, x, y]) => { if (C(k)) h += fsKnobHTML(def, as, C(k), x, y); });
+  [['brightdark', 263, 'Bright or dark (Shark)', [{x:263, y:84}, {x:263, y:132}]], ['jazzfunk', 557, 'Jazz, middle or funk (Country)', [{x:557, y:84}, {x:584, y:108}, {x:557, y:132}]]].forEach(([k, x, aria, pos]) => {
+    const c = C(k), off = fsOff(c, as);
+    h += '<div class="fstgl'+off+'">'+jpToggle(x, 108, c.options, g[k], {key:k, ch:null}, aria+fsOffAria(def, c, as), pos)+'</div>';
+  });
+  h += '<span class="fsname" aria-hidden="true">BOGNER<span>ALL TUBE PRE-AMP.</span></span>';
+  if (C('presence')) h += '<span class="fsrear">REAR PANEL</span>';
+  return h + '</div>';
+}
+
 // Generic panels (gear without a custom panel), laid out by heuristics with nothing gear-specific.
 // Amps are wide, so everything runs horizontally: the gear name on one line on top, then one section
 // per channel (plus any global controls), as many side by side as fit. Inside a section the blocks
@@ -977,6 +1022,7 @@ function renderStage(){
     + '<button id="unload" data-act="unload" aria-label="'+esc('Dismiss: loaded from '+state.loaded.name)+'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span>';
   h += '</div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
   // TriAxis modes (LED matrix) and Hot Rod channels (CHANNEL SELECT) are picked on the panel, not with tabs.
+  // (The Fish keeps the tabs too: its printed channel labels alone are hard to read as selectors.)
   if (multiCh(def) && !/^triaxis/.test(def.panel) && def.panel !== 'hotrod') {
     h += '<div role="group" aria-label="Channel" class="chtabs">';
     def.channels.forEach(c => {
@@ -995,6 +1041,9 @@ function renderStage(){
   } else if (def.panel === 'ecstasy') {
     // Amp head: a short grille over the faceplate (the logo artwork is left out)
     cab = '<div class="cab bgcab"><div class="bggrille" aria-hidden="true"></div>' + ecstasyPanelHTML(def, as) + '</div>';
+  } else if (def.panel === 'fish' || def.panel === 'fish290') {
+    // Rack units: the Fish (and the Simul-Class 2:Ninety it was captured through, stacked under it)
+    cab = '<div class="cab txcab">' + fishPanelHTML(def, as) + (def.panel === 'fish290' ? s290PanelHTML(def, as) : '') + '</div>';
   } else if (def.panel === 'markiic' || def.panel === 'markiii') {
     // Amp head: the faceplate above the grille (the logo plate is left out)
     cab = '<div class="cab mkcab">' + markIICPanelHTML(def, as) + '<div class="mkgrille" aria-hidden="true"></div></div>';

@@ -3958,6 +3958,946 @@
     "captureCount": 4
   },
   {
+    "id": "bogner-fish-preamp",
+    "brand": "Bogner",
+    "model": "Fish Preamp",
+    "panel": "fish",
+    "category": "Amps",
+    "fullName": "Fish · four-channel all-tube preamp · 2U rack",
+    "definitionSource": "front panel photos + capture settings (rear-panel Presence and Master per the published panel layout)",
+    "match": {
+      "source": "\\bFish\\s*Preamp\\b(?![^\\n]*2\\W*:?\\W*Ninety)"
+    },
+    "channels": [
+      {
+        "n": 1,
+        "name": "Country",
+        "aliases": [
+          "Clean",
+          "Country"
+        ]
+      },
+      {
+        "n": 2,
+        "name": "Brown",
+        "aliases": [
+          "Brown"
+        ]
+      },
+      {
+        "n": 3,
+        "name": "Shark",
+        "aliases": [
+          "Shark"
+        ]
+      },
+      {
+        "n": 4,
+        "name": "Strato",
+        "aliases": [
+          "Strato"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "key": "brownvol",
+        "label": "BROWN VOL.",
+        "aliases": [
+          "Brown Volume",
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "stratovol",
+        "label": "STRATO VOL.",
+        "aliases": [
+          "Strato Volume",
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "treble24",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2,
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "middle24",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2,
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "bass24",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2,
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "browngain",
+        "label": "BROWN",
+        "aliases": [
+          "Brown Gain",
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "stratogain",
+        "label": "STRATO",
+        "aliases": [
+          "Strato Gain",
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "sharkvol",
+        "label": "M. VOL.",
+        "aliases": [
+          "Volume",
+          "M. Vol",
+          "Shark Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "sharktreble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "sharkbass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "brightdark",
+        "label": "BRIGHT / DARK",
+        "aliases": [
+          "Bright/Dark"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "weight": 1,
+        "options": [
+          {
+            "v": "Bright",
+            "label": "BRIGHT"
+          },
+          {
+            "v": "Dark",
+            "label": "DARK"
+          }
+        ]
+      },
+      {
+        "key": "balls",
+        "label": "BALLS",
+        "aliases": [
+          "Balls",
+          "Gain",
+          "Shark Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "countrytreble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "countrymiddle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "countrybass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "jazzfunk",
+        "label": "JAZZ / FUNK",
+        "aliases": [
+          "Jazz/Funk"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "weight": 1,
+        "options": [
+          {
+            "v": "Jazz",
+            "label": "JAZZ"
+          },
+          {
+            "v": "Middle",
+            "label": "MID",
+            "aliases": [
+              "Mid",
+              "Center"
+            ]
+          },
+          {
+            "v": "Funk",
+            "label": "FUNK"
+          }
+        ]
+      },
+      {
+        "key": "countryvol",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "presence",
+        "label": "PRESENCE",
+        "aliases": [
+          "Presence"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.5
+      },
+      {
+        "key": "mastervol",
+        "label": "MASTER",
+        "aliases": [
+          "Master Vol",
+          "Master Volume",
+          "Master"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.5
+      }
+    ],
+    "panelOrder": [
+      "brownvol",
+      "stratovol",
+      "treble24",
+      "middle24",
+      "bass24",
+      "browngain",
+      "stratogain",
+      "sharkvol",
+      "sharktreble",
+      "sharkbass",
+      "brightdark",
+      "balls",
+      "countrytreble",
+      "countrymiddle",
+      "countrybass",
+      "jazzfunk",
+      "countryvol",
+      "presence",
+      "mastervol"
+    ],
+    "defaults": {
+      "channel": 1,
+      "ch": {},
+      "global": {
+        "brownvol": 7.8,
+        "stratovol": 8,
+        "treble24": 5,
+        "middle24": 8,
+        "bass24": 8,
+        "browngain": 2,
+        "stratogain": 2,
+        "sharkvol": 6.5,
+        "sharktreble": 5,
+        "sharkbass": 8,
+        "brightdark": "Dark",
+        "balls": 5,
+        "countrytreble": 8,
+        "countrymiddle": 5,
+        "countrybass": 8,
+        "jazzfunk": "Funk",
+        "countryvol": 8,
+        "presence": 5,
+        "mastervol": 10
+      }
+    },
+    "defaultsNote": "Starting settings: Bogna Fish 1 (Country), 3 (Brown), 5 (Strato), 7 (Shark). The channel labels on the panel (STRATO ▶, BROWN ▶, SHARK ▶, ◀ COUNTRY) pick the channel; captures call Country “Clean”. Brown and Strato share the top-row tone stack. The controls the selected channel doesn’t use are dimmed. Presence and Master sit on the rear panel; they are shown where the power switch is.",
+    "captureCount": 8
+  },
+  {
+    "id": "bogner-fish-preamp-mesa-boogie-2-ninety-simul-class",
+    "brand": "Bogner",
+    "model": "Fish Preamp + Mesa/Boogie 2:Ninety",
+    "panel": "fish290",
+    "category": "Amps",
+    "fullName": "Fish preamp into a Stereo Simul-Class 2:Ninety power amp · rack",
+    "definitionSource": "front panel photos + capture settings",
+    "match": {
+      "source": "\\bFish\\s*Preamp\\b[^\\n]*2\\W*:?\\W*Ninety"
+    },
+    "parse": {
+      "readOn": [
+        "Power amp"
+      ],
+      "sections": [
+        {
+          "startsAt": "Power amp",
+          "rename": {
+            "Presence": "Power Presence"
+          }
+        }
+      ]
+    },
+    "channels": [
+      {
+        "n": 1,
+        "name": "Country",
+        "aliases": [
+          "Clean",
+          "Country"
+        ]
+      },
+      {
+        "n": 2,
+        "name": "Brown",
+        "aliases": [
+          "Brown"
+        ]
+      },
+      {
+        "n": 3,
+        "name": "Shark",
+        "aliases": [
+          "Shark"
+        ]
+      },
+      {
+        "n": 4,
+        "name": "Strato",
+        "aliases": [
+          "Strato"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "key": "brownvol",
+        "label": "BROWN VOL.",
+        "aliases": [
+          "Brown Volume",
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "stratovol",
+        "label": "STRATO VOL.",
+        "aliases": [
+          "Strato Volume",
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "treble24",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2,
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "middle24",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2,
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "bass24",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2,
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "browngain",
+        "label": "BROWN",
+        "aliases": [
+          "Brown Gain",
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          2
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "stratogain",
+        "label": "STRATO",
+        "aliases": [
+          "Strato Gain",
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          4
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "sharkvol",
+        "label": "M. VOL.",
+        "aliases": [
+          "Volume",
+          "M. Vol",
+          "Shark Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "sharktreble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "sharkbass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "brightdark",
+        "label": "BRIGHT / DARK",
+        "aliases": [
+          "Bright/Dark"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "weight": 1,
+        "options": [
+          {
+            "v": "Bright",
+            "label": "BRIGHT"
+          },
+          {
+            "v": "Dark",
+            "label": "DARK"
+          }
+        ]
+      },
+      {
+        "key": "balls",
+        "label": "BALLS",
+        "aliases": [
+          "Balls",
+          "Gain",
+          "Shark Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          3
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "countrytreble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "countrymiddle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "countrybass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "jazzfunk",
+        "label": "JAZZ / FUNK",
+        "aliases": [
+          "Jazz/Funk"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "weight": 1,
+        "options": [
+          {
+            "v": "Jazz",
+            "label": "JAZZ"
+          },
+          {
+            "v": "Middle",
+            "label": "MID",
+            "aliases": [
+              "Mid",
+              "Center"
+            ]
+          },
+          {
+            "v": "Funk",
+            "label": "FUNK"
+          }
+        ]
+      },
+      {
+        "key": "countryvol",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "level",
+        "label": "LEVEL",
+        "aliases": [
+          "Level A",
+          "Level B",
+          "Power Level"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "powerPresence",
+        "label": "POWER PRESENCE",
+        "aliases": [
+          "Presence A",
+          "Presence B",
+          "Power Presence"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.5,
+        "weight": 0.8
+      },
+      {
+        "key": "deep",
+        "label": "DEEP",
+        "kind": "switch",
+        "scope": "global",
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ],
+        "weight": 0.8
+      },
+      {
+        "key": "halfDrive",
+        "label": "1/2 DRIVE",
+        "aliases": [
+          "Half Drive",
+          "Half"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ],
+        "weight": 0.8
+      },
+      {
+        "key": "modern",
+        "label": "MODERN",
+        "kind": "switch",
+        "scope": "global",
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ],
+        "weight": 0.8
+      }
+    ],
+    "panelOrder": [
+      "brownvol",
+      "stratovol",
+      "treble24",
+      "middle24",
+      "bass24",
+      "browngain",
+      "stratogain",
+      "sharkvol",
+      "sharktreble",
+      "sharkbass",
+      "brightdark",
+      "balls",
+      "countrytreble",
+      "countrymiddle",
+      "countrybass",
+      "jazzfunk",
+      "countryvol",
+      "level",
+      "powerPresence",
+      "deep",
+      "halfDrive",
+      "modern"
+    ],
+    "defaults": {
+      "channel": 1,
+      "ch": {},
+      "global": {
+        "brownvol": 5,
+        "stratovol": 5,
+        "treble24": 6,
+        "middle24": 8,
+        "bass24": 5,
+        "browngain": 8,
+        "stratogain": 3.5,
+        "sharkvol": 8,
+        "sharktreble": 5,
+        "sharkbass": 8,
+        "brightdark": "Bright",
+        "balls": 2,
+        "countrytreble": 8,
+        "countrymiddle": 5,
+        "countrybass": 5,
+        "jazzfunk": "Funk",
+        "countryvol": 5,
+        "level": 2.5,
+        "powerPresence": 2.5,
+        "deep": true,
+        "halfDrive": false,
+        "modern": true
+      }
+    },
+    "defaultsNote": "Starting settings: Bogna Fish+290 1 (Country), 7 (Brown), 5 (Strato), 3 (Shark). The Fish above the Simul-Class 2:Ninety it was captured through; captures write each channel’s level and gain knobs as plain “Volume” and “Gain”. Captures call Country “Clean”, and one sets its switch to the middle position (between Jazz and Funk).",
+    "captureCount": 8
+  },
+  {
     "id": "ada-mp-1-preamp",
     "brand": "ADA",
     "model": "MP-1 Preamp",
@@ -5552,548 +6492,6 @@
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
     "captureCount": 8,
     "category": "Pedals"
-  },
-  {
-    "id": "bogner-fish-preamp",
-    "brand": "Bogner",
-    "model": "Fish Preamp",
-    "source": "description",
-    "panel": "generic",
-    "channels": [
-      {
-        "n": 1,
-        "name": "Clean",
-        "aliases": [
-          "Clean"
-        ]
-      },
-      {
-        "n": 2,
-        "name": "Brown",
-        "aliases": [
-          "Brown"
-        ]
-      },
-      {
-        "n": 3,
-        "name": "Shark",
-        "aliases": [
-          "Shark"
-        ]
-      },
-      {
-        "n": 4,
-        "name": "Strato",
-        "aliases": [
-          "Strato"
-        ]
-      }
-    ],
-    "controls": [
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          4
-        ]
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "key": "jazzfunk",
-        "label": "Jazz/Funk",
-        "aliases": [
-          "Jazz/Funk"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": "Funk",
-            "label": "Funk"
-          },
-          {
-            "v": "Jazz",
-            "label": "Jazz"
-          }
-        ],
-        "channels": [
-          1
-        ]
-      },
-      {
-        "key": "volume",
-        "label": "Volume",
-        "aliases": [
-          "Volume"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          3
-        ],
-        "primary": true
-      },
-      {
-        "key": "presence",
-        "label": "Presence",
-        "aliases": [
-          "Presence"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "key": "mastervol",
-        "label": "Master Vol",
-        "aliases": [
-          "Master Vol"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "key": "brownvolume",
-        "label": "Brown Volume",
-        "aliases": [
-          "Brown Volume"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          2
-        ],
-        "primary": true
-      },
-      {
-        "key": "browngain",
-        "label": "Brown Gain",
-        "aliases": [
-          "Brown Gain"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          2
-        ]
-      },
-      {
-        "key": "stratovolume",
-        "label": "Strato Volume",
-        "aliases": [
-          "Strato Volume"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          4
-        ],
-        "primary": true
-      },
-      {
-        "key": "stratogain",
-        "label": "Strato Gain",
-        "aliases": [
-          "Strato Gain"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          4
-        ]
-      },
-      {
-        "key": "brightdark",
-        "label": "Bright/Dark",
-        "aliases": [
-          "Bright/Dark"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": "Dark",
-            "label": "Dark"
-          },
-          {
-            "v": "Bright",
-            "label": "Bright"
-          }
-        ],
-        "channels": [
-          3
-        ]
-      },
-      {
-        "key": "balls",
-        "label": "Balls",
-        "aliases": [
-          "Balls"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          3
-        ]
-      }
-    ],
-    "defaults": {
-      "channel": 1,
-      "ch": {
-        "1": {
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "jazzfunk": "Funk",
-          "volume": 5,
-          "presence": 5,
-          "mastervol": 5
-        },
-        "2": {
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "presence": 5,
-          "mastervol": 5,
-          "brownvolume": 5,
-          "browngain": 5
-        },
-        "3": {
-          "treble": 5,
-          "bass": 5,
-          "volume": 5,
-          "presence": 5,
-          "mastervol": 5,
-          "brightdark": "Dark",
-          "balls": 5
-        },
-        "4": {
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "presence": 5,
-          "mastervol": 5,
-          "stratovolume": 5,
-          "stratogain": 5
-        }
-      },
-      "global": {}
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
-    "captureCount": 8,
-    "category": "Amps"
-  },
-  {
-    "id": "bogner-fish-preamp-mesa-boogie-2-ninety-simul-class",
-    "brand": "Bogner",
-    "model": "Fish Preamp + Mesa Boogie 2:Ninety Simul-Class",
-    "source": "description",
-    "panel": "generic",
-    "channels": [
-      {
-        "n": 1,
-        "name": "Clean",
-        "aliases": [
-          "Clean"
-        ]
-      },
-      {
-        "n": 2,
-        "name": "Brown",
-        "aliases": [
-          "Brown"
-        ]
-      },
-      {
-        "n": 3,
-        "name": "Shark",
-        "aliases": [
-          "Shark"
-        ]
-      },
-      {
-        "n": 4,
-        "name": "Strato",
-        "aliases": [
-          "Strato"
-        ]
-      }
-    ],
-    "controls": [
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          4
-        ]
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "key": "jazzfunk",
-        "label": "Jazz/Funk",
-        "aliases": [
-          "Jazz/Funk"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": "Funk",
-            "label": "Funk"
-          },
-          {
-            "v": "Middle",
-            "label": "Middle"
-          }
-        ],
-        "channels": [
-          1
-        ]
-      },
-      {
-        "key": "volume",
-        "label": "Volume",
-        "aliases": [
-          "Volume"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3,
-          4
-        ],
-        "primary": true
-      },
-      {
-        "key": "brightdark",
-        "label": "Bright/Dark",
-        "aliases": [
-          "Bright/Dark"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": "Bright",
-            "label": "Bright"
-          },
-          {
-            "v": "Dark",
-            "label": "Dark"
-          }
-        ],
-        "channels": [
-          3
-        ]
-      },
-      {
-        "key": "gain",
-        "label": "Gain",
-        "aliases": [
-          "Gain"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          2,
-          3,
-          4
-        ]
-      }
-    ],
-    "defaults": {
-      "channel": 1,
-      "ch": {
-        "1": {
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "jazzfunk": "Funk",
-          "volume": 5
-        },
-        "2": {
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "volume": 5,
-          "gain": 5
-        },
-        "3": {
-          "treble": 5,
-          "bass": 5,
-          "volume": 5,
-          "brightdark": "Bright",
-          "gain": 5
-        },
-        "4": {
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "volume": 5,
-          "gain": 5
-        }
-      },
-      "global": {}
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
-    "captureCount": 8,
-    "category": "Amps"
   },
   {
     "id": "bogner-harlow",

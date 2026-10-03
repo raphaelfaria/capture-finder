@@ -13049,21 +13049,21 @@
     "settings": {
       "channel": 1,
       "values": {
-        "treble": 8,
-        "middle": 5,
-        "bass": 8,
+        "countrytreble": 8,
+        "countrymiddle": 5,
+        "countrybass": 8,
         "jazzfunk": "Funk",
-        "volume": 8,
+        "countryvol": 8,
         "presence": 5,
         "mastervol": 10
       },
       "byChannel": {
         "1": {
-          "treble": 8,
-          "middle": 5,
-          "bass": 8,
+          "countrytreble": 8,
+          "countrymiddle": 5,
+          "countrybass": 8,
           "jazzfunk": "Funk",
-          "volume": 8,
+          "countryvol": 8,
           "presence": 5,
           "mastervol": 10
         }
@@ -13104,21 +13104,21 @@
     "settings": {
       "channel": 1,
       "values": {
-        "treble": 8,
-        "middle": 5,
-        "bass": 8,
+        "countrytreble": 8,
+        "countrymiddle": 5,
+        "countrybass": 8,
         "jazzfunk": "Jazz",
-        "volume": 8,
+        "countryvol": 8,
         "presence": 5,
         "mastervol": 10
       },
       "byChannel": {
         "1": {
-          "treble": 8,
-          "middle": 5,
-          "bass": 8,
+          "countrytreble": 8,
+          "countrymiddle": 5,
+          "countrybass": 8,
           "jazzfunk": "Jazz",
-          "volume": 8,
+          "countryvol": 8,
           "presence": 5,
           "mastervol": 10
         }
@@ -13159,20 +13159,20 @@
     "settings": {
       "channel": 2,
       "values": {
-        "treble": 5,
-        "middle": 8,
-        "bass": 8,
-        "brownvolume": 7.8,
+        "treble24": 5,
+        "middle24": 8,
+        "bass24": 8,
+        "brownvol": 7.8,
         "browngain": 2,
         "presence": 5,
         "mastervol": 10
       },
       "byChannel": {
         "2": {
-          "treble": 5,
-          "middle": 8,
-          "bass": 8,
-          "brownvolume": 7.8,
+          "treble24": 5,
+          "middle24": 8,
+          "bass24": 8,
+          "brownvol": 7.8,
           "browngain": 2,
           "presence": 5,
           "mastervol": 10
@@ -13219,20 +13219,20 @@
     "settings": {
       "channel": 2,
       "values": {
-        "treble": 5,
-        "middle": 8,
-        "bass": 8,
-        "brownvolume": 7.8,
+        "treble24": 5,
+        "middle24": 8,
+        "bass24": 8,
+        "brownvol": 7.8,
         "browngain": 8,
         "presence": 5,
         "mastervol": 10
       },
       "byChannel": {
         "2": {
-          "treble": 5,
-          "middle": 8,
-          "bass": 8,
-          "brownvolume": 7.8,
+          "treble24": 5,
+          "middle24": 8,
+          "bass24": 8,
+          "brownvol": 7.8,
           "browngain": 8,
           "presence": 5,
           "mastervol": 10
@@ -13279,20 +13279,20 @@
     "settings": {
       "channel": 4,
       "values": {
-        "treble": 5,
-        "middle": 6,
-        "bass": 7,
-        "stratovolume": 8,
+        "treble24": 5,
+        "middle24": 6,
+        "bass24": 7,
+        "stratovol": 8,
         "stratogain": 2,
         "presence": 5,
         "mastervol": 10
       },
       "byChannel": {
         "4": {
-          "treble": 5,
-          "middle": 6,
-          "bass": 7,
-          "stratovolume": 8,
+          "treble24": 5,
+          "middle24": 6,
+          "bass24": 7,
+          "stratovol": 8,
           "stratogain": 2,
           "presence": 5,
           "mastervol": 10
@@ -13339,20 +13339,20 @@
     "settings": {
       "channel": 4,
       "values": {
-        "treble": 5,
-        "middle": 6,
-        "bass": 7,
-        "stratovolume": 8,
+        "treble24": 5,
+        "middle24": 6,
+        "bass24": 7,
+        "stratovol": 8,
         "stratogain": 8,
         "presence": 5,
         "mastervol": 10
       },
       "byChannel": {
         "4": {
-          "treble": 5,
-          "middle": 6,
-          "bass": 7,
-          "stratovolume": 8,
+          "treble24": 5,
+          "middle24": 6,
+          "bass24": 7,
+          "stratovol": 8,
           "stratogain": 8,
           "presence": 5,
           "mastervol": 10
@@ -13399,9 +13399,9 @@
     "settings": {
       "channel": 3,
       "values": {
-        "volume": 6.5,
-        "treble": 5,
-        "bass": 8,
+        "sharkvol": 6.5,
+        "sharktreble": 5,
+        "sharkbass": 8,
         "brightdark": "Dark",
         "balls": 5,
         "presence": 5,
@@ -13409,9 +13409,9 @@
       },
       "byChannel": {
         "3": {
-          "volume": 6.5,
-          "treble": 5,
-          "bass": 8,
+          "sharkvol": 6.5,
+          "sharktreble": 5,
+          "sharkbass": 8,
           "brightdark": "Dark",
           "balls": 5,
           "presence": 5,
@@ -13454,9 +13454,9 @@
     "settings": {
       "channel": 3,
       "values": {
-        "volume": 6.5,
-        "treble": 5,
-        "bass": 6.5,
+        "sharkvol": 6.5,
+        "sharktreble": 5,
+        "sharkbass": 6.5,
         "brightdark": "Bright",
         "balls": 8,
         "presence": 5,
@@ -13464,9 +13464,9 @@
       },
       "byChannel": {
         "3": {
-          "volume": 6.5,
-          "treble": 5,
-          "bass": 6.5,
+          "sharkvol": 6.5,
+          "sharktreble": 5,
+          "sharkbass": 6.5,
           "brightdark": "Bright",
           "balls": 8,
           "presence": 5,
@@ -13514,19 +13514,29 @@
     "settings": {
       "channel": 1,
       "values": {
-        "treble": 8,
-        "middle": 5,
-        "bass": 5,
+        "countrytreble": 8,
+        "countrymiddle": 5,
+        "countrybass": 5,
         "jazzfunk": "Funk",
-        "volume": 5
+        "countryvol": 5,
+        "level": 2.5,
+        "powerPresence": 2.5,
+        "modern": true,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "1": {
-          "treble": 8,
-          "middle": 5,
-          "bass": 5,
+          "countrytreble": 8,
+          "countrymiddle": 5,
+          "countrybass": 5,
           "jazzfunk": "Funk",
-          "volume": 5
+          "countryvol": 5,
+          "level": 2.5,
+          "powerPresence": 2.5,
+          "modern": true,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -13570,19 +13580,27 @@
     "settings": {
       "channel": 1,
       "values": {
-        "treble": 8,
-        "middle": 5,
-        "bass": 5,
+        "countrytreble": 8,
+        "countrymiddle": 5,
+        "countrybass": 5,
         "jazzfunk": "Middle",
-        "volume": 5
+        "countryvol": 5,
+        "powerPresence": 2.5,
+        "modern": true,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "1": {
-          "treble": 8,
-          "middle": 5,
-          "bass": 5,
+          "countrytreble": 8,
+          "countrymiddle": 5,
+          "countrybass": 5,
           "jazzfunk": "Middle",
-          "volume": 5
+          "countryvol": 5,
+          "powerPresence": 2.5,
+          "modern": true,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -13626,19 +13644,29 @@
     "settings": {
       "channel": 3,
       "values": {
-        "treble": 5,
-        "bass": 8,
+        "sharktreble": 5,
+        "sharkbass": 8,
         "brightdark": "Bright",
-        "volume": 8,
-        "gain": 2
+        "sharkvol": 8,
+        "balls": 2,
+        "level": 3.5,
+        "powerPresence": 1,
+        "modern": false,
+        "halfDrive": false,
+        "deep": false
       },
       "byChannel": {
         "3": {
-          "treble": 5,
-          "bass": 8,
+          "sharktreble": 5,
+          "sharkbass": 8,
           "brightdark": "Bright",
-          "volume": 8,
-          "gain": 2
+          "sharkvol": 8,
+          "balls": 2,
+          "level": 3.5,
+          "powerPresence": 1,
+          "modern": false,
+          "halfDrive": false,
+          "deep": false
         }
       },
       "notApplicable": []
@@ -13682,19 +13710,29 @@
     "settings": {
       "channel": 3,
       "values": {
-        "treble": 5,
-        "bass": 8,
+        "sharktreble": 5,
+        "sharkbass": 8,
         "brightdark": "Dark",
-        "volume": 8,
-        "gain": 8
+        "sharkvol": 8,
+        "balls": 8,
+        "level": 3.5,
+        "powerPresence": 1,
+        "modern": false,
+        "halfDrive": false,
+        "deep": false
       },
       "byChannel": {
         "3": {
-          "treble": 5,
-          "bass": 8,
+          "sharktreble": 5,
+          "sharkbass": 8,
           "brightdark": "Dark",
-          "volume": 8,
-          "gain": 8
+          "sharkvol": 8,
+          "balls": 8,
+          "level": 3.5,
+          "powerPresence": 1,
+          "modern": false,
+          "halfDrive": false,
+          "deep": false
         }
       },
       "notApplicable": []
@@ -13738,19 +13776,29 @@
     "settings": {
       "channel": 4,
       "values": {
-        "treble": 5.5,
-        "middle": 7,
-        "bass": 7,
-        "volume": 5,
-        "gain": 3.5
+        "treble24": 5.5,
+        "middle24": 7,
+        "bass24": 7,
+        "stratovol": 5,
+        "stratogain": 3.5,
+        "level": 2.5,
+        "powerPresence": 2.5,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "4": {
-          "treble": 5.5,
-          "middle": 7,
-          "bass": 7,
-          "volume": 5,
-          "gain": 3.5
+          "treble24": 5.5,
+          "middle24": 7,
+          "bass24": 7,
+          "stratovol": 5,
+          "stratogain": 3.5,
+          "level": 2.5,
+          "powerPresence": 2.5,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -13794,19 +13842,29 @@
     "settings": {
       "channel": 4,
       "values": {
-        "treble": 4,
-        "middle": 8,
-        "bass": 5,
-        "volume": 5,
-        "gain": 10
+        "treble24": 4,
+        "middle24": 8,
+        "bass24": 5,
+        "stratovol": 5,
+        "stratogain": 10,
+        "level": 2.5,
+        "powerPresence": 2.5,
+        "modern": true,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "4": {
-          "treble": 4,
-          "middle": 8,
-          "bass": 5,
-          "volume": 5,
-          "gain": 10
+          "treble24": 4,
+          "middle24": 8,
+          "bass24": 5,
+          "stratovol": 5,
+          "stratogain": 10,
+          "level": 2.5,
+          "powerPresence": 2.5,
+          "modern": true,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -13850,19 +13908,29 @@
     "settings": {
       "channel": 2,
       "values": {
-        "treble": 6,
-        "middle": 8,
-        "bass": 5,
-        "volume": 5,
-        "gain": 8
+        "treble24": 6,
+        "middle24": 8,
+        "bass24": 5,
+        "brownvol": 5,
+        "browngain": 8,
+        "level": 2.5,
+        "powerPresence": 2.5,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "2": {
-          "treble": 6,
-          "middle": 8,
-          "bass": 5,
-          "volume": 5,
-          "gain": 8
+          "treble24": 6,
+          "middle24": 8,
+          "bass24": 5,
+          "brownvol": 5,
+          "browngain": 8,
+          "level": 2.5,
+          "powerPresence": 2.5,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -13906,19 +13974,29 @@
     "settings": {
       "channel": 2,
       "values": {
-        "treble": 8,
-        "middle": 5,
-        "bass": 6,
-        "volume": 5,
-        "gain": 8
+        "treble24": 8,
+        "middle24": 5,
+        "bass24": 6,
+        "brownvol": 5,
+        "browngain": 8,
+        "level": 2.5,
+        "powerPresence": 2.5,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "2": {
-          "treble": 8,
-          "middle": 5,
-          "bass": 6,
-          "volume": 5,
-          "gain": 8
+          "treble24": 8,
+          "middle24": 5,
+          "bass24": 6,
+          "brownvol": 5,
+          "browngain": 8,
+          "level": 2.5,
+          "powerPresence": 2.5,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
