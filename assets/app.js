@@ -959,7 +959,7 @@ function renderResults(){
 }
 
 // The settings a capture records, as parsed from its description (one list per channel when it
-// lists several). The description text itself isn't shipped with the app.
+// lists several).
 function recordedSettingsHTML(def, c){
   const s = c.settings, multiple = Object.keys(s.byChannel || {}).length > 1;
   const blocks = multiple ? Object.entries(s.byChannel).map(([n, vals]) => [Number(n), vals]) : [[s.channel, s.values]];
@@ -1011,6 +1011,8 @@ function renderDrawer(){
     + (c.uninterpretedSettings.length ? '<p class="note">Some settings were not interpreted: '+esc(c.uninterpretedSettings.join('; '))+'</p>' : '')
     + (s ? '<section class="stack"><h3 class="h-kicker">Recorded settings</h3>'+recordedSettingsHTML(def, c)+'</section>' : '')
     + '<section class="stack"><h3 class="h-kicker">Compare with your '+esc(cs)+'</h3>'+compare+'</section>'
+    + (c.description ? '<section class="stack"><h3 class="h-kicker">Description</h3><p class="desc">'+esc(c.description)+'</p></section>' : '')
+    + (c.tags.length ? '<section class="stack"><h3 class="h-kicker">Tags</h3><div style="display:flex;flex-wrap:wrap;gap:6px">'+c.tags.map(z => '<span class="chip">'+esc(z)+'</span>').join('')+'</div></section>' : '')
     + '<section class="stack"><h3 class="h-kicker">Metadata</h3><dl class="meta">'+meta.map(([k, v]) => '<dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd>').join('')+'</dl></section>'
     + '</div>';
 }

@@ -177,6 +177,6 @@ test('app capture records keep the raw API fields they need', () => {
     likes: 3, stars: 0, downloads: 163, type: 'neural_capture', creatorType: 'quad',
     metadata: { instrumentType: 'guitar', deviceType: 'amp_combo', gainType: 2, version: '2' }, tags: ['x'] }, null, null);
   assert.deepEqual([c.id, c.deviceType, c.instrument, c.gainType, c.captureType, c.likes, c.published, c.settings], ['p1', 'Amp Combo', 'Guitar', '2', 'Neural Capture V2', 3, true, null]);
-  // the description text and tags are build input only, never shipped to the app
-  assert.ok(!('description' in c) && !('tags' in c));
+  assert.deepEqual(c.tags, ['x']);
+  assert.ok('description' in c);
 });

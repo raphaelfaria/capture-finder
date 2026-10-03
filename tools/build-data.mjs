@@ -530,8 +530,8 @@ export function inferAmp(identity, rows, valueAliases = null) {
     defaultsNote: 'Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.' };
 }
 
-/** App capture record: identifying fields, mapping and parsed settings. The description text and
- *  tags are only build input (identity and settings come from them); the app doesn't ship them. */
+/** App capture record: identifying fields, mapping, parsed settings, tags and the description (as
+ *  copied, without stock header lines). */
 export function toCapture(raw, identity, definition) {
   const row = record(raw);
   const [settings, rejected] = definition ? parseSettings(row, definition) : [null, []];
@@ -544,11 +544,11 @@ export function toCapture(raw, identity, definition) {
     deviceType: row.type_code ? TYPE_LABELS[row.type_code.toLowerCase()] || titleCase(row.type_code.replace(/_/g, ' ')) : 'Unknown', deviceTypeCode: row.type_code,
     instrument: capitalize(String(first(raw, 'metadata.instrumentType')) || 'Unknown'),
     gainType: String(first(raw, 'metadata.gainType')) || 'Not stated',
-    author: { username: String(raw.authorUsername || '') },
+    tags: tagsOf(row), author: { username: String(raw.authorUsername || '') },
     creator: { type: raw.creatorType ?? '', version: raw.creatorVersion ?? '' },
     published: typeof raw.published === 'boolean' ? raw.published : null,
     likes: count('likes'), stars: count('stars'), downloads: count('downloads'),
-    settings, uninterpretedSettings: rejected,
+    description: row.description, settings, uninterpretedSettings: rejected,
   };
 }
 

@@ -90,7 +90,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.locator('#results .mcard [data-act=open]').first().click();
     await page.waitForFunction(()=>document.activeElement?.id==='drawer-close');
     assert.match(await page.locator('.drawer .recset').textContent(), /Volume II\s*10\.0/i);
-    assert.doesNotMatch(await page.locator('.drawer').textContent(), /Factory Captures|This is a capture of/);
+    assert.match(await page.locator('.drawer .desc').textContent(), /Volume II: 10/);
+    assert.doesNotMatch(await page.locator('.drawer').textContent(), /Factory Captures/);
+    assert.ok(await page.evaluate(()=>{ const d=document.querySelector('.drawer'); const hs=[...d.querySelectorAll('h3')].map(h=>h.textContent); return hs.findIndex(h=>/^Compare/.test(h)) < hs.indexOf('Description') && hs.indexOf('Description') < hs.indexOf('Metadata') && (!hs.includes('Tags') || (hs.indexOf('Description') < hs.indexOf('Tags') && hs.indexOf('Tags') < hs.indexOf('Metadata'))); }));
     assert.match(await page.locator('.drawer .meta:not(.recset)').textContent(), /861370a1-f820-4045-a280-9ea0dbbcf634/);
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(()=>document.activeElement.id),'drawer-load');
