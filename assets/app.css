@@ -90,7 +90,7 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .mbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:4px}
 .chtab.sm{min-height:36px;padding:0 10px}
 @media (max-width:700px){.topbar{padding-left:16px;padding-right:16px}.stage{padding:16px 16px 4px}.matches{margin:12px 16px 32px;padding:14px}
-  .bench{grid-template-columns:minmax(0,1fr);row-gap:8px}.bench>.cab,.infowrap{grid-column:1}}
+  .bench{grid-template-columns:minmax(0,1fr);row-gap:8px}.bench>.cab,.bench>.chainrow,.infowrap{grid-column:1}}
 
 .field{display:flex;align-items:center;gap:8px;background:#0b0a09;border:1px solid var(--line2);border-radius:6px;padding:0 10px;height:40px;color:var(--dim)}
 .field input{background:transparent;border:0;outline:0;flex:1;min-width:0;height:100%;color:var(--text)}
@@ -244,7 +244,9 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 /* ---------- Ibanez TS9 Tube Screamer panel ---------- */
 .tscab{background:#141414;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:14px;padding:6px;gap:0}
 .tsface{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 14px 12px;border-radius:10px;background:#62cf3c;border:1px solid #1c3a12;min-width:0;max-width:100%}
-.tsknobs{position:relative;flex:none;width:272px;height:172px}
+.tsknobs{position:relative;flex:none}
+.tsface.compact{padding:8px 10px 10px}
+.tsface.compact .tsplate{margin:0 4px}
 .tsk{position:absolute;transform:translate(-50%,-50%)}
 .tsk .kctl,.tsk .kwrap{display:block}
 .tslab{position:absolute;display:flex;flex-direction:column;align-items:center;gap:3px;transform:translateX(-50%)}
@@ -432,6 +434,57 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .ubch{position:absolute;left:192px;top:50px;transform:translate(-50%,-50%) rotate(-90deg);font-family:'IBM Plex Mono',monospace;font-size:7.5px;letter-spacing:.08em;color:#8a8a8a}
 @media (max-width:640px){.ubface{zoom:.56}}
 @media (max-width:380px){.ubface{zoom:.48}}
+
+/* ---------- Xotic Effects BB Preamp panel ---------- */
+.bbcab{background:#120c0c;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:14px;padding:6px}
+.bbface{position:relative;flex:none;width:228px;height:236px;border-radius:12px;background:#e2241b}
+.bbface.compact .bbk .ro{left:36px;top:38px}
+.bbface.compact .bbline{inset:6px 6px -10px}
+.bbline{position:absolute;inset:8px 8px -10px;border:2px solid #f6d9d3;border-bottom:0;border-radius:10px 10px 0 0;pointer-events:none}
+.bbface{overflow:hidden}
+.bbk{position:absolute;transform:translate(-50%,-50%)}
+.bbk .ro{left:50px;top:54px}
+.bbk .knob-in:focus-visible + .kwrap{outline:2px solid #fff;outline-offset:2px}
+.bblab{position:absolute;transform:translate(-50%,-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:15px;letter-spacing:.02em;color:#f9dcd6;white-space:nowrap}
+.bbname{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;display:flex;align-items:baseline;gap:2px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-style:italic;font-size:30px;letter-spacing:.02em;color:#fbe3de;line-height:1}
+.bbname span{font-size:15px;font-style:normal}
+
+/* ---------- pedals in front of the gear ---------- */
+.chainrow{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;min-width:0;max-width:100%}
+.chainarrow.to::before{content:'→'}
+@media (max-width:948px){.chainrow{flex-direction:column;gap:6px}.chainarrow.to::before{content:'↓'}}
+/* with pedals in front, the chain gets all the room left of the buttons, so the gear keeps its full width */
+.bench.withchain{grid-template-columns:minmax(0,1fr) auto}
+.bench.withchain>.chainrow{grid-column:1;justify-self:stretch}
+.bench.withchain .infowrap{grid-column:2}
+@media (max-width:700px){.bench.withchain{grid-template-columns:minmax(0,1fr)}.bench.withchain .infowrap{grid-column:1}}
+.chainpedals{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;min-width:0}
+.chainrow .cab{margin:0}
+.chainarrow{font-size:20px;color:var(--dim)}
+.chainitem{display:flex;flex-direction:column;align-items:center;gap:4px}
+.chainlink{max-width:220px;padding:2px 6px;border:0;border-radius:4px;background:transparent;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chainlink.go{color:var(--amber);text-decoration:underline;text-decoration-color:rgba(240,180,82,.4);text-underline-offset:2px}
+.chainlink.go:hover{background:rgba(240,180,82,.1);color:#f4c06a}
+.chainmissing{display:flex;flex-direction:column;gap:4px;padding:14px 16px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:13px;color:#f0f0f0}
+.chainmissing .cmnote{font-weight:500;font-size:11px;color:var(--dim)}
+/* header menus (pedals in front / used in front of): a search-style field and the search's popup list */
+.hmenu{position:relative;min-width:0}
+.hmenubtn{height:34px;max-width:300px;gap:6px;cursor:pointer;font:inherit}
+.hmenubtn:hover{border-color:#6b6359}
+.hmenubtn:focus-visible,.hmenubtn[aria-expanded=true]{border-color:var(--amber);box-shadow:0 0 0 2px rgba(232,163,58,.3);outline:0}
+.hmlab{font-size:12px;color:var(--dim);white-space:nowrap}
+.hmval{font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.hmenubtn svg{flex:none}
+.hmenupop{left:auto;right:0;width:min(340px,calc(100vw - 32px));z-index:45}
+
+/* generic pedals drawn in front of other gear: smaller knobs and case, text at full size */
+.pedalcab.compact{padding:5px}
+.pedalcab.compact .face{padding:5px}
+.pedalcab.compact .gsec{padding:6px 8px 8px}
+.pedalcab.compact .gk{width:56px}
+.pedalcab.compact .knobbox,.pedalcab.compact .kctl,.pedalcab.compact .kwrap{width:42px;height:42px}
+.pedalcab.compact .kwrap svg{width:42px;height:42px}
+.pedalcab.compact .knobbox .ro{left:28px;top:30px}
 
 /* ---------- generic panel ---------- */
 .gwrap{display:flex;flex-direction:column;gap:8px;min-width:0;max-width:100%}

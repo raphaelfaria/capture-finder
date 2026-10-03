@@ -5281,6 +5281,99 @@
     ]
   },
   {
+    "id": "xotic-effects-bb-preamp",
+    "brand": "Xotic Effects",
+    "model": "BB Preamp",
+    "panel": "bbpreamp",
+    "category": "Pedals",
+    "fullName": "BB Preamp · overdrive / preamp pedal",
+    "definitionSource": "pedal photo + capture settings",
+    "match": {
+      "source": "\\bBB[\\s-]*Pre-?amp\\b"
+    },
+    "channels": null,
+    "controls": [
+      {
+        "key": "gain",
+        "label": "GAIN",
+        "aliases": [
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "treble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "volume",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.8
+      },
+      {
+        "key": "bass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      }
+    ],
+    "panelOrder": [
+      "gain",
+      "treble",
+      "volume",
+      "bass"
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "gain": 0,
+        "treble": 5,
+        "volume": 6,
+        "bass": 5
+      }
+    },
+    "defaultsNote": "The status LED, bypass footswitch, jacks and the lower body of the pedal are left out.",
+    "captureCount": 10,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Exotic BB 1",
+        "downloads": 45
+      }
+    ]
+  },
+  {
     "id": "ada-mp-1-preamp",
     "brand": "ADA",
     "model": "MP-1 Preamp",
@@ -7129,6 +7222,139 @@
     ]
   },
   {
+    "id": "boss-ge-7",
+    "brand": "Boss",
+    "model": "GE-7",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "100hz",
+        "label": "100Hz",
+        "aliases": [
+          "100Hz"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "fader",
+        "min": -6,
+        "max": 12,
+        "step": 0.1
+      },
+      {
+        "key": "200hz",
+        "label": "200Hz",
+        "aliases": [
+          "200Hz"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "fader",
+        "min": -15,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "400hz",
+        "label": "400hz",
+        "aliases": [
+          "400hz"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "fader",
+        "min": -15,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "800hz",
+        "label": "800hz",
+        "aliases": [
+          "800hz"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "fader",
+        "min": -2,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "16khz",
+        "label": "1.6kHz",
+        "aliases": [
+          "1.6kHz"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "fader",
+        "min": -3,
+        "max": 15,
+        "step": 0.1
+      },
+      {
+        "key": "32khz",
+        "label": "3.2kHz",
+        "aliases": [
+          "3.2kHz"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "fader",
+        "min": 0,
+        "max": 15,
+        "step": 0.1
+      },
+      {
+        "key": "64khz",
+        "label": "6.4kHz",
+        "aliases": [
+          "6.4kHz"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "fader",
+        "min": 0,
+        "max": 15,
+        "step": 0.1
+      },
+      {
+        "key": "level",
+        "label": "Level",
+        "aliases": [
+          "Level"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "100hz": 5,
+        "200hz": 5,
+        "400hz": 5,
+        "800hz": 5,
+        "16khz": 5,
+        "32khz": 5,
+        "64khz": 5,
+        "level": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
     "id": "boss-hm-2",
     "brand": "Boss",
     "model": "HM-2",
@@ -7211,6 +7437,193 @@
         "downloads": 1090
       }
     ]
+  },
+  {
+    "id": "boss-odb-3",
+    "brand": "Boss",
+    "model": "ODB-3",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "level",
+        "label": "Level",
+        "aliases": [
+          "Level"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "eqlo",
+        "label": "EQ Lo",
+        "aliases": [
+          "EQ Lo"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "eqhi",
+        "label": "EQ Hi",
+        "aliases": [
+          "EQ Hi"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "eqhi_35",
+        "label": "EQ Hi (3:5)",
+        "aliases": [
+          "EQ Hi"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "3:5",
+            "label": "3:5"
+          }
+        ]
+      },
+      {
+        "key": "blend",
+        "label": "Blend",
+        "aliases": [
+          "Blend"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "gain",
+        "label": "Gain",
+        "aliases": [
+          "Gain"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "level": 5,
+        "eqlo": 5,
+        "eqhi": 5,
+        "eqhi_35": "3:5",
+        "blend": 5,
+        "gain": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
+    "id": "boss-sd-1",
+    "brand": "Boss",
+    "model": "SD-1",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "level",
+        "label": "Level",
+        "aliases": [
+          "Level"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "tone",
+        "label": "Tone",
+        "aliases": [
+          "Tone"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "drive",
+        "label": "Drive",
+        "aliases": [
+          "Drive"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      },
+      {
+        "key": "gain",
+        "label": "Gain",
+        "aliases": [
+          "Gain"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "level": 5,
+        "tone": 5,
+        "drive": 5,
+        "gain": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
   },
   {
     "id": "carvin-x-100b-iv",
@@ -8217,7 +8630,19 @@
           "master": 5
         }
       },
-      "global": {}
+      "global": {},
+      "chain": [
+        {
+          "id": "xotic-effects-bb-preamp",
+          "name": "Xotic Effects BB Preamp",
+          "values": {
+            "gain": 1,
+            "volume": 5,
+            "treble": 6.5,
+            "bass": 4.5
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -8675,6 +9100,104 @@
     "category": "Pedals"
   },
   {
+    "id": "darkglass-b3k",
+    "brand": "Darkglass",
+    "model": "B3K",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "attackmode",
+        "label": "Attack Mode",
+        "aliases": [
+          "Attack Mode"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "Boost",
+            "label": "Boost"
+          }
+        ]
+      },
+      {
+        "key": "grunt",
+        "label": "Grunt",
+        "aliases": [
+          "Grunt"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "Fat",
+            "label": "Fat"
+          }
+        ]
+      },
+      {
+        "key": "blend",
+        "label": "Blend",
+        "aliases": [
+          "Blend"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "level",
+        "label": "Level",
+        "aliases": [
+          "Level"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "drive",
+        "label": "Drive",
+        "aliases": [
+          "Drive"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "attackmode": "Boost",
+        "grunt": "Fat",
+        "blend": 5,
+        "level": 5,
+        "drive": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
     "id": "darkglass-b7k",
     "brand": "Darkglass",
     "model": "B7K",
@@ -8691,6 +9214,126 @@
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
     "category": "Pedals"
+  },
+  {
+    "id": "darkglass-hyper-luminal",
+    "brand": "Darkglass",
+    "model": "Hyper Luminal",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "compressmode",
+        "label": "Compress Mode",
+        "aliases": [
+          "Compress Mode"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "Fet",
+            "label": "Fet"
+          }
+        ]
+      },
+      {
+        "key": "ratio",
+        "label": "Ratio",
+        "aliases": [
+          "Ratio"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "4:1",
+            "label": "4:1"
+          },
+          {
+            "v": "8:1",
+            "label": "8:1"
+          },
+          {
+            "v": "2:1",
+            "label": "2:1"
+          }
+        ]
+      },
+      {
+        "key": "blend",
+        "label": "Blend",
+        "aliases": [
+          "Blend"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "time",
+        "label": "Time",
+        "aliases": [
+          "Time"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "output",
+        "label": "Output",
+        "aliases": [
+          "Output"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "compression",
+        "label": "Compression",
+        "aliases": [
+          "Compression"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "compressmode": "Fet",
+        "ratio": "4:1",
+        "blend": 5,
+        "time": 5,
+        "output": 5,
+        "compression": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
   },
   {
     "id": "darkglass-microtubes-900-v2",
@@ -8948,6 +9591,112 @@
     ]
   },
   {
+    "id": "darkglass-super-symmetry",
+    "brand": "Darkglass",
+    "model": "Super Symmetry",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "blend",
+        "label": "Blend",
+        "aliases": [
+          "Blend"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "input",
+        "label": "Input",
+        "aliases": [
+          "Input"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "compression",
+        "label": "Compression",
+        "aliases": [
+          "Compression"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      },
+      {
+        "key": "output",
+        "label": "Output",
+        "aliases": [
+          "Output"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "attack",
+        "label": "Attack",
+        "aliases": [
+          "Attack"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "release",
+        "label": "Release",
+        "aliases": [
+          "Release"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "blend": 5,
+        "input": 5,
+        "compression": 5,
+        "output": 5,
+        "attack": 5,
+        "release": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
     "id": "darkglass-super-symmetry-115-gev",
     "brand": "Darkglass",
     "model": "Super Symmetry 115 GeV",
@@ -9058,6 +9807,240 @@
         "downloads": 693
       }
     ]
+  },
+  {
+    "id": "darkglass-vdu",
+    "brand": "Darkglass",
+    "model": "VDU",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "master",
+        "label": "Master",
+        "aliases": [
+          "Master"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "blend",
+        "label": "Blend",
+        "aliases": [
+          "Blend"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "level",
+        "label": "Level",
+        "aliases": [
+          "Level"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "drive",
+        "label": "Drive",
+        "aliases": [
+          "Drive"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      },
+      {
+        "key": "attack",
+        "label": "Attack",
+        "aliases": [
+          "Attack"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "pos.down",
+            "label": "pos.down"
+          },
+          {
+            "v": "pos.up",
+            "label": "pos.up"
+          }
+        ]
+      },
+      {
+        "key": "grunt",
+        "label": "Grunt",
+        "aliases": [
+          "Grunt"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "pos.center",
+            "label": "pos.center"
+          }
+        ]
+      },
+      {
+        "key": "bass",
+        "label": "Bass",
+        "aliases": [
+          "Bass"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "lowmidsfreq",
+        "label": "Low Mids Freq",
+        "aliases": [
+          "Low Mids Freq"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "lowmidsfreq_posdown",
+        "label": "Low Mids Freq (pos.down)",
+        "aliases": [
+          "Low Mids Freq"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "pos.down",
+            "label": "pos.down"
+          }
+        ]
+      },
+      {
+        "key": "lomids",
+        "label": "Lo Mids",
+        "aliases": [
+          "Lo Mids"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "highmids",
+        "label": "High Mids",
+        "aliases": [
+          "High Mids"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "highmidsfreq",
+        "label": "High Mids Freq",
+        "aliases": [
+          "High Mids Freq"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "highmidsfreq_posdown",
+        "label": "High Mids Freq (pos.down)",
+        "aliases": [
+          "High Mids Freq"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "switch",
+        "options": [
+          {
+            "v": "pos.down",
+            "label": "pos.down"
+          }
+        ]
+      },
+      {
+        "key": "treble",
+        "label": "Treble",
+        "aliases": [
+          "Treble"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "master": 5,
+        "blend": 5,
+        "level": 5,
+        "drive": 5,
+        "attack": "pos.down",
+        "grunt": "pos.center",
+        "bass": 5,
+        "lowmidsfreq": 5,
+        "lowmidsfreq_posdown": "pos.down",
+        "lomids": 5,
+        "highmids": 5,
+        "highmidsfreq": 5,
+        "highmidsfreq_posdown": "pos.down",
+        "treble": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
   },
   {
     "id": "darkglass-vintage-microtubes",
@@ -11096,7 +12079,18 @@
           "master": 7.5
         }
       },
-      "global": {}
+      "global": {},
+      "chain": [
+        {
+          "id": "fortin-hexdrive",
+          "name": "Fortin Hexdrive",
+          "values": {
+            "drive": 3,
+            "tone": 6,
+            "volume": 8.5
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -12468,6 +13462,105 @@
     ]
   },
   {
+    "id": "electro-harmonix-lpb-1",
+    "brand": "Electro Harmonix",
+    "model": "LPB-1",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "boost",
+        "label": "Boost",
+        "aliases": [
+          "Boost"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "boost": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
+    "id": "electro-harmonix-little-big-muff",
+    "brand": "Electro Harmonix",
+    "model": "Little Big Muff",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "volume",
+        "label": "Volume",
+        "aliases": [
+          "Volume"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      },
+      {
+        "key": "tone",
+        "label": "Tone",
+        "aliases": [
+          "Tone"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "sustain",
+        "label": "Sustain",
+        "aliases": [
+          "Sustain"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "volume": 5,
+        "tone": 5,
+        "sustain": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
     "id": "fender-deluxe-5e2-1958",
     "brand": "Fender",
     "model": "Deluxe 5E2 1958",
@@ -12640,6 +13733,133 @@
         "downloads": 5421
       }
     ]
+  },
+  {
+    "id": "fortin-grind",
+    "brand": "Fortin",
+    "model": "Grind",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "level",
+        "label": "Level",
+        "aliases": [
+          "Level"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "knob",
+        "label": "Knob",
+        "aliases": [
+          "Knob"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "level": 5,
+        "knob": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
+    "id": "fortin-hexdrive",
+    "brand": "Fortin",
+    "model": "Hexdrive",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "level",
+        "label": "Level",
+        "aliases": [
+          "Level"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "tone",
+        "label": "Tone",
+        "aliases": [
+          "Tone"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "drive",
+        "label": "Drive",
+        "aliases": [
+          "Drive"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      },
+      {
+        "key": "volume",
+        "label": "Volume",
+        "aliases": [
+          "Volume"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "level": 5,
+        "tone": 5,
+        "drive": 5,
+        "volume": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
   },
   {
     "id": "fryette-pittbull-fifty-cl",
@@ -15476,6 +16696,70 @@
     ]
   },
   {
+    "id": "mxr-berzerker-od",
+    "brand": "MXR",
+    "model": "Berzerker OD",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "output",
+        "label": "Output",
+        "aliases": [
+          "Output"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "tone",
+        "label": "Tone",
+        "aliases": [
+          "Tone"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "gain",
+        "label": "Gain",
+        "aliases": [
+          "Gain"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "output": 5,
+        "tone": 5,
+        "gain": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
     "id": "mxr-classic-distortion",
     "brand": "MXR",
     "model": "Classic Distortion",
@@ -17676,7 +18960,18 @@
           "leadmaster": 6.5
         }
       },
-      "global": {}
+      "global": {},
+      "chain": [
+        {
+          "id": "ibanez-ts9-tube-screamer",
+          "name": "Ibanez TS9 Tube Screamer",
+          "values": {
+            "drive": 0,
+            "tone": 6,
+            "level": 7
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -17940,7 +19235,25 @@
         "leadmode": true,
         "leadfat": true,
         "leadbright": true
-      }
+      },
+      "chain": [
+        {
+          "id": "ibanez-ts9-tube-screamer",
+          "name": "Ibanez TS9 Tube Screamer",
+          "values": {
+            "drive": 1,
+            "tone": 6.5,
+            "level": 5
+          }
+        },
+        {
+          "id": "bbe-sonic-stomp",
+          "name": "BBE Sonic Stomp",
+          "values": {
+            "process": 5
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -19204,7 +20517,35 @@
         "middle": 2,
         "bass": 2,
         "gain": 9
-      }
+      },
+      "chain": [
+        {
+          "id": "darkglass-super-symmetry",
+          "name": "Darkglass Super Symmetry",
+          "values": {
+            "blend": 8,
+            "input": 8,
+            "compression": 2,
+            "output": 6.5,
+            "attack": 4,
+            "release": 0
+          }
+        },
+        {
+          "id": "boss-ge-7",
+          "name": "Boss GE-7",
+          "values": {
+            "100hz": 0,
+            "200hz": -4,
+            "400hz": -4,
+            "800hz": -2,
+            "16khz": 0,
+            "32khz": 2,
+            "64khz": 0,
+            "level": 2
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -19677,7 +21018,40 @@
           "shape": 5
         }
       },
-      "global": {}
+      "global": {},
+      "chain": [
+        {
+          "id": "xotic-effects-bb-preamp",
+          "name": "Xotic Effects BB Preamp",
+          "values": {
+            "gain": 1.5,
+            "volume": 6.5,
+            "treble": 6.5,
+            "bass": 7
+          }
+        },
+        {
+          "id": "bbe-sonic-stomp",
+          "name": "BBE Sonic Stomp",
+          "values": {
+            "process": 0
+          }
+        },
+        {
+          "id": "boss-ge-7",
+          "name": "Boss GE-7",
+          "values": {
+            "100hz": 3,
+            "200hz": 0,
+            "400hz": 0,
+            "800hz": 0,
+            "16khz": 0,
+            "32khz": 0,
+            "64khz": 0,
+            "level": 0
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -19957,7 +21331,40 @@
           "gain": 1
         }
       },
-      "global": {}
+      "global": {},
+      "chain": [
+        {
+          "id": "xotic-effects-bb-preamp",
+          "name": "Xotic Effects BB Preamp",
+          "values": {
+            "gain": 1.5,
+            "volume": 8,
+            "treble": 6,
+            "bass": 7.5
+          }
+        },
+        {
+          "id": "bbe-sonic-stomp",
+          "name": "BBE Sonic Stomp",
+          "values": {
+            "process": 0
+          }
+        },
+        {
+          "id": "boss-ge-7",
+          "name": "Boss GE-7",
+          "values": {
+            "100hz": 6,
+            "200hz": 4,
+            "400hz": 0,
+            "800hz": 0,
+            "16khz": 0,
+            "32khz": 0,
+            "64khz": 0,
+            "level": 0
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -20691,7 +22098,32 @@
           "presence": 6
         }
       },
-      "global": {}
+      "global": {},
+      "chain": [
+        {
+          "id": "boss-ge-7",
+          "name": "Boss GE-7",
+          "values": {
+            "100hz": -6,
+            "200hz": -8,
+            "400hz": 0,
+            "800hz": 0,
+            "16khz": 0,
+            "32khz": 4,
+            "64khz": 0,
+            "level": 0
+          }
+        },
+        {
+          "id": "boss-sd-1",
+          "name": "Boss SD-1",
+          "values": {
+            "gain": 1.5,
+            "level": 4,
+            "tone": 6.5
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -20709,6 +22141,148 @@
         "downloads": 845
       }
     ]
+  },
+  {
+    "id": "proco-rat",
+    "brand": "Proco",
+    "model": "RAT",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "distortion",
+        "label": "Distortion",
+        "aliases": [
+          "Distortion"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      },
+      {
+        "key": "filter",
+        "label": "Filter",
+        "aliases": [
+          "Filter"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "volume",
+        "label": "Volume",
+        "aliases": [
+          "Volume"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "dist",
+        "label": "Dist",
+        "aliases": [
+          "Dist"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "distortion": 5,
+        "filter": 5,
+        "volume": 5,
+        "dist": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
+    "id": "proco-rat-2",
+    "brand": "Proco",
+    "model": "RAT 2",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "distortion",
+        "label": "Distortion",
+        "aliases": [
+          "Distortion"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "primary": true
+      },
+      {
+        "key": "filter",
+        "label": "Filter",
+        "aliases": [
+          "Filter"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "volume",
+        "label": "Volume",
+        "aliases": [
+          "Volume"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "distortion": 5,
+        "filter": 5,
+        "volume": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
   },
   {
     "id": "reuss-musical-instruments-germanium-bender",
@@ -21253,7 +22827,23 @@
         "middle": 0,
         "treble": 10,
         "presence": 5
-      }
+      },
+      "chain": [
+        {
+          "id": "boss-ge-7",
+          "name": "Boss GE-7",
+          "values": {
+            "100hz": -6,
+            "200hz": -15,
+            "400hz": -15,
+            "800hz": 0,
+            "16khz": 15,
+            "32khz": 15,
+            "64khz": 15,
+            "level": 2
+          }
+        }
+      ]
     },
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
@@ -22641,6 +24231,55 @@
     ]
   },
   {
+    "id": "unverified-t-bird",
+    "brand": "Unverified source",
+    "model": "T-Bird",
+    "source": "description",
+    "panel": "generic",
+    "channels": null,
+    "controls": [
+      {
+        "key": "range",
+        "label": "Range",
+        "aliases": [
+          "Range"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "key": "boost",
+        "label": "Boost",
+        "aliases": [
+          "Boost"
+        ],
+        "scope": "global",
+        "weight": 1,
+        "kind": "knob",
+        "min": 0,
+        "max": 10,
+        "step": 0.1
+      }
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "range": 5,
+        "boost": 5
+      }
+    },
+    "definitionSource": "capture descriptions",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
+    "category": "Pedals",
+    "chainOnly": true,
+    "captureCount": 0
+  },
+  {
     "id": "vht-two-fifty-two",
     "brand": "VHT",
     "model": "Two/Fifty/Two",
@@ -23439,90 +25078,6 @@
         "channel": null,
         "name": "Warwitch ProF5 1",
         "downloads": 66
-      }
-    ]
-  },
-  {
-    "id": "xotic-effects-bb-preamp",
-    "brand": "Xotic Effects",
-    "model": "BB-Preamp",
-    "source": "description",
-    "panel": "generic",
-    "channels": null,
-    "controls": [
-      {
-        "key": "gain",
-        "label": "Gain",
-        "aliases": [
-          "Gain"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "primary": true
-      },
-      {
-        "key": "volume",
-        "label": "Volume",
-        "aliases": [
-          "Volume"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      }
-    ],
-    "defaults": {
-      "channel": null,
-      "ch": {},
-      "global": {
-        "gain": 0,
-        "volume": 6,
-        "treble": 5,
-        "bass": 5
-      }
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "captureCount": 10,
-    "category": "Pedals",
-    "defaultsFrom": [
-      {
-        "channel": null,
-        "name": "Exotic BB 1",
-        "downloads": 45
       }
     ]
   },

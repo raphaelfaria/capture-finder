@@ -8835,7 +8835,32 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "level": 10,
+          "tone": 6,
+          "drive": 1.5
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 0,
+          "200hz": -2,
+          "400hz": -5,
+          "800hz": 0,
+          "16khz": 0,
+          "32khz": 2,
+          "64khz": 2,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "a0d6b872-e7fb-4061-b53c-4a4add2d4b8c",
@@ -8883,7 +8908,32 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "level": 10,
+          "tone": 5.5,
+          "drive": 3.5
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 0,
+          "200hz": -2,
+          "400hz": -5,
+          "800hz": 0,
+          "16khz": 0,
+          "32khz": 2,
+          "64khz": 2,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "d077724d-f13c-48e6-ac1d-e6bec32372cb",
@@ -8931,7 +8981,27 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "darkglass-vdu",
+        "name": "Darkglass VDU",
+        "values": {
+          "master": 1.5,
+          "blend": 10,
+          "level": 8,
+          "drive": 10,
+          "attack": "pos.down",
+          "grunt": "pos.center",
+          "bass": 5,
+          "lowmidsfreq": 1,
+          "lomids": 5,
+          "highmids": 5,
+          "highmidsfreq": 3,
+          "treble": 5
+        }
+      }
+    ]
   },
   {
     "id": "ccdb918a-1408-42a3-8646-e807a2093f9d",
@@ -8979,7 +9049,37 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "darkglass-vdu",
+        "name": "Darkglass VDU",
+        "values": {
+          "master": 5,
+          "blend": 4,
+          "level": 10,
+          "drive": 10,
+          "attack": "pos.up",
+          "grunt": "pos.center",
+          "bass": 6.5,
+          "lowmidsfreq_posdown": "pos.down",
+          "lomids": 3.5,
+          "highmids": 2,
+          "highmidsfreq_posdown": "pos.down",
+          "treble": 4
+        }
+      },
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 5,
+          "treble": 5.5,
+          "bass": 2.5
+        }
+      }
+    ]
   },
   {
     "id": "d9ab1278-388b-43a2-b46a-678004669138",
@@ -9027,7 +9127,23 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "proco-rat",
+        "name": "Proco RAT",
+        "values": {
+          "distortion": 5,
+          "filter": 5,
+          "volume": 3.5
+        }
+      },
+      {
+        "id": "darkglass-b7k",
+        "name": "Darkglass B7K",
+        "values": null
+      }
+    ]
   },
   {
     "id": "c42b4332-9372-4af7-a91e-9127262adb34",
@@ -9252,7 +9368,18 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "level": 5,
+          "tone": 5,
+          "drive": 5
+        }
+      }
+    ]
   },
   {
     "id": "d44b13d8-9569-4d40-85b2-8b591880e9b9",
@@ -9297,7 +9424,27 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "ibanez-ts9-tube-screamer",
+        "name": "Ibanez TS9 Tube Screamer",
+        "values": {
+          "drive": 0,
+          "tone": 10,
+          "level": 4.5
+        }
+      },
+      {
+        "id": "electro-harmonix-little-big-muff",
+        "name": "Electro Harmonix Little Big Muff",
+        "values": {
+          "volume": 5,
+          "tone": 2,
+          "sustain": 5
+        }
+      }
+    ]
   },
   {
     "id": "6918766b-7ff4-42f9-98fa-409f0b9c0b61",
@@ -9342,7 +9489,17 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "unverified-t-bird",
+        "name": "Unverified source T-Bird",
+        "values": {
+          "range": 3.5,
+          "boost": 1.5
+        }
+      }
+    ]
   },
   {
     "id": "c8b71fa6-1957-4688-8b5a-4d39f1330a11",
@@ -9387,7 +9544,20 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-odb-3",
+        "name": "Boss ODB-3",
+        "values": {
+          "level": 5,
+          "eqlo": 5,
+          "eqhi_35": "3:5",
+          "blend": 10,
+          "gain": 0.5
+        }
+      }
+    ]
   },
   {
     "id": "c1dff47d-9687-4d71-99c3-0efdd40ad2e5",
@@ -14136,7 +14306,19 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 0,
+          "volume": 8,
+          "treble": 6.5,
+          "bass": 2
+        }
+      }
+    ]
   },
   {
     "id": "2a503f04-f54c-41e8-97c3-275d66460f94",
@@ -14181,7 +14363,19 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 0,
+          "volume": 8,
+          "treble": 6.5,
+          "bass": 2
+        }
+      }
+    ]
   },
   {
     "id": "26c92ac6-ef5b-4c8e-a56b-e7372c467844",
@@ -42137,7 +42331,32 @@
     "downloads": 72,
     "description": "This is a capture of Mesa Boogie® Big Block 750® amp.\n\nSettings:\nAmp: Big Block 750®\nChannel: 1\nActive/Passive: Active\nOverdrive: N/A\nGain: 7\nBass: 7\nPassive-Mid: 6\nActive-Mid: 10\nFrequency: 10\nTreble: 6.5\nMaster: 2.5\nO.D. Master: N/A\n\nPedal1: Douglas® Hyper Luminal®\nCompress Mode: Fet\nRatio: 4:1\nBlend: 10\nTime: 8.5\nOutput: 3.5\nCompression: 3.5\n\nPedal2: Douglas® B3K®\nAttack Mode: Boost\nGrunt: Fat\nBlend: 2.5\nLevel: 6\nDrive: 2.5",
     "settings": null,
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "darkglass-hyper-luminal",
+        "name": "Darkglass Hyper Luminal",
+        "values": {
+          "compressmode": "Fet",
+          "ratio": "4:1",
+          "blend": 10,
+          "time": 8.5,
+          "output": 3.5,
+          "compression": 3.5
+        }
+      },
+      {
+        "id": "darkglass-b3k",
+        "name": "Darkglass B3K",
+        "values": {
+          "attackmode": "Boost",
+          "grunt": "Fat",
+          "blend": 2.5,
+          "level": 6,
+          "drive": 2.5
+        }
+      }
+    ]
   },
   {
     "id": "15f67e5d-8007-4e24-a5cf-a58f4c88bd3c",
@@ -42205,7 +42424,30 @@
     "downloads": 36,
     "description": "This is a capture of Mesa Boogie® M6 Carbine® amp.\n\nSettings:\nAmp: MESA M6 Carbine\nActive/Passive: Passive\nGain: 6\nBass: 6\nPull Deep: Off\nMid: 3.5\nVoice: 2\nTreble: 6.5\nMaster: 2.2\nPedal1: Douglas® Hyper Luminal®\nCompress Mode: Fet\nRatio: 8:1\nBlend: 9.5\nTime: 9.5\nOutput: 3.5\nCompression: 1.5\nPedal3: MXR® Berzerker OD®\nOutput: 3.5\nTone: 6\nGain: 6.5",
     "settings": null,
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "darkglass-hyper-luminal",
+        "name": "Darkglass Hyper Luminal",
+        "values": {
+          "compressmode": "Fet",
+          "ratio": "8:1",
+          "blend": 9.5,
+          "time": 9.5,
+          "output": 3.5,
+          "compression": 1.5
+        }
+      },
+      {
+        "id": "mxr-berzerker-od",
+        "name": "MXR Berzerker OD",
+        "values": {
+          "output": 3.5,
+          "tone": 6,
+          "gain": 6.5
+        }
+      }
+    ]
   },
   {
     "id": "4de44ab7-98db-4d44-a8e0-f8d3dd9ca508",
@@ -42239,7 +42481,20 @@
     "downloads": 36,
     "description": "This is a capture of Mesa Boogie® Big Block 750® amp.\n\nSettings:\nAmp: Big Block 750\nChannel: 1\nActive/Passive: Active\nOverdrive: N/A\nGain: 7\nBass: 7\nPassive-Mid: 6.5\nActive-Mid: 9\nFrequency: 10\nTreble: 4.5\nMaster: 2.5\nO.D. Master: N/A\nPedal1: Douglas® B3K®\nAttack Mode: Boost\nGrunt: Fat\nBlend: 2.5\nLevel: 6\nDrive: 2.5",
     "settings": null,
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "darkglass-b3k",
+        "name": "Darkglass B3K",
+        "values": {
+          "attackmode": "Boost",
+          "grunt": "Fat",
+          "blend": 2.5,
+          "level": 6,
+          "drive": 2.5
+        }
+      }
+    ]
   },
   {
     "id": "4e7d3fd4-e1cf-46ea-999c-d5721c2ff932",
@@ -42273,7 +42528,32 @@
     "downloads": 45,
     "description": "This is a capture of Mesa Boogie® Big Block 750® amp.\n\nSettings:\nAmp: Big Block 750®\nChannel: 1\nActive/Passive: Passive\nOverdrive: N/A\nGain: 6\nBass: 6.5\nPassive-Mid: 6.5\nActive-Mid: 10\nFrequency: 9.5\nTreble: 6\nMaster: 2.5\nO.D. Master: N/A\nPedal1: Douglas® Hyper Luminal®\nCompress Mode: Fet\nRatio: 2:1\nBlend: 9\nTime: 9\nOutput: 4\nCompression: 1.5\nPedal2: Douglas® B3K®\nAttack Mode: Boost\nGrunt: Fat\nBlend: 4\nLevel: 6.2\nDrive: 2.2",
     "settings": null,
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "darkglass-hyper-luminal",
+        "name": "Darkglass Hyper Luminal",
+        "values": {
+          "compressmode": "Fet",
+          "ratio": "2:1",
+          "blend": 9,
+          "time": 9,
+          "output": 4,
+          "compression": 1.5
+        }
+      },
+      {
+        "id": "darkglass-b3k",
+        "name": "Darkglass B3K",
+        "values": {
+          "attackmode": "Boost",
+          "grunt": "Fat",
+          "blend": 4,
+          "level": 6.2,
+          "drive": 2.2
+        }
+      }
+    ]
   },
   {
     "id": "58c8458b-df11-4a92-9f69-560e45710d3c",
@@ -42307,7 +42587,18 @@
     "downloads": 33,
     "description": "This is a capture of Mesa Boogie® M6 Carbine® amp.\n\nSettings:\nAmp: MESA M6 Carbine®\nActive/Passive: Passive\nGain: 6\nBass: 6.2\nPull Deep: Off\nMid: 3.7\nVoice: 2\nTreble: 6\nMaster: 2.2\nPedal3: Proco® RAT 2®\nDistortion: 3.5\nFilter: 6\nVolume: 5.5",
     "settings": null,
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "proco-rat-2",
+        "name": "Proco RAT 2",
+        "values": {
+          "distortion": 3.5,
+          "filter": 6,
+          "volume": 5.5
+        }
+      }
+    ]
   },
   {
     "id": "684bb6bc-71eb-4553-a026-4bb69265f05c",
@@ -42375,7 +42666,18 @@
     "downloads": 35,
     "description": "This is a capture of Mesa Boogie® M6 Carbine® amp.\n\nSettings:\nAmp: MESA M6 Carbine®\nActive/Passive: Passive\nGain: 6.5\nBass: 6\nPull Deep: Off\nMid: 6.5\nVoice: 1\nTreble: 5.5\nMaster: 2.2\n\nPedal3: Proco® RAT 2®\nDistortion: 3.5\nFilter: 5\nVolume: 5.5",
     "settings": null,
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "proco-rat-2",
+        "name": "Proco RAT 2",
+        "values": {
+          "distortion": 3.5,
+          "filter": 5,
+          "volume": 5.5
+        }
+      }
+    ]
   },
   {
     "id": "d8f7b7a5-8f63-4c38-8271-1faa6efa8e3c",
@@ -42680,7 +42982,18 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "ibanez-ts9-tube-screamer",
+        "name": "Ibanez TS9 Tube Screamer",
+        "values": {
+          "level": 10,
+          "tone": 7.5,
+          "drive": 2
+        }
+      }
+    ]
   },
   {
     "id": "e0132cff-5a62-4ceb-831a-391f3c9c31e6",
@@ -42741,7 +43054,19 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 8,
+          "treble": 6,
+          "bass": 7
+        }
+      }
+    ]
   },
   {
     "id": "45eb5971-2b52-4844-a571-2b80930f0dee",
@@ -42802,7 +43127,18 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "level": 10,
+          "tone": 6.5,
+          "drive": 0
+        }
+      }
+    ]
   },
   {
     "id": "21a1df59-2fd0-4909-9472-4867db34e73f",
@@ -42863,7 +43199,18 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "fortin-hexdrive",
+        "name": "Fortin Hexdrive",
+        "values": {
+          "level": 8,
+          "tone": 8,
+          "drive": 3.5
+        }
+      }
+    ]
   },
   {
     "id": "54db2819-0365-4bd4-bb97-658fa786ab1d",
@@ -43965,7 +44312,25 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "ibanez-ts9-tube-screamer",
+        "name": "Ibanez TS9 Tube Screamer",
+        "values": {
+          "drive": 1,
+          "tone": 6.5,
+          "level": 5
+        }
+      },
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 2.5
+        }
+      }
+    ]
   },
   {
     "id": "90efa092-e3a5-47d1-affc-53502d4c6eb2",
@@ -44044,7 +44409,18 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "ibanez-ts9-tube-screamer",
+        "name": "Ibanez TS9 Tube Screamer",
+        "values": {
+          "drive": 0,
+          "tone": 6,
+          "level": 7
+        }
+      }
+    ]
   },
   {
     "id": "db148a6f-9652-4c77-9c55-93e5f0fbd46e",
@@ -44103,6 +44479,17 @@
     },
     "uninterpretedSettings": [
       "Rhythm Bright: N/A"
+    ],
+    "chain": [
+      {
+        "id": "ibanez-ts9-tube-screamer",
+        "name": "Ibanez TS9 Tube Screamer",
+        "values": {
+          "drive": 0,
+          "tone": 6,
+          "level": 6
+        }
+      }
     ]
   },
   {
@@ -44162,6 +44549,24 @@
     },
     "uninterpretedSettings": [
       "Rhythm Bright: N/A"
+    ],
+    "chain": [
+      {
+        "id": "ibanez-ts9-tube-screamer",
+        "name": "Ibanez TS9 Tube Screamer",
+        "values": {
+          "drive": 1,
+          "tone": 6.5,
+          "level": 5
+        }
+      },
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 5
+        }
+      }
     ]
   },
   {
@@ -50423,7 +50828,19 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 5,
+          "treble": 6.5,
+          "bass": 4.5
+        }
+      }
+    ]
   },
   {
     "id": "37678b33-8bd3-4956-996e-2a45d1e2a838",
@@ -50533,7 +50950,19 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 5,
+          "treble": 6.5,
+          "bass": 4.5
+        }
+      }
+    ]
   },
   {
     "id": "be83b881-5868-419c-aeb6-b790ee46b3b0",
@@ -50866,7 +51295,19 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 5,
+          "treble": 6.5,
+          "bass": 4.5
+        }
+      }
+    ]
   },
   {
     "id": "0a41e27e-9ac6-4dd1-9123-8b8938675833",
@@ -50982,7 +51423,19 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 5,
+          "treble": 6.5,
+          "bass": 4.5
+        }
+      }
+    ]
   },
   {
     "id": "d38ebafa-e72b-4762-bf60-d9c6e9b3f2ae",
@@ -51864,7 +52317,18 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "fortin-hexdrive",
+        "name": "Fortin Hexdrive",
+        "values": {
+          "drive": 0,
+          "tone": 7.5,
+          "level": 10
+        }
+      }
+    ]
   },
   {
     "id": "fe9c8577-643f-4142-9c19-a3b0e6a58b52",
@@ -51925,7 +52389,18 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "ibanez-ts9-tube-screamer",
+        "name": "Ibanez TS9 Tube Screamer",
+        "values": {
+          "drive": 0,
+          "tone": 8,
+          "level": 10
+        }
+      }
+    ]
   },
   {
     "id": "447da0fe-18d9-4ad3-909d-9d3c680a62f3",
@@ -51986,7 +52461,17 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "treble": 8,
+          "bass": 6
+        }
+      }
+    ]
   },
   {
     "id": "bf4a75d2-c1a7-4576-8d40-155d3887508d",
@@ -52169,7 +52654,17 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "treble": 7.5,
+          "bass": 6.5
+        }
+      }
+    ]
   },
   {
     "id": "3ab00583-687b-42be-8f58-c8b0a1017004",
@@ -52291,7 +52786,18 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "drive": 0,
+          "tone": 6.5,
+          "level": 5
+        }
+      }
+    ]
   },
   {
     "id": "effbf02e-7571-4e49-8f37-1628d6e0f62c",
@@ -52352,7 +52858,18 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "drive": 0,
+          "tone": 6.5,
+          "level": 7.5
+        }
+      }
+    ]
   },
   {
     "id": "e4a5ca5b-c322-4cfb-b3c4-c1cbbbaed635",
@@ -52413,7 +52930,18 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "drive": 0,
+          "tone": 6.5,
+          "level": 7.5
+        }
+      }
+    ]
   },
   {
     "id": "a305278c-1231-496c-be78-5251a2235be5",
@@ -52474,7 +53002,16 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "fortin-grind",
+        "name": "Fortin Grind",
+        "values": {
+          "level": 8
+        }
+      }
+    ]
   },
   {
     "id": "eb086c6d-8340-4b0c-be36-f7c83831fcb9",
@@ -60261,6 +60798,18 @@
     },
     "uninterpretedSettings": [
       "Master B: N/A"
+    ],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 0,
+          "volume": 4,
+          "treble": 6,
+          "bass": 5
+        }
+      }
     ]
   },
   {
@@ -60358,6 +60907,18 @@
     },
     "uninterpretedSettings": [
       "Master B: N/A"
+    ],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 0,
+          "volume": 5,
+          "treble": 5,
+          "bass": 8
+        }
+      }
     ]
   },
   {
@@ -60455,6 +61016,18 @@
     },
     "uninterpretedSettings": [
       "Master B: N/A"
+    ],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 0,
+          "volume": 7,
+          "treble": 6,
+          "bass": 6
+        }
+      }
     ]
   },
   {
@@ -61619,7 +62192,18 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "fortin-hexdrive",
+        "name": "Fortin Hexdrive",
+        "values": {
+          "drive": 3,
+          "tone": 6,
+          "volume": 8.5
+        }
+      }
+    ]
   },
   {
     "id": "411615aa-aa02-4d86-9646-c487521d7100",
@@ -62750,7 +63334,16 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "electro-harmonix-lpb-1",
+        "name": "Electro Harmonix LPB-1",
+        "values": {
+          "boost": 3.5
+        }
+      }
+    ]
   },
   {
     "id": "d321d1f7-abcc-459e-9068-9ff5e7135f98",
@@ -62813,7 +63406,16 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "electro-harmonix-lpb-1",
+        "name": "Electro Harmonix LPB-1",
+        "values": {
+          "boost": 4
+        }
+      }
+    ]
   },
   {
     "id": "4099ce5a-7fe8-48e2-9d3a-b921b139456a",
@@ -66193,7 +66795,19 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 6.5,
+          "treble": 4.5,
+          "bass": 6.5
+        }
+      }
+    ]
   },
   {
     "id": "5767fce7-5db7-4bff-99e4-66b8ffd42b75",
@@ -66263,7 +66877,19 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 6.5,
+          "treble": 4.5,
+          "bass": 7.5
+        }
+      }
+    ]
   },
   {
     "id": "dbbfb29d-3237-40e9-8bb5-2fd097e8e298",
@@ -79151,7 +79777,19 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1.5,
+          "volume": 10,
+          "treble": 6,
+          "bass": 7.5
+        }
+      }
+    ]
   },
   {
     "id": "f265c5b6-0d18-49b6-bad8-55356e352e6a",
@@ -79213,7 +79851,40 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1.5,
+          "volume": 8,
+          "treble": 6,
+          "bass": 7.5
+        }
+      },
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 0
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 6,
+          "200hz": 4,
+          "400hz": 0,
+          "800hz": 0,
+          "16khz": 0,
+          "32khz": 0,
+          "64khz": 0,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "655aa98b-7948-4397-be66-2206e8297229",
@@ -79275,7 +79946,40 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1,
+          "volume": 8,
+          "treble": 6,
+          "bass": 7.5
+        }
+      },
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 0
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 6,
+          "200hz": 4,
+          "400hz": 0,
+          "800hz": 0,
+          "16khz": 2,
+          "32khz": 2,
+          "64khz": 0,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "7d10834a-3a69-464a-a5e3-22d78ad05380",
@@ -79399,7 +80103,30 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 6
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 0,
+          "200hz": 0,
+          "400hz": 4,
+          "800hz": 0,
+          "16khz": 2,
+          "32khz": 0,
+          "64khz": 0,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "fe653714-71e3-4b8d-b541-492cd69269a0",
@@ -80604,7 +81331,25 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "drive": 0,
+          "level": 10,
+          "tone": 6
+        }
+      },
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 5
+        }
+      }
+    ]
   },
   {
     "id": "66c52366-2455-4286-bb8f-5d8afa0f0f8c",
@@ -80677,7 +81422,19 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 2,
+          "volume": 3.5,
+          "treble": 8,
+          "bass": 7.5
+        }
+      }
+    ]
   },
   {
     "id": "61e9d289-2c40-4a42-9b87-21ab5d5d79ae",
@@ -80750,7 +81507,19 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "mad-professor-simble-overdrive",
+        "name": "Mad Professor Simble Overdrive",
+        "values": {
+          "level": 4,
+          "sensitivity": 2.5,
+          "contour": 8,
+          "accent": 9
+        }
+      }
+    ]
   },
   {
     "id": "fff218a6-2a1f-4e1f-aeb6-a193ad75e09b",
@@ -80823,7 +81592,40 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "mad-professor-simble-overdrive",
+        "name": "Mad Professor Simble Overdrive",
+        "values": {
+          "level": 6,
+          "sensitivity": 4.5,
+          "contour": 5,
+          "accent": 5.5
+        }
+      },
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 0
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 0,
+          "200hz": 2,
+          "400hz": 1,
+          "800hz": 0,
+          "16khz": 0,
+          "32khz": 0,
+          "64khz": 0,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "3a1fb142-61d8-4a9c-996e-d64bbcf64b74",
@@ -80961,7 +81763,17 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "mxr-classic-distortion",
+        "name": "MXR Classic Distortion",
+        "values": {
+          "tone": 6.5,
+          "distortion": 2
+        }
+      }
+    ]
   },
   {
     "id": "e1f67a1a-e3a2-45f0-908b-f258b1aa47bc",
@@ -81030,7 +81842,19 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 2.5,
+          "volume": 2.5,
+          "treble": 7.5,
+          "bass": 5
+        }
+      }
+    ]
   },
   {
     "id": "693f86c2-bc7e-4896-b8f2-2644047618fa",
@@ -81099,7 +81923,32 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": -6,
+          "200hz": -8,
+          "400hz": 0,
+          "800hz": 0,
+          "16khz": 0,
+          "32khz": 4,
+          "64khz": 0,
+          "level": 0
+        }
+      },
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "gain": 1.5,
+          "level": 4,
+          "tone": 6.5
+        }
+      }
+    ]
   },
   {
     "id": "5357e2f3-3e14-4a69-a2d6-5a5d136aef25",
@@ -81357,7 +82206,26 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "unverified-t-bird",
+        "name": "Unverified source T-Bird",
+        "values": {
+          "range": 8,
+          "boost": 1.5
+        }
+      },
+      {
+        "id": "proco-rat",
+        "name": "Proco RAT",
+        "values": {
+          "dist": 0,
+          "filter": 5,
+          "volume": 10
+        }
+      }
+    ]
   },
   {
     "id": "ea54f6f4-bf7a-4fda-bfa0-96f5a8e04758",
@@ -81400,7 +82268,26 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "unverified-t-bird",
+        "name": "Unverified source T-Bird",
+        "values": {
+          "range": 6,
+          "boost": 3.5
+        }
+      },
+      {
+        "id": "proco-rat",
+        "name": "Proco RAT",
+        "values": {
+          "dist": 0,
+          "filter": 5,
+          "volume": 10
+        }
+      }
+    ]
   },
   {
     "id": "a0585523-605b-4a82-9a82-7507ec002d86",
@@ -81443,7 +82330,35 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "darkglass-super-symmetry",
+        "name": "Darkglass Super Symmetry",
+        "values": {
+          "blend": 8,
+          "input": 8,
+          "compression": 2,
+          "output": 6.5,
+          "attack": 4,
+          "release": 0
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 0,
+          "200hz": -4,
+          "400hz": -4,
+          "800hz": -2,
+          "16khz": 0,
+          "32khz": 2,
+          "64khz": 0,
+          "level": 2
+        }
+      }
+    ]
   },
   {
     "id": "b469a1c4-48db-40c4-a267-d38c03eb3965",
@@ -81765,7 +82680,18 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "fortin-hexdrive",
+        "name": "Fortin Hexdrive",
+        "values": {
+          "drive": 5,
+          "tone": 8,
+          "level": 10
+        }
+      }
+    ]
   },
   {
     "id": "2b5e532e-7dd0-4e00-96cf-4e6f748474d9",
@@ -82040,7 +82966,32 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "electro-harmonix-little-big-muff",
+        "name": "Electro Harmonix Little Big Muff",
+        "values": {
+          "volume": 2.5,
+          "tone": 5,
+          "sustain": 2.5
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 12,
+          "200hz": 0,
+          "400hz": 0,
+          "800hz": 0,
+          "16khz": -3,
+          "32khz": 5,
+          "64khz": 7,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "a732391a-11a6-4c63-a507-8bb28e75cbb6",
@@ -82093,7 +83044,32 @@
       },
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "electro-harmonix-little-big-muff",
+        "name": "Electro Harmonix Little Big Muff",
+        "values": {
+          "volume": 2,
+          "tone": 5,
+          "sustain": 2
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 5,
+          "200hz": 0,
+          "400hz": 0,
+          "800hz": 0,
+          "16khz": -3,
+          "32khz": 4,
+          "64khz": 4,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "034f2985-d52f-4d77-88db-33adb3bd771e",
@@ -82589,7 +83565,40 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "xotic-effects-bb-preamp",
+        "name": "Xotic Effects BB Preamp",
+        "values": {
+          "gain": 1.5,
+          "volume": 6.5,
+          "treble": 6.5,
+          "bass": 7
+        }
+      },
+      {
+        "id": "bbe-sonic-stomp",
+        "name": "BBE Sonic Stomp",
+        "values": {
+          "process": 0
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": 3,
+          "200hz": 0,
+          "400hz": 0,
+          "800hz": 0,
+          "16khz": 0,
+          "32khz": 0,
+          "64khz": 0,
+          "level": 0
+        }
+      }
+    ]
   },
   {
     "id": "d718bda6-2c7b-46a0-ac79-df0490b5b4e9",
@@ -82926,7 +83935,18 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "proco-rat",
+        "name": "Proco RAT",
+        "values": {
+          "distortion": 0,
+          "filter": 5,
+          "volume": 8
+        }
+      }
+    ]
   },
   {
     "id": "1efd85f5-79e6-4000-ae16-7a3a51d4ed9b",
@@ -82975,7 +83995,18 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "proco-rat",
+        "name": "Proco RAT",
+        "values": {
+          "distortion": 2,
+          "filter": 8,
+          "volume": 10
+        }
+      }
+    ]
   },
   {
     "id": "a7b593a4-1fbb-4f04-843e-8a32d144c638",
@@ -83024,7 +84055,27 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "proco-rat",
+        "name": "Proco RAT",
+        "values": {
+          "distortion": 5,
+          "filter": 10,
+          "volume": 5
+        }
+      },
+      {
+        "id": "fortin-hexdrive",
+        "name": "Fortin Hexdrive",
+        "values": {
+          "drive": 0,
+          "tone": 10,
+          "level": 8
+        }
+      }
+    ]
   },
   {
     "id": "884e249c-0eb7-4ec6-b239-8c8cab00eff3",
@@ -83073,7 +84124,25 @@
       "byChannel": {},
       "notApplicable": []
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "proco-rat",
+        "name": "Proco RAT",
+        "values": {
+          "distortion": 8,
+          "filter": 6.5,
+          "volume": 5
+        }
+      },
+      {
+        "id": "fortin-grind",
+        "name": "Fortin Grind",
+        "values": {
+          "knob": 5
+        }
+      }
+    ]
   },
   {
     "id": "a0e41dbf-2a8e-4b6d-b4dd-b36e1199e21c",
@@ -84030,6 +85099,22 @@
     },
     "uninterpretedSettings": [
       "Brilliant Volume: N/A"
+    ],
+    "chain": [
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": -6,
+          "200hz": -15,
+          "400hz": -15,
+          "800hz": 0,
+          "16khz": 15,
+          "32khz": 15,
+          "64khz": 15,
+          "level": 2
+        }
+      }
     ]
   },
   {
@@ -84075,6 +85160,31 @@
     },
     "uninterpretedSettings": [
       "Brilliant Volume: N/A"
+    ],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "level": 10,
+          "tone": 5,
+          "drive": 0
+        }
+      },
+      {
+        "id": "boss-ge-7",
+        "name": "Boss GE-7",
+        "values": {
+          "100hz": -6,
+          "200hz": -15,
+          "400hz": -15,
+          "800hz": 0,
+          "16khz": 15,
+          "32khz": 15,
+          "64khz": 15,
+          "level": 2
+        }
+      }
     ]
   },
   {
@@ -97543,7 +98653,20 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-odb-3",
+        "name": "Boss ODB-3",
+        "values": {
+          "level": 5,
+          "eqlo": 6,
+          "eqhi": 6,
+          "blend": 10,
+          "gain": 1
+        }
+      }
+    ]
   },
   {
     "id": "4fce41f2-525b-4bc5-ac69-a1ad010e0f97",
@@ -97596,7 +98719,20 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-odb-3",
+        "name": "Boss ODB-3",
+        "values": {
+          "level": 5,
+          "eqlo": 6,
+          "eqhi": 6,
+          "blend": 10,
+          "gain": 2
+        }
+      }
+    ]
   },
   {
     "id": "a58fdab2-e855-4996-91c7-f78f44fd7d00",
@@ -97649,7 +98785,18 @@
         }
       ]
     },
-    "uninterpretedSettings": []
+    "uninterpretedSettings": [],
+    "chain": [
+      {
+        "id": "boss-sd-1",
+        "name": "Boss SD-1",
+        "values": {
+          "level": 8,
+          "tone": 6,
+          "drive": 5
+        }
+      }
+    ]
   },
   {
     "id": "9e58a6da-1352-41b0-ac65-bd921f0c8481",

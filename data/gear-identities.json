@@ -3,5 +3,8 @@
   {"id": "custom-teabird", "brand": "Custom built", "model": "TeaBird", "match": {"source": "^custom built TeaBird"}},
   {"id": "custom-keeley-4-knob-inspired", "brand": "Custom built", "model": "4 Knob compressor (Keeley-inspired, modified)", "match": {"source": "inspired by Keeley Electronics\\W+4 Knob"}},
   {"id": "darkglass-vintage-microtubes-b7k-in-series", "brand": "Darkglass", "model": "Vintage Microtubes + B7K (in series)", "match": {"source": "Vintage Microtubes\\W+and\\s+(?:Douglas|Darkglass)\\W+B7K"}},
-  {"id": "tech-21-sansamp-ged-2112", "brand": "Tech 21", "model": "SansAmp GED-2112", "match": {"source": "^Tech\\s*21\\W+(?:SansAmp\\W+)?GED[- ]?2112"}}
+  {"id": "tech-21-sansamp-ged-2112", "brand": "Tech 21", "model": "SansAmp GED-2112", "match": {"source": "^Tech\\s*21\\W+(?:SansAmp\\W+)?GED[- ]?2112"}},
+  {"id":"mxr-classic-distortion","brand":"MXR","model":"Classic Distortion","match":{"source":"\\bMXR\\W+Classic\\s+Distortion"}},
+  {"id":"mad-professor-simble-overdrive","brand":"Mad Professor","model":"Simble Overdrive","match":{"source":"\\bMad\\s+Professor\\W+Simble"}},
+  {"id":"unverified-t-bird","brand":"Unverified source","model":"T-Bird","match":{"source":"^T-?Bird\\b"}}
 ]

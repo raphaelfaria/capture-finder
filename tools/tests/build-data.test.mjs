@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { ROOT, ampIdentity, brandInfo, channelsFromDescription, inferAmp, parseSettings, settingLines, sourceAmpName, toCapture , channelOrder, downloadDefaults } from '../build-data.mjs';
+import { ROOT, ampIdentity, brandInfo, channelsFromDescription, inferAmp, parseSettings, settingLines, sourceAmpName, toCapture , channelOrder, downloadDefaults, pedalBlocks } from '../build-data.mjs';
 
 const CUSTOMS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/custom-amps.json'), 'utf8'));
 const CUSTOM = Object.fromEntries(CUSTOMS.map((d) => [d.id, d]));
@@ -220,4 +220,10 @@ test('starting settings: each channel from its most downloaded capture, gaps fro
   assert.deepEqual(defaults.ch[2], { gain: 8, boost: true }); // Lead 1, with boost from the next most downloaded Lead capture
   assert.equal(defaults.global.master, 7); // shared controls from the starting channel's captures
   assert.deepEqual(from.map((f) => f.name), ['Clean 2', 'Lead 1']);
+});
+
+test('pedal blocks: the pedals in front, in order, each with its rows', () => {
+  const d = 'This is a capture of X® amp.\n\nSettings:\nGain: 5\n\nPedal1: Boss® SD-1®\nLevel: 10\nDrive 1.5\n\nPedal2: Boss® GE-7®\n100Hz: 0dB\nPower amp: Mesa® 2:90®\nLevel: 3';
+  assert.deepEqual(pedalBlocks(d).map((b) => [b.n, b.name, b.source, b.rows]), [[1, 'Boss SD-1', 'Boss® SD-1®', ['Level: 10', 'Drive 1.5']], [2, 'Boss GE-7', 'Boss® GE-7®', ['100Hz: 0dB']]]);
+  assert.deepEqual(pedalBlocks('Settings:\nGain: 5'), []);
 });

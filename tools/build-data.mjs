@@ -568,6 +568,7 @@ export function inferAmp(identity, rows, valueAliases = null) {
 // capture of that channel that does. The starting channel is the one of the gear's most downloaded
 // capture; controls shared by several channels, and global ones, come from the starting channel's
 // captures first. Values no capture states keep the definition's own defaults. Ties: capture name.
+// The starting capture's pedal chain, if it has one, comes along.
 export function downloadDefaults(def, caps) {
   const ranked = caps.filter((c) => c.settings).sort((a, b) => (b.downloads ?? -1) - (a.downloads ?? -1) || byText(a.name, b.name));
   if (!ranked.length) return null;
@@ -582,6 +583,9 @@ export function downloadDefaults(def, caps) {
     if (top) defaults.channel = top.settings.channel;
     for (const ch of def.channels) { const cap = ranked.find((c) => covers(c, ch.n)); if (cap) from.push({ channel: ch.n, name: cap.name, downloads: cap.downloads }); }
   } else from.push({ channel: null, name: ranked[0].name, downloads: ranked[0].downloads });
+  // the pedals in front of the starting channel's capture, if any, are part of the starting settings
+  const startCap = def.channels ? ranked.find((c) => covers(c, defaults.channel)) : ranked[0];
+  if (startCap && startCap.chain) defaults.chain = startCap.chain.map((p) => ({ id: p.id, name: p.name, values: { ...(p.values || {}) } })); else delete defaults.chain;
   for (const c of def.controls) {
     if (c.scope === 'channel') {
       for (const ch of def.channels || []) {
@@ -599,9 +603,43 @@ export function downloadDefaults(def, caps) {
   return { defaults, from };
 }
 
+// Pedals in front of the captured gear ("Pedal 1: Boss® SD-1®", "Pedal2: …" blocks after the
+// settings), in signal order: each block's name and setting rows, up to a blank line, the next pedal
+// or another device header.
+export function pedalBlocks(description) {
+  const blocks = [];
+  let cur = null;
+  for (const raw of lines(description || '')) {
+    const line = raw.trim();
+    const head = line.match(/^Pedal\s*(\d+)\s*:\s*(.+)$/i);
+    if (head) { cur = { n: Number(head[1]), source: head[2].trim(), name: head[2].replace(/[®™]/g, '').replace(/\s+/g, ' ').trim(), rows: [] }; blocks.push(cur); continue; }
+    if (!cur) continue;
+    if (!line || /^(?:Power amp|Cab|Amp|Settings)\s*:/i.test(line) || /[®™]/.test(line)) { cur = null; continue; }
+    cur.rows.push(line);
+  }
+  return blocks.sort((a, b) => a.n - b.n);
+}
+const pedalIdentity = (b, rules) => ampIdentity({ capture_id: '', name: '', type_code: 'pedal', tags: [], description: 'This is a capture of ' + b.source }, rules);
+/** Settings rows of one pedal block, as a row the settings parser reads. */
+// (without the host capture's name, which can name the host's channel)
+const pedalRow = (row, b) => ({ ...row, name: '', description: 'Settings:\n' + b.rows.join('\n') });
+/** The pedal chain of a capture: [{id (gear id or null), name, values (or null)}]. */
+export function pedalChain(row, rules, definitions) {
+  return pedalBlocks(row.description).map((b) => {
+    const identity = pedalIdentity(b, rules);
+    const def = identity ? definitions.get(identity.id) : null;
+    let values = null;
+    if (def) {
+      const [settings] = parseSettings(pedalRow(row, b), { ...def, parse: {} });
+      values = settings ? settings.values : null;
+    }
+    return { id: def ? identity.id : null, name: def ? def.brand + ' ' + def.model : b.name, values };
+  });
+}
+
 /** App capture record: identifying fields, mapping, parsed settings, tags and the description (as
  *  copied, without stock header lines). */
-export function toCapture(raw, identity, definition) {
+export function toCapture(raw, identity, definition, chain = []) {
   const row = record(raw);
   const [settings, rejected] = definition ? parseSettings(row, definition) : [null, []];
   const version = String(first(raw, 'metadata.version'));
@@ -617,7 +655,7 @@ export function toCapture(raw, identity, definition) {
     creator: { type: raw.creatorType ?? '', version: raw.creatorVersion ?? '' },
     published: typeof raw.published === 'boolean' ? raw.published : null,
     likes: count('likes'), stars: count('stars'), downloads: count('downloads'),
-    description: row.description, settings, uninterpretedSettings: rejected,
+    description: row.description, settings, uninterpretedSettings: rejected, ...(chain.length ? { chain } : {}),
   };
 }
 
@@ -639,6 +677,17 @@ export function build(rawPath = path.join(ROOT, 'data/captures-raw.json'), outpu
   }
   const valueAliases = Object.fromEntries(rules.filter((r) => r.valueAliases && !customs.includes(r)).map((r) => [r.id, r.valueAliases]));
   for (const [ampId, group] of groups) if (!definitions.has(ampId)) definitions.set(ampId, inferAmp(identities.get(group[0].capture_id), group, valueAliases[ampId] || null));
+  // Pedals only ever seen in front of other gear (no captures of their own): a generic definition from
+  // their rows in those chains, so the chain can be drawn and compared. They aren't offered in the
+  // gear picker (chainOnly).
+  const chainRows = new Map();
+  rows.forEach((row) => { if (!identities.get(row.capture_id)) return; for (const b of pedalBlocks(row.description)) {
+    const identity = pedalIdentity(b, rules);
+    if (!identity || definitions.has(identity.id)) continue;
+    if (!chainRows.has(identity.id)) chainRows.set(identity.id, { identity, rows: [] });
+    chainRows.get(identity.id).rows.push({ ...pedalRow(row, b), type_code: 'pedal' });
+  } });
+  for (const [id, { identity, rows: pr }] of chainRows) definitions.set(id, { ...inferAmp(identity, pr, valueAliases[id] || null), category: 'Pedals', chainOnly: true });
   for (const d of definitions.values()) {
     const rowsOf = groups.get(d.id) || [];
     d.captureCount = rowsOf.length;
@@ -650,7 +699,7 @@ export function build(rawPath = path.join(ROOT, 'data/captures-raw.json'), outpu
   }
   const customIds = new Set(customs.map((a) => a.id));
   const amps = [...customs, ...[...definitions.values()].filter((d) => !customIds.has(d.id)).sort((a, b) => byText(a.brand, b.brand) || byText(a.model, b.model))];
-  const captures = raws.map((raw, i) => { const identity = identities.get(rows[i].capture_id); return toCapture(raw, identity, identity ? definitions.get(identity.id) : null); });
+  const captures = raws.map((raw, i) => { const identity = identities.get(rows[i].capture_id); return toCapture(raw, identity, identity ? definitions.get(identity.id) : null, identity ? pedalChain(rows[i], rules, definitions) : []); });
   for (const d of amps) {
     const start = downloadDefaults(d, captures.filter((c) => c.ampId === d.id));
     if (start) { d.defaults = start.defaults; d.defaultsFrom = start.from; }

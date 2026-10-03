@@ -229,6 +229,46 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.locator('.kwrap[data-ctrl="gain"][data-ch="2"]').dblclick();
     await page.waitForFunction(()=>state.amps.jp2c.ch[2].gain === ampById('jp2c').defaults.ch['2'].gain);
 
+    // Pedals in front: pick a recorded chain, its pedal draws above the gear; its knobs are its own;
+    // the drawer compares it; Load sets it; it's saved; Reset goes back to the starting settings.
+    await go(url+'?amp=bogner-uberschall-first-edition');
+    await page.locator('#chain-btn').click();
+    await page.locator('#chain-list [role=option]', { hasText:'BB Preamp' }).click();
+    await page.waitForSelector('.chainpedal.bbcab');
+    await page.locator('#p0\\:k-gain-').press('End');
+    await page.waitForFunction(()=>cur().as.chain[0].values.gain === 10 && cur().as.global.gain === ampById('bogner-uberschall-first-edition').defaults.global.gain);
+    await page.locator('.kwrap[data-ctrl="p0:gain"]').dblclick();
+    await page.waitForFunction(()=>cur().as.chain[0].values.gain === gearDef('xotic-effects-bb-preamp').defaults.global.gain);
+    await page.evaluate(()=>loadCapture(CAPTURES.find(c=>c.name.trim()==='Bogna Uber 4').id));
+    await page.waitForFunction(()=>cur().as.chain.length === 1 && /BB Preamp/.test(document.querySelector('#chain-btn').textContent));
+    await topIs('Bogna Uber 4', 100);
+    await page.evaluate(()=>{ update({ openId:CAPTURES.find(c=>c.name.trim()==='Bogna Uber 4').id }); });
+    await page.waitForSelector('.drawer');
+    assert.match(await page.locator('.drawer .cmp').innerText(), /In front\s+Xotic Effects BB Preamp\s+Xotic Effects BB Preamp[\s\S]*BB Preamp · Gain/);
+    await page.keyboard.press('Escape');
+    await go(url+'?amp=bogner-uberschall-first-edition');
+    assert.equal(await page.evaluate(()=>cur().as.chain.length), 1); // saved
+    await page.locator('#reset').click();
+    await page.waitForFunction(()=>(!cur().as.chain || !cur().as.chain.length) && !document.querySelector('.chainpedal'));
+
+    // A pedal's page links to the gear it's used in front of (opening it with that pedal in front);
+    // in a chain, the link above a pedal opens the pedal's own page; Back returns.
+    await go(url+'?amp=xotic-effects-bb-preamp');
+    await page.locator('#usedin-btn').click();
+    assert.match(await page.locator('#usedin-list').innerText(), /Bogner\s+Überschall first edition\s+2 captures/);
+    // keyboard: the menu opens and moves with the arrows, Escape closes it
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(()=>!document.querySelector('#usedin-list') && document.activeElement?.id === 'usedin-btn');
+    await page.keyboard.press('ArrowDown');
+    await page.waitForSelector('#usedin-list .ampopt.active');
+    await page.locator('#usedin-list [role=option]', { hasText:'Überschall' }).click();
+    await page.waitForFunction(()=>state.amp==='bogner-uberschall-first-edition' && cur().as.chain.some(p=>p.id==='xotic-effects-bb-preamp') && document.querySelector('#chain-go-0'));
+    await page.locator('#chain-go-0').click();
+    await page.waitForFunction(()=>state.amp==='xotic-effects-bb-preamp' && /amp=xotic-effects-bb-preamp/.test(location.search)); // the history entry is pushed on render
+    await page.evaluate(()=>history.back());
+    await page.waitForFunction(()=>state.amp==='bogner-uberschall-first-edition');
+    await page.locator('#reset').click();
+
     // Results are redone at most every 150 ms while controls move, but always land on the last settings.
     await go(url+'?amp=jp2c');
     await page.evaluate(()=>{ const { def, as } = cur(), c = def.controls.find(x => x.primary); for (let v = 0; v <= 10; v += 0.5) setCtrl(c, as.channel, v); });

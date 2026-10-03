@@ -19,7 +19,7 @@ const startScore = () => run('(()=>{ const { def, as } = cur(), f = (def.default
 assert.equal(run('CAPTURES.length'), 2190);
 assert.equal(run('new Set(CAPTURES.map(c=>c.id)).size'), 2190);
 assert.equal(run('CAPTURES.some(c=>c.name.startsWith("DEMO"))'), false);
-assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 19);
+assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 20);
 assert.equal(run('AMP_DEFS.some(a=>a.id==="marshall-jcm800-2203")'), false);
 
 run('state.amp="marshall-jcm800-1987"');
@@ -238,6 +238,21 @@ assert.equal(run('CAPTURES.filter(c=>c.ampId==="bogner-uberschall-first-edition"
 assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3").settings.values)'), JSON.stringify({ mastervol:6, volume:6, presence:6, treble:2, middle:8, bass:8, gain:8 }));
 assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('class="cab ubcab"') && run('renderStage()').includes('id="k-mastervol-"'));
+
+// Pedals in front: each capture's chain (identified, with its values), pedals only seen in chains kept
+// out of the pickers, and the chain as part of the score.
+assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3").chain)'), JSON.stringify([{ id:'xotic-effects-bb-preamp', name:'Xotic Effects BB Preamp', values:{ gain:0, volume:8, treble:6.5, bass:2 } }]));
+assert.ok(run('!CAPTURES.find(c=>c.name.trim()==="Bogna Uber 1").chain'));
+assert.ok(run('!AMP_DEFS.some(d=>d.chainOnly) && !!gearDef("boss-sd-1") && gearDef("boss-sd-1").chainOnly'));
+run('state.amp="bogner-uberschall-first-edition"; loadCapture(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3").id)');
+assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,cur().as).score'), 100);
+assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,Object.assign({},cur().as,{chain:[]})).score'), 60); // no pedal on your side: at most partial
+assert.ok(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,cur().as).reasons.some(r=>/Same pedal in front/.test(r.text))'));
+run('setCtrl(ctrlByKey("p0:gain"), null, 10)');
+assert.equal(run('cur().as.chain[0].values.gain'), 10);
+assert.ok(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,cur().as).score') < 100); // the pedal's knobs count too
+assert.ok(run('renderStage()').includes('id="p0:k-gain-"') && run('renderStage()').includes('class="cab chainpedal bbcab"'));
+run('state.amps["bogner-uberschall-first-edition"]=initialAmpState(cur().def)');
 
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');

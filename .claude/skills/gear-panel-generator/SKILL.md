@@ -69,6 +69,9 @@ The panel is the gear's own face with the parts that aren't settings cut away �
 - **Reference code:** each existing custom panel is a `cab` branch in `renderStage()` plus its `…PanelHTML` function in `assets/app.js` and CSS block in `assets/app.css`; read the closest one before writing a new panel.
 - **Screenshots:** headless Chrome `--screenshot` can't go below ~500px wide; check 390px with Playwright (`verify-gear.cjs`), not with screenshots. Playwright comes from `npm install` (playwright-core driving the installed Chrome; no browser download).
 
+## Pedals in front (chains)
+- "Pedal N: Brand® Model®" blocks after the settings are the capture's chain (`capture.chain`, built by `pedalChain`): don't model a pedal's knobs as amp controls. A pedal is drawn with its own panel (custom if it has one, else generic) to the left of the gear, in a compact size: `cabHTML(def, as, true)`; a custom pedal panel with fixed coordinates takes a scale for its knobs and case (text and switches keep their size; see `bbPanelHTML`/`ts9PanelHTML`), with its control keys and ids prefixed `p0:`, `p1:`…; panel functions need no changes for that. When a pedal's name is written several ways, add an identity rule (`gear-identities.json`) or a `match` on its custom definition. Pedals with no captures of their own get a generic `chainOnly` definition.
+
 ## Starting settings
 - The build sets every gear's starting settings (Reset, double-click) from its captures: per channel the most downloaded capture, gaps from the next most downloaded; the start channel is the one of the most downloaded capture; the (i) notes list them (`defaultsFrom`). Still write complete `defaults` in a definition (they are the fallback for values no capture states), but don't hand-pick a starting capture or write "Starting settings: …" in the `defaultsNote`.
 
