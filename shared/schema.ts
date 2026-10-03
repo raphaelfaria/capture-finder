@@ -128,6 +128,8 @@ export interface GearDef {
   chainOnly?: boolean;
   /** How the identity was found (generic gear). */
   source?: string;
+  /** App only: the "Unmapped captures" library entry, which browses captures without settings. */
+  browseOnly?: boolean;
 }
 
 export interface NotApplicable {
