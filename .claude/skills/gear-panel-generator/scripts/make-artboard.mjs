@@ -7,7 +7,7 @@
 //     --render "'<div class=\"cab txcab\">'+triaxisPanelHTML(def, as)+'</div>'"
 //
 // The panel CSS runs from --css-start to the next '/* ---------- ' banner; the panel JS runs
-// from --js-start to 'function genericPanelHTML'. The amp definition is kept in its own JSON
+// from --js-start to the generic panel code ('// Generic panels'). The amp definition is kept in its own JSON
 // block, separate from the markup. Output: artboards/<OutName>Mock.dc.html. The artboard is
 // interactive (knobs, keys, switches, modes) but does no matching.
 import fs from 'node:fs';
@@ -35,7 +35,7 @@ const shared = between(style, '/* ---------- amp: shared', '/\\* ---------- Mars
 const jro = style.match(/\.jro\{[^}]*\}/)[0];
 const panelCss = between(style, cssStart, '\\n/\\* ---------- ');
 const script = fs.readFileSync(path.join(ROOT, 'assets/app.js'), 'utf8');
-const panelJs = between(script, jsStart, '\\nfunction genericPanelHTML');
+const panelJs = between(script, jsStart, '\\n(?:// Generic panels|function genericPanelHTML)');
 // Shared helpers the panels use (whole functions, one-line or multi-line).
 const fnSource = (n) => {
   const i = script.indexOf('\nfunction ' + n + '(');

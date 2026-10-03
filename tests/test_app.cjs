@@ -146,6 +146,37 @@ assert.ok(run('renderStage()').includes('id="k-presence-"') && !run('renderStage
 assert.equal(run('cloudUrl(CAPTURES.find(c=>c.id==="22fda8ba-c75e-4ec5-aae1-60d80667280a"))'), 'https://cloud.neuraldsp.com/cloud/u/NeuralDSP/neural-capture/view/22fda8ba-c75e-4ec5-aae1-60d80667280a');
 assert.ok(run('CAPTURES.every(c=>/^https:\\/\\/cloud\\.neuraldsp\\.com\\/cloud\\/u\\/[^/]+\\/neural-capture\\/view\\/[0-9a-f-]{36}$/.test(cloudUrl(c)))'));
 
+// Generic layout heuristics (no gear-specific code): signal-flow knob order; blocks side by side
+// (switches → knobs → EQ); knobs on one row when it fits, else two read column by column.
+assert.equal(run('gOrder(ampById("fryette-sigx").controls.filter(c=>c.kind==="knob"&&available(c,1))).map(c=>c.label).join(",")'), 'Gain 1,Gain 2,Bass,Middle,Treble,Presence,Master');
+assert.equal(run('gOrder(ampById("ada-mp-1-preamp").controls.filter(c=>c.kind==="knob")).map(c=>c.label).join(",")'), 'Overdrive 1,Overdrive 2,Bass,Mid,Treble,Presence,Program no,Master Gain');
+// "Volume" is the gain stage without a gain knob, the output level after one
+assert.equal(run('gOrder([{label:"Treble"},{label:"Volume"},{label:"Bass"}]).map(c=>c.label).join(",")'), 'Volume,Bass,Treble');
+assert.equal(run('gOrder([{label:"Volume"},{label:"Treble"},{label:"Gain"}]).map(c=>c.label).join(",")'), 'Gain,Treble,Volume');
+// switches relate to knobs by a shared word, else by a usual pairing (Scoop → Middle, Power → Master)
+const sigx = '(()=>{ const d=ampById("fryette-sigx"), k=gOrder(d.controls.filter(c=>c.kind==="knob"&&available(c,1))); return { d, k, rel:(l)=>{ const r=gRelated(d.controls.find(c=>c.label===l), k); return r.k<0 ? null : k[r.k].label; } }; })()';
+assert.equal(run(sigx+'.rel("Gain More/Less")'), 'Gain 1');
+assert.equal(run(sigx+'.rel("Scoop/Wood")'), 'Middle');
+assert.equal(run(sigx+'.rel("Power Shift")'), 'Master');
+assert.equal(run(sigx+'.rel("CH Mode")'), null);
+assert.equal(run('gOrder([{label:"Gain2"},{label:"Treble"},{label:"Gain1"}]).map(c=>c.label).join(",")'), 'Gain1,Gain2,Treble');
+// switches: unrelated ones (modes) first, then in the order of the knob each relates to
+assert.equal(run('(()=>{ const d=ampById("fryette-sigx"), k=gOrder(d.controls.filter(c=>c.kind==="knob"&&available(c,1))); return gSwitchOrder(d.controls.filter(c=>c.kind==="switch"), k).map(c=>c.label).join(","); })()'), 'CH Mode,Boost,Gain More/Less,Scoop/Wood,Power Shift');
+// one knob row when it fits next to the switches, else two (read column by column, as the DOM order)
+assert.equal(run('gSecLayout({ head:true, knobs:[1,2,3,4,5,6,7], swW:[90,70], faders:[] }, 1000).rows'), 1);
+assert.equal(run('gSecLayout({ head:true, knobs:[1,2,3,4,5,6,7], swW:[90,70], faders:[] }, 500).rows'), 2);
+assert.equal(run('gSecLayout({ head:true, knobs:[1,2,3,4,5,6,7], swW:[90,70], faders:[] }, 500).wrapped'), false);
+assert.equal(run('JSON.stringify(gSwitchBlock([60,60,60,60,60,60,60]).rows)'), '3'); // switches up to three rows tall
+run('state.amp="fryette-sigx"; state.amps["fryette-sigx"].channel=1');
+const sig = run('renderStage()');
+assert.ok(sig.includes('class="gswitches" style="grid-template-rows:repeat(3,auto)"') && sig.includes('class="gknobs" style="grid-template-rows:repeat(2,auto)"'));
+assert.ok(sig.indexOf('>Gain 1<') < sig.indexOf('>Gain 2<') && sig.indexOf('>Gain 2<') < sig.indexOf('>Bass<') && sig.indexOf('>Bass<') < sig.indexOf('>Middle<'));
+// channels side by side as far as they fit without wrapping their blocks
+run('state.amp="bogner-fish-preamp-mesa-boogie-2-ninety-simul-class"');
+assert.ok(run('renderStage()').includes('grid-template-columns:repeat(4,minmax(0,1fr))'));
+run('state.amp="mesa-boogie-mark3-red-stripe"');
+assert.ok(!run('renderStage()').includes('gbody wrapped')); // switches, knobs and EQ sliders in one row
+
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture V2"})'), 'Neural Capture V2');

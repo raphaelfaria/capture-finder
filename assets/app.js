@@ -763,27 +763,151 @@ function hotRodPanelHTML(def, as){
   return h + '</div></div>';
 }
 
+// Generic panels (gear without a custom panel), laid out by heuristics with nothing gear-specific.
+// Amps are wide, so everything runs horizontally: the gear name on one line on top, then one section
+// per channel (plus any global controls), as many side by side as fit. Inside a section the blocks
+// sit left to right: switches (up to three rows tall), knobs, EQ sliders. Knobs follow a typical
+// signal-flow order (gain stages, the tone stack bass → treble, presence-type controls, others,
+// output levels last) on one row when it fits, else on two rows read column by column (Gain 1 over
+// Gain 2, Bass over Middle…). Switches come in the order of the knob their name relates to (a shared
+// word such as Gain More/Less → Gain, or a usual pairing such as Bright → Treble), with unrelated
+// ones (modes, voicings) first. Blocks wrap under each other only when even that doesn't fit.
+const GL = { kw:66, kgap:8, bgap:16, pad:26, sgap:8, head:40, swh:56, krow:92, frow:166, fw:38 };
+const G_OUT = /\b(master|output|level|out)\b/, G_STAGE = /\b(input|pre-?amp|gain|drive|overdrive|distortion|fuzz|sustain|saturation)\b/;
+// first match wins: output levels, then tone-stack words (so "Treble Crunch" is a treble knob), then gain stages
+const G_RANK = [
+  [G_OUT, 9],
+  [/\blo(?:w)?[ -]?mids?\b/, 4], [/\bhi(?:gh)?[ -]?mids?\b/, 6],
+  [/\b(bass|lows?)\b/, 3], [/\b(mid|mids|middle|midrange)\b/, 5], [/\b(treble|highs?)\b/, 7], [/\btone\b/, 6],
+  [/\b(presence|resonance|depth|deep|contour|bright|air|focus|texture|shape)\b/, 8],
+  [G_STAGE, 1]
+];
+const gLabel = (c) => String(nice(c.label)).toLowerCase().replace(/([a-z])(\d)/g, '$1 $2'); // "Gain2" reads as "gain 2"
+function gRank(c, knobs){
+  const l = gLabel(c);
+  // "Volume" is a gain stage, unless the section also has a gain/drive knob and no master
+  if (/\bvol(?:ume)?\b/.test(l) && !/\b(master|output|level)\b/.test(l)) {
+    const stage = knobs.some(k => k !== c && G_STAGE.test(gLabel(k))), master = knobs.some(k => G_OUT.test(gLabel(k)));
+    return stage && !master ? 9 : 1;
+  }
+  const hit = G_RANK.find(([re]) => re.test(l));
+  return hit ? hit[1] : 8.5;
+}
+function gOrder(knobs){
+  const num = (c) => { const m = gLabel(c).match(/(\d+)\s*$/); return m ? Number(m[1]) : 0; };
+  return knobs.map((c, i) => [gRank(c, knobs), num(c), i, c]).sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2]).map(x => x[3]);
+}
+// Which knob a switch belongs with, from their names: a shared word first (Gain More/Less → Gain 1,
+// Open/Focused → Mid Open), else a usual pairing (Bright → Treble, Scoop → Middle, Deep → Bass,
+// Boost → Gain, Power → Master). -1 when nothing relates.
+const G_STOP = new Set(['on', 'off', 'switch', 'pull', 'push', 'mode', 'ch', 'channel', 'select', 'the', 'and', 'lo', 'hi', 'low', 'high', 'in', 'out', 'auto', 'vol', 'volume']);
+const G_PAIR = [['gain', /\b(gain|drive|overdrive|boost|more|less|crunch|saturation|input)\b/], ['treble', /\b(treble|bright|brilliance|sparkle|highs?)\b/],
+  ['mid', /\b(mid|mids|middle|scoop|contour)\b/], ['bass', /\b(bass|deep|depth|bottom|thick|fat|lows?)\b/], ['presence', /\bpresence\b/], ['out', /\b(master|output|level|power)\b/]];
+const gWords = (c) => gLabel(c).split(/[^a-z0-9]+/).filter(w => w && !G_STOP.has(w) && !/^\d+$/.test(w));
+const gPair = (c) => { const l = gLabel(c), p = G_PAIR.find(([, re]) => re.test(l)); return p ? p[0] : null; };
+function gRelated(sw, knobs){
+  const ws = gWords(sw);
+  let best = -1, most = 0;
+  knobs.forEach((k, i) => { const shared = gWords(k).filter(w => ws.includes(w)).length; if (shared > most) { most = shared; best = i; } });
+  if (best >= 0) return { k:best, tier:2 };
+  const p = gPair(sw), i = p ? knobs.findIndex(k => gPair(k) === p) : -1;
+  return i >= 0 ? { k:i, tier:1 } : { k:-1, tier:0 };
+}
+// Switches: unrelated ones first (as recorded), then in the order of the knob each relates to.
+function gSwitchOrder(switches, knobs){
+  const rel = switches.map(c => gRelated(c, knobs).k);
+  return switches.map((c, i) => [rel[i], i, c]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
+}
+// Estimated width of a switch: lever + its longest option label, or its title if wider.
+function gSwitchW(c, n){ return Math.max(62, 30 + Math.max(...optionsFor(c, n).map(o => String(o.label).length))*5.6, String(c.label).length*6.4); }
+// The switch block: up to three rows, filled column by column, columns as even as possible.
+function gSwitchBlock(ws){
+  const m = ws.length; if (!m) return { rows:0, width:0, height:0 };
+  const cols = Math.ceil(m / 3), rows = Math.ceil(m / cols);
+  let width = (cols - 1)*GL.kgap*2;
+  for (let c = 0; c < cols; c++) width += Math.max(...ws.slice(c*rows, c*rows + rows));
+  return { rows, width, height:rows*GL.swh };
+}
+const gKnobW = (cols) => cols ? cols*GL.kw + (cols - 1)*GL.kgap : 0;
+// One section for an inner width: its blocks side by side, knobs on one row if that fits, else two;
+// if even two rows don't fit, the blocks wrap and the knobs take as many rows as they need.
+function gSecLayout(s, inner){
+  const n = s.knobs.length, sw = gSwitchBlock(s.swW), fw = s.faders.length*GL.fw, head = s.head ? GL.head : 0;
+  const blocks = (kw) => [sw.width, kw, fw].filter(Boolean);
+  for (const rows of n > 1 ? [1, 2] : [Math.min(n, 1)]) {
+    const parts = blocks(gKnobW(Math.ceil(n / Math.max(rows, 1)))), width = parts.reduce((a, b) => a + b, 0) + (parts.length - 1)*GL.bgap;
+    if (width <= inner) return { rows, sw, wrapped:false, width, height:head + Math.max(sw.height, rows*GL.krow, fw ? GL.frow : 0) };
+  }
+  let rows = 2; while (rows < n && gKnobW(Math.ceil(n / rows)) > inner) rows++;
+  const width = Math.max(sw.width, gKnobW(Math.ceil(n / rows)), fw);
+  return { rows, sw, wrapped:true, width, height:head + sw.height + rows*GL.krow + (fw ? GL.frow : 0) };
+}
+// How many sections side by side for the available width W (px): the most that fit without wrapping
+// a section's blocks; only balanced rows of sections (four → 4 × 1 or 2 × 2, never 3 + 1).
+function gPlan(secs, W){
+  let fallback = null;
+  for (let cols = Math.min(secs.length, 4); cols >= 1; cols--) {
+    const srows = Math.ceil(secs.length / cols);
+    if (Math.ceil(secs.length / srows) !== cols) continue;
+    const inner = (W - (cols - 1)*GL.sgap)/cols - GL.pad, lays = secs.map(s => gSecLayout(s, inner));
+    if (!lays.some(l => l.wrapped)) return { cols, lays };
+    fallback = { cols, lays };
+  }
+  return fallback;
+}
+// Room for the panel: the stage width minus the bench's side columns and the cabinet's padding.
+let gLastW = 0;
+function gLayoutWidth(){
+  const s = document.getElementById('stage'), w = s && s.clientWidth;
+  if (!w) return 1100;
+  const wide = w > 700;
+  return w - (wide ? 48 : 32) - (wide ? 112 : 0) - (w > 380 ? 46 : 18);
+}
 function genericPanelHTML(def, as){
-  const ch = as.channel;
-  const section = (n, ctrls, prefix) => {
-    let h = '<div class="gctrls">';
-    ctrls.filter(c => c.kind === 'switch').forEach(c => {
-      const opts = optionsFor(c, n), v = getVal(def, as, c, n), idx = Math.max(0, opts.findIndex(o => o.v === v)), t = {key:c.key, ch:n};
-      h += '<div class="gsw" role="group" aria-label="'+esc(prefix+c.label)+'"><div class="gswbody">'
-        + '<button class="togbtn" tabindex="-1" aria-hidden="true" data-act="cycle" '+targetAttrs(t)+'>'+togSVG(tip(posFor(idx, opts.length)))+'</button><div class="gopts">';
-      opts.forEach((o, i) => {
-        h += '<button id="t-'+targetId(t)+'-'+i+'" class="tlbl" aria-pressed="'+(o.v === v)+'" aria-label="'+esc(prefix+c.label+': '+o.label)+'" data-act="pick" '+targetAttrs(t)+' data-v="'+jattr(o.v)+'">'+esc(o.label)+'</button>';
+  const ch = as.channel, nsm = (c) => c.weight === 0 ? '<span class="nsmark" aria-hidden="true">⊘</span>' : '';
+  const secs = [];
+  if (def.channels) def.channels.forEach(chn => secs.push({ n:chn.n, title:channelLabel(def, chn.n), channel:true, ctrls:def.controls.filter(c => c.scope === 'channel' && available(c, chn.n)) }));
+  const g = def.controls.filter(c => c.scope === 'global');
+  if (g.length) secs.push({ n:ch, title:def.globalTitle || (def.channels ? 'Global' : 'Controls'), ctrls:g });
+  secs.forEach(s => {
+    s.head = s.channel || secs.length > 1;
+    s.knobs = gOrder(s.ctrls.filter(c => c.kind === 'knob'));
+    s.switches = gSwitchOrder(s.ctrls.filter(c => c.kind === 'switch'), s.knobs); s.swW = s.switches.map(c => gSwitchW(c, s.n));
+    s.faders = s.ctrls.filter(c => c.kind === 'fader');
+  });
+  gLastW = gLayoutWidth();
+  const plan = gPlan(secs, gLastW);
+  let h = '<div class="gwrap"><div class="gname">'+esc(def.model)+'</div><div class="gsecs" style="grid-template-columns:repeat('+plan.cols+',minmax(0,1fr))">';
+  secs.forEach((s, i) => {
+    const n = s.n, on = s.channel && n === ch, prefix = s.channel ? s.title+' ' : '', L = plan.lays[i];
+    h += '<div class="gsec'+(on ? ' on' : '')+'" role="group" aria-label="'+esc(s.title+(on ? ', selected' : ''))+'">';
+    if (s.channel) h += '<button id="gh-'+n+'" class="ghead" data-act="channel" data-n="'+n+'" aria-label="'+esc('Select '+s.title)+'"><span class="led'+(on ? ' lit' : '')+'" aria-hidden="true"></span><span class="silk" style="font-size:12px;font-weight:700">'+esc(s.title)+'</span></button>';
+    else if (s.head) h += '<div class="ghead"><span class="silk" style="font-size:12px;font-weight:700">'+esc(s.title)+'</span></div>';
+    h += '<div class="gbody'+(L.wrapped ? ' wrapped' : '')+'">';
+    if (s.switches.length) {
+      h += '<div class="gswitches" style="grid-template-rows:repeat('+L.sw.rows+',auto)">';
+      s.switches.forEach(c => {
+        const opts = optionsFor(c, n), v = getVal(def, as, c, n), idx = Math.max(0, opts.findIndex(o => o.v === v)), t = {key:c.key, ch:n};
+        h += '<div class="gsw" role="group" aria-label="'+esc(prefix+c.label)+'"><div class="gswbody">'
+          + '<button class="togbtn" tabindex="-1" aria-hidden="true" data-act="cycle" '+targetAttrs(t)+'>'+togSVG(tip(posFor(idx, opts.length)))+'</button><div class="gopts">';
+        opts.forEach((o, j) => {
+          h += '<button id="t-'+targetId(t)+'-'+j+'" class="tlbl" aria-pressed="'+(o.v === v)+'" aria-label="'+esc(prefix+c.label+': '+o.label)+'" data-act="pick" '+targetAttrs(t)+' data-v="'+jattr(o.v)+'">'+esc(o.label)+'</button>';
+        });
+        h += '</div></div><span class="silk">'+nsm(c)+esc(c.label)+'</span></div>';
       });
-      h += '</div></div><span class="silk">'+(c.weight === 0 ? '<span class="nsmark" aria-hidden="true">⊘</span>' : '')+esc(c.label)+'</span></div>';
-    });
-    ctrls.filter(c => c.kind === 'knob').forEach(c => {
-      h += '<div class="gk">'+knobHTML(c, n, getVal(def, as, c, n), prefix, '', '')
-        + '<span class="silk" style="text-align:center;white-space:normal;line-height:1.15">'+(c.weight === 0 ? '<span class="nsmark" aria-hidden="true">⊘</span>' : '')+esc(c.label)+'</span></div>';
-    });
-    const faders = ctrls.filter(c => c.kind === 'fader');
-    if (faders.length) {
+      h += '</div>';
+    }
+    if (s.knobs.length) {
+      h += '<div class="gknobs" style="grid-template-rows:repeat('+L.rows+',auto)">';
+      s.knobs.forEach(c => {
+        h += '<div class="gk">'+knobHTML(c, n, getVal(def, as, c, n), prefix, '', '')
+          + '<span class="silk" style="text-align:center;white-space:normal;line-height:1.15">'+nsm(c)+esc(c.label)+'</span></div>';
+      });
+      h += '</div>';
+    }
+    if (s.faders.length) {
       h += '<div class="gfaders">';
-      faders.forEach(c => {
+      s.faders.forEach(c => {
         const v = getVal(def, as, c, n), capTop = FG.gen.capTop((v - c.min)/(c.max - c.min));
         h += '<div class="gf"><label style="display:block">'+faderInput(c, n, v, prefix)
           + '<span class="gtrack" data-drag="fader" data-geo="gen" data-ctrl="'+c.key+'" data-ch="'+chAttr(n)+'"><span class="fslot" style="height:120px"></span><span class="fcap" style="top:'+capTop.toFixed(1)+'px"></span></span></label>'
@@ -791,21 +915,9 @@ function genericPanelHTML(def, as){
       });
       h += '</div>';
     }
-    return h + '</div>';
-  };
-  let h = '<div class="modelname">'+esc(def.model)+'</div>';
-  if (def.channels) def.channels.forEach(chn => {
-    const n = chn.n, on = n === ch;
-      h += '<div class="gsec'+(on ? ' on' : '')+'" role="group" aria-label="'+esc(channelLabel(def,n)+(on ? ', selected' : ''))+'">'
-        + '<button id="gh-'+n+'" class="ghead" data-act="channel" data-n="'+n+'" aria-label="'+esc('Select '+channelLabel(def,n))+'"><span class="led'+(on ? ' lit' : '')+'" aria-hidden="true"></span><span class="silk" style="font-size:12px;font-weight:700">'+esc(channelLabel(def,n))+'</span></button>'
-        + section(n, def.controls.filter(c => c.scope === 'channel' && available(c, n)), channelLabel(def,n)+' ')+'</div>';
+    h += '</div></div>';
   });
-  const g = def.controls.filter(c => c.scope === 'global');
-  if (g.length) {
-    const title = def.globalTitle || (def.channels ? 'Global' : 'Controls');
-    h += '<div class="gsec" role="group" aria-label="'+esc(title)+'"><div class="ghead"><span class="silk" style="font-size:12px;font-weight:700">'+esc(title)+'</span></div>'+section(ch, g, '')+'</div>';
-  }
-  return h;
+  return h + '</div></div>';
 }
 
 function renderStage(){
@@ -1302,6 +1414,8 @@ function dragMove(e){
   if (nv !== getVal(def, as, c, drag.n)) setCtrl(c, drag.n, nv);
 }
 window.addEventListener('pointermove', dragMove);
+// Generic panels are laid out for the available width: lay them out again when it changes.
+window.addEventListener('resize', () => { if (cur().def.panel === 'generic' && Math.abs(gLayoutWidth() - gLastW) > 24) update(); });
 window.addEventListener('pointerup', () => { drag = null; });
 window.addEventListener('pointercancel', () => { drag = null; });
 

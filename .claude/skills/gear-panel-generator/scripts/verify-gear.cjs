@@ -61,9 +61,12 @@ const ok = (m) => console.log('  ok  ' + m);
         assert.equal(await page.evaluate(() => document.activeElement.id), sel.slice(1), c.key + ' keeps focus after re-render');
       } else {
         const cur0 = await page.evaluate(([k, ch]) => getVal(cur().def, cur().as, ctrlByKey(k), ch), [c.key, n]);
-        const other = c.options.find(o => o.v !== cur0);
-        if (!other) continue; // a switch with a single recorded option has nothing to change to
-        const picked = await page.evaluate(([k, v]) => { const b = [...document.querySelectorAll('[data-act=pick][data-key="' + k + '"]')].find(x => x.dataset.v === JSON.stringify(v)); if (b) { b.click(); return true; } const s = document.querySelector('[data-switch="' + k + '"]'); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); return true; } return false; }, [c.key, other.v]);
+        // only the positions this channel offers, picked on this channel's own buttons
+        const offered = await page.evaluate(([k, ch]) => optionsFor(ctrlByKey(k), ch).map(o => o.v), [c.key, n]);
+        const other = offered.map(v => ({ v })).find(o => o.v !== cur0);
+        if (!other) continue; // a switch with a single position on this channel has nothing to change to
+        const chKey = c.scope === 'channel' ? String(n ?? '') : null; // global controls: any button
+        const picked = await page.evaluate(([k, v, ch]) => { const b = [...document.querySelectorAll('[data-act=pick][data-key="' + k + '"]')].find(x => x.dataset.v === JSON.stringify(v) && (ch === null || x.dataset.ch === undefined || x.dataset.ch === ch)); if (b) { b.click(); return true; } const s = document.querySelector('[data-switch="' + k + '"]'); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); return true; } return false; }, [c.key, other.v, chKey]);
         assert.ok(picked, c.key + ' has a clickable control');
         await page.waitForTimeout(60);
         assert.equal(await page.evaluate(([k, ch]) => getVal(cur().def, cur().as, ctrlByKey(k), ch), [c.key, n]), other.v, c.key + ' changed state');
