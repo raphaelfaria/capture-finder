@@ -1,0 +1,425 @@
+/* Capture Finder — styles. Custom gear panels have one banner-labelled block each. */
+:root{
+  --bg:#0d0c0b; --surface:#131211; --surface2:#151413; --line:#2b2824; --line2:#3a3631;
+  --text:#ece6da; --muted:#b3ab9d; --dim:#a39b8c; --amber:#e8a33a; --amber-soft:#f0c27a;
+}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--amber)}a:hover{color:#f4c06a}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b452;outline-offset:2px}
+[hidden]{display:none !important}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.cond{font-family:'Barlow Condensed','Arial Narrow',sans-serif}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.h-kicker{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;margin:0}
+
+.app{min-height:100vh;display:flex;flex-direction:column}
+.topbar{position:relative;z-index:30;display:flex;align-items:center;gap:12px 20px;padding:12px 24px;border-bottom:1px solid var(--line);background:#121110;flex-wrap:wrap}
+.hsearch{display:flex;flex-wrap:wrap;gap:10px;flex:1 1 520px;justify-content:flex-end;min-width:0}
+.combo{position:relative;flex:1 1 260px;max-width:440px;min-width:0}
+.combo .field{height:44px}
+.capopt .ctag{flex:none;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;padding:2px 6px;border-radius:3px;border:1px solid #7a5726;color:#f6d9a5}
+.capopt .ctag.none{border-style:dashed;border-color:#5a534a;color:#b9b1a3}
+/* Neural Capture version badge beside capture names */
+.ncbadge{display:inline-flex;align-items:center;flex:none;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;line-height:1;padding:3px 7px;border-radius:999px;border:1px solid #a8742a;background:#2a2013;color:#f6d9a5;white-space:nowrap}
+.ncbadge.v1{border-color:#5a534a;background:#1f1d1a;color:#d8d1c4}
+.capname{display:flex;align-items:center;gap:8px;min-width:0}
+.cappop{max-height:420px}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.amppop{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--surface2);border:1px solid #47423b;border-radius:8px;box-shadow:0 16px 40px rgba(0,0,0,.6);padding:6px;display:flex;flex-direction:column;gap:2px;max-height:360px;overflow-y:auto}
+.amppop[hidden]{display:none}
+.ampopt{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:6px 10px;border:0;border-radius:6px;background:transparent;text-align:left}
+.ampopt:hover,.ampopt.active{background:#24211d}
+.ampopt[aria-selected=true]{box-shadow:inset 2px 0 0 var(--amber)}
+.gearhead{padding:10px 10px 4px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.gearhead:not(:first-child){border-top:1px solid var(--line);margin-top:4px}
+.gearsub{padding:6px 10px 2px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-soft)}
+.gearsub::before{content:'— ';color:var(--dim)}
+.crumbs{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 6px;flex-grow:1;min-width:0;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:left}
+.crumbs .here{color:var(--amber-soft)}
+.ampopt svg.chev{flex:none;color:var(--dim)}
+.pedalcab{background:#141414;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:12px;padding:8px}
+.stage{padding:20px 24px 6px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.stagehead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bench{display:grid;grid-template-columns:minmax(44px,1fr) minmax(0,max-content) minmax(44px,1fr);align-items:end;column-gap:12px;min-width:0}
+.bench>.cab{grid-column:2}
+.infowrap{grid-column:3;justify-self:end;position:relative;z-index:36}
+.infobtn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid #47423b;background:#1a1816;color:var(--text)}
+.infobtn:hover{border-color:#6b6359;background:#211f1c}
+.infobtn[aria-expanded=true]{border-color:var(--amber)}
+.infopop{position:absolute;right:0;top:calc(100% + 8px);width:min(440px,calc(100vw - 32px));max-height:min(70vh,560px);overflow-y:auto;border:1px solid var(--line2);border-radius:10px;background:var(--surface2);box-shadow:0 16px 40px rgba(0,0,0,.6);padding:16px;display:flex;flex-direction:column;gap:12px}
+.infoscrim{position:fixed;inset:0;z-index:35;width:100%;border:0;padding:0;background:transparent;cursor:default}
+.infonotes{list-style:none;margin:0;padding:10px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;font-size:12px;line-height:1.45;color:var(--muted)}
+.tagpill.loadpill{display:inline-flex;align-items:center;gap:4px;border-style:solid;border-color:#7a5726;color:#f6d9a5;padding:0 0 0 10px}
+.loadpill button{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;border:0;border-radius:999px;background:transparent;color:inherit;padding:0}
+.loadpill button:hover{background:#2a2013}
+.matches{margin:12px 24px 44px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.banner{margin:0;border:1px dashed #4a453e;border-radius:8px;padding:10px 14px;font-size:13px;color:#c9c1b3}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px}
+.mcard{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid #2e2b27;border-radius:8px;background:#171615;min-width:0}
+.mcard:hover{border-color:#47423b}
+.mcard.best{border-color:#a8742a;background:#1c1712}
+.mcard.noscore{border-style:dashed}
+.mtop{display:flex;align-items:center;gap:8px;min-width:0}
+.mscore{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:#f6efe2}
+.mbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:4px}
+.chtab.sm{min-height:36px;padding:0 10px}
+@media (max-width:700px){.topbar{padding-left:16px;padding-right:16px}.stage{padding:16px 16px 4px}.matches{margin:12px 16px 32px;padding:14px}
+  .bench{grid-template-columns:minmax(0,1fr);row-gap:8px}.bench>.cab,.infowrap{grid-column:1}}
+
+.field{display:flex;align-items:center;gap:8px;background:#0b0a09;border:1px solid var(--line2);border-radius:6px;padding:0 10px;height:40px;color:var(--dim)}
+.field input{background:transparent;border:0;outline:0;flex:1;min-width:0;height:100%;color:var(--text)}
+.field input::placeholder{color:#8f877a}
+.field:focus-within{border-color:var(--amber);box-shadow:0 0 0 2px rgba(232,163,58,.3)}
+.demo{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;padding:2px 6px;border:1px solid #7a6440;color:var(--amber-soft);border-radius:3px;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #47423b;background:#1a1816;color:var(--text);font-size:14px;font-weight:500}
+.btn:hover{border-color:#6b6359;background:#211f1c}
+.btn.sm{height:34px;padding:0 10px;font-size:13px}
+.btn.amber{border-color:#a8742a;background:#2a2013;color:#f6e2bd}
+.btn.amber:hover{background:#352816}
+.chtabs{display:flex;gap:6px;flex-wrap:wrap}
+.chtab{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid #34312c;background:var(--surface2);border-radius:8px}
+.chtab:hover{border-color:#5a534a}
+.chtab[aria-pressed=true]{border-color:var(--amber);background:#221b12}
+.led{width:9px;height:9px;border-radius:50%;background:#2e2e2e;flex:none;display:inline-block}
+.led.lit{background:#ff5a3c}
+.nsmark{color:var(--dim);margin-right:3px}
+.tagpill{font-size:11px;padding:2px 8px;border-radius:999px;border:1px dashed #5a534a;color:#c9c1b3;max-width:100%}
+.foot{margin:0 24px 32px;font-size:11.5px;line-height:1.5;color:var(--dim);text-align:center}
+@media (max-width:700px){.foot{margin:0 16px 24px}}
+.note{display:flex;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+
+/* ---------- amp: shared ---------- */
+.cab{align-self:center;width:fit-content;max-width:100%;margin:6px 0 4px;border-radius:16px;padding:16px 14px 14px;background-color:#151515;background-image:radial-gradient(circle,rgba(255,255,255,.035) .7px,transparent 1.2px);background-size:5px 5px;box-shadow:inset 0 0 0 2px #050505;display:flex;flex-direction:column;gap:14px;min-width:0}
+.grille{height:72px;border-radius:8px;background-color:#0a0a0a;background-image:linear-gradient(45deg,rgba(255,255,255,.04) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.04) 75%),linear-gradient(-45deg,rgba(255,255,255,.04) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.04) 75%);background-size:4px 4px;border:2px solid #050505}
+.face{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:stretch;padding:8px;border-radius:4px;background:#0c0c0c;border:1px solid #050505;min-width:0}
+.modelname{display:flex;align-items:center;justify-content:center;padding:0 8px;min-width:48px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:15px;letter-spacing:.04em;color:#f0f0f0;text-align:center}
+.silk{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:11px;letter-spacing:.03em;color:#f0f0f0;white-space:nowrap;line-height:1;text-transform:uppercase}
+.silk.s{font-size:8.5px}
+.pos{position:absolute;transform:translate(-50%,-50%)}
+.panel{position:relative;border-radius:12px;background:#151515;border:1px solid #2a2a2a;flex:none}
+.panel.on{border-color:#b07a2a}
+.knobbox{position:relative;width:56px;height:56px}
+.kctl{display:block;width:56px;height:56px}
+.kwrap{display:block;width:56px;height:56px;touch-action:none;cursor:ns-resize;border-radius:50%}
+.kwrap svg{display:block}
+.knob-in:focus-visible + .kwrap{outline:2px solid #f0b452;outline-offset:2px}
+.knobbox.pulled::before{content:'';position:absolute;left:3px;top:3px;width:50px;height:50px;border-radius:50%;box-shadow:0 0 0 2px #9a9a9a;pointer-events:none}
+.ro{position:absolute;left:40px;top:41px;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:9.5px;line-height:13px;color:#f0b452;background:#000;border:1px solid #4a3a22;border-radius:3px;padding:0 3px;pointer-events:none;white-space:nowrap}
+.cled{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%}
+.togbtn{display:block;width:22px;height:32px;padding:0;border:0;background:transparent}
+.togbtn svg{display:block}
+.tlbl{background:transparent;border:0;padding:2px 3px;border-radius:2px;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:9px;letter-spacing:.02em;color:#8f8f8f;white-space:nowrap;line-height:1}
+.tlbl:hover{color:#fff;background:#1f1f1f}
+.tlbl[aria-pressed=true]{color:#fff;text-decoration:underline;text-decoration-color:var(--amber);text-underline-offset:2px}
+@media (pointer:coarse){.tlbl{padding:6px}}
+.pullbtn{background:transparent;border:0;padding:3px 4px;border-radius:3px;display:flex;align-items:center;gap:4px;color:#f0f0f0}
+.pullbtn:hover{background:#1f1f1f}
+.pdot{width:6px;height:6px;border-radius:50%;border:1px solid #9a9a9a;display:inline-block}
+.pullbtn[aria-pressed=true] .pdot{background:#f0f0f0;border-color:#f0f0f0}
+.chsel{background:transparent;border:0;padding:3px 4px;border-radius:3px}
+.chsel:hover{background:#1f1f1f}
+.ftrack{position:absolute;top:8px;width:26px;height:146px;touch-action:none;cursor:ns-resize;display:block}
+.fslot{position:absolute;left:6px;top:0;width:14px;height:146px;border-radius:2px;background:#050505;border:1px solid #1e1e1e;display:block}
+.fcap{position:absolute;left:0;width:26px;height:12px;border-radius:2px;background:#1a1a1a;border:1px solid #3a3a3a;display:block}
+.fcap::after{content:'';position:absolute;left:4px;right:4px;top:4px;height:2px;background:#e6e6e6}
+.fader-in:focus-visible + .ftrack .fcap,.fader-in:focus-visible + .gtrack .fcap{outline:2px solid #f0b452;outline-offset:2px}
+.eqoff .ftrack,.eqoff .eqline{opacity:.4}
+
+/* ---------- Marshall JCM800 1987 panel ---------- */
+.jgrille{height:64px;margin:2px;border-radius:4px;background-color:#0b0b0b;background-image:linear-gradient(45deg,rgba(255,255,255,.035) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.035) 75%),linear-gradient(-45deg,rgba(255,255,255,.035) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.035) 75%);background-size:4px 4px;border:3px solid #e6e1d6}
+.jface{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 22px;padding:6px 18px;border-radius:3px;background:#c9ad6e;border:1px solid #000;min-width:0}
+.jbadge{display:flex;flex-direction:column;gap:1px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;color:#1a1612;white-space:nowrap}
+.jknobs{display:flex;flex-wrap:wrap;gap:4px 2px;justify-content:center}
+.jk{display:flex;flex-direction:column;align-items:center;gap:1px;width:72px}
+.jk .kctl,.jk .kwrap{position:relative;width:64px;height:64px}
+.jlab,.jsub{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.06em;color:#1a1612;text-transform:uppercase;line-height:1;text-align:center;min-height:10px}
+.jnum{position:absolute;transform:translate(-50%,-50%);font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:7.5px;color:#2a2218;line-height:1;pointer-events:none}
+.jro{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:9.5px;line-height:13px;color:#f0b452;background:#000;border:1px solid #4a3a22;border-radius:3px;padding:0 3px;margin-top:2px}
+.jface .knob-in:focus-visible + .kwrap{outline-color:#111}
+.jjacks{display:grid;grid-template-rows:repeat(2,auto);grid-auto-flow:column;gap:2px}
+.jjack{display:flex;align-items:center;gap:8px;min-height:40px;padding:2px 8px 2px 4px;border-radius:6px;border:1px solid transparent;background:transparent;color:#1a1612}
+.jjack:hover{background:rgba(0,0,0,.08)}
+.jjack[aria-pressed=true]{border-color:#1a1612;background:rgba(0,0,0,.06)}
+.jjack:focus-visible{outline:2px solid #111;outline-offset:2px}
+.jgfx{position:relative;width:24px;height:24px;border-radius:50%;background:#1a1612;flex:none}
+.jgfx::after{content:'';position:absolute;left:7px;top:7px;width:10px;height:10px;border-radius:50%;background:#000;box-shadow:0 0 0 1px #5a5246}
+.jjack.on .jgfx::after{background:#e8a33a;box-shadow:0 0 0 2px #000}
+.jtxt{font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.06em;line-height:1.1;text-transform:uppercase}
+.jstate{font-family:'IBM Plex Mono',monospace;font-size:9.5px}
+
+/* ---------- Mesa/Boogie TriAxis + Simul-Class 2:Ninety (rack units) ---------- */
+.txcab{background:none;box-shadow:none;padding:0;gap:6px;border-radius:0}
+.txrack{display:flex;align-items:stretch;max-width:100%;background:#1a1a19;border:1px solid #000;border-radius:3px}
+.txear{flex:none;width:22px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:10px 0}
+.txear i{display:block;width:12px;height:7px;border-radius:4px;background:var(--bg)}
+.txface{flex:1 1 auto;min-width:0;margin:6px 0;padding:8px 10px;border:1px solid #3b3b38;border-radius:10px;background:#161615}
+.txinner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px}
+.txparams{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;min-width:0}
+.txp{display:flex;flex-direction:column;align-items:center;gap:3px;width:84px}
+.txctl{display:block}
+.txdisp{display:flex;align-items:center;justify-content:center;width:60px;height:40px;background:#070707;border:1px solid #2e2e2c;border-radius:2px;touch-action:none;cursor:ns-resize}
+.txdisp svg{display:block}
+.txface .knob-in:focus-visible + .txdisp,.s9face .knob-in:focus-visible + .kwrap{outline:2px solid #f0b452;outline-offset:2px}
+.txlab,.txrow,.s9tag,.s9lab{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.04em;color:#ece9df;text-transform:uppercase;white-space:nowrap;line-height:1.1;text-align:center}
+.txna{font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#a39b8c;line-height:1}
+.txkeys{display:flex}
+.txkey{display:flex;align-items:center;justify-content:center;min-width:40px;height:40px;padding:0;border:0;border-radius:4px;background:transparent}
+.txcap{display:flex;align-items:center;justify-content:center;min-width:26px;height:22px;padding:0 4px;border-radius:2px;background:#a9a8a2;border:1px solid #000;color:#1b1b1a;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:9px;letter-spacing:.03em}
+.txkey:hover .txcap{background:#c6c5be}
+.txkey:active .txcap{background:#8f8e88}
+.txoff .txdisp,.txoff .txkeys{opacity:.4}
+.txside{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;justify-content:center}
+.txname{display:flex;flex-direction:column;align-items:flex-start;gap:3px;color:#ece9df;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600}
+.txname .txkey{margin-left:-7px}
+.txmodel{font-size:22px;letter-spacing:.06em;line-height:1}
+.txbrand{font-size:12px;font-weight:700;letter-spacing:.06em;line-height:1}
+.txsub{font-size:8.5px;letter-spacing:.08em;line-height:1}
+.txmodes{display:grid;grid-template-columns:30px repeat(3,40px);grid-auto-rows:40px;align-items:center;justify-items:center}
+.txrow{justify-self:start;font-weight:700;font-size:10px}
+.txled{width:40px;height:40px;padding:0;border:1px solid transparent;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center}
+.txled:hover{background:#262624}
+.txled.on{border-color:var(--amber)}
+.txdot{width:11px;height:11px;border-radius:50%;background:#2a2a28;box-shadow:inset 0 0 0 2px var(--c),0 0 0 1px #000}
+.txled.on .txdot{background:var(--c)}
+.txnow{grid-column:1/-1;height:auto;font-family:'IBM Plex Mono',monospace;font-size:9.5px;line-height:13px;color:#f0b452;background:#000;border:1px solid #4a3a22;border-radius:3px;padding:0 4px;white-space:nowrap}
+.s9face{display:flex;flex-direction:column;align-items:center;gap:4px}
+.s9title{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:15px;letter-spacing:.16em;color:#d8cba0;text-transform:uppercase;text-align:center;line-height:1.1}
+.s9row{display:flex;align-items:center;justify-content:center;gap:10px 22px}
+.s9vent{display:block;flex:none}
+.s9mid{display:flex;flex-direction:column;align-items:center;gap:4px}
+.s9leds{display:flex;gap:2px}
+.s9led{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:54px;min-height:44px;padding:3px 4px;border:1px solid transparent;border-radius:6px;background:transparent;color:#ece9df}
+.s9led:hover{background:#262624}
+.s9led[aria-pressed=true]{border-color:#5a534a}
+.s9tag{font-size:8.5px}
+.s9dot{width:9px;height:9px;border-radius:50%;background:#3a1512;box-shadow:0 0 0 1px #000}
+.s9led[aria-pressed=true] .s9dot{background:#ff3b2a}
+.s9st{font-family:'IBM Plex Mono',monospace;font-size:9px;line-height:1;color:#b3ab9d}
+.s9knobs{display:flex;gap:10px}
+.s9k{display:flex;flex-direction:column;align-items:center;gap:2px;width:72px}
+.s9k .kctl,.s9k .kwrap{width:56px;height:56px}
+@media (max-width:640px){.s9vent{display:none}.txear{width:14px}.txear i{width:8px}.txface{padding:6px 4px}}
+
+/* ---------- Aguilar Tone Hammer 500 panel ---------- */
+.thcab{background:#141414;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:10px;padding:6px;gap:0}
+.thface{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 30px;padding:12px 24px 10px;border-radius:6px;background:#c9cacb;border:1px solid #000;min-width:0}
+.thknobs{position:relative;flex:none;width:310px;height:182px}
+.thk{position:absolute;display:flex;flex-direction:column;align-items:center;gap:3px;width:84px;transform:translateX(-50%)}
+.thlab{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:10px;letter-spacing:.12em;color:#141414;text-transform:uppercase;line-height:1;white-space:nowrap}
+.thface .knob-in:focus-visible + .kwrap{outline-color:#111}
+.thname{display:flex;flex-direction:column;align-items:flex-start;gap:5px;color:#141414;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700}
+.thmodel{font-size:20px;letter-spacing:.06em;line-height:1;white-space:nowrap}
+.thbrand{font-size:13px;letter-spacing:.24em;line-height:1}
+@media (max-width:380px){.thface{padding:10px 6px}}
+
+/* ---------- Ibanez TS9 Tube Screamer panel ---------- */
+.tscab{background:#141414;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:14px;padding:6px;gap:0}
+.tsface{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 14px 12px;border-radius:10px;background:#62cf3c;border:1px solid #1c3a12;min-width:0;max-width:100%}
+.tsknobs{position:relative;flex:none;width:272px;height:172px}
+.tsk{position:absolute;transform:translate(-50%,-50%)}
+.tsk .kctl,.tsk .kwrap{display:block}
+.tslab{position:absolute;display:flex;flex-direction:column;align-items:center;gap:3px;transform:translateX(-50%)}
+.tslab .tsl{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:11px;letter-spacing:.1em;color:#1b2a16;line-height:1}
+.tsface .knob-in:focus-visible + .kwrap{outline-color:#111}
+.tsplate{display:flex;align-items:baseline;justify-content:center;gap:8px;align-self:stretch;margin:0 18px;padding:4px 10px;border-radius:3px;background:#d9dcdf;box-shadow:0 0 0 3px #161616;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;line-height:1;white-space:nowrap}
+.tsplate span:first-child{font-weight:700;font-size:13px;letter-spacing:.12em;color:#1f45b8}
+.tsplate span:last-child{font-weight:600;font-size:13px;letter-spacing:.04em;color:#2b2f33}
+@media (max-width:380px){.tsface{padding:8px 6px 10px}}
+
+/* ---------- Origin Effects Cali76 panel ---------- */
+.cacab{background:#141414;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:14px;padding:6px;gap:0}
+.caface{padding:9px;border-radius:10px;background:#c9ccce;border:1px solid #6d7175;max-width:100%}
+.capanel{position:relative;width:296px;height:284px;border-radius:16px;background:#0d0d0d;box-shadow:inset 0 0 0 2px #d9dcdf,inset 0 0 0 5px #0d0d0d;margin-bottom:10px}
+.capanel .kctl,.capanel .kwrap{display:block}
+.cak{position:absolute;transform:translate(-50%,-50%)}
+.cak .ro{left:auto;right:-6px;top:auto;bottom:2px}
+.calab{position:absolute;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:13px;letter-spacing:.05em;color:#ececec;line-height:1;white-space:nowrap}
+.cadiv{position:absolute;left:2px;right:2px;top:113px;height:2px;background:#d9dcdf}
+.carat{position:absolute;transform:translate(-50%,-50%);min-width:24px;min-height:24px;padding:2px 3px;border:0;border-radius:4px;background:transparent;font-family:'IBM Plex Mono',monospace;font-size:10px;line-height:1;color:#9a9a9a}
+.carat:hover{color:#fff;background:#262626}
+/* the selected ratio doubles as the knob's amber readout */
+.carat[aria-pressed=true]{color:#f0b452;background:#000;box-shadow:inset 0 0 0 1px #4a3a22}
+.cacycle{position:absolute;left:0;top:0;width:100%;height:100%;padding:0;border:0;border-radius:50%;background:transparent}
+.caname{position:absolute;left:0;right:0;bottom:-10px;display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none}
+.caname b{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:30px;letter-spacing:.01em;color:#c9ccce;line-height:1}
+.caname span{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:11px;letter-spacing:.08em;color:#141414;background:#c9ccce;border:2px solid #0d0d0d;border-radius:999px;padding:2px 10px;line-height:1}
+@media (max-width:380px){.caface{padding:6px}}
+
+/* ---------- Darkglass Microtubes B7K Ultra panel ---------- */
+.b7cab{background:#141414;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:14px;padding:6px;gap:0}
+.b7face{padding:8px;border-radius:10px;background:#c4cbc8;border:1px solid #6f7673;max-width:100%}
+.b7panel{position:relative;width:330px;height:200px;border-radius:6px;background:#0c0c0c}
+.b7panel .kctl,.b7panel .kwrap{display:block}
+.b7k{position:absolute;transform:translate(-50%,-50%)}
+.b7k .ro{left:auto;right:-8px;top:auto;bottom:-2px}
+.b7lab{position:absolute;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:.06em;color:#e9e9e9;line-height:1;white-space:nowrap}
+.b7panel .silk{color:#e9e9e9;font-size:8.5px;font-weight:500;letter-spacing:.06em}
+.b7panel .tlbl{color:#9a9a9a;font-size:8.5px}
+.b7panel .tlbl[aria-pressed=true]{color:#fff}
+.b7fs{position:absolute;display:flex;align-items:center;gap:6px;padding:4px 6px;border:1px solid transparent;border-radius:8px;background:transparent;transform:translate(-50%,-50%);color:#e9e9e9}
+.b7fs:hover{background:#1c1c1c}
+.b7fs .cap{width:26px;height:26px;border-radius:50%;background:#c9cdd0;box-shadow:inset 0 0 0 2px #8e9397,0 0 0 2px #2a2a2a;flex:none}
+.b7fs .led{width:8px;height:8px;border-radius:50%;background:#1b2436;box-shadow:0 0 0 1px #000;flex:none}
+.b7fs[aria-pressed=true] .led{background:#4b86ff}
+.b7fs .txt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:.08em;line-height:1}
+.b7fs .txt span:last-child{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b3ab9d}
+.b7name{position:absolute;left:140px;right:4px;bottom:12px;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;color:#ececec;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;line-height:1}
+.b7name b{font-size:13px;font-weight:600;letter-spacing:.1em;white-space:nowrap}
+.b7name span{font-size:7.5px;font-weight:500;letter-spacing:.14em;color:#bdbdbd}
+/* very narrow phones: scale the whole faceplate rather than reflow it (keeps the pedal's layout) */
+@media (max-width:380px){.b7face{padding:5px}.b7panel{zoom:.86}}
+
+/* ---------- Bogner Ecstasy 100B panel ---------- */
+.bgcab{gap:10px}
+.bggrille{height:56px;border-radius:6px;background:#0b0b0d;border:2px solid #050505;box-shadow:inset 0 0 0 1px #24242a}
+.bgface{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 4px;padding:6px 8px;border-radius:4px;background:#121214;border:1px solid #000;min-width:0}
+.bgsec{position:relative;flex:none;height:132px}
+.bgsec .kctl,.bgsec .kwrap{display:block}
+.bgk{position:absolute;top:82px;transform:translate(-50%,-50%)}
+.bgk .ro{left:auto;right:-14px;top:2px;bottom:auto}
+.bgplate{position:absolute;top:110px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:4px;width:56px;height:15px;background:#d9d9d6;clip-path:polygon(9% 0,91% 0,100% 100%,0 100%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:8.5px;letter-spacing:.04em;color:#1a1a1a;white-space:nowrap}
+.bgplate .bled{width:6px;height:6px;border-radius:50%;background:#3a3a3a;box-shadow:0 0 0 1px #6f6f6f}
+.bgtitle{position:absolute;top:4px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:8.5px;letter-spacing:.03em;color:#ececec;white-space:nowrap}
+.bgtgl{position:absolute;top:15px;width:32px;height:20px;padding:0;border:0;background:transparent;transform:translateX(-50%)}
+.bgtgl svg{display:block}
+.bglet{position:absolute;top:37px;transform:translate(-50%,-50%);min-width:14px;padding:1px 2px;border:0;border-radius:2px;background:transparent;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:8px;line-height:1;color:#8f8f8f}
+.bglet:hover{color:#fff;background:#262626}
+.bglet[aria-pressed=true]{color:#fff;text-decoration:underline;text-decoration-color:var(--amber);text-underline-offset:2px}
+@media (pointer:coarse){.bglet{padding:5px 3px}}
+/* controls of other channels: dimmed but still adjustable; text says so for screen readers */
+.bgoff{opacity:.3}
+.bgk.bgoff .ro{opacity:.7}
+.bgbadge{position:absolute;top:4px;left:28px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:12px;letter-spacing:.04em;color:#ececec;white-space:nowrap}
+.bgbadge span{font-size:8px;letter-spacing:.08em;margin:0 3px}
+.bgrear{position:absolute;left:4px;top:114px;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.06em;color:#9a9a9a}
+/* narrow screens: the sections wrap; scale them rather than reflow the controls */
+@media (max-width:480px){.bgsec{zoom:.74}}
+@media (max-width:380px){.bgsec{zoom:.62}.bgface{padding:6px 2px}}
+
+/* ---------- Mesa/Boogie Mark IIC+ panel ---------- */
+.mkcab{gap:10px}
+.mkface{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 6px;padding:6px 10px;border-radius:3px;background:#0e0e0e;border:3px solid #b9b9b9;min-width:0}
+.mksec{position:relative;flex:none;height:126px}
+.mkbar{position:absolute;left:34px;right:34px;top:0;height:1.5px;background:#e6e6e6}
+.mkidx{position:absolute;width:1.5px;margin-left:-.75px;background:#e6e6e6}
+.mkpull{position:absolute;top:9px;width:66px;height:24px;transform:translateX(-50%);padding:0;border:0;border-radius:3px;background:transparent;color:#f0f0f0;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:8.5px;letter-spacing:0;line-height:1}
+.mkpull:hover{background:rgba(255,255,255,.08)}
+.mkpl,.mkpr{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:3px;white-space:nowrap}
+.mkpl{right:calc(50% + 3px)}
+.mkpr{left:calc(50% + 3px)}
+.mkpull .pdot{width:5px;height:5px}
+.mkpull[aria-pressed=true] .pdot{background:#f0f0f0;border-color:#f0f0f0}
+.mkk{position:absolute;top:60px;width:50px;height:50px;transform:translate(-50%,-50%)}
+.mkk.pulled::before{content:'';position:absolute;left:-2px;top:-2px;width:54px;height:54px;border-radius:50%;box-shadow:0 0 0 2px #9a9a9a;pointer-events:none}
+.mkk .ro{left:36px;top:38px}
+.mklab{position:absolute;top:92px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:10px;letter-spacing:.03em;color:#f0f0f0;white-space:nowrap}
+.mkoff{opacity:.32}
+.mkeqplate{position:absolute;left:6px;top:2px;width:174px;height:94px;border-radius:9px;background:#c4c9cc;border:2px solid #eef0f1;box-sizing:border-box}
+.mkeqplate i{position:absolute;left:8px;right:8px;height:1px;background:#eef1f2}
+.mkf{position:absolute;top:9px;width:22px;height:80px}
+.mktrack{position:relative;display:block;width:22px;height:80px;touch-action:none;cursor:ns-resize}
+.mkslot{position:absolute;left:8px;top:0;width:6px;height:80px;border-radius:3px;background:#0a0a0a;display:block}
+.mkcap{width:22px;height:10px;background:#141414;border-color:#000}
+.mkcap::after{left:3px;right:3px;top:3px;height:1.5px}
+.fader-in:focus-visible + .mktrack .fcap{outline:2px solid #111;outline-offset:2px}
+.mkfreq{position:absolute;top:101px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:10px;color:#f0f0f0;white-space:nowrap}
+.mkfro{top:113px;transform:translateX(-50%)}
+.mkrear{position:absolute;left:6px;top:4px;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.06em;color:#9a9a9a}
+.mkname{position:absolute;right:4px;top:113px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:10px;letter-spacing:.04em;color:#f0f0f0;white-space:nowrap}
+.mkgrille{height:64px;border-radius:6px;background:#0b0b0b;border:2px solid #050505;box-shadow:inset 0 0 0 1px #222}
+/* narrow screens: the sections wrap; scale them rather than reflow the controls */
+@media (max-width:480px){.mksec{zoom:.64}.mkgrille{height:40px}}
+@media (max-width:380px){.mksec{zoom:.56}.mkface{padding:6px 2px}}
+
+/* ---------- Fender Hot Rod Deluxe panel ---------- */
+.hrcab{gap:10px}
+.hrface{display:flex;justify-content:center;padding:6px 10px;border-radius:22px 8px 8px 22px;background:#0f0f0f;border:2px solid #050505;box-shadow:inset 0 0 0 1px #2a2a2a;min-width:0}
+.hrsec{position:relative;flex:none;height:110px}
+.hrlab{position:absolute;top:4px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:11px;letter-spacing:.04em;color:#ece6cf;white-space:nowrap}
+.hrsc{position:absolute;top:22px;width:66px;height:66px;transform:translateX(-50%);pointer-events:none}
+.hrscale{display:block}
+.hrk{position:absolute;top:55px;width:44px;height:44px;transform:translate(-50%,-50%)}
+.hrro{top:91px;left:auto;transform:translateX(-50%)}
+.hrbtn{position:absolute;top:58px;width:40px;height:44px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 0 0;border:0;border-radius:3px;background:transparent;color:#ece6cf}
+.hrbtn:hover{background:rgba(255,255,255,.07)}
+.hrcap{display:block;width:12px;height:12px;border-radius:1.5px;background:#dedbcd;border:1px solid #8f8b7d;box-shadow:0 2px 0 #6a675c}
+.hrbtn[aria-pressed=true] .hrcap{width:10px;height:10px;margin:1px 0 3px;background:#a9a596;box-shadow:none}
+.hrbtn.sel .hrcap{background:#dedbcd}
+.hrbl{font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:7.5px;line-height:1.1;letter-spacing:.03em;text-align:center}
+.hrbtn[aria-pressed=true] .hrbl{text-decoration:underline;text-decoration-color:var(--amber);text-underline-offset:2px}
+.hrled{position:absolute;top:66px;width:9px;height:9px;margin-left:-4.5px;border-radius:1.5px;background:#3b3423;border:1px solid #000}
+.hrled.on{background:#f6b62a}
+.hrchro{top:100px;left:auto;transform:translateX(-50%);font-size:8px;line-height:10px}
+.hroff{opacity:.3}
+.hrgrille{position:relative;height:72px;border-radius:4px;background:#aeaca2;border:3px solid #050505;box-shadow:inset 0 0 0 1px #6f6d65}
+.hrplate{position:absolute;left:50%;top:8px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;padding:3px 12px 2px;border-radius:4px;background:#141414;border:1.5px solid #c9c9c9;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;color:#ececec;line-height:1;white-space:nowrap}
+.hrplate span{font-size:6.5px;letter-spacing:.12em;margin-top:2px}
+/* narrow screens: scale the fixed-size panel rather than reflow the controls */
+@media (max-width:480px){.hrsec{zoom:.56}.hrgrille{height:48px}}
+@media (max-width:380px){.hrsec{zoom:.5}.hrface{padding:6px 4px}}
+
+/* ---------- generic panel ---------- */
+.gsec{position:relative;border-radius:12px;background:#151515;border:1px solid #2a2a2a;padding:8px 12px 12px;display:flex;flex-direction:column;gap:10px;min-width:0;max-width:100%}
+.gsec.on{border-color:#b07a2a}
+.ghead{display:flex;align-items:center;gap:8px;min-height:24px;background:transparent;border:0;padding:2px 4px;border-radius:3px;text-align:left}
+button.ghead:hover{background:#1f1f1f}
+.gctrls{display:flex;flex-wrap:wrap;gap:12px 8px;align-items:flex-start;justify-content:center}
+.gk{display:flex;flex-direction:column;align-items:center;gap:7px;width:66px}
+.gsw{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:62px}
+.gsw{max-width:100%}.gsec{flex:1 1 260px}.gsw .silk{white-space:normal;overflow-wrap:anywhere;text-align:center}.gopts{max-width:200px}.gopts .tlbl{white-space:normal;text-align:left;line-height:1.3;min-height:28px}.gfaders{flex-wrap:wrap}.drawer .cmp{table-layout:fixed}.cmp td{overflow-wrap:anywhere}.drawer .meta{grid-template-columns:minmax(0,100px) minmax(0,1fr)}
+@media(max-width:380px){.cab{padding:8px 4px}.face{padding:4px;gap:6px}.stage{padding-left:6px;padding-right:6px}.panel{max-width:100%}.jface{padding:6px 8px}}
+.gswbody{display:flex;align-items:center;gap:3px}
+.gopts{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;min-height:32px;gap:2px}
+.gfaders{display:flex;gap:4px;align-items:flex-start}
+.gf{display:flex;flex-direction:column;align-items:center;gap:6px;width:34px;position:relative}
+.gtrack{position:relative;display:block;width:26px;height:120px;touch-action:none;cursor:ns-resize}
+
+/* ---------- lower area ---------- */
+.card0{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px;display:flex;flex-direction:column;gap:12px}
+.mrows{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:4px 18px;margin:0}
+.mrow{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #22201d;font-size:13px}
+.mrow dt{color:var(--muted)}
+.mrow dd{margin:0;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--text);text-align:right}
+.recs{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.panel-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:460px){.filters{grid-template-columns:minmax(0,1fr)}}
+.sel{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--dim);letter-spacing:.04em;min-width:0}
+.sel select{height:36px;background:#0b0a09;border:1px solid var(--line2);border-radius:6px;padding:0 6px;color:var(--text);font-size:13px;min-width:0;width:100%}
+.hero{border:1px solid #7a5726;background:#1c1712;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.scoreline{display:flex;align-items:flex-end;gap:10px}
+.bigscore{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:700;line-height:.9;color:#f6efe2}
+.bar{display:block;height:6px;background:#2a2724;border-radius:3px;overflow:hidden}
+.bar > span{display:block;height:100%;background:var(--amber);border-radius:3px;transition:width .25s}
+.bar.low > span{background:#8f877a}
+.reasons{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.reasons li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:6px;font-size:13px;line-height:1.4;color:#d8d1c4}
+.mk{font-family:'IBM Plex Mono',monospace;font-weight:500;text-align:center;border-radius:3px;font-size:13px;line-height:18px;height:18px;border:1px solid var(--line2);display:inline-block;min-width:20px}
+.mk.match{color:#f6d9a5;border-color:#7a5726;background:#2a2013}
+.mk.near{color:#d8d1c4}
+.mk.off{color:#ff9d8a;border-color:#5a2c24;background:#22130f}
+.mk.none{color:#8f877a}
+.tier{font-size:12px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:999px;border:1px solid #47423b;white-space:nowrap}
+.tier.t1{border-color:#a8742a;color:#f6d9a5}
+.tier.t3{border-style:dashed;color:#b9b1a3}
+.tier.best{border-color:#a8742a;color:#f6d9a5;background:#2a2013}
+.card{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;padding:12px;border:1px solid #2e2b27;border-radius:8px;background:#171615}
+.card:hover{border-color:#47423b}
+.rank{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--dim);padding-top:2px}
+.emptyst{border:1px dashed #4a453e;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.stack{display:flex;flex-direction:column;gap:8px}
+.scrim{position:fixed;inset:0;background:rgba(5,5,4,.66);border:0;z-index:40;width:100%;cursor:default}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(580px,100%);background:#141312;border-left:1px solid var(--line2);z-index:41;overflow-y:auto;padding:20px 24px 40px;box-shadow:-24px 0 60px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:18px}
+.desc{white-space:pre-line;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.65;background:#0b0a09;border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin:0;color:#e6dfd2}
+.cmp{width:100%;border-collapse:collapse;font-size:13px}
+.cmp th{font-weight:500;color:var(--dim);text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px;border-bottom:1px solid var(--line2)}
+.cmp td{padding:7px 6px;border-bottom:1px solid #24221f;vertical-align:top}
+.cmp td.v{font-family:'IBM Plex Mono',monospace;font-size:12px}
+.meta{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:6px 14px;margin:0;font-size:13px}
+.meta dt{color:var(--dim)}
+.meta dd{margin:0;font-family:'IBM Plex Mono',monospace;font-size:12px;overflow-wrap:anywhere;color:#e6dfd2}
+.chip{font-size:12px;padding:3px 8px;border:1px solid var(--line2);border-radius:999px;color:#d8d1c4}

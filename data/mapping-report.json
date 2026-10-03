@@ -1,0 +1,575 @@
+{
+  "summary": {
+    "captures": 2190,
+    "amps": 135,
+    "mapped": 2184,
+    "parsed": 2033,
+    "unmapped": 6
+  },
+  "unmapped": [
+    {
+      "id": "15f67e5d-8007-4e24-a5cf-a58f4c88bd3c",
+      "name": "CA MixBass 1 Amp2",
+      "type": "Amp Head"
+    },
+    {
+      "id": "684bb6bc-71eb-4553-a026-4bb69265f05c",
+      "name": "CA MixBass 4 Amp1",
+      "type": "Amp Head"
+    },
+    {
+      "id": "5646fa8e-5ff1-4558-b31a-5476342e0131",
+      "name": "Tech41 BDDI Bassman",
+      "type": "Pedal"
+    },
+    {
+      "id": "46710150-8b23-4066-afe9-65fc03144679",
+      "name": "Tech41 BDDI HiGain",
+      "type": "Pedal"
+    },
+    {
+      "id": "68d9a498-92ee-4059-a459-b6500428f2e0",
+      "name": "Tech41 BDDI Kings",
+      "type": "Pedal"
+    },
+    {
+      "id": "1e1dbbb3-0abc-427f-a76f-0999af11437d",
+      "name": "Tech41 BDDI SV",
+      "type": "Pedal"
+    }
+  ],
+  "needsReview": [
+    {
+      "id": "fbedb726-bb13-42e8-b0e3-231a96445e30",
+      "name": "CA John Ch2 23",
+      "lines": [
+        "Shred: Shred 2x"
+      ]
+    },
+    {
+      "id": "db148a6f-9652-4c77-9c55-93e5f0fbd46e",
+      "name": "CA Studio+290 1",
+      "lines": [
+        "Rhythm Bright: N/A"
+      ]
+    },
+    {
+      "id": "72e2b144-b826-4993-b79a-c6fe25657a1d",
+      "name": "CA Studio+290 2",
+      "lines": [
+        "Rhythm Bright: N/A"
+      ]
+    },
+    {
+      "id": "10f0d35f-da84-4f73-b58e-fdc663057ebb",
+      "name": "Crank Rev1 1",
+      "lines": [
+        "Master 1: N/A"
+      ]
+    },
+    {
+      "id": "10a8cc8a-07d1-40ee-89cb-783e94778180",
+      "name": "Crank Rev1 2",
+      "lines": [
+        "Master 1: N/A"
+      ]
+    },
+    {
+      "id": "1532dafa-4aba-43d9-a2cd-cff1188fa5bb",
+      "name": "Darkglass Ultimate 1",
+      "lines": [
+        "Level: 60"
+      ]
+    },
+    {
+      "id": "4cd7f0d5-b0e2-4c8c-aa79-a9b856d71cf5",
+      "name": "Douglas MT900V2 1",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "352b3c06-11fc-4e99-bcf4-dbd8ba734f66",
+      "name": "Douglas MT900V2 2",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "9b0e9b70-a613-4e5f-9ace-21ec388396a1",
+      "name": "Douglas MT900V2 3",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "24100ce8-c3a2-4ce2-97d5-848a459ea9a3",
+      "name": "Douglas MT900V2 4",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "e78f15cf-5e04-4419-b4d6-94f46bf5684c",
+      "name": "Douglas MT900V2 5",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "ba02105f-c0a3-4259-b343-9f0581a122ac",
+      "name": "Douglas MT900V2 6",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "3cbfc642-5502-4538-aa89-beb1c2596cfe",
+      "name": "Douglas MT900V2 7",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "6700a12b-ad07-43c2-9793-6fac896b656d",
+      "name": "Douglas MT900V2 8",
+      "lines": [
+        "VMT / B3K VMT"
+      ]
+    },
+    {
+      "id": "d747fee9-3940-4a03-a0be-9ed724983b9a",
+      "name": "ENG Energy 1",
+      "lines": [
+        "Master B: N/A"
+      ]
+    },
+    {
+      "id": "a6592aed-1da2-4aad-a750-1c50b0ffdc97",
+      "name": "ENG Energy 2",
+      "lines": [
+        "Master B: N/A"
+      ]
+    },
+    {
+      "id": "3e457d08-8a67-4860-a746-8051f70f89ce",
+      "name": "ENG Energy 3",
+      "lines": [
+        "Master B: N/A"
+      ]
+    },
+    {
+      "id": "8aa81356-3fb4-4013-ba3e-8a40ebb903b5",
+      "name": "ENG Energy 4",
+      "lines": [
+        "Master B: N/A"
+      ]
+    },
+    {
+      "id": "d05cbf57-8f9e-4a6e-a074-7c1d4ab4868e",
+      "name": "ENG Energy 6",
+      "lines": [
+        "Master B: N/A"
+      ]
+    },
+    {
+      "id": "6a520f9e-53c8-409c-8301-4ceb05462136",
+      "name": "ENG Energy 7",
+      "lines": [
+        "Master B: N/A"
+      ]
+    },
+    {
+      "id": "418bcfa4-9cd1-4699-9975-b2ba2ee3110b",
+      "name": "ENG Energy 8",
+      "lines": [
+        "Master B: N/A"
+      ]
+    },
+    {
+      "id": "c5c0f953-90c4-4a3a-8a22-c2b853df412e",
+      "name": "MetalX M1K Clean 1",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "3f94a54c-2270-4b57-b519-4acb10fb1ccb",
+      "name": "MetalX M1K Clean 10",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "f01193b3-fe1c-4dff-a0eb-75ee949cfda8",
+      "name": "MetalX M1K Clean 11",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "d5830e89-4715-45dd-9147-6529f06020f8",
+      "name": "MetalX M1K Clean 12",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "ce099be9-6fcc-49a5-a257-9542067c3dc6",
+      "name": "MetalX M1K Clean 2",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "b5d31945-81e5-427e-843f-00dc3536b7e9",
+      "name": "MetalX M1K Clean 3",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "e3bc37fd-3772-4568-a209-f51d8ec5f61f",
+      "name": "MetalX M1K Clean 4",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "affb7c49-1e24-4522-a6c5-15144ddfb24a",
+      "name": "MetalX M1K Clean 5",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "da6b770d-8152-423a-9369-c5bab2daa34a",
+      "name": "MetalX M1K Clean 6",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "47a43ea7-c500-4e6b-b0d1-5288806e9cc1",
+      "name": "MetalX M1K Clean 7",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "8f27b885-338b-41fd-9671-05cfbc917477",
+      "name": "MetalX M1K Clean 8",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "00af09a8-c5ac-4597-9441-b837c02d6f7a",
+      "name": "MetalX M1K Clean 9",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "8186db2d-8bea-4233-88d9-c488865ae96b",
+      "name": "MetalX M1K Stage1 1",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "f68f4e09-a48a-4768-950b-7f6aa02d2139",
+      "name": "MetalX M1K Stage1 10",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "68ec1c6b-56ec-4fd5-88ae-ae9270c8025e",
+      "name": "MetalX M1K Stage1 11",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "a2767e16-a202-44d9-ab0b-d3757c7118d8",
+      "name": "MetalX M1K Stage1 12",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "e24800cf-f66e-4fbb-81ba-46f39fc8135a",
+      "name": "MetalX M1K Stage1 13",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "9199e04d-4112-4cbc-96e4-c41f2b5510bb",
+      "name": "MetalX M1K Stage1 14",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "e54e64fe-64ad-41f2-af56-96d696061ddb",
+      "name": "MetalX M1K Stage1 15",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "fd841218-d529-4fb5-95f4-3fdae086aa38",
+      "name": "MetalX M1K Stage1 16",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "d0f128fb-80d2-40f0-84a2-0acc1016c13a",
+      "name": "MetalX M1K Stage1 17",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "88ce38c5-27c2-422d-ac12-35401a950a9b",
+      "name": "MetalX M1K Stage1 2",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "1e7d8d4f-66da-4165-86a5-ab2a1e8c4448",
+      "name": "MetalX M1K Stage1 3",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "b6a82c99-8c2e-4f3d-aefa-2e4f44081388",
+      "name": "MetalX M1K Stage1 4",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "5ba12ade-7e45-4c18-87a9-ca6086eb2481",
+      "name": "MetalX M1K Stage1 5",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "f75aa468-cbf7-403c-b650-0d749a161d8c",
+      "name": "MetalX M1K Stage1 6",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "34da87db-0a43-4f59-9ab1-15738aad2358",
+      "name": "MetalX M1K Stage1 7",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "1b566795-6ca0-47a7-a00f-45546383cadd",
+      "name": "MetalX M1K Stage1 8",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "e2a1b936-8a63-4dbc-b2b6-7ac6cd40d622",
+      "name": "MetalX M1K Stage1 9",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "8fe758f0-c910-4f52-9fb4-248cb2cf8b16",
+      "name": "MetalX M1K Stage2 1",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "27688b4e-c13e-417a-b155-6c147708d625",
+      "name": "MetalX M1K Stage2 10",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "90ed5d7d-72a6-455c-aa84-7d9606d7bb0a",
+      "name": "MetalX M1K Stage2 11",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "b0f3f3c0-82d7-487f-95b2-8e91276bad7d",
+      "name": "MetalX M1K Stage2 12",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "a6d14e72-5f9a-41f8-aeb2-169a0b84f430",
+      "name": "MetalX M1K Stage2 13",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "7dd0f85c-d4d0-4b11-a142-f82ff8628a9a",
+      "name": "MetalX M1K Stage2 14",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "7bc689bf-8b77-44ac-a64b-ee899c14b83d",
+      "name": "MetalX M1K Stage2 15",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "5d58f049-2db3-4d4b-8ffa-9607091eeee3",
+      "name": "MetalX M1K Stage2 16",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "02125b69-dbd3-4e31-930a-38a278019d3d",
+      "name": "MetalX M1K Stage2 2",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "5605c99e-a586-4cb1-8bd4-013e9411241a",
+      "name": "MetalX M1K Stage2 3",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "866634e8-03b0-4c47-bd3b-515a1db7e9f5",
+      "name": "MetalX M1K Stage2 4",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "2b9e016c-0924-4f9f-aa43-5d42badb0211",
+      "name": "MetalX M1K Stage2 5",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "b9144972-63f7-4257-95d4-1c2d30e1e783",
+      "name": "MetalX M1K Stage2 6",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "db845d30-2bb7-43f9-a37e-c8e46621cc3d",
+      "name": "MetalX M1K Stage2 7",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "1ddb4e3d-283f-4352-8646-d98a4ee5fccc",
+      "name": "MetalX M1K Stage2 8",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "e852fa84-9cd1-497a-b1db-ea2e0a7e1a7d",
+      "name": "MetalX M1K Stage2 9",
+      "lines": [
+        "Master 2: N/A"
+      ]
+    },
+    {
+      "id": "47c3e6d5-fb2f-4d08-b3cf-c7662d23558d",
+      "name": "Otso Bender Mk1 14",
+      "lines": [
+        "QC Input impedance 33k"
+      ]
+    },
+    {
+      "id": "b469a1c4-48db-40c4-a267-d38c03eb3965",
+      "name": "Range Rock 1",
+      "lines": [
+        "Natural Volume: N/A"
+      ]
+    },
+    {
+      "id": "69a59656-6f7c-4c8b-8826-2d294fa0063b",
+      "name": "Range Rock 2",
+      "lines": [
+        "Natural Volume: N/A"
+      ]
+    },
+    {
+      "id": "34817cb9-21e3-475e-b7a0-1f7e3f61a6e8",
+      "name": "Range Rock 3",
+      "lines": [
+        "Natural Volume: N/A"
+      ]
+    },
+    {
+      "id": "2ae4caaf-0a4f-4266-842b-ad1e3be5ef4a",
+      "name": "Range Rock 4",
+      "lines": [
+        "Natural Volume: N/A"
+      ]
+    },
+    {
+      "id": "c8cfee69-e24b-46b9-a39c-a8c3edb259a3",
+      "name": "RV Amp G120 9",
+      "lines": [
+        "Agression Red"
+      ]
+    },
+    {
+      "id": "07ee3720-f40e-4328-b27c-56e1544a6baa",
+      "name": "SCity B120 1",
+      "lines": [
+        "Brilliant Volume: N/A"
+      ]
+    },
+    {
+      "id": "0d4b7fea-ce78-4feb-b342-2a53e3abd5e3",
+      "name": "SCity B120 2",
+      "lines": [
+        "Brilliant Volume: N/A"
+      ]
+    },
+    {
+      "id": "52d79ec5-0204-4808-920d-04bae057e19c",
+      "name": "SCity B120 3",
+      "lines": [
+        "Brilliant Volume: N/A"
+      ]
+    },
+    {
+      "id": "155fcc7b-09a3-4351-8075-9bb0b3fac3c0",
+      "name": "SCity B120 4",
+      "lines": [
+        "Brilliant Volume: N/A"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "capture-finder",
+  "private": true,
+  "description": "Static reverse lookup for Neural Captures. The app (index.html + assets/ + data/) needs no build or install; these scripts serve it locally and maintain its data.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "npx http-server . -a 127.0.0.1 -p 8080 -c-1 -d false -o",
+    "captures": "node tools/har-to-captures.mjs",
+    "build:data": "node tools/build-data.mjs",
+    "data": "npm run captures -- har/captures.har && npm run build:data",
+    "test": "node --test \"tools/tests/*.test.mjs\" && node tests/test_app.cjs",
+    "test:browser": "node tests/test_browser.cjs",
+    "test:all": "npm test && npm run test:browser",
+    "verify:gear": "node .claude/skills/gear-panel-generator/scripts/verify-gear.cjs",
+    "capture-values": "node .claude/skills/gear-panel-generator/scripts/capture-values.cjs",
+    "artboard": "node .claude/skills/gear-panel-generator/scripts/make-artboard.mjs"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "playwright-core": "^1.63.0"
+  }
+}

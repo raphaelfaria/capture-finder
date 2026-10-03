@@ -1,0 +1,326 @@
+[
+  {
+    "id": "jp2c", "brand": "Mesa/Boogie", "model": "JP-2C", "panel": "jp2c",
+    "definitionSource": "approved custom panel",
+    "match": {"source": "\\bJP2C\\b", "tags": ["jp2c"], "name": "^CA John(?:\\s+Ch|'s)"},
+    "parse": {"assumeWhenMissing": {"eqOn": true}},
+    "channels": [{"n":1,"name":"Clean Rhythm"},{"n":2,"name":"Crunch Rhythm"},{"n":3,"name":"Lead"}],
+    "controls": [
+      {"key":"gain","label":"Gain","kind":"knob","scope":"channel","min":0,"max":10,"step":0.5,"weight":3,"primary":true},
+      {"key":"pullGain","label":"Pull Gain","kind":"switch","scope":"channel","channels":[2,3],"options":[{"v":true,"label":"ON"},{"v":false,"label":"OFF"}],"weight":1.2},
+      {"key":"master","label":"Master","kind":"knob","scope":"channel","min":0,"max":10,"step":0.5,"weight":0},
+      {"key":"presence","label":"Presence","kind":"knob","scope":"channel","min":0,"max":10,"step":0.5,"weight":0.8},
+      {"key":"pullPres","label":"Pull Presence","aliases":["Pull Press"],"kind":"switch","scope":"channel","channels":[2,3],"options":[{"v":true,"label":"ON"},{"v":false,"label":"OFF"}],"weight":0.8},
+      {"key":"treble","label":"Treble","kind":"knob","scope":"channel","min":0,"max":10,"step":0.5,"weight":1},
+      {"key":"mid","label":"Mid","aliases":["Middle"],"kind":"knob","scope":"channel","min":0,"max":10,"step":0.5,"weight":1.2},
+      {"key":"bass","label":"Bass","kind":"knob","scope":"channel","min":0,"max":10,"step":0.5,"weight":1},
+      {"key":"eqOn","label":"EQ","aliases":["EQ On","Graphic EQ"],"kind":"switch","scope":"channel","options":[{"v":true,"label":"ON"},{"v":false,"label":"OFF"}],"weight":1},
+      {"key":"eq80","label":"80Hz","aliases":["80"],"kind":"fader","scope":"channel","min":0,"max":10,"step":0.5,"weight":0.6,"group":"eq","requires":"eqOn"},
+      {"key":"eq240","label":"240Hz","aliases":["240"],"kind":"fader","scope":"channel","min":0,"max":10,"step":0.5,"weight":0.6,"group":"eq","requires":"eqOn"},
+      {"key":"eq750","label":"750Hz","aliases":["750"],"kind":"fader","scope":"channel","min":0,"max":10,"step":0.5,"weight":0.6,"group":"eq","requires":"eqOn"},
+      {"key":"eq2200","label":"2200Hz","aliases":["2200"],"kind":"fader","scope":"channel","min":0,"max":10,"step":0.5,"weight":0.6,"group":"eq","requires":"eqOn"},
+      {"key":"eq6600","label":"6600Hz","aliases":["6600"],"kind":"fader","scope":"channel","min":0,"max":10,"step":0.5,"weight":0.6,"group":"eq","requires":"eqOn"},
+      {"key":"shred","label":"Shred","aliases":["Shred Mode"],"kind":"switch","scope":"global","channels":[2,3],"options":[{"v":"ch2","label":"SHRED 2","aliases":["2"]},{"v":"off","label":"MD","aliases":["Off"]},{"v":"ch23","label":"SRD 2+3","aliases":["Shred 2+3","2+3"]}],"weight":0.8}
+    ],
+    "defaults": {"channel":3,"ch":{
+      "1":{"gain":4,"master":6,"presence":6,"treble":7,"mid":8,"bass":7,"eqOn":true,"eq80":6.5,"eq240":5.5,"eq750":4.5,"eq2200":5,"eq6600":6.5},
+      "2":{"gain":5.5,"pullGain":false,"master":7,"presence":5,"pullPres":true,"treble":6.5,"mid":5,"bass":6,"eqOn":true,"eq80":7,"eq240":4.5,"eq750":3,"eq2200":5.5,"eq6600":6},
+      "3":{"gain":7.5,"pullGain":false,"master":6,"presence":7.5,"pullPres":true,"treble":8,"mid":8,"bass":3,"eqOn":true,"eq80":7,"eq240":5,"eq750":3.5,"eq2200":5,"eq6600":7}
+    },"global":{"shred":"off"}},
+    "defaultsNote": "Reference starting positions, not a capture. Master is excluded. A capture that doesn't state EQ on/off is taken as EQ on."
+  },
+  {
+    "id":"marshall-jcm800-1987","brand":"Marshall","model":"JCM800 1987","panel":"marshall1987",
+    "fullName":"JCM800 1987 Lead · 50W non-master-volume head",
+    "definitionSource":"capture settings / JCM800 Lead model layout",
+    "match":{"source":"JCM800[^\\n]*\\b1987\\b"},
+    "channels":null,
+    "controls":[
+      {"key":"volumeI","label":"VOLUME I","aliases":["Volume 1"],"kind":"knob","scope":"global","min":0,"max":10,"step":0.1,"weight":2,"primary":true},
+      {"key":"volumeII","label":"VOLUME II","aliases":["Volume 2"],"kind":"knob","scope":"global","min":0,"max":10,"step":0.1,"weight":2},
+      {"key":"treble","label":"TREBLE","kind":"knob","scope":"global","min":0,"max":10,"step":0.1,"weight":1},
+      {"key":"middle","label":"MIDDLE","aliases":["Mid","Mids"],"kind":"knob","scope":"global","min":0,"max":10,"step":0.1,"weight":1},
+      {"key":"bass","label":"BASS","kind":"knob","scope":"global","min":0,"max":10,"step":0.1,"weight":1},
+      {"key":"presence","label":"PRESENCE","kind":"knob","scope":"global","min":0,"max":10,"step":0.1,"weight":1},
+      {"key":"input","label":"Input","kind":"switch","scope":"global","weight":2,"options":[{"v":"1 High","label":"I HIGH"},{"v":"1 Low","label":"I LOW"},{"v":"2 High","label":"II HIGH"},{"v":"2 Low","label":"II LOW"}]},
+      {"key":"patchcable","label":"Patch cable","aliases":["Patchcable"],"kind":"switch","scope":"global","weight":2,"options":[{"v":"none","label":"None"},{"v":"2 Low to 1 High","label":"II Low → I High"},{"v":"2 High to 1 Low","label":"II High → I Low"},{"v":"2 Low to 1 Low","label":"II Low → I Low"}]}
+    ],
+    "panelOrder":["presence","bass","middle","treble","volumeI","volumeII"],
+    "defaults":{"channel":null,"ch":{},"global":{"presence":5,"bass":8.5,"middle":6.2,"treble":7.5,"volumeI":10,"volumeII":10,"input":"2 High","patchcable":"2 Low to 1 High"}},
+    "defaultsNote":"Starting settings: Brit 1987 1. Two blendable input channels (I: High Treble; II: Normal), not footswitchable channels. Patch routes shown are those recorded in this dataset."
+  },
+  {
+    "id": "mesa-boogie-triaxis-preamp", "brand": "Mesa/Boogie", "model": "TriAxis preamp", "panel": "triaxis", "fullName": "TriAxis all-tube programmable preamp · 1U rack", "definitionSource": "front-panel photo + capture settings", "parse": {"channelFromRows": ["RHY", "LD1", "LD2"], "ignoreWhenNA": ["SW"]},
+    "channels":[
+      {"n": 1, "name": "RHY Green", "aliases": ["Rhythm Green"]},
+      {"n": 2, "name": "RHY Yellow", "aliases": ["Rhythm Yellow"]},
+      {"n": 3, "name": "LD1 Green", "aliases": ["Lead 1 Green"]},
+      {"n": 4, "name": "LD1 Yellow", "aliases": ["Lead 1 Yellow"]},
+      {"n": 5, "name": "LD1 Red", "aliases": ["Lead 1 Red"]},
+      {"n": 6, "name": "LD2 Green", "aliases": ["Lead 2 Green"]},
+      {"n": 7, "name": "LD2 Yellow", "aliases": ["Lead 2 Yellow"]},
+      {"n": 8, "name": "LD2 Red", "aliases": ["Lead 2 Red"]}],
+    "controls":[
+      {"key": "gain", "label": "GAIN", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "primary": true},
+      {"key": "treble", "label": "TREBLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1},
+      {"key": "middle", "label": "MIDDLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "aliases": ["Mid", "Mids"]},
+      {"key": "bass", "label": "BASS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1},
+      {"key": "lead1drive", "label": "LEAD 1 DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "channels": [3, 4, 5], "aliases": ["Lead1 Drive", "LD1 Drive"]},
+      {"key": "lead2drive", "label": "LEAD 2 DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "channels": [6, 7, 8], "aliases": ["Lead2 Drive", "LD2 Drive"]},
+      {"key": "master", "label": "MASTER", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.5, "aliases": ["Master Volume"]},
+      {"key": "presence", "label": "PRESENCE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.8},
+      {"key": "dynamicvoice", "label": "DYNAMIC VOICE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "aliases": ["Dynamic Voice", "DV"]}
+    ],
+    "panelOrder":["gain", "treble", "middle", "bass", "lead1drive", "lead2drive", "master", "presence", "dynamicvoice"],
+    "defaults":{"channel": 1, "ch": {}, "global": {"gain": 5, "treble": 4, "middle": 7.5, "bass": 6.5, "lead1drive": 6.5, "lead2drive": 8, "master": 6.5, "presence": 0, "dynamicvoice": 3.5}},
+    "defaultsNote":"Starting settings: CA 3Axe 1 (RHY Green); Lead drive starting values are mid-range of the recorded ones. The eight modes are the RHY/LD1/LD2 LED matrix, not footswitchable amp channels."
+  },
+  {
+    "id": "mesa-boogie-triaxis-preamp-mesa-boogie-2-90-simulclass", "brand": "Mesa/Boogie", "model": "TriAxis + Simul-Class 2:Ninety", "panel": "triaxis290", "fullName": "TriAxis preamp into Stereo Simul-Class 2:Ninety power amp · rack", "definitionSource": "front-panel photos + capture settings", "parse": {"channelFromRows": ["RHY", "LD1", "LD2"], "ignoreWhenNA": ["SW"], "sections": [{"startsAt": "Simul-Class 2", "rename": {"Presence": "Power Presence"}}]},
+    "channels":[
+      {"n": 1, "name": "RHY Green", "aliases": ["Rhythm Green"]},
+      {"n": 2, "name": "RHY Yellow", "aliases": ["Rhythm Yellow"]},
+      {"n": 3, "name": "LD1 Green", "aliases": ["Lead 1 Green"]},
+      {"n": 4, "name": "LD1 Yellow", "aliases": ["Lead 1 Yellow"]},
+      {"n": 5, "name": "LD1 Red", "aliases": ["Lead 1 Red"]},
+      {"n": 6, "name": "LD2 Green", "aliases": ["Lead 2 Green"]},
+      {"n": 7, "name": "LD2 Yellow", "aliases": ["Lead 2 Yellow"]},
+      {"n": 8, "name": "LD2 Red", "aliases": ["Lead 2 Red"]}],
+    "controls":[
+      {"key": "gain", "label": "GAIN", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "primary": true},
+      {"key": "treble", "label": "TREBLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1},
+      {"key": "middle", "label": "MIDDLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "aliases": ["Mid", "Mids"]},
+      {"key": "bass", "label": "BASS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1},
+      {"key": "lead1drive", "label": "LEAD 1 DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "channels": [3, 4, 5], "aliases": ["Lead1 Drive", "LD1 Drive"]},
+      {"key": "lead2drive", "label": "LEAD 2 DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "channels": [6, 7, 8], "aliases": ["Lead2 Drive", "LD2 Drive"]},
+      {"key": "master", "label": "MASTER", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.5, "aliases": ["Master Volume"]},
+      {"key": "presence", "label": "PRESENCE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.8},
+      {"key": "dynamicvoice", "label": "DYNAMIC VOICE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "aliases": ["Dynamic Voice", "DV"]},
+      {"key": "level", "label": "LEVEL", "aliases": ["Level A", "Level B", "Power Level"], "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "powerPresence", "label": "POWER PRESENCE", "aliases": ["Presence A", "Presence B"], "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.8},
+      {"key": "deep", "label": "DEEP", "kind": "switch", "scope": "global", "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}], "weight": 0.8},
+      {"key": "halfDrive", "label": "1/2 DRIVE", "aliases": ["Half Drive"], "kind": "switch", "scope": "global", "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}], "weight": 0.8},
+      {"key": "modern", "label": "MODERN", "kind": "switch", "scope": "global", "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}], "weight": 0.8}
+    ],
+    "panelOrder":["gain", "treble", "middle", "bass", "lead1drive", "lead2drive", "master", "presence", "dynamicvoice"],
+    "defaults":{"channel": 2, "ch": {}, "global": {"gain": 6, "treble": 2, "middle": 7.5, "bass": 10, "lead1drive": 6, "lead2drive": 9, "master": 6, "presence": 3.5, "dynamicvoice": 2, "level": 5.5, "powerPresence": 0, "deep": true, "halfDrive": false, "modern": true}},
+    "defaultsNote":"Starting settings: CA 3Axe+290 1 (RHY Yellow). Captures record one power-amp Level/Presence without saying side A or B; they are shown in the A position."
+  },
+  {
+    "id": "aguilar-tone-hammer-500", "brand": "Aguilar", "model": "Tone Hammer 500", "panel": "tonehammer", "fullName": "Tone Hammer 500 · 500W compact bass head", "definitionSource": "front-panel photo + capture settings", "match": {"source": "\\bTone\\s*Hammer[®™]?\\s*500\\b"},
+    "channels": null,
+    "controls":[
+      {"key": "gain", "label": "GAIN", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 2, "primary": true, "aliases": ["Preamp Gain"]},
+      {"key": "midlevel", "label": "MID LEVEL", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1, "aliases": ["Mid", "Mid Lvl"]},
+      {"key": "bass", "label": "BASS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "drive", "label": "DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1.5, "aliases": ["Tone Hammer Drive"]},
+      {"key": "midfreq", "label": "MID FREQ", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 0.8, "aliases": ["Mid Frequency", "Mid Freq."]},
+      {"key": "treble", "label": "TREBLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1}
+    ],
+    "panelOrder":["gain", "midlevel", "bass", "drive", "midfreq", "treble"],
+    "defaults":{"channel": null, "ch": {}, "global": {"gain": 3.5, "midlevel": 3.5, "bass": 3.5, "drive": 0, "midfreq": 3.5, "treble": 5}},
+    "defaultsNote":"Starting settings: Aggi Hammer 500 1. Master, the −10 dB pad and the rear/side jacks are not recorded in any capture and are not shown."
+  },
+  {
+    "id": "ibanez-ts9-tube-screamer", "brand": "Ibanez", "model": "TS9 Tube Screamer", "panel": "ts9", "category": "Pedals", "fullName": "TS9 Tube Screamer · overdrive pedal", "definitionSource": "pedal photo + capture settings", "match": {"source": "^Ibanez\\W+TS-?9\\b"},
+    "channels": null,
+    "controls":[
+      {"key": "drive", "label": "DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "primary": true, "aliases": ["Overdrive"]},
+      {"key": "tone", "label": "TONE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1},
+      {"key": "level", "label": "LEVEL", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.8, "aliases": ["Volume", "Output"]}
+    ],
+    "panelOrder":["drive", "tone", "level"],
+    "defaults":{"channel": null, "ch": {}, "global": {"drive": 0, "tone": 3.5, "level": 10}},
+    "defaultsNote":"Starting settings: Iba Green 9 1. The status LED, footswitch, jacks and the lower body of the pedal are not recorded and are not shown."
+  },
+  {
+    "id": "origin-effects-cali76", "brand": "Origin Effects", "model": "Cali76", "panel": "cali76", "category": "Compressors", "fullName": "Cali76 · FET compressor pedal", "definitionSource": "pedal photo + capture settings", "match": {"source": "^Origin\\W+Effects\\W+Cali\\s*76"},
+    "channels": null,
+    "controls":[
+      {"key": "dry", "label": "DRY", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0, "aliases": ["Blend", "Mix"]},
+      {"key": "output", "label": "OUT", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.8, "aliases": ["Output"]},
+      {"key": "inputcomp", "label": "IN", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 2, "primary": true, "aliases": ["Input/Comp", "Input", "Comp", "Compression"]},
+      {"key": "ratio", "label": "RATIO", "kind": "switch", "scope": "global", "weight": 1.5, "options": [{"v": 4, "label": "4:1"}, {"v": 8, "label": "8:1"}, {"v": 12, "label": "12:1"}, {"v": 20, "label": "20:1"}]},
+      {"key": "attack", "label": "ATTACK", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1},
+      {"key": "release", "label": "RELEASE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1}
+    ],
+    "panelOrder":["dry", "output", "inputcomp", "ratio", "attack", "release"],
+    "defaults":{"channel": null, "ch": {}, "global": {"dry": 0, "output": 8, "inputcomp": 5, "ratio": 20, "attack": 10, "release": 10}},
+    "defaultsNote":"Starting settings: OC-76 Comp 1. DRY is on the pedal but not in any capture, so it is shown and not matched. The jacks, gain-reduction meter, LED and footswitch are not recorded and are not shown."
+  },
+  {
+    "id": "neural-dsp-darkglass-ultra", "brand": "Neural DSP", "model": "Darkglass Ultra", "panel": "b7kultra", "category": "Overdrive", "fullName": "Darkglass Ultra plugin · Microtubes B7K Ultra pedal", "definitionSource": "pedal photo + capture settings", "match": {"source": "\\bDarkglass\\s+Ultra\\s+by\\s+Neural DSP"},
+    "channels": null,
+    "controls":[
+      {"key": "master", "label": "MASTER", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 0.8, "aliases": ["Master Volume"]},
+      {"key": "blend", "label": "BLEND", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1.2},
+      {"key": "level", "label": "LEVEL", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "drive", "label": "DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 2, "primary": true, "aliases": ["Gain"]},
+      {"key": "attack", "label": "ATTACK", "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "up", "label": "UP"}, {"v": "mid", "label": "MID"}, {"v": "down", "label": "DN"}]},
+      {"key": "grunt", "label": "GRUNT", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": "up", "label": "UP"}, {"v": "mid", "label": "MID"}, {"v": "down", "label": "DN"}]},
+      {"key": "bass", "label": "BASS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "lomids", "label": "LO MIDS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1, "aliases": ["Lo Mid", "Low Mids"]},
+      {"key": "himids", "label": "HI MIDS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1, "aliases": ["Hi Mid", "High Mids"]},
+      {"key": "treble", "label": "TREBLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "lomidsswitch", "label": "LO MIDS SWITCH", "aliases": ["Lo Mids Freq"], "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "up", "label": "500"}, {"v": "mid", "label": "1k"}, {"v": "down", "label": "250"}]},
+      {"key": "himidsswitch", "label": "HI MIDS SWITCH", "aliases": ["Hi Mids Freq"], "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "up", "label": "1.5k"}, {"v": "mid", "label": "3k"}, {"v": "down", "label": "750"}]},
+      {"key": "distortion", "label": "DISTORTION", "kind": "switch", "scope": "global", "weight": 1.5, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]}
+    ],
+    "panelOrder":["master", "blend", "level", "drive", "bass", "lomids", "himids", "treble", "attack", "lomidsswitch", "grunt", "himidsswitch", "distortion"],
+    "defaults":{"channel": null, "ch": {}, "global": {"master": 5.2, "blend": 4.5, "level": 6.2, "drive": 4.5, "attack": "mid", "grunt": "down", "bass": 5.1, "lomids": 3.5, "himids": 5.5, "treble": 4.5, "lomidsswitch": "down", "himidsswitch": "mid", "distortion": true}},
+    "defaultsNote":"Starting settings: Darkglass Ultimate 8 (the captures are named “Darkglass Ultimate”, but describe the Darkglass Ultra plugin). The mid-switch frequencies follow the order printed on the pedal. Bypass, LEDs and jacks are not recorded and are not shown."
+  },
+  {
+    "id": "neural-dsp-darkglass-ultimate", "brand": "Neural DSP", "model": "Darkglass Ultimate", "panel": "b7kultra", "category": "Amps", "fullName": "Darkglass Ultimate plugin · Microtubes B7K Ultra pedal section", "definitionSource": "pedal photo + capture settings", "match": {"source": "\\bDarkglass\\s+Ultimate\\s+by\\s+Neural DSP"},
+    "channels": null,
+    "controls":[
+      {"key": "master", "label": "MASTER", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 0.8, "aliases": ["Master Volume"]},
+      {"key": "blend", "label": "BLEND", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1.2},
+      {"key": "level", "label": "LEVEL", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "drive", "label": "DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 2, "primary": true, "aliases": ["Gain"]},
+      {"key": "attack", "label": "ATTACK", "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "up", "label": "UP"}, {"v": "mid", "label": "MID"}, {"v": "down", "label": "DN"}]},
+      {"key": "grunt", "label": "GRUNT", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": "up", "label": "UP"}, {"v": "mid", "label": "MID"}, {"v": "down", "label": "DN"}]},
+      {"key": "bass", "label": "BASS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "lomids", "label": "LO MIDS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1, "aliases": ["Lo Mid", "Low Mids"]},
+      {"key": "himids", "label": "HI MIDS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1, "aliases": ["Hi Mid", "High Mids"]},
+      {"key": "treble", "label": "TREBLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "lomidsswitch", "label": "LO MIDS SWITCH", "aliases": ["Lo Mids Freq"], "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "up", "label": "500"}, {"v": "mid", "label": "1k"}, {"v": "down", "label": "250"}]},
+      {"key": "himidsswitch", "label": "HI MIDS SWITCH", "aliases": ["Hi Mids Freq"], "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "up", "label": "1.5k"}, {"v": "mid", "label": "3k"}, {"v": "down", "label": "750"}]},
+      {"key": "distortion", "label": "DISTORTION", "kind": "switch", "scope": "global", "weight": 1.5, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]}
+    ],
+    "panelOrder":["master", "blend", "level", "drive", "bass", "lomids", "himids", "treble", "attack", "lomidsswitch", "grunt", "himidsswitch", "distortion"],
+    "defaults":{"channel": null, "ch": {}, "global": {"master": 4.8, "blend": 3.9, "level": 6, "drive": 2.2, "attack": "mid", "grunt": "down", "bass": 5.3, "lomids": 4, "himids": 6.2, "treble": 4.2, "lomidsswitch": "down", "himidsswitch": "mid", "distortion": true}},
+    "defaultsNote":"Starting settings: Darkglass Ultimate 3. Only the plugin's B7K/VU pedal section is compared; its compressor, fuzz, cab and EQ settings stay in the description. The mid-switch frequencies follow the order printed on the pedal."
+  },
+  {
+    "id": "bogner-ecstasy-100b", "brand": "Bogner", "model": "Ecstasy 100B", "panel": "ecstasy", "category": "Amps", "fullName": "Ecstasy 100B · three-channel head", "definitionSource": "front/rear panel photos + capture settings", "match": {"source": "\\bEcstasy\\W+100B\\b(?![^\\n]*(?:preamp|power amp) section)"},
+    "channels":[{"n": 1, "name": "Green", "aliases": ["1"]}, {"n": 2, "name": "White", "aliases": ["2"]}, {"n": 3, "name": "Red", "aliases": ["3"]}],
+    "controls":[
+      {"key": "presence", "label": "PRESENCE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.8},
+      {"key": "mastervol", "label": "M. VOL.", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.5, "aliases": ["Master Volume", "Master", "M. Vol"]},
+      {"key": "excursion", "label": "EXCURSION", "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "Loose", "label": "Loose"}, {"v": "Tight", "label": "Tight"}]},
+      {"key": "vol1", "label": "VOL. 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Volume"]},
+      {"key": "treble1", "label": "TREBLE 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Treble"]},
+      {"key": "middle1", "label": "MIDDLE 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Middle", "Mid"]},
+      {"key": "bass1", "label": "BASS 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Bass"]},
+      {"key": "preeq1", "label": "PRE EQ 1", "kind": "switch", "scope": "global", "weight": 1, "options": [{"v": "Bright 1", "label": "Bright 1"}, {"v": "Neutral", "label": "Neutral"}, {"v": "Bright 2", "label": "Bright 2"}], "channels": [1], "aliases": ["Pre. EQ", "Pre EQ"]},
+      {"key": "gain1", "label": "GAIN 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 3, "channels": [1], "primary": true, "aliases": ["Gain"]},
+      {"key": "vol3", "label": "VOL. 3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [3], "aliases": ["Volume"]},
+      {"key": "vol2", "label": "VOL. 2", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2], "aliases": ["Volume"]},
+      {"key": "gainmode", "label": "GAIN MODE CH 3", "kind": "switch", "scope": "global", "weight": 1.5, "options": [{"v": "Plexi", "label": "Plexi"}, {"v": "Lead", "label": "Lead"}], "channels": [3], "aliases": ["Gain mode"]},
+      {"key": "treble23", "label": "TREBLE 2/3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2, 3], "aliases": ["Treble"]},
+      {"key": "air", "label": "AIR", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": "Lo", "label": "Lo"}, {"v": "Hi", "label": "Hi"}], "channels": [2, 3]},
+      {"key": "middle23", "label": "MIDDLE 2/3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2, 3], "aliases": ["Middle", "Mid"]},
+      {"key": "gainsw", "label": "GAIN SWITCH", "kind": "switch", "scope": "global", "weight": 1.2, "options": [{"v": "Lo", "label": "Lo"}, {"v": "Hi", "label": "Hi"}], "channels": [2, 3], "aliases": ["Gain"]},
+      {"key": "bass23", "label": "BASS 2/3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2, 3], "aliases": ["Bass"]},
+      {"key": "preeq3", "label": "PRE EQ 3", "kind": "switch", "scope": "global", "weight": 1, "options": [{"v": "Bright", "label": "Bright"}, {"v": "Mid", "label": "Mid", "aliases": ["Normal", "Middle"]}, {"v": "Dark", "label": "Dark"}], "channels": [3], "aliases": ["Pre. EQ", "Pre EQ"]},
+      {"key": "gain3", "label": "GAIN 3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 3, "channels": [3], "primary": true, "aliases": ["Gain"]},
+      {"key": "preeq2", "label": "PRE EQ 2", "kind": "switch", "scope": "global", "weight": 1, "options": [{"v": "Bright", "label": "Bright"}, {"v": "Mid", "label": "Mid", "aliases": ["Normal", "Middle"]}, {"v": "Dark", "label": "Dark"}], "channels": [2], "aliases": ["Pre. EQ", "Pre EQ"]},
+      {"key": "gain2", "label": "GAIN 2", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 3, "channels": [2], "primary": true, "aliases": ["Gain"]},
+      {"key": "soundstyle", "label": "SOUND STYLE", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": "Old", "label": "Old"}, {"v": "New", "label": "New"}]},
+      {"key": "variac", "label": "VARIAC", "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]}
+    ],
+    "panelOrder":["presence", "mastervol", "excursion", "vol1", "treble1", "middle1", "bass1", "preeq1", "gain1", "vol3", "vol2", "gainmode", "treble23", "air", "middle23", "gainsw", "bass23", "preeq3", "gain3", "preeq2", "gain2", "soundstyle", "variac"],
+    "defaults":{"channel": 2, "ch": {}, "global": {"presence": 6, "mastervol": 6.5, "excursion": "Tight", "vol1": 8, "treble1": 6.5, "middle1": 3.5, "bass1": 4, "preeq1": "Neutral", "gain1": 6, "vol3": 5, "vol2": 6, "gainmode": "Plexi", "treble23": 6, "air": "Lo", "middle23": 4, "gainsw": "Lo", "bass23": 5, "preeq3": "Dark", "gain3": 3.5, "preeq2": "Dark", "gain2": 9, "soundstyle": "New", "variac": false}},
+    "defaultsNote":"Starting settings: Bogna X100B Ch2 1 (channel 1 and 3 controls from Ch1 1 and Ch3 1). Channel 1 has its own Treble/Middle/Bass; channels 2 and 3 share theirs, plus the Air and Gain Lo/Hi switches. Sound Style and Variac are rear-panel switches, shown at the left. Pre EQ “Normal”/“Middle” in descriptions means Mid."
+  },
+  {
+    "id": "bogner-ecstasy-100b-preamp-section", "brand": "Bogner", "model": "Ecstasy 100B Preamp section", "panel": "ecstasy", "category": "Amps", "fullName": "Ecstasy 100B · preamp section (per-channel controls)", "definitionSource": "front panel photo + capture settings", "match": {"source": "\\bEcstasy\\W+100B\\b[^\\n]*preamp section"},
+    "channels":[{"n": 1, "name": "Green", "aliases": ["1"]}, {"n": 2, "name": "White", "aliases": ["2"]}, {"n": 3, "name": "Red", "aliases": ["3"]}],
+    "controls":[
+      {"key": "vol1", "label": "VOL. 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Volume"]},
+      {"key": "treble1", "label": "TREBLE 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Treble"]},
+      {"key": "middle1", "label": "MIDDLE 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Middle", "Mid"]},
+      {"key": "bass1", "label": "BASS 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [1], "aliases": ["Bass"]},
+      {"key": "preeq1", "label": "PRE EQ 1", "kind": "switch", "scope": "global", "weight": 1, "options": [{"v": "Bright 1", "label": "Bright 1"}, {"v": "Neutral", "label": "Neutral"}, {"v": "Bright 2", "label": "Bright 2"}], "channels": [1], "aliases": ["Pre. EQ", "Pre EQ"]},
+      {"key": "gain1", "label": "GAIN 1", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 3, "channels": [1], "primary": true, "aliases": ["Gain"]},
+      {"key": "vol3", "label": "VOL. 3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [3], "aliases": ["Volume"]},
+      {"key": "vol2", "label": "VOL. 2", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2], "aliases": ["Volume"]},
+      {"key": "gainmode", "label": "GAIN MODE CH 3", "kind": "switch", "scope": "global", "weight": 1.5, "options": [{"v": "Plexi", "label": "Plexi"}, {"v": "Lead", "label": "Lead"}], "channels": [3], "aliases": ["Gain mode", "Gain"]},
+      {"key": "treble23", "label": "TREBLE 2/3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2, 3], "aliases": ["Treble"]},
+      {"key": "air", "label": "AIR", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": "Lo", "label": "Lo"}, {"v": "Hi", "label": "Hi"}], "channels": [2, 3]},
+      {"key": "middle23", "label": "MIDDLE 2/3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2, 3], "aliases": ["Middle", "Mid"]},
+      {"key": "gainsw", "label": "GAIN SWITCH", "kind": "switch", "scope": "global", "weight": 1.2, "options": [{"v": "Lo", "label": "Lo"}, {"v": "Hi", "label": "Hi"}], "channels": [2, 3], "aliases": ["Gain"]},
+      {"key": "bass23", "label": "BASS 2/3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1, "channels": [2, 3], "aliases": ["Bass"]},
+      {"key": "preeq3", "label": "PRE EQ 3", "kind": "switch", "scope": "global", "weight": 1, "options": [{"v": "Bright", "label": "Bright"}, {"v": "Mid", "label": "Mid", "aliases": ["Normal", "Middle"]}, {"v": "Dark", "label": "Dark"}], "channels": [3], "aliases": ["Pre. EQ", "Pre EQ"]},
+      {"key": "gain3", "label": "GAIN 3", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 3, "channels": [3], "primary": true, "aliases": ["Gain"]},
+      {"key": "preeq2", "label": "PRE EQ 2", "kind": "switch", "scope": "global", "weight": 1, "options": [{"v": "Bright", "label": "Bright"}, {"v": "Mid", "label": "Mid", "aliases": ["Normal", "Middle"]}, {"v": "Dark", "label": "Dark"}], "channels": [2], "aliases": ["Pre. EQ", "Pre EQ"]},
+      {"key": "gain2", "label": "GAIN 2", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 3, "channels": [2], "primary": true, "aliases": ["Gain"]}
+    ],
+    "panelOrder":["vol1", "treble1", "middle1", "bass1", "preeq1", "gain1", "vol3", "vol2", "gainmode", "treble23", "air", "middle23", "gainsw", "bass23", "preeq3", "gain3", "preeq2", "gain2"],
+    "defaults":{"channel": 2, "ch": {}, "global": {"vol1": 6.5, "treble1": 6, "middle1": 6, "bass1": 6.5, "preeq1": "Bright 1", "gain1": 4, "vol3": 8, "vol2": 6.5, "gainmode": "Lead", "treble23": 6, "air": "Hi", "middle23": 6.5, "gainsw": "Hi", "bass23": 5, "preeq3": "Dark", "gain3": 4.5, "preeq2": "Dark", "gain2": 6.5}},
+    "defaultsNote":"Starting settings: Bogna X100B Pre Ch2 Hi 1 (channel 1 and 3 controls from Pre Ch1 1 and Pre Ch3 Lead 1). Only the preamp's per-channel controls are captured; Presence, Master, Excursion and the rear switches belong to the power amp section. The descriptions write Gain Mode as a second “Gain” line (Lead/Plexi)."
+  },
+  {
+    "id": "bogner-ecstasy-100b-power-amp-section", "brand": "Bogner", "model": "Ecstasy 100B Power amp section", "panel": "ecstasy", "category": "Amps", "fullName": "Ecstasy 100B · power amp section (EL34)", "definitionSource": "front/rear panel photos + capture settings", "match": {"source": "\\bEcstasy\\W+100B\\b[^\\n]*power amp section"},
+    "channels":null,
+    "controls":[
+      {"key": "presence", "label": "PRESENCE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 1},
+      {"key": "mastervol", "label": "M. VOL.", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1.5, "aliases": ["Master Volume", "Master", "M. Vol"], "primary": true},
+      {"key": "excursion", "label": "EXCURSION", "kind": "switch", "scope": "global", "weight": 0.6, "options": [{"v": "Loose", "label": "Loose"}, {"v": "Tight", "label": "Tight"}]},
+      {"key": "soundstyle", "label": "SOUND STYLE", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": "Old", "label": "Old"}, {"v": "New", "label": "New"}], "aliases": ["Style", "Sound Style"]},
+      {"key": "variac", "label": "VARIAC", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]}
+    ],
+    "panelOrder":["presence", "mastervol", "excursion", "soundstyle", "variac"],
+    "defaults":{"channel": null, "ch": {}, "global": {"presence": 3.5, "mastervol": 10, "excursion": "Tight", "soundstyle": "New", "variac": false}},
+    "defaultsNote":"Starting settings: Bogna X100B PA NEW 1. The power amp section's controls only: Presence, Master Volume and Excursion on the front, Sound Style (written “Style”) and Variac on the rear panel."
+  },
+  {
+    "id": "mesa-boogie-mark2c", "brand": "Mesa/Boogie", "model": "Mark IIC+", "panel": "markiic", "category": "Amps", "fullName": "Mark IIC+ · head with 5-band graphic EQ", "definitionSource": "front/rear panel photos + capture settings", "match": {"source": "\\bMark\\W*(?:2|II)\\W*C\\+"},
+    "channels":null,
+    "controls":[
+      {"key": "volume", "label": "VOLUME 1", "aliases": ["Volume", "Volume 1", "Vol 1"], "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 2.5, "primary": true},
+      {"key": "pullbright1", "label": "Volume 1 Pull Bright", "aliases": ["Pull Bright"], "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "treble", "label": "TREBLE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "pullshifttreble", "label": "Pull Shift Treble", "aliases": ["Treble Shift", "Pull Shift (Treble)"], "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "bass", "label": "BASS", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "pullshiftbass", "label": "Pull Shift Bass", "aliases": ["Bass Shift", "Pull Shift (Bass)"], "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "middle", "label": "MIDDLE", "aliases": ["Mid", "Mids"], "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 1},
+      {"key": "master1", "label": "MASTER 1", "aliases": ["Master 1", "Master"], "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 0.6},
+      {"key": "pulldeep", "label": "Pull Deep", "kind": "switch", "scope": "global", "weight": 0.8, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "leaddrive", "label": "LEAD DRIVE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 2, "requires": "pulllead"},
+      {"key": "pulllead", "label": "Pull Lead", "kind": "switch", "scope": "global", "weight": 2, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "leadmaster", "label": "LEAD MASTER", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 0.6, "requires": "pulllead"},
+      {"key": "pullbright2", "label": "Lead Master Pull Bright", "aliases": ["Pull Bright"], "kind": "switch", "scope": "global", "weight": 0.8, "requires": "pulllead", "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "eq80", "label": "80Hz", "aliases": ["80"], "kind": "fader", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.6},
+      {"key": "eq240", "label": "240Hz", "aliases": ["240"], "kind": "fader", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.6},
+      {"key": "eq750", "label": "750Hz", "aliases": ["750"], "kind": "fader", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.6},
+      {"key": "eq2200", "label": "2200Hz", "aliases": ["2200"], "kind": "fader", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.6},
+      {"key": "eq6600", "label": "6600Hz", "aliases": ["6600"], "kind": "fader", "scope": "global", "min": 0, "max": 10, "step": 0.5, "weight": 0.6},
+      {"key": "presence", "label": "PRESENCE", "kind": "knob", "scope": "global", "min": 0, "max": 10, "step": 0.1, "weight": 0.5},
+      {"key": "powermode", "label": "SIMUL-CLASS / CLASS A", "aliases": ["Class A/Simulclass", "Simulclass/Class A", "Simul-Class", "Power Mode"], "kind": "switch", "scope": "global", "weight": 0.5, "options": [{"v": "Simulclass", "label": "SIMUL-CLASS", "aliases": ["Simul-Class", "Simul Class"]}, {"v": "Class A", "label": "CLASS A", "aliases": ["ClassA"]}]}
+    ],
+    "panelOrder":["volume", "treble", "bass", "middle", "master1", "leaddrive", "leadmaster", "eq80", "eq240", "eq750", "eq2200", "eq6600", "presence", "powermode"],
+    "defaults":{"channel": null, "ch": {}, "global": {"volume": 7.8, "pullbright1": false, "treble": 8, "pullshifttreble": true, "bass": 0, "pullshiftbass": false, "middle": 5, "master1": 4.5, "pulldeep": true, "leaddrive": 8, "pulllead": true, "leadmaster": 4.7, "pullbright2": true, "eq80": 8, "eq240": 5, "eq750": 0, "eq2200": 5.5, "eq6600": 7, "presence": 0, "powermode": "Simulclass"}},
+    "defaultsNote":"Starting settings: CA MkCC+ 1. The PULL labels above the knobs are the pull switches. Lead Drive, Lead Master and its Pull Bright only count while Pull Lead is on (dimmed otherwise). Presence and the Simul-Class / Class A switch sit on the rear panel; they are shown where the standby and power switches are. The EQ in/auto switch isn't recorded by any capture, so it is left out (every capture states the slider positions)."
+  },
+  {
+    "id": "fender-hot-rod-deluxe", "brand": "Fender", "model": "Hot Rod Deluxe", "panel": "hotrod", "category": "Amps", "fullName": "Hot Rod Deluxe · two-channel 1x12 combo", "definitionSource": "front/top panel photos + capture settings", "match": {"source": "\\bHot\\W*Rod\\W*Deluxe\\b(?![^\\n]*power amp section)"},
+    "channels":[{"n": 1, "name": "Normal", "aliases": ["A", "Clean", "Normal"]}, {"n": 2, "name": "Drive", "aliases": ["B", "Drive"]}],
+    "controls":[
+      {"key": "normalbright", "label": "NORMAL BRIGHT", "aliases": ["Bright On/Off", "Bright", "Normal Bright"], "kind": "switch", "scope": "global", "channels": [1], "weight": 0.8, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "volume", "label": "VOLUME", "aliases": ["Volume", "Normal Volume"], "kind": "knob", "scope": "global", "channels": [1], "min": 0, "max": 12, "step": 0.1, "weight": 2.5, "primary": true},
+      {"key": "moredrive", "label": "MORE DRIVE", "aliases": ["More Drive"], "kind": "switch", "scope": "global", "channels": [2], "weight": 1.5, "options": [{"v": true, "label": "ON"}, {"v": false, "label": "OFF"}]},
+      {"key": "drive", "label": "DRIVE", "kind": "knob", "scope": "global", "channels": [2], "min": 0, "max": 12, "step": 0.1, "weight": 2.5, "primary": true},
+      {"key": "treble", "label": "TREBLE", "kind": "knob", "scope": "global", "min": 0, "max": 12, "step": 0.1, "weight": 1},
+      {"key": "bass", "label": "BASS", "kind": "knob", "scope": "global", "min": 0, "max": 12, "step": 0.1, "weight": 1},
+      {"key": "middle", "label": "MIDDLE", "aliases": ["Mid", "Mids"], "kind": "knob", "scope": "global", "min": 0, "max": 12, "step": 0.1, "weight": 1},
+      {"key": "master", "label": "MASTER", "aliases": ["Master", "Master Volume", "Drive Master"], "kind": "knob", "scope": "global", "channels": [2], "min": 0, "max": 12, "step": 0.1, "weight": 0.8},
+      {"key": "reverb", "label": "REVERB", "kind": "knob", "scope": "global", "min": 0, "max": 12, "step": 0.1, "weight": 0},
+      {"key": "presence", "label": "PRESENCE", "kind": "knob", "scope": "global", "min": 0, "max": 12, "step": 0.1, "weight": 0.8}
+    ],
+    "panelOrder":["normalbright", "volume", "moredrive", "drive", "treble", "bass", "middle", "master", "reverb", "presence"],
+    "defaults":{"channel": 1, "ch": {}, "global": {"normalbright": false, "volume": 2.5, "moredrive": false, "drive": 3.5, "treble": 3, "bass": 3, "middle": 3, "master": 3.5, "reverb": 0, "presence": 10}},
+    "defaultsNote":"Starting settings: US HRDLX ChA 1 (Drive, More Drive and Master from US HRDLX ChB 1). Captures call the channels A (Normal) and B (Drive); CHANNEL SELECT on the panel switches between them, and the controls the other channel doesn't use are dimmed. The knobs are printed 1–12; a few captures write 0, shown fully counter-clockwise like 1. Reverb is on the panel but no capture records it: shown, not matched."
+  },
+  {
+    "id": "fender-hot-rod-deluxe-power-amp-section", "brand": "Fender", "model": "Hot Rod Deluxe Power amp section", "panel": "hotrod", "category": "Amps", "fullName": "Hot Rod Deluxe · power amp section (6V6)", "definitionSource": "front/top panel photos + capture settings", "match": {"source": "\\bHot\\W*Rod\\W*Deluxe\\b[^\\n]*power amp section"},
+    "channels":null,
+    "controls":[
+      {"key": "presence", "label": "PRESENCE", "kind": "knob", "scope": "global", "min": 0, "max": 12, "step": 0.1, "weight": 1, "primary": true}
+    ],
+    "panelOrder":["presence"],
+    "defaults":{"channel": null, "ch": {}, "global": {"presence": 5}},
+    "defaultsNote":"Starting settings: US HRDLX PA 6V6 5. The power amp section's only recorded control is Presence; the knobs are printed 1–12 and a capture at 0 is shown fully counter-clockwise like 1."
+  }
+]

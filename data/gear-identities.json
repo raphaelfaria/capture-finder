@@ -1,0 +1,7 @@
+[
+  {"id": "hallmark-guitars-nu-fuzz", "brand": "Hallmark Guitars", "model": "Nu-Fuzz", "match": {"source": "^Hallmark\\W+Guitars\\s+Nu-Fuzz"}},
+  {"id": "custom-teabird", "brand": "Custom built", "model": "TeaBird", "match": {"source": "^custom built TeaBird"}},
+  {"id": "custom-keeley-4-knob-inspired", "brand": "Custom built", "model": "4 Knob compressor (Keeley-inspired, modified)", "match": {"source": "inspired by Keeley Electronics\\W+4 Knob"}},
+  {"id": "darkglass-vintage-microtubes-b7k-in-series", "brand": "Darkglass", "model": "Vintage Microtubes + B7K (in series)", "match": {"source": "Vintage Microtubes\\W+and\\s+(?:Douglas|Darkglass)\\W+B7K"}},
+  {"id": "tech-21-sansamp-ged-2112", "brand": "Tech 21", "model": "SansAmp GED-2112", "match": {"source": "^Tech\\s*21\\W+(?:SansAmp\\W+)?GED[- ]?2112"}}
+]

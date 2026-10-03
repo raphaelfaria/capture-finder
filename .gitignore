@@ -1,0 +1,7 @@
+# HAR recordings can contain session cookies or tokens; keep them local (har/captures.har)
+*.har
+/har/
+
+node_modules/
+.DS_Store
+docs
