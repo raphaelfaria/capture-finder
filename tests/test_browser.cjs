@@ -160,12 +160,13 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.waitForFunction(()=>state.amp==='marshall-jcm800-1987');
     await topIs('Brit 1987 2', 100);
 
-    // (i) popover: opens below its button, focus moves in; ✕, Escape and an outside click close it.
+    // (i) popover: a dialog centred in the window over a dimmed backdrop; focus moves in; ✕, Escape and a click on the backdrop close it.
     await page.locator('#info-btn').click();
     await page.waitForFunction(()=>document.activeElement?.id==='info-close');
     assert.match(await page.locator('#info-pop').innerText(), /Matching on JCM800 1987[\s\S]*Visual reference only — nothing here controls a physical amp/);
-    const [btnBox, popBox] = [await page.locator('#info-btn').boundingBox(), await page.locator('#info-pop').boundingBox()];
-    assert.ok(popBox.y >= btnBox.y + btnBox.height);
+    const popBox = await page.locator('#info-pop').boundingBox(), vp = page.viewportSize();
+    assert.ok(Math.abs(popBox.x + popBox.width / 2 - vp.width / 2) <= 2 && Math.abs(popBox.y + popBox.height / 2 - vp.height / 2) <= 2, 'info dialog is centred');
+    assert.notEqual(await page.evaluate(()=>getComputedStyle(document.querySelector('.infoscrim')).backgroundColor), 'rgba(0, 0, 0, 0)');
     await page.keyboard.press('Escape');
     await page.waitForFunction(()=>!document.querySelector('#info-pop') && document.activeElement?.id==='info-btn');
     await page.locator('#info-btn').click();
@@ -185,6 +186,31 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.waitForFunction(()=>document.querySelector('#cap-listbox .gearhead')?.textContent==='Pedals');
     assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('#cap-listbox .gearsub')].map(h=>h.textContent)), ['Guitar','Bass']);
     await page.keyboard.press('Escape');
+
+    // Matching weights: an editor floats over each control while the panel is dimmed and locked;
+    // edits re-rank the captures, are saved per gear, and Reset restores the defaults.
+    await go(url+'?amp=marshall-jcm800-1987');
+    await page.locator('#wt-btn').click();
+    await page.waitForSelector('#wt-done');
+    assert.equal(await page.locator('#reset').count(), 0); // the weight buttons take Reset's place
+    assert.ok(await page.evaluate(()=>{ const cab = document.querySelector('#stage .cab'); return cab.inert && cab.classList.contains('wedit'); }));
+    const wkey = await page.evaluate(()=>cur().def.controls.find(c=>c.kind==='knob' && c.weight > 0).key);
+    assert.ok(await page.evaluate((k)=>{ const w = document.getElementById('w-'+k+'-').getBoundingClientRect(), r = document.querySelector('#stage .cab .kwrap[data-ctrl="'+k+'"]').getBoundingClientRect(), x = (w.left + w.right)/2, y = (w.top + w.bottom)/2; return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom; }, wkey), 'weight editor sits over its knob');
+    const before = await page.locator('#results').innerText();
+    await page.locator('#w-'+wkey+'-').fill('0');
+    await page.locator('#w-'+wkey+'-').press('Enter');
+    await page.waitForFunction((k)=>ctrlByKey(k).weight === 0 && document.getElementById('w-'+k+'-').value === '0', wkey);
+    await page.waitForFunction((b)=>document.getElementById('results').innerText !== b, before);
+    await page.locator('#w-'+wkey+'--inc').click({ force:true });
+    await page.waitForFunction((k)=>ctrlByKey(k).weight === 0.1 && document.getElementById('w-'+k+'-')?.value === '0.1', wkey); // rendered, so saved
+    await go(url+'?amp=marshall-jcm800-1987');
+    assert.equal(await page.evaluate((k)=>ctrlByKey(k).weight, wkey), 0.1);
+    assert.ok(await page.evaluate(()=>document.querySelector('#wt-btn').classList.contains('custom')));
+    await page.locator('#wt-btn').click();
+    await page.locator('#wt-reset').click();
+    await page.waitForFunction((k)=>ctrlByKey(k).weight === ctrlByKey(k).w0 && !state.weights['marshall-jcm800-1987'], wkey);
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(()=>!document.querySelector('#wt-done') && document.querySelector('#reset') && !document.querySelector('#stage .cab').inert && document.activeElement?.id === 'wt-btn');
 
     // Results are redone at most every 150 ms while controls move, but always land on the last settings.
     await go(url+'?amp=jp2c');

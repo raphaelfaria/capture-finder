@@ -50,8 +50,30 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .infobtn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid #47423b;background:#1a1816;color:var(--text)}
 .infobtn:hover{border-color:#6b6359;background:#211f1c}
 .infobtn[aria-expanded=true]{border-color:var(--amber)}
-.infopop{position:absolute;right:0;top:calc(100% + 8px);width:min(440px,calc(100vw - 32px));max-height:min(70vh,560px);overflow-y:auto;border:1px solid var(--line2);border-radius:10px;background:var(--surface2);box-shadow:0 16px 40px rgba(0,0,0,.6);padding:16px;display:flex;flex-direction:column;gap:12px}
-.infoscrim{position:fixed;inset:0;z-index:35;width:100%;border:0;padding:0;background:transparent;cursor:default}
+.infopop{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:61;width:min(520px,calc(100vw - 32px));max-height:min(82vh,640px);overflow-y:auto;border:1px solid var(--line2);border-radius:10px;background:var(--surface2);box-shadow:0 16px 40px rgba(0,0,0,.6);padding:16px;display:flex;flex-direction:column;gap:12px}
+/* matching weights: dimmed, locked panel; editors float over each control */
+.infowrap{display:flex;flex-direction:column;gap:8px}
+.infobtn.custom{position:relative}
+.infobtn.custom::after{content:'';position:absolute;right:6px;top:6px;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+.infobtn[aria-pressed=true]{border-color:var(--amber);color:var(--amber)}
+.tagpill.wtpill{border-style:solid;border-color:var(--amber);color:#f6e2bd}
+.bench{position:relative}
+.cab.wedit{opacity:.32;filter:saturate(.4)}
+.wlayer{position:absolute;inset:0;pointer-events:none;z-index:30}
+.wed{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;pointer-events:auto;border:1px solid var(--amber);border-radius:6px;background:#1b1611;box-shadow:0 2px 8px rgba(0,0,0,.6)}
+.wed:hover,.wed:focus-within{z-index:2}
+.wed .wbtn{display:none}
+.wed:hover .wbtn,.wed:focus-within .wbtn{display:block}
+.wed.edited{background:#2a2013}
+.wed.zero{border-color:#6b6359;background:#141312}
+.wbtn{width:20px;height:22px;padding:0;border:0;background:transparent;color:#f6e2bd;font-size:15px;line-height:1}
+.wbtn:hover:not(:disabled){background:rgba(240,180,82,.15)}
+.wbtn:disabled{color:#5a544b;cursor:default}
+.wval{width:32px;height:22px;padding:0;border:0;background:transparent;color:#f0b452;font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:center}
+.wed.zero .wval{color:#8f877b}
+.wval:focus-visible{outline:2px solid #f0b452;outline-offset:1px}
+@media (pointer:coarse){.wbtn{width:30px;height:32px}.wval{height:32px;width:34px}}
+.infoscrim{position:fixed;inset:0;z-index:60;width:100%;border:0;padding:0;background:rgba(5,5,4,.66);cursor:default}
 .infonotes{list-style:none;margin:0;padding:10px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;font-size:12px;line-height:1.45;color:var(--muted)}
 .tagpill.loadpill{display:inline-flex;align-items:center;gap:4px;border-style:solid;border-color:#7a5726;color:#f6d9a5;padding:0 0 0 10px}
 .loadpill button{display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;border:0;border-radius:999px;background:transparent;color:inherit;padding:0}

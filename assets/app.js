@@ -150,11 +150,24 @@ function settingsSimilarity(cap, def, as){
 function initialAmpState(def){ return JSON.parse(JSON.stringify(def.defaults)); }
 const state = {
   amp:'jp2c', amps:{}, ampQuery:'', ampOpen:false, ampActive:0, ampPath:[], capQuery:'', capOpen:false, capActive:0, capPath:[],
-  openId:null, infoOpen:false, loaded:null, limit:12
+  openId:null, infoOpen:false, weightsOpen:false, weights:{}, loaded:null, limit:12
 };
 AMP_DEFS.forEach(d => { state.amps[d.id] = initialAmpState(d); });
+// Matching weights can be edited per gear (state.weights[gearId][controlKey]); each control keeps
+// its original weight in w0 for "Reset to defaults".
+const W_MAX = 5, W_STEP = 0.1;
+AMP_DEFS.forEach(d => d.controls.forEach(c => { c.w0 = c.weight; }));
+function applyWeights(def){ const o = state.weights[def.id] || {}; def.controls.forEach(c => { c.weight = c.key in o ? o[c.key] : c.w0; }); }
+function setWeight(def, c, v){
+  v = Math.round(Math.min(W_MAX, Math.max(0, v)) / W_STEP) * W_STEP;
+  v = Math.round(v * 10) / 10;
+  const o = state.weights[def.id] || (state.weights[def.id] = {});
+  if (v === c.w0) delete o[c.key]; else o[c.key] = v;
+  if (!Object.keys(o).length) delete state.weights[def.id];
+  applyWeights(def); update({});
+}
 // Remember the workbench between visits, in this browser only: the current gear, every gear's
-// settings and channel/mode, and the "Loaded from" pill. Popups, the drawer
+// settings and channel/mode, edited matching weights, and the "Loaded from" pill. Popups, the drawer
 // and searches start fresh. Saved values are checked against the current gear data, so a
 // rebuilt dataset never restores a control that no longer exists or a value out of range.
 const STORE_KEY = 'capture-finder:v1', OLD_STORE_KEY = 'neural-capture-finder:v1'; // saved state from before the rename is read once
@@ -181,11 +194,19 @@ function restoreState(){
     });
   });
   if (saved.loaded && saved.loaded.amp === state.amp && typeof saved.loaded.name === 'string') state.loaded = { amp:saved.loaded.amp, name:saved.loaded.name };
+  Object.entries(saved.weights || {}).forEach(([id, ws]) => {
+    const def = AMP_DEFS.find(d => d.id === id);
+    if (!def || !ws || typeof ws !== 'object') return;
+    Object.entries(ws).forEach(([k, v]) => {
+      if (def.controls.some(c => c.key === k) && typeof v === 'number' && isFinite(v) && v >= 0 && v <= W_MAX) (state.weights[id] || (state.weights[id] = {}))[k] = v;
+    });
+    applyWeights(def);
+  });
 }
 function saveState(){
   const amps = {};
   AMP_DEFS.forEach(d => { if (JSON.stringify(state.amps[d.id]) !== DEFAULTS_JSON[d.id]) amps[d.id] = state.amps[d.id]; });
-  try { localStorage.setItem(STORE_KEY, JSON.stringify({ amp:state.amp, amps, loaded:state.loaded })); localStorage.removeItem(OLD_STORE_KEY); } catch (_) {}
+  try { localStorage.setItem(STORE_KEY, JSON.stringify({ amp:state.amp, amps, loaded:state.loaded, weights:state.weights })); localStorage.removeItem(OLD_STORE_KEY); } catch (_) {}
 }
 restoreState();
 
@@ -206,7 +227,7 @@ window.addEventListener('popstate', () => {
   let q = null; try { q = new URLSearchParams(location.search).get('amp'); } catch (_) {}
   if (!q || !AMP_DEFS.some(d => d.id === q) || q === state.amp) return;
   urlAmp = q;
-  update({ amp:q, openId:null, ampOpen:false, capOpen:false, infoOpen:false, limit:12, loaded:state.loaded && state.loaded.amp === q ? state.loaded : null });
+  update({ amp:q, openId:null, ampOpen:false, capOpen:false, infoOpen:false, weightsOpen:false, limit:12, loaded:state.loaded && state.loaded.amp === q ? state.loaded : null });
 });
 
 function cur(){ const def = ampById(state.amp); const as = state.amps[def.id]; return { def, as, ch:as.channel }; }
@@ -228,7 +249,7 @@ function loadCapture(id){
   const c = CAPTURES.find(x => x.id === id);
   if (!c) return;
   // the last searches stay in both fields
-  const close = { ampOpen:false, capOpen:false, infoOpen:false };
+  const close = { ampOpen:false, capOpen:false, infoOpen:false, weightsOpen:false };
   if (!c.settings || !c.ampId) { lastOpenerId = document.activeElement && document.activeElement.id || null; update(Object.assign(close, { openId:id })); return; }
   const def = ampById(c.ampId), as = state.amps[def.id], s = c.settings;
   const recorded = Object.keys(s.byChannel || {}).map(Number);
@@ -951,6 +972,7 @@ function renderStage(){
     + '<h1 class="cond" style="margin:0;font-size:22px;font-weight:700;letter-spacing:.02em;line-height:1.1">'+esc(def.brand+' '+def.model)+'</h1>';
   if (!def.channels && (def.category || 'Amps') === 'Amps') h += '<span class="tagpill" style="border-style:solid">Single channel</span>';
   else if (def.channels && !multiCh(def)) h += '<span class="tagpill" style="border-style:solid">'+esc('Recorded '+channelLabel(def,def.channels[0].n))+'</span>';
+  if (state.weightsOpen) h += '<span class="tagpill wtpill" role="status">Editing matching weights · 0 = not matched</span>';
   if (state.loaded && state.loaded.amp === def.id) h += '<span class="tagpill loadpill">Loaded from '+esc(state.loaded.name)
     + '<button id="unload" data-act="unload" aria-label="'+esc('Dismiss: loaded from '+state.loaded.name)+'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span>';
   h += '</div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
@@ -963,7 +985,9 @@ function renderStage(){
     });
     h += '</div>';
   }
-  h += '<button id="reset" class="btn sm" data-act="reset"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Reset</button></div></div>';
+  // while editing weights, Reset (settings) gives way to the weight buttons
+  if (state.weightsOpen) h += '<button id="wt-reset" class="btn sm" data-act="w-reset"'+(state.weights[def.id] ? '' : ' disabled')+'>Reset weights</button><button id="wt-done" class="btn sm amber" data-act="weights">Done</button></div></div>';
+  else h += '<button id="reset" class="btn sm" data-act="reset"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Reset</button></div></div>';
   let cab;
   if (/^triaxis/.test(def.panel)) {
     // Rack units: no cabinet or grille; the TriAxis sits above the Simul-Class 2:Ninety
@@ -1001,10 +1025,49 @@ function renderStage(){
       + '</div><div class="grille" aria-hidden="true"></div></div>';
   }
   if (state.infoOpen) h += '<button class="infoscrim" tabindex="-1" aria-hidden="true" data-act="info-close"></button>';
-  h += '<div class="bench">'+cab+'<div class="infowrap"><button id="info-btn" class="infobtn" aria-label="Matching details and notes" aria-haspopup="dialog" aria-expanded="'+state.infoOpen+'"'+(state.infoOpen ? ' aria-controls="info-pop"' : '')+' data-act="info">'
+  // weight editing: the panel is dimmed and locked; each control's weight floats over it (placeWeights)
+  if (state.weightsOpen) cab = cab.replace(/^<div class="cab/, '<div inert class="wedit cab');
+  const custom = !!state.weights[def.id];
+  h += '<div class="bench">'+cab+'<div class="infowrap"><button id="wt-btn" class="infobtn'+(custom ? ' custom' : '')+'" aria-label="'+esc('Matching weights'+(custom ? ' (edited for this gear)' : ''))+'" aria-pressed="'+state.weightsOpen+'" data-act="weights">'
+    + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>'
+    + '<button id="info-btn" class="infobtn" aria-label="Matching details and notes" aria-haspopup="dialog" aria-expanded="'+state.infoOpen+'"'+(state.infoOpen ? ' aria-controls="info-pop"' : '')+' data-act="info">'
     + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg></button>'
-    + (state.infoOpen ? '<div id="info-pop" class="infopop" role="dialog" aria-labelledby="info-h">'+renderInfo()+'</div>' : '') + '</div></div>';
+    + '</div></div>' + (state.infoOpen ? '<div id="info-pop" class="infopop" role="dialog" aria-modal="true" aria-labelledby="info-h">'+renderInfo()+'</div>' : '');
   return h;
+}
+
+// One editor per drawn control (per channel when a control is drawn once per channel), centred over the
+// union of the elements the panel marks with that control's key: a small value pill whose − / + show
+// on hover or focus, so editors stay clear of each other on dense panels.
+function placeWeights(){
+  if (!state.weightsOpen) return;
+  const bench = document.querySelector('#stage .bench'), cab = bench && bench.querySelector('.cab');
+  if (!cab) return;
+  const { def } = cur(), base = bench.getBoundingClientRect();
+  // pill size for collisions: an editor that would cover another moves just below or above it
+  const coarse = typeof matchMedia === 'function' && matchMedia('(pointer:coarse)').matches, PW = coarse ? 38 : 34, PH = coarse ? 36 : 26, placed = [];
+  const free = (x, y) => placed.every(p => Math.abs(p.x - x) >= PW || Math.abs(p.y - y) >= PH);
+  const spot = (x, y) => { for (let k = 0; k < 6; k++) for (const s of k ? [1, -1] : [0]) { const yy = y + s*k*PH; if (free(x, yy)) return yy; } return y; };
+  let h = '';
+  def.controls.forEach(c => {
+    const groups = new Map();
+    cab.querySelectorAll('[data-ctrl="'+c.key+'"],[data-key="'+c.key+'"]').forEach(e => {
+      const r = e.getBoundingClientRect(); if (r.width < 4 || r.height < 4) return;
+      const ch = e.dataset.ch || '', g = groups.get(ch);
+      groups.set(ch, g ? { l:Math.min(g.l, r.left), t:Math.min(g.t, r.top), r:Math.max(g.r, r.right), b:Math.max(g.b, r.bottom) } : { l:r.left, t:r.top, r:r.right, b:r.bottom });
+    });
+    groups.forEach((g, ch) => {
+      const x = (g.l + g.r)/2 - base.left, y = spot(x, (g.t + g.b)/2 - base.top); placed.push({ x, y });
+      const id = 'w-'+c.key+'-'+ch, w = c.weight, label = nice(c.label)+(ch && multiCh(def) ? ' ('+channelLabel(def, Number(ch))+')' : '');
+      h += '<div class="wed'+(w === 0 ? ' zero' : w !== c.w0 ? ' edited' : '')+'" role="group" aria-label="'+esc(label+' weight')+'" title="'+esc(label)+'" style="left:'+x.toFixed(1)+'px;top:'+y.toFixed(1)+'px">'
+        + '<button id="'+id+'-dec" class="wbtn" data-act="w-step" data-key="'+c.key+'" data-d="-1" aria-label="'+esc('Lower '+label+' weight')+'"'+(w <= 0 ? ' disabled' : '')+'>−</button>'
+        + '<input id="'+id+'" class="wval" type="text" inputmode="decimal" value="'+(w === 0 ? '0' : f1(w))+'" data-wkey="'+c.key+'" aria-label="'+esc(label+' weight, 0 to '+W_MAX+'; 0 means not matched')+'">'
+        + '<button id="'+id+'-inc" class="wbtn" data-act="w-step" data-key="'+c.key+'" data-d="1" aria-label="'+esc('Raise '+label+' weight')+'"'+(w >= W_MAX ? ' disabled' : '')+'>+</button></div>';
+    });
+  });
+  const layer = document.createElement('div');
+  layer.className = 'wlayer'; layer.innerHTML = h;
+  bench.appendChild(layer);
 }
 
 function chShort(){ const { def, ch } = cur(); return multiCh(def) ? channelLabel(def,ch) : def.model; }
@@ -1392,7 +1455,7 @@ let drawerWasOpen = false, infoWasOpen = false, lastOpenerId = null, capKey = nu
 const RESULTS_EVERY = 150;
 let resultsKey = null, resultsAmp = null, resultsLimit = 0, resultsAt = 0, resultsTimer = 0;
 function updateResults(){
-  const { def, as } = cur(), key = def.id+'\u0001'+state.limit+'\u0001'+JSON.stringify(as);
+  const { def, as } = cur(), key = def.id+'\u0001'+state.limit+'\u0001'+JSON.stringify(as)+'\u0001'+def.controls.map(c => c.weight).join();
   if (key === resultsKey) return;
   const now = Date.now(), urgent = def.id !== resultsAmp || state.limit !== resultsLimit || typeof setTimeout === 'undefined';
   if (!urgent && now - resultsAt < RESULTS_EVERY) {
@@ -1439,13 +1502,14 @@ function render(){
 
   // workbench + matches
   el('stage').innerHTML = renderStage();
+  placeWeights();
   updateResults();
 
   // drawer
   el('drawer-root').innerHTML = renderDrawer();
   const open = !!state.openId;
   document.querySelectorAll('.topbar,#stage,.matches').forEach(region => { region.inert = open; });
-  document.body.style.overflow = open ? 'hidden' : '';
+  document.body.style.overflow = open || state.infoOpen ? 'hidden' : '';
   if (open && !drawerWasOpen) { const b = el('drawer-close'); if (b) b.focus(); }
   else if (!open && drawerWasOpen && lastOpenerId && el(lastOpenerId)) el(lastOpenerId).focus();
   else if (state.infoOpen && !infoWasOpen) { const b = el('info-close'); if (b) b.focus(); }
@@ -1485,7 +1549,10 @@ document.addEventListener('click', (e) => {
   else if (act === 'cap-drill') stepPicker('cap', { kind:'drill', key:t.dataset.key });
   else if (act === 'cap-back') stepPicker('cap', BACK);
   else if (act === 'unload') { update({ loaded:null }); const h = el('reset'); if (h) h.focus(); }
-  else if (act === 'info') update({ infoOpen:!state.infoOpen });
+  else if (act === 'info') update({ infoOpen:!state.infoOpen, weightsOpen:false });
+  else if (act === 'weights') { const opening = !state.weightsOpen; update({ weightsOpen:opening, infoOpen:false }); if (!opening) requestAnimationFrame(() => { const b = el('wt-btn'); if (b) b.focus(); }); }
+  else if (act === 'w-step') { const { def } = cur(), c = ctrlByKey(t.dataset.key); setWeight(def, c, c.weight + Number(t.dataset.d)*W_STEP*(e.shiftKey ? 10 : 1)); }
+  else if (act === 'w-reset') { const { def } = cur(); delete state.weights[def.id]; applyWeights(def); update({}); }
   else if (act === 'info-close') update({ infoOpen:false });
   else if (act === 'more') update({ limit:state.limit + 12 });
   else if (act === 'amp') pickAmp(t.dataset.id);
@@ -1526,7 +1593,7 @@ function dragMove(e){
 }
 window.addEventListener('pointermove', dragMove);
 // Generic panels are laid out for the available width: lay them out again when it changes.
-window.addEventListener('resize', () => { if (cur().def.panel === 'generic' && Math.abs(gLayoutWidth() - gLastW) > 24) update(); });
+window.addEventListener('resize', () => { if (state.weightsOpen || (cur().def.panel === 'generic' && Math.abs(gLayoutWidth() - gLastW) > 24)) update(); });
 window.addEventListener('pointerup', () => { drag = null; });
 window.addEventListener('pointercancel', () => { drag = null; });
 
@@ -1543,10 +1610,24 @@ el('drawer-root').addEventListener('keydown', (e) => {
 
 // (i) popover: Escape closes it and returns focus to its button
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && state.infoOpen && !state.openId) { e.preventDefault(); update({ infoOpen:false }); } });
+// weight editors: type a number (Enter or leaving the field applies it), ↑/↓ step it; Escape ends editing
+document.addEventListener('change', (e) => {
+  const t = e.target; if (!t.matches || !t.matches('input[data-wkey]')) return;
+  const v = parseFloat(String(t.value).replace(',', '.')), { def } = cur(), c = ctrlByKey(t.dataset.wkey);
+  if (isFinite(v)) setWeight(def, c, v); else update({});
+});
+document.addEventListener('keydown', (e) => {
+  const t = e.target;
+  if (t.matches && t.matches('input[data-wkey]') && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+    e.preventDefault(); const { def } = cur(), c = ctrlByKey(t.dataset.wkey);
+    setWeight(def, c, c.weight + (e.key === 'ArrowUp' ? 1 : -1)*W_STEP*(e.shiftKey ? 10 : 1));
+  } else if (t.matches && t.matches('input[data-wkey]') && e.key === 'Enter') { e.preventDefault(); t.blur(); t.focus(); }
+  else if (e.key === 'Escape' && state.weightsOpen && !state.openId && !state.infoOpen) { e.preventDefault(); update({ weightsOpen:false }); requestAnimationFrame(() => { const b = el('wt-btn'); if (b) b.focus(); }); }
+});
 
 
 // amp picker combobox
-function pickAmp(id){ update({ amp:id, openId:null, ampOpen:false, ampActive:0, limit:12, loaded:null, infoOpen:false }); }
+function pickAmp(id){ update({ amp:id, openId:null, ampOpen:false, ampActive:0, limit:12, loaded:null, infoOpen:false, weightsOpen:false }); }
 const ampq = el('ampq');
 // Opening the picker starts at the category list, on the current gear's category.
 function openGear(){ if (!state.ampOpen) update({ ampOpen:true, ampPath:[], ampActive:Math.max(0, CATEGORIES.indexOf(gearCategory(cur().def))) }); }
