@@ -3570,6 +3570,394 @@
     "captureCount": 8
   },
   {
+    "id": "mesa-boogie-mark3-red-stripe",
+    "brand": "Mesa/Boogie",
+    "model": "Mark III Red Stripe",
+    "panel": "markiii",
+    "category": "Amps",
+    "fullName": "Mark III (red stripe) · head with 5-band graphic EQ",
+    "definitionSource": "front panel photos + capture settings",
+    "match": {
+      "source": "Mesa[^\\n]*\\bMark\\W*(?:3|III)\\b"
+    },
+    "channels": null,
+    "controls": [
+      {
+        "key": "volume",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume",
+          "Volume 1"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "pullbright1",
+        "label": "Volume Pull Bright",
+        "aliases": [
+          "Pull Bright"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "treble",
+        "label": "TREBLE",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "pullshifttreble",
+        "label": "Pull Shift Treble",
+        "aliases": [
+          "Pull Shift",
+          "Treble Shift"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "bass",
+        "label": "BASS",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "pullshiftbass",
+        "label": "Pull Shift Bass",
+        "aliases": [
+          "Pull Shift",
+          "Bass Shift"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "middle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Mid",
+          "Mids"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "pullrhythm2",
+        "label": "Pull Rhythm 2",
+        "aliases": [
+          "Pull Rhythm",
+          "Pull Rhythm2",
+          "Rhythm 2"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "master1",
+        "label": "MASTER",
+        "aliases": [
+          "Master",
+          "Master 1"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6
+      },
+      {
+        "key": "pulldeep",
+        "label": "Pull Deep",
+        "kind": "switch",
+        "scope": "global",
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "leaddrive",
+        "label": "LEAD DRIVE",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2,
+        "requires": "pulllead"
+      },
+      {
+        "key": "pulllead",
+        "label": "Pull Lead",
+        "kind": "switch",
+        "scope": "global",
+        "weight": 2,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "leadmaster",
+        "label": "LEAD MASTER",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6,
+        "requires": "pulllead"
+      },
+      {
+        "key": "pullbright2",
+        "label": "Lead Master Pull Bright",
+        "aliases": [
+          "Pull Bright"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "weight": 0.8,
+        "requires": "pulllead",
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "eq80",
+        "label": "80Hz",
+        "aliases": [
+          "80"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6
+      },
+      {
+        "key": "eq240",
+        "label": "240Hz",
+        "aliases": [
+          "240"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6
+      },
+      {
+        "key": "eq750",
+        "label": "750Hz",
+        "aliases": [
+          "750"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6
+      },
+      {
+        "key": "eq2200",
+        "label": "2200Hz",
+        "aliases": [
+          "2200"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6
+      },
+      {
+        "key": "eq6600",
+        "label": "6600Hz",
+        "aliases": [
+          "6600"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6
+      },
+      {
+        "key": "eqmode",
+        "label": "EQ AUTO / IN",
+        "aliases": [
+          "EQ IN/Auto",
+          "EQ In/Auto",
+          "EQ Auto/In",
+          "EQ"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "weight": 0.5,
+        "options": [
+          {
+            "v": "Auto",
+            "label": "EQ. AUTO",
+            "aliases": [
+              "Auto"
+            ]
+          },
+          {
+            "v": "In",
+            "label": "EQ. IN",
+            "aliases": [
+              "In"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "presence",
+        "label": "PRESENCE",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.5
+      }
+    ],
+    "panelOrder": [
+      "volume",
+      "treble",
+      "bass",
+      "middle",
+      "master1",
+      "leaddrive",
+      "leadmaster",
+      "eq80",
+      "eq240",
+      "eq750",
+      "eq2200",
+      "eq6600",
+      "eqmode",
+      "presence"
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "volume": 10,
+        "pullbright1": true,
+        "treble": 7,
+        "pullshifttreble": true,
+        "bass": 4,
+        "pullshiftbass": true,
+        "middle": 4,
+        "pullrhythm2": false,
+        "master1": 2,
+        "pulldeep": false,
+        "leaddrive": 7.2,
+        "pulllead": false,
+        "leadmaster": 6,
+        "pullbright2": true,
+        "eq80": 6.5,
+        "eq240": 5,
+        "eq750": 1.5,
+        "eq2200": 5.5,
+        "eq6600": 6.5,
+        "eqmode": "In",
+        "presence": 3
+      }
+    },
+    "defaultsNote": "Starting settings: CA MkIIIRed 1 (Lead Drive and Lead Master from CA MkIIIRed 4). Same faceplate as the Mark IIC+, with PULL RHYTHM 2 on Middle (captures write it “Pull Rhythm” or “Pull Rhythm2”). Captures that don’t use the lead circuit write the lead controls as N/A; they only count while Pull Lead is on (dimmed otherwise). Presence sits on the rear panel; it’s shown where the standby and power switches are.",
+    "captureCount": 4
+  },
+  {
     "id": "ada-mp-1-preamp",
     "brand": "ADA",
     "model": "MP-1 Preamp",
@@ -15581,394 +15969,6 @@
     "definitionSource": "capture descriptions",
     "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
     "captureCount": 11,
-    "category": "Amps"
-  },
-  {
-    "id": "mesa-boogie-mark3-red-stripe",
-    "brand": "Mesa/Boogie",
-    "model": "Mark3 red stripe",
-    "source": "description",
-    "panel": "generic",
-    "channels": null,
-    "controls": [
-      {
-        "key": "volume",
-        "label": "Volume",
-        "aliases": [
-          "Volume"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "primary": true
-      },
-      {
-        "key": "pullbright_1",
-        "label": "Pull Bright 1",
-        "aliases": [
-          "Pull Bright"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "pullbright_2",
-        "label": "Pull Bright 2",
-        "aliases": [
-          "Pull Bright"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "pullshift_1",
-        "label": "Pull Shift 1",
-        "aliases": [
-          "Pull Shift"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "pullshift_2",
-        "label": "Pull Shift 2",
-        "aliases": [
-          "Pull Shift"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "pullrhythm",
-        "label": "Pull Rhythm",
-        "aliases": [
-          "Pull Rhythm"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "master",
-        "label": "Master",
-        "aliases": [
-          "Master"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "pulldeep",
-        "label": "Pull Deep",
-        "aliases": [
-          "Pull Deep"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "80hz",
-        "label": "80Hz",
-        "aliases": [
-          "80Hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "240hz",
-        "label": "240Hz",
-        "aliases": [
-          "240Hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "750hz",
-        "label": "750Hz",
-        "aliases": [
-          "750Hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "2200hz",
-        "label": "2200Hz",
-        "aliases": [
-          "2200Hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "6600hz",
-        "label": "6600Hz",
-        "aliases": [
-          "6600Hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "eqinauto",
-        "label": "EQ IN/Auto",
-        "aliases": [
-          "EQ IN/Auto"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": "IN",
-            "label": "IN"
-          }
-        ]
-      },
-      {
-        "key": "presence",
-        "label": "Presence",
-        "aliases": [
-          "Presence"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "pullrhythm2",
-        "label": "Pull Rhythm2",
-        "aliases": [
-          "Pull Rhythm2"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "leaddrive",
-        "label": "Lead Drive",
-        "aliases": [
-          "Lead Drive"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "pulllead",
-        "label": "Pull Lead",
-        "aliases": [
-          "Pull Lead"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ]
-      },
-      {
-        "key": "leadmaster",
-        "label": "Lead Master",
-        "aliases": [
-          "Lead Master"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      }
-    ],
-    "defaults": {
-      "channel": null,
-      "ch": {},
-      "global": {
-        "volume": 5,
-        "pullbright_1": true,
-        "pullbright_2": true,
-        "treble": 5,
-        "pullshift_1": true,
-        "pullshift_2": true,
-        "bass": 5,
-        "middle": 5,
-        "pullrhythm": true,
-        "master": 5,
-        "pulldeep": true,
-        "80hz": 5,
-        "240hz": 5,
-        "750hz": 5,
-        "2200hz": 5,
-        "6600hz": 5,
-        "eqinauto": "IN",
-        "presence": 5,
-        "pullrhythm2": true,
-        "leaddrive": 5,
-        "pulllead": true,
-        "leadmaster": 5
-      }
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
-    "captureCount": 4,
     "category": "Amps"
   },
   {

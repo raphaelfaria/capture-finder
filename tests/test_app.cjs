@@ -17,7 +17,7 @@ const run = code => vm.runInContext(code, context);
 assert.equal(run('CAPTURES.length'), 2190);
 assert.equal(run('new Set(CAPTURES.map(c=>c.id)).size'), 2190);
 assert.equal(run('CAPTURES.some(c=>c.name.startsWith("DEMO"))'), false);
-assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 15);
+assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 16);
 assert.equal(run('AMP_DEFS.some(a=>a.id==="marshall-jcm800-2203")'), false);
 
 run('state.amp="marshall-jcm800-1987"');
@@ -176,8 +176,22 @@ assert.ok(sig.indexOf('>Gain 1<') < sig.indexOf('>Gain 2<') && sig.indexOf('>Gai
 // channels side by side as far as they fit without wrapping their blocks
 run('state.amp="bogner-fish-preamp-mesa-boogie-2-ninety-simul-class"');
 assert.ok(run('renderStage()').includes('grid-template-columns:repeat(4,minmax(0,1fr))'));
-run('state.amp="mesa-boogie-mark3-red-stripe"');
+run('state.amp="mesa-boogie-studio-preamp-mesa-boogie-2-90-simulclass"');
 assert.ok(!run('renderStage()').includes('gbody wrapped')); // switches, knobs and EQ sliders in one row
+
+// Mark III (red stripe): the Mark IIC+ faceplate with PULL RHYTHM 2 on Middle (written "Pull Rhythm"
+// or "Pull Rhythm2") and the recorded EQ AUTO / IN toggle; lead controls written N/A don't count.
+run('state.amp="mesa-boogie-mark3-red-stripe"');
+assert.equal(run('CAPTURES.filter(c=>c.ampId==="mesa-boogie-mark3-red-stripe"&&c.uninterpretedSettings.length).length'), 0);
+assert.equal(run('CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 1").settings.values.pullrhythm2'), false);
+assert.equal(run('CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 3").settings.values.pullrhythm2'), true);
+assert.equal(run('JSON.stringify([CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 4").settings.values.pullbright1, CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 4").settings.values.pullbright2])'), '[true,true]');
+assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 1"),cur().def,cur().as).score'), 100);
+const m3 = run('renderStage()');
+assert.ok(m3.includes('class="mkface m3"') && m3.includes('id="p-pullrhythm2-"') && m3.includes('id="t-eqmode--1"') && !m3.includes('powermode'));
+run('state.amp="mesa-boogie-mark2c"');
+assert.ok(!run('renderStage()').includes('pullrhythm2') && !run('renderStage()').includes('eqmode')); // the IIC+ keeps its own controls
+assert.equal(run('CAPTURES.filter(c=>c.ampId==="markbass-little-mark-iii").length'), 50); // Markbass "Little Mark III" isn't a Mark III
 
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');

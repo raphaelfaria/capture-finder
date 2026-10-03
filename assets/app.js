@@ -662,14 +662,15 @@ function ecstasyPanelHTML(def, as){
   return h + '</div>';
 }
 
-// Mesa/Boogie Mark IIC+: the black faceplate above the grille (the Boogie logo plate and the input
+// Mesa/Boogie Mark IIC+ (also the Mark III, panel 'markiii': PULL RHYTHM 2 on Middle, the EQ AUTO / IN
+// toggle, a dark EQ plate): the black faceplate above the grille (the Boogie logo plate and the input
 // jacks are left out), in three fixed-size sections that wrap on narrow screens: the seven knobs
 // (VOLUME 1 … LEAD MASTER), the five-band slider EQ, and the recorded rear-panel controls (PRESENCE
 // and the SIMUL-CLASS / CLASS A switch) where the EQ, standby and power switches sit. The numbers are
 // on each knob's skirt and turn under the printed index line, so the value is the number at the top;
 // the PULL labels on either side of the line are the pull switches. Lead Drive, Lead Master and its
 // Pull Bright only count with Pull Lead on, so they are dimmed (still adjustable) while it's off.
-const MK_KNOBS = [['volume', 34, 'pullbright1', 'BRIGHT'], ['treble', 102, 'pullshifttreble', 'SHIFT'], ['bass', 170, 'pullshiftbass', 'SHIFT'], ['middle', 238], ['master1', 306, 'pulldeep', 'DEEP'], ['leaddrive', 374, 'pulllead', 'LEAD'], ['leadmaster', 442, 'pullbright2', 'BRIGHT']];
+const MK_KNOBS = [['volume', 34, 'pullbright1', 'BRIGHT'], ['treble', 102, 'pullshifttreble', 'SHIFT'], ['bass', 170, 'pullshiftbass', 'SHIFT'], ['middle', 238, 'pullrhythm2', 'RHYTHM2'], ['master1', 306, 'pulldeep', 'DEEP'], ['leaddrive', 374, 'pulllead', 'LEAD'], ['leadmaster', 442, 'pullbright2', 'BRIGHT']];
 const MK_EQ = ['eq80', 'eq240', 'eq750', 'eq2200', 'eq6600'];
 const MK_TRAVEL = 70; // fader cap top: 0 at 10 … 70 at 0, in an 80px track (FG.mk)
 // skirt numbers 0…10 counter-clockwise from the top, each facing outwards (as printed on the knob)
@@ -689,7 +690,7 @@ function mkKnobHTML(def, as, c, x, pullKey, word, tickTop, extraAria){
   if (pc) {
     const poff = mkOff(as, pc) ? ' mkoff' : '';
     h += '<button id="p-'+pullKey+'-" class="mkpull'+poff+'" style="left:'+x+'px" aria-pressed="'+pulled+'" aria-label="'+esc(pc.label+': '+(pulled ? 'pulled, on' : 'pushed in, off')+(poff ? ', not used while Pull Lead is off' : ''))+'"'
-      + ' data-act="pick" data-target="ctrl" data-key="'+pullKey+'" data-ch="" data-v="'+jattr(!pulled)+'"><span class="mkpl"><span class="pdot" aria-hidden="true"></span>PULL</span><span class="mkpr">'+esc(word)+'</span></button>';
+      + ' data-act="pick" data-target="ctrl" data-key="'+pullKey+'" data-ch="" data-v="'+jattr(!pulled)+'"><span class="mkpl"><span class="pdot" aria-hidden="true"></span>PULL</span><span class="mkpr'+(word.length > 6 ? ' long' : '')+'">'+esc(word)+'</span></button>';
   }
   return h + '<div class="mkk'+off+(pulled ? ' pulled' : '')+'" style="left:'+x+'px"><label class="kctl" style="width:50px;height:50px"><input id="k-'+c.key+'-" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
     + ' aria-label="'+esc(nice(c.label)+note)+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="">'
@@ -698,7 +699,7 @@ function mkKnobHTML(def, as, c, x, pullKey, word, tickTop, extraAria){
 }
 function markIICPanelHTML(def, as){
   const g = as.global, C = (k) => def.controls.find(c => c.key === k);
-  let h = '<div class="mkface" role="group" aria-label="'+esc(def.brand+' '+def.model+' front panel')+'">';
+  let h = '<div class="mkface'+(def.panel === 'markiii' ? ' m3' : '')+'" role="group" aria-label="'+esc(def.brand+' '+def.model+' front panel')+'">';
   h += '<div class="mksec" style="width:476px"><span class="mkbar" aria-hidden="true"></span>';
   MK_KNOBS.forEach(([k, x, pull, word]) => { h += mkKnobHTML(def, as, C(k), x, pull, word, 0); });
   h += '</div><div class="mksec" style="width:186px" role="group" aria-label="Graphic EQ"><span class="mkeqplate" aria-hidden="true"><i style="top:22px"></i><i style="top:45px"></i><i style="top:68px"></i></span>';
@@ -708,9 +709,14 @@ function markIICPanelHTML(def, as){
       + '<span class="mktrack" data-drag="fader" data-geo="mk" data-ctrl="'+k+'" data-ch=""><span class="mkslot"></span><span class="fcap mkcap" style="top:'+top.toFixed(1)+'px"></span></span></label>'
       + '<span class="mkfreq" style="left:'+x+'px">'+esc(c.label.replace('Hz', ''))+'</span><span class="ro mkfro" style="left:'+x+'px" aria-hidden="true">'+f1(v)+'</span>';
   });
-  h += '</div><div class="mksec" style="width:160px">'+mkKnobHTML(def, as, C('presence'), 40, null, '', 26, ' (rear panel)');
-  h += jpToggle(118, 58, C('powermode').options, g.powermode, {key:'powermode', ch:null}, 'Simul-Class or Class A (rear panel)', [{x:118, y:31}, {x:118, y:85}]);
-  h += '<span class="mkrear">REAR PANEL</span><span class="mkname">MESA/BOOGIE MARK IIC+</span></div>';
+  // right of the EQ: the EQ AUTO / IN toggle where the amp has it (when recorded), then the recorded
+  // rear-panel controls (Presence, Simul-Class / Class A) where the standby and power switches sit
+  const eq = C('eqmode'), pm = C('powermode'), px = eq ? 104 : 40;
+  h += '</div><div class="mksec" style="width:160px">';
+  if (eq) h += jpToggle(28, 58, eq.options, g.eqmode, {key:'eqmode', ch:null}, 'EQ auto or in', [{x:28, y:31}, {x:28, y:85}]);
+  h += mkKnobHTML(def, as, C('presence'), px, null, '', 26, ' (rear panel)');
+  if (pm) h += jpToggle(118, 58, pm.options, g.powermode, {key:'powermode', ch:null}, 'Simul-Class or Class A (rear panel)', [{x:118, y:31}, {x:118, y:85}]);
+  h += '<span class="mkrear" style="left:'+(px - 34)+'px">REAR PANEL</span><span class="mkname">'+esc('MESA/BOOGIE '+def.model.toUpperCase())+'</span></div>';
   return h + '</div>';
 }
 
@@ -948,7 +954,7 @@ function renderStage(){
   } else if (def.panel === 'ecstasy') {
     // Amp head: a short grille over the faceplate (the logo artwork is left out)
     cab = '<div class="cab bgcab"><div class="bggrille" aria-hidden="true"></div>' + ecstasyPanelHTML(def, as) + '</div>';
-  } else if (def.panel === 'markiic') {
+  } else if (def.panel === 'markiic' || def.panel === 'markiii') {
     // Amp head: the faceplate above the grille (the logo plate is left out)
     cab = '<div class="cab mkcab">' + markIICPanelHTML(def, as) + '<div class="mkgrille" aria-hidden="true"></div></div>';
   } else if (def.panel === 'hotrod') {

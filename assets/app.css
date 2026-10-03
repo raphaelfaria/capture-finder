@@ -129,6 +129,7 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .fcap{position:absolute;left:0;width:26px;height:12px;border-radius:2px;background:#1a1a1a;border:1px solid #3a3a3a;display:block}
 .fcap::after{content:'';position:absolute;left:4px;right:4px;top:4px;height:2px;background:#e6e6e6}
 .fader-in:focus-visible + .ftrack .fcap,.fader-in:focus-visible + .gtrack .fcap{outline:2px solid #f0b452;outline-offset:2px}
+.ftrack .fslot{border-color:#4d4d4d} /* JP-2C slots: visible ends */
 .eqoff .ftrack,.eqoff .eqline{opacity:.4}
 
 /* ---------- Marshall JCM800 1987 panel ---------- */
@@ -313,6 +314,7 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .mkpl,.mkpr{position:absolute;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:3px;white-space:nowrap}
 .mkpl{right:calc(50% + 3px)}
 .mkpr{left:calc(50% + 3px)}
+.mkpr.long{font-size:7.5px;letter-spacing:-.01em}
 .mkpull .pdot{width:5px;height:5px}
 .mkpull[aria-pressed=true] .pdot{background:#f0f0f0;border-color:#f0f0f0}
 .mkk{position:absolute;top:60px;width:50px;height:50px;transform:translate(-50%,-50%)}
@@ -320,7 +322,7 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .mkk .ro{left:36px;top:38px}
 .mklab{position:absolute;top:92px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:10px;letter-spacing:.03em;color:#f0f0f0;white-space:nowrap}
 .mkoff{opacity:.32}
-.mkeqplate{position:absolute;left:6px;top:2px;width:174px;height:94px;border-radius:9px;background:#c4c9cc;border:2px solid #eef0f1;box-sizing:border-box}
+.mkeqplate{position:absolute;left:6px;top:2px;width:174px;height:94px;border-radius:9px;background:#a9aeb2;border:2px solid #eef0f1;box-sizing:border-box}
 .mkeqplate i{position:absolute;left:8px;right:8px;height:1px;background:#eef1f2}
 .mkf{position:absolute;top:9px;width:22px;height:80px}
 .mktrack{position:relative;display:block;width:22px;height:80px;touch-action:none;cursor:ns-resize}
@@ -333,6 +335,12 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .mkrear{position:absolute;left:6px;top:4px;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.06em;color:#9a9a9a}
 .mkname{position:absolute;right:4px;top:113px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:10px;letter-spacing:.04em;color:#f0f0f0;white-space:nowrap}
 .mkgrille{height:64px;border-radius:6px;background:#0b0b0b;border:2px solid #050505;box-shadow:inset 0 0 0 1px #222}
+/* Mark III: dark EQ plate with a cream outline, grey slider caps, cream trim */
+.mkface.m3{border-color:#cdc4a5}
+.m3 .mkeqplate{background:#141414;border-color:#d8d0b4}
+.m3 .mkeqplate i{background:#6b6b6b}
+.m3 .mkcap{background:#8c8c8c;border-color:#3a3a3a}
+.m3 .fader-in:focus-visible + .mktrack .fcap{outline-color:#f0b452}
 /* narrow screens: the sections wrap; scale them rather than reflow the controls */
 @media (max-width:480px){.mksec{zoom:.64}.mkgrille{height:40px}}
 @media (max-width:380px){.mksec{zoom:.56}.mkface{padding:6px 2px}}

@@ -87,7 +87,9 @@ const ok = (m) => console.log('  ok  ' + m);
       const v0 = await page.evaluate(([k, c]) => getVal(cur().def, cur().as, ctrlByKey(k), c === '' ? null : Number(c)), [key, ch]);
       const b = await knob.boundingBox();
       await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2); await page.mouse.down();
-      await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2 - 40, { steps: 4 }); await page.mouse.up();
+      // drag towards the side with room (up raises the value; a knob at its maximum is dragged down)
+      const room = await page.evaluate((k) => { const c = ctrlByKey(k); return c.min + c.max; }, key);
+      await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2 + (v0 * 2 >= room ? 40 : -40), { steps: 4 }); await page.mouse.up();
       await page.waitForTimeout(80);
       const v1 = await page.evaluate(([k, c]) => getVal(cur().def, cur().as, ctrlByKey(k), c === '' ? null : Number(c)), [key, ch]);
       assert.notEqual(v1, v0); ok('knob drag changes ' + key);
