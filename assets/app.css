@@ -80,6 +80,8 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .btn.sm{height:34px;padding:0 10px;font-size:13px}
 .btn.amber{border-color:#a8742a;background:#2a2013;color:#f6e2bd}
 .btn.amber:hover{background:#352816}
+.btn.extlink{color:var(--text);text-decoration:none;gap:6px}
+.btn.extlink svg{color:var(--muted)}
 .chtabs{display:flex;gap:6px;flex-wrap:wrap}
 .chtab{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid #34312c;background:var(--surface2);border-radius:8px}
 .chtab:hover{border-color:#5a534a}

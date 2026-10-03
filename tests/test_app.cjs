@@ -142,6 +142,10 @@ assert.equal(run('CAPTURES.filter(c=>c.ampId==="fender-hot-rod-deluxe-power-amp-
 assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="US HRDLX PA 6V6 5"),cur().def,cur().as).score'), 100);
 assert.ok(run('renderStage()').includes('id="k-presence-"') && !run('renderStage()').includes('id="k-volume-"'));
 
+// Every capture links to its own Cortex Cloud page.
+assert.equal(run('cloudUrl(CAPTURES.find(c=>c.id==="22fda8ba-c75e-4ec5-aae1-60d80667280a"))'), 'https://cloud.neuraldsp.com/cloud/u/NeuralDSP/neural-capture/view/22fda8ba-c75e-4ec5-aae1-60d80667280a');
+assert.ok(run('CAPTURES.every(c=>/^https:\\/\\/cloud\\.neuraldsp\\.com\\/cloud\\/u\\/[^/]+\\/neural-capture\\/view\\/[0-9a-f-]{36}$/.test(cloudUrl(c)))'));
+
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture V2"})'), 'Neural Capture V2');

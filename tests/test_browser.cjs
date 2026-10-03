@@ -95,6 +95,10 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(()=>document.activeElement.id),'drawer-load');
     await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(()=>document.activeElement.id),'drawer-cloud');
+    assert.equal(await page.locator('#drawer-cloud').getAttribute('href'), 'https://cloud.neuraldsp.com/cloud/u/NeuralDSP/neural-capture/view/861370a1-f820-4045-a280-9ea0dbbcf634');
+    assert.equal(await page.locator('#drawer-cloud').getAttribute('target'), '_blank');
+    await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(()=>document.activeElement.id),'drawer-close');
     await page.keyboard.press('Escape');
     await page.waitForFunction(()=>!document.querySelector('.drawer'));

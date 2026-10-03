@@ -918,6 +918,13 @@ function cardReasons(list){
   const seen = new Set();
   return [list[0]].concat(list.filter(z => z.kind === 'off'), list.slice(1)).filter(z => z && !seen.has(z.text) && seen.add(z.text)).slice(0, 3);
 }
+// The capture's own page on Cortex Cloud, from its author and id (opens in a new tab).
+function cloudUrl(c){ return c.id && c.author && c.author.username ? 'https://cloud.neuraldsp.com/cloud/u/'+encodeURIComponent(c.author.username)+'/neural-capture/view/'+encodeURIComponent(c.id) : null; }
+const EXT_ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+function cloudLinkHTML(c, id){
+  const u = cloudUrl(c);
+  return u ? '<a'+(id ? ' id="'+id+'"' : '')+' class="btn sm extlink" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc('Open '+c.name+' on Cortex Cloud (opens in a new tab)')+'">Cortex Cloud'+EXT_ICON+'</a>' : '';
+}
 function cardHTML(x, i){
   const { def } = cur(), c = x.c, scored = x.r.status === 'scored';
   const meta = '<div style="display:flex;flex-direction:column;gap:2px;min-width:0"><div class="capname"><h3 class="cond" style="margin:0;font-size:19px;font-weight:700;letter-spacing:.02em;line-height:1.15;overflow-wrap:anywhere">'+esc(c.name)+'</h3>'+captureTypeBadge(c)+'</div>'
@@ -926,7 +933,7 @@ function cardHTML(x, i){
   if (!scored) {
     return '<article class="mcard noscore" aria-label="'+esc(c.name+', no score')+'"><div class="mtop"><span class="rank" aria-hidden="true">–</span><span class="tier t3">No score</span><span class="mscore" aria-hidden="true">—</span></div>'
       + meta + '<span class="bar low" aria-hidden="true"><span style="width:0"></span></span>'
-      + reasonsHTML([{kind:'none', text:'Settings not interpreted from the description'}]) + '<div class="mbtns">'+details+'</div></article>';
+      + reasonsHTML([{kind:'none', text:'Settings not interpreted from the description'}]) + '<div class="mbtns">'+details+cloudLinkHTML(c)+'</div></article>';
   }
   const score = x.r.score, [tier, t] = tierOf(score), best = i === 0 && score >= STRONG_MATCH_MIN;
   return '<article class="mcard'+(best ? ' best' : '')+'" aria-label="'+esc((best ? 'Closest match: ' : 'Rank '+(i + 1)+': ')+c.name+', '+score+' of 100')+'">'
@@ -934,7 +941,7 @@ function cardHTML(x, i){
     + meta + '<span class="bar'+(t === 't3' ? ' low' : '')+'" aria-hidden="true"><span style="width:'+score+'%"></span></span>'
     + reasonsHTML(cardReasons(x.r.reasons))
     + '<div class="mbtns"><button id="load-'+c.id+'" class="btn sm amber" data-act="load" data-id="'+c.id+'" aria-label="'+esc('Load settings from '+c.name)+'">'
-    + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>Load settings</button>'+details+'</div></article>';
+    + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>Load settings</button>'+details+cloudLinkHTML(c)+'</div></article>';
 }
 
 function renderResults(){
@@ -999,7 +1006,7 @@ function renderDrawer(){
     + '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span class="h-kicker">Capture details</span>'
     + '<div class="capname"><h2 class="cond" style="margin:0;font-size:28px;font-weight:700;line-height:1.1">'+esc(c.name)+'</h2>'+captureTypeBadge(c)+'</div><span class="mono" style="font-size:12px;color:#c9c1b3">'+esc(c.id)+'</span></div>'
     + '<button id="drawer-close" class="btn sm" data-act="close" aria-label="Close details"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'
-    + (s ? '<div><button id="drawer-load" class="btn amber" data-act="load" data-id="'+c.id+'">Load settings</button></div>' : '')
+    + '<div class="mbtns" style="margin:0;padding:0">'+(s ? '<button id="drawer-load" class="btn amber" data-act="load" data-id="'+c.id+'">Load settings</button>' : '')+cloudLinkHTML(c, 'drawer-cloud').replace('btn sm extlink', 'btn extlink')+'</div>'
     + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="demo">CORTEX CLOUD SNAPSHOT</span><span class="tier '+t+'">'+(scored ? r.score+' / 100 settings similarity' : 'No score · settings not interpreted')+'</span></div>'
     + (c.uninterpretedSettings.length ? '<p class="note">Some settings were not interpreted: '+esc(c.uninterpretedSettings.join('; '))+'</p>' : '')
     + (s ? '<section class="stack"><h3 class="h-kicker">Recorded settings</h3>'+recordedSettingsHTML(def, c)+'</section>' : '')

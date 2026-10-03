@@ -6,7 +6,7 @@ Dial in your gear's controls — amps, pedals, compressors, fuzz, overdrive — 
 
 **Unofficial fan project.** Not affiliated with or endorsed by Neural DSP or any gear manufacturer. Product names and trademarks belong to their owners and are used only to identify the gear captured (see [Trademarks and data](#trademarks-and-data)).
 
-The gear picker browses by category (Amps, Compressors, Fuzz, Overdrive, Pedals) or searches everything in one list; capture search finds any capture by its name or its gear. Lists are sorted by maker, then name.
+The gear picker browses by category (Amps, Compressors, Fuzz, Overdrive, Pedals) or searches everything in one list; capture search finds any capture by its name or its gear. Lists are sorted by maker, then name. Every capture links to its own page on Cortex Cloud (built from its author and id, so no extra data is stored).
 
 ## Open / publish
 
