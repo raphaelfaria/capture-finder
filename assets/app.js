@@ -1385,6 +1385,28 @@ function scrollIntoList(pop, opt){
 const el = (id) => document.getElementById(id);
 let drawerWasOpen = false, infoWasOpen = false, lastOpenerId = null, capKey = null;
 
+// Ranking every capture of the gear is the costly part of a render, so the results are only redone
+// when what they depend on (the gear, its settings, how many are shown) changes, and at most every
+// RESULTS_EVERY ms while a control is moving; the last change always lands. A different gear or
+// "Show more" updates them straight away.
+const RESULTS_EVERY = 150;
+let resultsKey = null, resultsAmp = null, resultsLimit = 0, resultsAt = 0, resultsTimer = 0;
+function updateResults(){
+  const { def, as } = cur(), key = def.id+'\u0001'+state.limit+'\u0001'+JSON.stringify(as);
+  if (key === resultsKey) return;
+  const now = Date.now(), urgent = def.id !== resultsAmp || state.limit !== resultsLimit || typeof setTimeout === 'undefined';
+  if (!urgent && now - resultsAt < RESULTS_EVERY) {
+    if (!resultsTimer) resultsTimer = setTimeout(() => { resultsTimer = 0; updateResults(); }, RESULTS_EVERY - (now - resultsAt));
+    return;
+  }
+  if (resultsTimer) { clearTimeout(resultsTimer); resultsTimer = 0; }
+  resultsKey = key; resultsAmp = def.id; resultsLimit = state.limit; resultsAt = now;
+  const inside = document.activeElement && el('results').contains(document.activeElement) ? document.activeElement.id : null;
+  const res = renderResults();
+  el('results').innerHTML = res.html;
+  el('count').textContent = res.ampCaps.length+' for this gear · '+CAPTURES.length+' total';
+  if (inside && el(inside)) el(inside).focus({ preventScroll:true });
+}
 function render(){
   syncUrl();
   const focusedId = document.activeElement && document.activeElement.id;
@@ -1417,9 +1439,7 @@ function render(){
 
   // workbench + matches
   el('stage').innerHTML = renderStage();
-  const res = renderResults();
-  el('results').innerHTML = res.html;
-  el('count').textContent = res.ampCaps.length+' for this gear · '+CAPTURES.length+' total';
+  updateResults();
 
   // drawer
   el('drawer-root').innerHTML = renderDrawer();

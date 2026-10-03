@@ -186,6 +186,11 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('#cap-listbox .gearsub')].map(h=>h.textContent)), ['Guitar','Bass']);
     await page.keyboard.press('Escape');
 
+    // Results are redone at most every 150 ms while controls move, but always land on the last settings.
+    await go(url+'?amp=jp2c');
+    await page.evaluate(()=>{ const { def, as } = cur(), c = def.controls.find(x => x.primary); for (let v = 0; v <= 10; v += 0.5) setCtrl(c, as.channel, v); });
+    await page.waitForFunction(()=>{ const { def, as } = cur(); const best = Math.max(...CAPTURES.filter(c => c.ampId === def.id).map(c => settingsSimilarity(c, def, as)).filter(x => x.status === 'scored').map(x => x.score)); const top = document.querySelector('#results .mscore'); return top && parseInt(top.textContent) === best; });
+
     // The current gear is in the address; back and forward move between picked gear.
     await go(url+'?amp=jp2c');
     assert.match(await page.evaluate(()=>location.search), /amp=jp2c/);
