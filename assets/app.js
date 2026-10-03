@@ -852,6 +852,31 @@ function fishPanelHTML(def, as){
   return h + '</div>';
 }
 
+// Bogner Überschall: the black faceplate under the grille (the Bogner logo, the play/standby/power
+// switch, the LED and the input are left out). The name sits in plain text where the Überschall badge
+// is, then M.VOLUME, then one channel: its six knobs (VOLUME · PRESENCE · TREBLE · MIDDLE · BASS ·
+// GAIN) under their silver label strip. The amp has two such rows; the captures don't name a channel
+// and are treated as channel 2, so only that row is drawn. Black chicken-head knobs.
+const UB_KNOBS = [['volume', 236], ['presence', 294], ['treble', 352], ['middle', 410], ['bass', 468], ['gain', 526]];
+function ubKnobHTML(c, v, x){
+  const angle = (-150 + (v - c.min)/(c.max - c.min)*300).toFixed(1);
+  return '<div class="ubk" style="left:'+x+'px"><label class="kctl" style="width:42px;height:42px"><input id="k-'+c.key+'-" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
+    + ' aria-label="'+esc(nice(c.label))+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="">'
+    + '<span class="kwrap" style="width:42px;height:42px" data-drag="knob" data-ctrl="'+c.key+'" data-ch=""><svg viewBox="0 0 42 42" width="42" height="42" aria-hidden="true"><g transform="rotate('+angle+' 21 21)">'
+    + '<circle cx="21" cy="21" r="11.5" fill="#141414" stroke="#5c5c5c" stroke-width="1.2"/><path d="M21 2 L26 21 L21 32 L16 21 Z" fill="#1b1b1b" stroke="#6a6a6a" stroke-width="1.2" stroke-linejoin="round"/>'
+    + '<path d="M21 5 L21 19" stroke="#d9d9d9" stroke-width="1.8" stroke-linecap="round"/></g></svg></span></label><span class="ro" aria-hidden="true">'+f1(v)+'</span></div>';
+}
+function uberschallPanelHTML(def, as){
+  const g = as.global, C = (k) => def.controls.find(c => c.key === k);
+  let h = '<div class="ubface" role="group" aria-label="'+esc(def.brand+' '+def.model+' front panel, channel 2')+'">';
+  h += '<span class="ubbadge" aria-hidden="true">Überschall<span>BOGNER</span></span>';
+  h += '<span class="ublab" style="left:150px">M.Volume</span>'+ubKnobHTML(C('mastervol'), g.mastervol, 150);
+  h += '<span class="ubstrip" aria-hidden="true"></span>';
+  UB_KNOBS.forEach(([k, x]) => { h += '<span class="ubslab" style="left:'+x+'px">'+esc(nice(C(k).label))+'</span>'+ubKnobHTML(C(k), g[k], x); });
+  h += '<span class="ubch">CH 2</span>';
+  return h + '</div>';
+}
+
 // Generic panels (gear without a custom panel), laid out by heuristics with nothing gear-specific.
 // Amps are wide, so everything runs horizontally: the gear name on one line on top, then one section
 // per channel (plus any global controls), as many side by side as fit. Inside a section the blocks
@@ -1041,6 +1066,9 @@ function renderStage(){
   } else if (def.panel === 'ecstasy') {
     // Amp head: a short grille over the faceplate (the logo artwork is left out)
     cab = '<div class="cab bgcab"><div class="bggrille" aria-hidden="true"></div>' + ecstasyPanelHTML(def, as) + '</div>';
+  } else if (def.panel === 'uberschall') {
+    // Amp head: the faceplate under a plain grille (the logo is left out)
+    cab = '<div class="cab ubcab"><div class="ubgrille" aria-hidden="true"></div>' + uberschallPanelHTML(def, as) + '</div>';
   } else if (def.panel === 'fish' || def.panel === 'fish290') {
     // Rack units: the Fish (and the Simul-Class 2:Ninety it was captured through, stacked under it)
     cab = '<div class="cab txcab">' + fishPanelHTML(def, as) + (def.panel === 'fish290' ? s290PanelHTML(def, as) : '') + '</div>';
@@ -1292,13 +1320,23 @@ const instrumentRows = (items, instOf) => INSTRUMENT_ORDER.filter(i => items.som
 // Gear picker levels: [] categories (+ the unmapped library), [cat] instruments, [cat, inst] gear.
 // Fuzzy search (both pickers). Every typed word has to match the entry somewhere: as a word, the start
 // of a word or part of one; across punctuation ("jp2c" finds JP-2C); as letters in order inside one
-// word that starts the same ("ecsty" finds Ecstasy); or with a typo (one wrong, missing, extra or
+// word, or two adjacent words, that start the same ("ecsty" finds Ecstasy, "mkiic" Mark IIC); with
+// shorthand forms (mk = mark, Roman numerals = digits: "mk2c", "mkiic"); or with a typo (one wrong, missing, extra or
 // swapped letter; two in words of eight letters or more). Results keep their group headers, with the
 // better matches first in each group; matches scoring half the best or less are dropped, so typo
 // matches only show when nothing matches properly.
 const fzNorm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[®™]/g, '');
 const fzWords = (s) => fzNorm(s).split(/[^a-z0-9]+/).filter(Boolean);
-function fzIndex(text){ const words = fzWords(text); return { words, compact:words.join('') }; }
+// Roman numerals as digits ("iic" → "2c", "mkiii" → "mk3"), "mk" as "mark": the forms gear names use.
+const FZ_ROMAN = { i:1, ii:2, iii:3, iv:4, v:5, vi:6 };
+const fzRoman = (w) => w.replace(/(iii|ii|iv|vi|v|i)(?=[a-z]?$)/, (m) => String(FZ_ROMAN[m]));
+function fzVariants(t){ const out = new Set([t, fzRoman(t)]); [...out].forEach(v => { if (/^mk(?=[0-9ivx])/.test(v)) out.add(v.replace(/^mk/, 'mark')); }); return [...out]; }
+function fzIndex(text){
+  const base = fzWords(text), words = [...new Set(base.concat(base.map(fzRoman)))];
+  // adjacent words joined, for letters-in-order across them ("mkiic" in "mark" + "iic")
+  const pairs = base.slice(1).map((w, i) => base[i] + w);
+  return { words, pairs, compact:base.join('') };
+}
 // Damerau–Levenshtein distance (adjacent swaps count as one edit), giving up past max
 function fzEdit(a, b, max){
   if (Math.abs(a.length - b.length) > max) return max + 1;
@@ -1322,14 +1360,16 @@ function fzGaps(t, w){
   for (let j = 0; j < w.length && i < t.length; j++) if (w[j] === t[i]) { if (last >= 0 && j > last + 1) gaps++; last = j; i++; }
   return i === t.length ? gaps : -1;
 }
-function fzToken(t, ix){
+function fzToken(t, ix){ return Math.max(...fzVariants(t).map(v => fzTokenOne(v, ix))); }
+function fzTokenOne(t, ix){
   let best = 0;
   for (const w of ix.words) {
     if (w === t) return 10;
     best = Math.max(best, w.startsWith(t) ? 8 : w.includes(t) ? 6 : 0);
   }
   if (best || ix.compact.includes(t)) return best || 6;
-  if (t.length >= 3) for (const w of ix.words) { const g = fzGaps(t, w); if (g >= 0) best = Math.max(best, 4 - Math.min(g, 2)); }
+  // inside one word from three letters; across two adjacent words from four (so "ch2" doesn't match "Ch1 2")
+  if (t.length >= 3) for (const w of t.length >= 4 ? ix.words.concat(ix.pairs) : ix.words) { const g = fzGaps(t, w); if (g >= 0) best = Math.max(best, 4 - Math.min(g, 2)); }
   if (t.length >= 4) for (const w of ix.words) best = Math.max(best, fzTypo(t, w));
   return best;
 }

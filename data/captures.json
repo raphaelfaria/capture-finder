@@ -14035,7 +14035,7 @@
     "settings": {
       "channel": null,
       "values": {
-        "mvolume": 6,
+        "mastervol": 6,
         "volume": 6,
         "presence": 8,
         "treble": 0,
@@ -14080,7 +14080,7 @@
     "settings": {
       "channel": null,
       "values": {
-        "mvolume": 6,
+        "mastervol": 6,
         "volume": 6,
         "presence": 8,
         "treble": 2,
@@ -14125,7 +14125,7 @@
     "settings": {
       "channel": null,
       "values": {
-        "mvolume": 6,
+        "mastervol": 6,
         "volume": 6,
         "presence": 6,
         "treble": 2,
@@ -14170,7 +14170,7 @@
     "settings": {
       "channel": null,
       "values": {
-        "mvolume": 5,
+        "mastervol": 5,
         "volume": 6.5,
         "presence": 3.5,
         "treble": 1.5,

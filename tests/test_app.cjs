@@ -19,7 +19,7 @@ const startScore = () => run('(()=>{ const { def, as } = cur(), f = (def.default
 assert.equal(run('CAPTURES.length'), 2190);
 assert.equal(run('new Set(CAPTURES.map(c=>c.id)).size'), 2190);
 assert.equal(run('CAPTURES.some(c=>c.name.startsWith("DEMO"))'), false);
-assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 18);
+assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 19);
 assert.equal(run('AMP_DEFS.some(a=>a.id==="marshall-jcm800-2203")'), false);
 
 run('state.amp="marshall-jcm800-1987"');
@@ -207,7 +207,11 @@ assert.equal(gearFor('marshal 1987')[0], 'marshall-jcm800-1987');
 assert.equal(gearFor('tube scremer')[0], 'ibanez-ts9-tube-screamer');
 assert.deepEqual(gearFor('mark 3'), ['mesa-boogie-mark3-red-stripe', 'markbass-little-mark-iii']);
 assert.equal(gearFor('qqqqzz').length, 0);
+// shorthand: mk = mark, Roman numerals = digits, letters in order across two words
+for (const q of ['mkiic+', 'mk2c', 'markiic', 'mk iic']) assert.equal(gearFor(q)[0], 'mesa-boogie-mark2c', q);
+assert.equal(gearFor('mkiii')[0], 'mesa-boogie-mark3-red-stripe');
 const capsFor = (q) => JSON.parse(run('JSON.stringify(capEntries([], '+JSON.stringify(q)+').map(e=>e.e.c.name.trim()))'));
+assert.equal(capsFor('bogna ch2').length, 47); // "ch2" doesn't match "Ch1 2"
 assert.equal(capsFor("CA John's Ch1 1")[0], "CA John's Ch1 1");
 assert.deepEqual(capsFor('brit 1987 2'), ['Brit 1987 2']);
 assert.equal(capsFor('hrdlx cha').length, 34);
@@ -227,6 +231,13 @@ assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Fish+29
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Bogna Fish+290 2").settings.values.jazzfunk'), 'Middle');
 assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('Simul-Class 2:Ninety') && !run('renderStage()').includes('REAR PANEL'));
+
+// Bogner Überschall: one channel (2) next to M.Volume; the BB Preamp lines after the amp are not read.
+run('state.amp="bogner-uberschall-first-edition"');
+assert.equal(run('CAPTURES.filter(c=>c.ampId==="bogner-uberschall-first-edition"&&c.uninterpretedSettings.length).length'), 0);
+assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3").settings.values)'), JSON.stringify({ mastervol:6, volume:6, presence:6, treble:2, middle:8, bass:8, gain:8 }));
+assert.equal(startScore(), 100);
+assert.ok(run('renderStage()').includes('class="cab ubcab"') && run('renderStage()').includes('id="k-mastervol-"'));
 
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');

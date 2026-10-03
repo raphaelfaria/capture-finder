@@ -5139,6 +5139,148 @@
     ]
   },
   {
+    "id": "bogner-uberschall-first-edition",
+    "brand": "Bogner",
+    "model": "Überschall first edition",
+    "panel": "uberschall",
+    "category": "Amps",
+    "fullName": "Überschall (first edition, JJ EL34) · channel 2",
+    "definitionSource": "front panel photo + capture settings",
+    "match": {
+      "source": "(?:^|\\W)[ÜU]e?berschall\\b"
+    },
+    "channels": null,
+    "controls": [
+      {
+        "key": "mastervol",
+        "label": "M.VOLUME",
+        "aliases": [
+          "M.Volume",
+          "M. Volume",
+          "Master Volume",
+          "Master"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.8
+      },
+      {
+        "key": "volume",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "presence",
+        "label": "PRESENCE",
+        "aliases": [
+          "Presence"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.8
+      },
+      {
+        "key": "treble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "middle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "bass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "gain",
+        "label": "GAIN",
+        "aliases": [
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      }
+    ],
+    "panelOrder": [
+      "mastervol",
+      "volume",
+      "presence",
+      "treble",
+      "middle",
+      "bass",
+      "gain"
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "mastervol": 6,
+        "volume": 6,
+        "presence": 8,
+        "treble": 0,
+        "middle": 5,
+        "bass": 8,
+        "gain": 2
+      }
+    },
+    "defaultsNote": "The amp has two channels with the same six knobs; the captures don’t say which they used, and as high-gain settings they’re treated as channel 2, so only that row is shown, next to the shared M.Volume. Two captures have an Xotic BB Preamp in front; its settings are in the description but not compared.",
+    "captureCount": 4,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Bogna Uber 1",
+        "downloads": 3549
+      }
+    ]
+  },
+  {
     "id": "ada-mp-1-preamp",
     "brand": "ADA",
     "model": "MP-1 Preamp",
@@ -6882,132 +7024,6 @@
         "channel": null,
         "name": "Bogna Bloom 5",
         "downloads": 883
-      }
-    ]
-  },
-  {
-    "id": "bogner-uberschall-first-edition",
-    "brand": "Bogner",
-    "model": "Überschall first edition",
-    "source": "description",
-    "panel": "generic",
-    "channels": null,
-    "controls": [
-      {
-        "key": "mvolume",
-        "label": "M.Volume",
-        "aliases": [
-          "M.Volume"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "primary": true
-      },
-      {
-        "key": "volume",
-        "label": "Volume",
-        "aliases": [
-          "Volume"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "presence",
-        "label": "Presence",
-        "aliases": [
-          "Presence"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "gain",
-        "label": "Gain",
-        "aliases": [
-          "Gain"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      }
-    ],
-    "defaults": {
-      "channel": null,
-      "ch": {},
-      "global": {
-        "mvolume": 6,
-        "volume": 6,
-        "presence": 8,
-        "treble": 0,
-        "middle": 5,
-        "bass": 8,
-        "gain": 2
-      }
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "captureCount": 4,
-    "category": "Amps",
-    "defaultsFrom": [
-      {
-        "channel": null,
-        "name": "Bogna Uber 1",
-        "downloads": 3549
       }
     ]
   },
