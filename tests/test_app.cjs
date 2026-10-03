@@ -193,6 +193,22 @@ run('state.amp="mesa-boogie-mark2c"');
 assert.ok(!run('renderStage()').includes('pullrhythm2') && !run('renderStage()').includes('eqmode')); // the IIC+ keeps its own controls
 assert.equal(run('CAPTURES.filter(c=>c.ampId==="markbass-little-mark-iii").length'), 50); // Markbass "Little Mark III" isn't a Mark III
 
+// Fuzzy search in both pickers: across punctuation, letters in order, typos; exact matches first,
+// and typo matches only when nothing matches properly.
+const gearFor = (q) => JSON.parse(run('JSON.stringify(gearEntries([], '+JSON.stringify(q)+').map(e=>e.a.id))'));
+assert.equal(gearFor('jp2c')[0], 'jp2c');
+assert.equal(gearFor('ecstacy')[0], 'bogner-ecstasy-100b');
+assert.equal(gearFor('ecsty')[0], 'bogner-ecstasy-100b');
+assert.ok(gearFor('trixis').includes('mesa-boogie-triaxis-preamp'));
+assert.equal(gearFor('marshal 1987')[0], 'marshall-jcm800-1987');
+assert.equal(gearFor('tube scremer')[0], 'ibanez-ts9-tube-screamer');
+assert.deepEqual(gearFor('mark 3'), ['mesa-boogie-mark3-red-stripe', 'markbass-little-mark-iii']);
+assert.equal(gearFor('qqqqzz').length, 0);
+const capsFor = (q) => JSON.parse(run('JSON.stringify(capEntries([], '+JSON.stringify(q)+').map(e=>e.e.c.name.trim()))'));
+assert.equal(capsFor("CA John's Ch1 1")[0], "CA John's Ch1 1");
+assert.deepEqual(capsFor('brit 1987 2'), ['Brit 1987 2']);
+assert.equal(capsFor('hrdlx cha').length, 34);
+
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture V2"})'), 'Neural Capture V2');

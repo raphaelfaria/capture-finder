@@ -191,6 +191,23 @@ restoreState();
 
 // Optional deep link (wins over the saved gear): index.html?amp=marshall-jcm800-1987
 try { const q = new URLSearchParams(location.search).get('amp'); if (q && AMP_DEFS.some(d => d.id === q)) state.amp = q; } catch (_) {}
+// The current gear stays in the address (?amp=<id>): picking gear adds a history entry, so the
+// browser's back and forward buttons move between gear; the first page records its gear in place.
+let urlAmp = null;
+function syncUrl(){
+  if (state.amp === urlAmp || typeof history === 'undefined' || !history.pushState) return;
+  try {
+    const u = new URL(location.href); u.searchParams.set('amp', state.amp);
+    history[urlAmp === null ? 'replaceState' : 'pushState']({ amp:state.amp }, '', u);
+    urlAmp = state.amp;
+  } catch (_) {}
+}
+window.addEventListener('popstate', () => {
+  let q = null; try { q = new URLSearchParams(location.search).get('amp'); } catch (_) {}
+  if (!q || !AMP_DEFS.some(d => d.id === q) || q === state.amp) return;
+  urlAmp = q;
+  update({ amp:q, openId:null, ampOpen:false, capOpen:false, infoOpen:false, limit:12, loaded:state.loaded && state.loaded.amp === q ? state.loaded : null });
+});
 
 function cur(){ const def = ampById(state.amp); const as = state.amps[def.id]; return { def, as, ch:as.channel }; }
 function ctrlByKey(key){ return cur().def.controls.find(c => c.key === key); }
@@ -210,8 +227,9 @@ function setChannel(n){ cur().as.channel = n; update({ loaded:null }); }
 function loadCapture(id){
   const c = CAPTURES.find(x => x.id === id);
   if (!c) return;
-  const close = { ampOpen:false, capOpen:false, capQuery:'', infoOpen:false };
-  if (!c.settings || !c.ampId) { lastOpenerId = document.activeElement && document.activeElement.id || null; el('capq').value = ''; update(Object.assign(close, { openId:id })); return; }
+  // the last searches stay in both fields
+  const close = { ampOpen:false, capOpen:false, infoOpen:false };
+  if (!c.settings || !c.ampId) { lastOpenerId = document.activeElement && document.activeElement.id || null; update(Object.assign(close, { openId:id })); return; }
   const def = ampById(c.ampId), as = state.amps[def.id], s = c.settings;
   const recorded = Object.keys(s.byChannel || {}).map(Number);
   const channels = !def.channels ? [null] : recorded.length > 1 ? recorded : [s.channel != null ? s.channel : as.channel];
@@ -225,8 +243,7 @@ function loadCapture(id){
     });
   });
   if (def.channels) as.channel = s.channel != null ? s.channel : channels[0];
-  el('ampq').value = ''; el('capq').value = '';
-  update(Object.assign(close, { amp:def.id, openId:null, ampQuery:'', limit:12, loaded:{ amp:def.id, name:c.name } }));
+  update(Object.assign(close, { amp:def.id, openId:null, limit:12, loaded:{ amp:def.id, name:c.name } }));
 }
 
 /* =====================================================================
@@ -1159,12 +1176,79 @@ const keyId = (k) => String(k).toLowerCase().replace(/[^a-z0-9]+/g, '-');
 const BACK = { kind:'back' };
 const instrumentRows = (items, instOf) => INSTRUMENT_ORDER.filter(i => items.some(x => instOf(x) === i)).map(i => ({ kind:'drill', key:i, label:i, count:items.filter(x => instOf(x) === i).length }));
 // Gear picker levels: [] categories (+ the unmapped library), [cat] instruments, [cat, inst] gear.
+// Fuzzy search (both pickers). Every typed word has to match the entry somewhere: as a word, the start
+// of a word or part of one; across punctuation ("jp2c" finds JP-2C); as letters in order inside one
+// word that starts the same ("ecsty" finds Ecstasy); or with a typo (one wrong, missing, extra or
+// swapped letter; two in words of eight letters or more). Results keep their group headers, with the
+// better matches first in each group; matches scoring half the best or less are dropped, so typo
+// matches only show when nothing matches properly.
+const fzNorm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[®™]/g, '');
+const fzWords = (s) => fzNorm(s).split(/[^a-z0-9]+/).filter(Boolean);
+function fzIndex(text){ const words = fzWords(text); return { words, compact:words.join('') }; }
+// Damerau–Levenshtein distance (adjacent swaps count as one edit), giving up past max
+function fzEdit(a, b, max){
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  let prev2 = null, prev = Array.from({ length:b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const row = [i]; let low = i;
+    for (let j = 1; j <= b.length; j++) {
+      let v = Math.min(prev[j] + 1, row[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (prev2 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) v = Math.min(v, prev2[j - 2] + 1);
+      row.push(v); low = Math.min(low, v);
+    }
+    if (low > max) return max + 1;
+    prev2 = prev; prev = row;
+  }
+  return prev[b.length];
+}
+// letters of t in order inside w (same first letter): the number of gaps, or -1
+function fzGaps(t, w){
+  if (w[0] !== t[0]) return -1;
+  let i = 0, gaps = 0, last = -1;
+  for (let j = 0; j < w.length && i < t.length; j++) if (w[j] === t[i]) { if (last >= 0 && j > last + 1) gaps++; last = j; i++; }
+  return i === t.length ? gaps : -1;
+}
+function fzToken(t, ix){
+  let best = 0;
+  for (const w of ix.words) {
+    if (w === t) return 10;
+    best = Math.max(best, w.startsWith(t) ? 8 : w.includes(t) ? 6 : 0);
+  }
+  if (best || ix.compact.includes(t)) return best || 6;
+  if (t.length >= 3) for (const w of ix.words) { const g = fzGaps(t, w); if (g >= 0) best = Math.max(best, 4 - Math.min(g, 2)); }
+  if (t.length >= 4) for (const w of ix.words) best = Math.max(best, fzTypo(t, w));
+  return best;
+}
+// typo score of t against w: against the whole word, or (five letters or more) against the start of a
+// longer word. Words repeat across entries, so results are kept per typed word.
+const FZ_TYPO = new Map();
+function fzTypo(t, w){
+  let memo = FZ_TYPO.get(t);
+  if (!memo) { if (FZ_TYPO.size > 64) FZ_TYPO.clear(); FZ_TYPO.set(t, memo = new Map()); }
+  let v = memo.get(w);
+  if (v === undefined) {
+    const max = t.length >= 8 ? 2 : 1;
+    const d = Math.min(fzEdit(t, w, max), t.length >= 5 && w.length > t.length + max ? fzEdit(t, w.slice(0, t.length), max) : max + 1);
+    memo.set(w, v = d <= max ? 3 - d : 0);
+  }
+  return v;
+}
+function fzScore(tokens, ix){ let s = 0; for (const tk of tokens) { const v = fzToken(tk, ix); if (!v) return 0; s += v; } return tokens.length ? s / tokens.length : 0; }
+// items in display order; group(x) gives the header group, which keeps its place
+function fzFilter(items, query, indexOf, group){
+  const tokens = fzWords(query), first = new Map();
+  const scored = items.map((x, i) => { const g = group(x); if (!first.has(g)) first.set(g, i); return [fzScore(tokens, indexOf(x)), i, x, g]; }).filter(s => s[0] > 0);
+  const top = Math.max(0, ...scored.map(s => s[0]));
+  return scored.filter(s => s[0] > top / 2).sort((a, b) => first.get(a[3]) - first.get(b[3]) || b[0] - a[0] || a[1] - b[1]).map(s => s[2]);
+}
+const FZ_GEAR = new Map();
+const gearIndex = (a) => FZ_GEAR.get(a.id) || FZ_GEAR.set(a.id, fzIndex(a.brand+' '+a.model+' '+deviceName(a)+' '+a.id+' '+gearCategory(a)+' '+gearInstrument(a))).get(a.id);
+
 function gearEntries(path = state.ampPath, query = state.ampQuery){
   const aq = query.trim().toLowerCase();
   if (aq) {
-    const tks = aq.split(/\s+/);
-    return AMP_DEFS.filter(a => tks.every(t => (a.brand+' '+a.model+' '+a.id+' '+gearCategory(a)+' '+gearInstrument(a)).toLowerCase().includes(t)))
-      .sort((x, y) => CATEGORY_ORDER.indexOf(gearCategory(x)) - CATEGORY_ORDER.indexOf(gearCategory(y)) || gearInCategorySort(x, y)).map(a => ({ kind:'amp', a, grouped:true }));
+    const ordered = [...AMP_DEFS].sort((x, y) => CATEGORY_ORDER.indexOf(gearCategory(x)) - CATEGORY_ORDER.indexOf(gearCategory(y)) || gearInCategorySort(x, y));
+    return fzFilter(ordered, aq, gearIndex, a => gearCategory(a)+'|'+gearInstrument(a)).map(a => ({ kind:'amp', a, grouped:true }));
   }
   const [cat, inst] = path;
   if (!cat) return CATEGORIES.map(c => ({ kind:'drill', key:c, label:c, count:AMP_DEFS.filter(a => gearCategory(a) === c).length }))
@@ -1257,7 +1341,7 @@ const deviceName = (a) => DEVICE_NAME[a.id] || a.brand+' '+a.model;
 // captures (unmapped captures list straight under their category).
 function capEntries(path = state.capPath, query = state.capQuery){
   const q = query.trim().toLowerCase();
-  if (q) { const tks = q.split(/\s+/); return CAP_SORTED.filter(e => tks.every(t => e.hay.includes(t))).map(e => ({ kind:'cap', e, grouped:true })); }
+  if (q) return fzFilter(CAP_SORTED, q, e => e.fz || (e.fz = fzIndex(e.hay)), e => e.cat+'|'+e.inst).map(e => ({ kind:'cap', e, grouped:true }));
   const [cat, inst, gid] = path;
   if (!cat) return CATEGORY_ORDER.map(c => ({ kind:'drill', key:c, label:c, count:CAP_SORTED.filter(e => e.cat === c).length })).filter(x => x.count);
   const inCat = CAP_SORTED.filter(e => e.cat === cat);
@@ -1302,6 +1386,7 @@ const el = (id) => document.getElementById(id);
 let drawerWasOpen = false, infoWasOpen = false, lastOpenerId = null, capKey = null;
 
 function render(){
+  syncUrl();
   const focusedId = document.activeElement && document.activeElement.id;
   const { def } = cur();
 
@@ -1441,15 +1526,17 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && state.in
 
 
 // amp picker combobox
-function pickAmp(id){ el('ampq').value = ''; update({ amp:id, openId:null, ampOpen:false, ampQuery:'', ampActive:0, limit:12, loaded:null, infoOpen:false }); }
+function pickAmp(id){ update({ amp:id, openId:null, ampOpen:false, ampActive:0, limit:12, loaded:null, infoOpen:false }); }
 const ampq = el('ampq');
 // Opening the picker starts at the category list, on the current gear's category.
 function openGear(){ if (!state.ampOpen) update({ ampOpen:true, ampPath:[], ampActive:Math.max(0, CATEGORIES.indexOf(gearCategory(cur().def))) }); }
-ampq.addEventListener('focus', openGear);
+// Searches stay in the fields; focusing one selects its text, so typing replaces it.
+const selectAll = (input) => requestAnimationFrame(() => { if (document.activeElement === input) input.select(); });
+ampq.addEventListener('focus', () => { openGear(); selectAll(ampq); });
 ampq.addEventListener('click', openGear);
 ampq.addEventListener('input', (e) => update({ ampQuery:e.target.value, ampOpen:true, ampActive:0 }));
 // Leaving the picker without choosing clears the typed text, so the field shows the current gear again.
-function closeGear(){ ampq.value = ''; update({ ampOpen:false, ampQuery:'', ampPath:[] }); }
+function closeGear(){ update({ ampOpen:false, ampPath:[] }); }
 ampq.addEventListener('blur', closeGear);
 // Picker keys (both comboboxes): ↑/↓ move, Enter picks or opens a level, → opens a level,
 // ← or Backspace (empty field) goes back up, Escape closes.
@@ -1469,7 +1556,7 @@ ampq.addEventListener('keydown', (e) => pickerKeys('amp', e, activateGear, close
 const capq = el('capq');
 // Opening the capture picker starts at the category list.
 function openCaptures(){ if (!state.capOpen) update({ capOpen:true, capPath:[], capActive:0 }); }
-capq.addEventListener('focus', openCaptures);
+capq.addEventListener('focus', () => { openCaptures(); selectAll(capq); });
 capq.addEventListener('click', openCaptures);
 capq.addEventListener('input', (e) => update({ capQuery:e.target.value, capOpen:true, capActive:0 }));
 capq.addEventListener('blur', () => update({ capOpen:false }));

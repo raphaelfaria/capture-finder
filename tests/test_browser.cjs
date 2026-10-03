@@ -53,7 +53,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.waitForFunction(()=>[...document.querySelectorAll('#amp-listbox .gearhead')].map(h=>h.textContent).join()==='Fuzz,Overdrive,Pedals');
     await page.keyboard.press('Escape');
     await page.waitForFunction(()=>document.querySelector('#amp-listbox').hidden);
-    assert.equal(await page.locator('#ampq').inputValue(),'');
+    assert.equal(await page.locator('#ampq').inputValue(),'lovepedal'); // the last search stays in the field
     await page.locator('#ampq').fill('1987');
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('ArrowUp');
@@ -140,8 +140,13 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.locator('#capq').press('Enter');
     await page.waitForFunction(()=>state.amp==='mesa-boogie-triaxis-preamp' && state.amps[state.amp].channel===5);
     await topIs('CA 3Axe 5', 100);
-    assert.equal(await page.locator('#capq').inputValue(),'');
+    assert.equal(await page.locator('#capq').inputValue(),'triaxis 3axe 5');
+    assert.equal(await page.locator('#ampq').inputValue(),'1987');
     assert.ok(await page.evaluate(()=>document.querySelector('#cap-listbox').hidden));
+    // coming back to a field selects its search, so typing replaces it
+    await page.evaluate(()=>document.activeElement && document.activeElement.blur());
+    await page.locator('#capq').focus();
+    await page.waitForFunction(()=>{ const i=document.querySelector('#capq'); return i.value==='triaxis 3axe 5' && i.selectionStart===0 && i.selectionEnd===i.value.length; });
     // A capture without readable settings opens its details instead.
     await page.locator('#capq').fill("CA John's Ch1 1");
     await page.locator('#capq').press('Enter');
@@ -180,6 +185,20 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.waitForFunction(()=>document.querySelector('#cap-listbox .gearhead')?.textContent==='Pedals');
     assert.deepEqual(await page.evaluate(()=>[...document.querySelectorAll('#cap-listbox .gearsub')].map(h=>h.textContent)), ['Guitar','Bass']);
     await page.keyboard.press('Escape');
+
+    // The current gear is in the address; back and forward move between picked gear.
+    await go(url+'?amp=jp2c');
+    assert.match(await page.evaluate(()=>location.search), /amp=jp2c/);
+    await page.evaluate(()=>pickAmp('marshall-jcm800-1987'));
+    await page.waitForFunction(()=>/amp=marshall-jcm800-1987/.test(location.search));
+    await page.evaluate(()=>pickAmp('fender-hot-rod-deluxe'));
+    await page.waitForFunction(()=>/amp=fender-hot-rod-deluxe/.test(location.search));
+    await page.goBack();
+    await page.waitForFunction(()=>state.amp==='marshall-jcm800-1987' && document.querySelector('.jjack'));
+    await page.goBack();
+    await page.waitForFunction(()=>state.amp==='jp2c');
+    await page.goForward();
+    await page.waitForFunction(()=>state.amp==='marshall-jcm800-1987' && /amp=marshall-jcm800-1987/.test(location.search));
 
         // Deep link.
     await go(url+'?amp=marshall-jcm800-1987');
