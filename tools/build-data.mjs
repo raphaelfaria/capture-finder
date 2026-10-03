@@ -393,6 +393,9 @@ export function parseSettings(row, definition, parsed = null) {
   const used = new Set();
   const controlFor = (label, raw, n) => {
     let cands = aliasMap.get(norm(label));
+    // An N/A line among several same-label controls is the next unused one in definition order, whatever its
+    // channel: descriptions that list every channel's knobs write the other channel's ones as N/A.
+    if (cands && cands.length > 1 && NA.has(String(raw).trim().toLowerCase())) { const next = cands.find((c) => !used.has(c.key)); if (next) { used.add(next.key); return next; } }
     // controls that share a label on different channels (e.g. a "Volume" knob per channel)
     if (cands && cands.length > 1 && n !== null && definition.channels) { const here = cands.filter((c) => !c.channels || c.channels.includes(n)); if (here.length) cands = here; }
     if (!cands || cands.length === 1) return cands ? cands[0] : undefined;
@@ -585,7 +588,7 @@ export function downloadDefaults(def, caps) {
   } else from.push({ channel: null, name: ranked[0].name, downloads: ranked[0].downloads });
   // the pedals in front of the starting channel's capture, if any, are part of the starting settings
   const startCap = def.channels ? ranked.find((c) => covers(c, defaults.channel)) : ranked[0];
-  if (startCap && startCap.chain) defaults.chain = startCap.chain.map((p) => ({ id: p.id, name: p.name, values: { ...(p.values || {}) } })); else delete defaults.chain;
+  if (startCap && startCap.chain) defaults.chain = startCap.chain.map((p) => ({ id: p.id, name: p.name, values: { ...(p.values || {}) }, ...(p.loop ? { loop: true } : {}) })); else delete defaults.chain;
   for (const c of def.controls) {
     if (c.scope === 'channel') {
       for (const ch of def.channels || []) {
@@ -603,9 +606,9 @@ export function downloadDefaults(def, caps) {
   return { defaults, from };
 }
 
-// Pedals in front of the captured gear ("Pedal 1: Boss® SD-1®", "Pedal2: …" blocks after the
-// settings), in signal order: each block's name and setting rows, up to a blank line, the next pedal
-// or another device header.
+// Pedals with the captured gear ("Pedal 1: Boss® SD-1®", "Pedal2: …" blocks after the settings), in
+// signal order: each block's name and setting rows, up to a blank line, the next pedal or another device
+// header. A block ending with "In efx loop" is in the gear's effects loop (loop: true), not in front.
 export function pedalBlocks(description) {
   const blocks = [];
   let cur = null;
@@ -615,6 +618,7 @@ export function pedalBlocks(description) {
     if (head) { cur = { n: Number(head[1]), source: head[2].trim(), name: head[2].replace(/[®™]/g, '').replace(/\s+/g, ' ').trim(), rows: [] }; blocks.push(cur); continue; }
     if (!cur) continue;
     if (!line || /^(?:Power amp|Cab|Amp|Settings)\s*:/i.test(line) || /[®™]/.test(line)) { cur = null; continue; }
+    if (/^in\s+(?:e?fx|effects?)\s*loop$/i.test(line)) { cur.loop = true; continue; }
     cur.rows.push(line);
   }
   return blocks.sort((a, b) => a.n - b.n);
@@ -633,7 +637,7 @@ export function pedalChain(row, rules, definitions) {
       const [settings] = parseSettings(pedalRow(row, b), { ...def, parse: {} });
       values = settings ? settings.values : null;
     }
-    return { id: def ? identity.id : null, name: def ? def.brand + ' ' + def.model : b.name, values };
+    return { id: def ? identity.id : null, name: def ? def.brand + ' ' + def.model : b.name, values, ...(b.loop ? { loop: true } : {}) };
   });
 }
 

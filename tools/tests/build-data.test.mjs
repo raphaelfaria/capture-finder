@@ -227,3 +227,18 @@ test('pedal blocks: the pedals in front, in order, each with its rows', () => {
   assert.deepEqual(pedalBlocks(d).map((b) => [b.n, b.name, b.source, b.rows]), [[1, 'Boss SD-1', 'Boss® SD-1®', ['Level: 10', 'Drive 1.5']], [2, 'Boss GE-7', 'Boss® GE-7®', ['100Hz: 0dB']]]);
   assert.deepEqual(pedalBlocks('Settings:\nGain: 5'), []);
 });
+
+test('an N/A line among same-label controls fills the next unused one, whatever its channel', () => {
+  const def = { id: 'x', channels: [{ n: 1, name: 'Clean', aliases: ['Clean'] }, { n: 2, name: 'Lead', aliases: ['Lead'] }],
+    controls: [{ key: 'cleanbass', label: 'CLEAN BASS', aliases: ['Bass'], kind: 'knob', scope: 'global', channels: [1], min: 0, max: 10, step: 0.1, weight: 1 },
+      { key: 'leadbass', label: 'LEAD BASS', aliases: ['Bass'], kind: 'knob', scope: 'global', channels: [2], min: 0, max: 10, step: 0.1, weight: 1 }] };
+  const [lead] = parseSettings(row('Settings:\nChannel: Lead\nBass: N/A\nBass: 8'), def);
+  assert.deepEqual([lead.values, lead.notApplicable.map((x) => x.key)], [{ leadbass: 8 }, ['cleanbass']]);
+  const [clean] = parseSettings(row('Settings:\nChannel: Clean\nBass: 6\nBass: N/A'), def);
+  assert.deepEqual(clean.values, { cleanbass: 6 }); // the lead knob's N/A neither steals the value nor marks the clean knob
+});
+
+test('a pedal block ending with "In efx loop" is in the effects loop', () => {
+  const d = 'Settings:\nGain: 5\nPedal1: Xotic Effects® BB-Preamp®\nGain: 1\nPedal2: BBE® Sonic Stomp®\nProcess: 0\nIn efx loop';
+  assert.deepEqual(pedalBlocks(d).map((x) => [x.name, x.rows, !!x.loop]), [['Xotic Effects BB-Preamp', ['Gain: 1'], false], ['BBE Sonic Stomp', ['Process: 0'], true]]);
+});

@@ -8850,13 +8850,13 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 0,
-          "200hz": -2,
-          "400hz": -5,
-          "800hz": 0,
-          "16khz": 0,
-          "32khz": 2,
-          "64khz": 2,
+          "b100": 0,
+          "b200": -2,
+          "b400": -5,
+          "b800": 0,
+          "b1600": 0,
+          "b3200": 2,
+          "b6400": 2,
           "level": 0
         }
       }
@@ -8923,13 +8923,13 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 0,
-          "200hz": -2,
-          "400hz": -5,
-          "800hz": 0,
-          "16khz": 0,
-          "32khz": 2,
-          "64khz": 2,
+          "b100": 0,
+          "b200": -2,
+          "b400": -5,
+          "b800": 0,
+          "b1600": 0,
+          "b3200": 2,
+          "b6400": 2,
           "level": 0
         }
       }
@@ -44327,6 +44327,7 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 5,
           "process": 2.5
         }
       }
@@ -44564,6 +44565,7 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 5,
           "process": 5
         }
       }
@@ -51281,7 +51283,11 @@
         "bass": 4,
         "middle": 4,
         "treble": 8,
-        "master": 5
+        "master": 5,
+        "level": 3,
+        "modern": true,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "3": {
@@ -51290,7 +51296,11 @@
           "bass": 4,
           "middle": 4,
           "treble": 8,
-          "master": 5
+          "master": 5,
+          "level": 3,
+          "modern": true,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -51351,7 +51361,11 @@
         "bass": 5,
         "middle": 5,
         "treble": 5,
-        "master": 5
+        "master": 5,
+        "level": 3,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "3": {
@@ -51360,7 +51374,11 @@
           "bass": 5,
           "middle": 5,
           "treble": 5,
-          "master": 5
+          "master": 5,
+          "level": 3,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -51409,7 +51427,11 @@
         "bass": 6,
         "middle": 7,
         "treble": 10,
-        "master": 5
+        "master": 5,
+        "level": 3,
+        "modern": true,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "2": {
@@ -51418,7 +51440,11 @@
           "bass": 6,
           "middle": 7,
           "treble": 10,
-          "master": 5
+          "master": 5,
+          "level": 3,
+          "modern": true,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -51479,7 +51505,11 @@
         "bass": 4,
         "middle": 8,
         "treble": 8,
-        "master": 5
+        "master": 5,
+        "level": 3,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "2": {
@@ -51488,7 +51518,11 @@
           "bass": 4,
           "middle": 8,
           "treble": 8,
-          "master": 5
+          "master": 5,
+          "level": 3,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -51537,7 +51571,11 @@
         "bass": 5,
         "middle": 5.5,
         "treble": 10,
-        "master": 5
+        "master": 5,
+        "level": 5,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "2": {
@@ -51546,7 +51584,11 @@
           "bass": 5,
           "middle": 5.5,
           "treble": 10,
-          "master": 5
+          "master": 5,
+          "level": 5,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -51595,7 +51637,11 @@
         "bass": 5,
         "middle": 6,
         "treble": 5,
-        "master": 5
+        "master": 5,
+        "level": 5,
+        "modern": true,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "1": {
@@ -51604,7 +51650,11 @@
           "bass": 5,
           "middle": 6,
           "treble": 5,
-          "master": 5
+          "master": 5,
+          "level": 5,
+          "modern": true,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -51653,7 +51703,11 @@
         "bass": 6,
         "middle": 10,
         "treble": 3,
-        "master": 5
+        "master": 5,
+        "level": 5,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "1": {
@@ -51662,7 +51716,11 @@
           "bass": 6,
           "middle": 10,
           "treble": 3,
-          "master": 5
+          "master": 5,
+          "level": 5,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -51711,7 +51769,11 @@
         "bass": 3,
         "middle": 4,
         "treble": 7,
-        "master": 5
+        "master": 5,
+        "level": 5,
+        "modern": false,
+        "halfDrive": false,
+        "deep": true
       },
       "byChannel": {
         "1": {
@@ -51720,7 +51782,11 @@
           "bass": 3,
           "middle": 4,
           "treble": 7,
-          "master": 5
+          "master": 5,
+          "level": 5,
+          "modern": false,
+          "halfDrive": false,
+          "deep": true
         }
       },
       "notApplicable": []
@@ -79564,23 +79630,35 @@
       "channel": 2,
       "values": {
         "presence": 5,
-        "masterleadch": 6.5,
-        "bass": 8,
-        "middle": 5,
-        "treble": 6.5,
+        "master": 6.5,
+        "leadbass": 8,
+        "leadmiddle": 5,
+        "leadtreble": 6.5,
         "gain": 5
       },
       "byChannel": {
         "2": {
           "presence": 5,
-          "masterleadch": 6.5,
-          "bass": 8,
-          "middle": 5,
-          "treble": 6.5,
+          "master": 6.5,
+          "leadbass": 8,
+          "leadmiddle": 5,
+          "leadtreble": 6.5,
           "gain": 5
         }
       },
       "notApplicable": [
+        {
+          "key": "cleanbass",
+          "channel": 2
+        },
+        {
+          "key": "cleanmiddle",
+          "channel": 2
+        },
+        {
+          "key": "cleantreble",
+          "channel": 2
+        },
         {
           "key": "pullboost",
           "channel": 2
@@ -79626,23 +79704,35 @@
       "channel": 2,
       "values": {
         "presence": 2,
-        "masterleadch": 4,
-        "bass": 6,
-        "middle": 10,
-        "treble": 8,
+        "master": 4,
+        "leadbass": 6,
+        "leadmiddle": 10,
+        "leadtreble": 8,
         "gain": 4.5
       },
       "byChannel": {
         "2": {
           "presence": 2,
-          "masterleadch": 4,
-          "bass": 6,
-          "middle": 10,
-          "treble": 8,
+          "master": 4,
+          "leadbass": 6,
+          "leadmiddle": 10,
+          "leadtreble": 8,
           "gain": 4.5
         }
       },
       "notApplicable": [
+        {
+          "key": "cleanbass",
+          "channel": 2
+        },
+        {
+          "key": "cleanmiddle",
+          "channel": 2
+        },
+        {
+          "key": "cleantreble",
+          "channel": 2
+        },
         {
           "key": "pullboost",
           "channel": 2
@@ -79688,23 +79778,35 @@
       "channel": 2,
       "values": {
         "presence": 0,
-        "masterleadch": 7.5,
-        "bass": 10,
-        "middle": 6.5,
-        "treble": 10,
+        "master": 7.5,
+        "leadbass": 10,
+        "leadmiddle": 6.5,
+        "leadtreble": 10,
         "gain": 1
       },
       "byChannel": {
         "2": {
           "presence": 0,
-          "masterleadch": 7.5,
-          "bass": 10,
-          "middle": 6.5,
-          "treble": 10,
+          "master": 7.5,
+          "leadbass": 10,
+          "leadmiddle": 6.5,
+          "leadtreble": 10,
           "gain": 1
         }
       },
       "notApplicable": [
+        {
+          "key": "cleanbass",
+          "channel": 2
+        },
+        {
+          "key": "cleanmiddle",
+          "channel": 2
+        },
+        {
+          "key": "cleantreble",
+          "channel": 2
+        },
         {
           "key": "pullboost",
           "channel": 2
@@ -79750,23 +79852,35 @@
       "channel": 2,
       "values": {
         "presence": 0,
-        "masterleadch": 7.5,
-        "bass": 10,
-        "middle": 6.5,
-        "treble": 10,
+        "master": 7.5,
+        "leadbass": 10,
+        "leadmiddle": 6.5,
+        "leadtreble": 10,
         "gain": 1
       },
       "byChannel": {
         "2": {
           "presence": 0,
-          "masterleadch": 7.5,
-          "bass": 10,
-          "middle": 6.5,
-          "treble": 10,
+          "master": 7.5,
+          "leadbass": 10,
+          "leadmiddle": 6.5,
+          "leadtreble": 10,
           "gain": 1
         }
       },
       "notApplicable": [
+        {
+          "key": "cleanbass",
+          "channel": 2
+        },
+        {
+          "key": "cleanmiddle",
+          "channel": 2
+        },
+        {
+          "key": "cleantreble",
+          "channel": 2
+        },
         {
           "key": "pullboost",
           "channel": 2
@@ -79824,23 +79938,35 @@
       "channel": 2,
       "values": {
         "presence": 0,
-        "masterleadch": 7.5,
-        "bass": 10,
-        "middle": 6.5,
-        "treble": 10,
+        "master": 7.5,
+        "leadbass": 10,
+        "leadmiddle": 6.5,
+        "leadtreble": 10,
         "gain": 1
       },
       "byChannel": {
         "2": {
           "presence": 0,
-          "masterleadch": 7.5,
-          "bass": 10,
-          "middle": 6.5,
-          "treble": 10,
+          "master": 7.5,
+          "leadbass": 10,
+          "leadmiddle": 6.5,
+          "leadtreble": 10,
           "gain": 1
         }
       },
       "notApplicable": [
+        {
+          "key": "cleanbass",
+          "channel": 2
+        },
+        {
+          "key": "cleanmiddle",
+          "channel": 2
+        },
+        {
+          "key": "cleantreble",
+          "channel": 2
+        },
         {
           "key": "pullboost",
           "channel": 2
@@ -79867,22 +79993,25 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 2,
           "process": 0
-        }
+        },
+        "loop": true
       },
       {
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 6,
-          "200hz": 4,
-          "400hz": 0,
-          "800hz": 0,
-          "16khz": 0,
-          "32khz": 0,
-          "64khz": 0,
+          "b100": 6,
+          "b200": 4,
+          "b400": 0,
+          "b800": 0,
+          "b1600": 0,
+          "b3200": 0,
+          "b6400": 0,
           "level": 0
-        }
+        },
+        "loop": true
       }
     ]
   },
@@ -79919,23 +80048,35 @@
       "channel": 2,
       "values": {
         "presence": 8,
-        "masterleadch": 6,
-        "bass": 10,
-        "middle": 10,
-        "treble": 6.5,
+        "master": 6,
+        "leadbass": 10,
+        "leadmiddle": 10,
+        "leadtreble": 6.5,
         "gain": 3
       },
       "byChannel": {
         "2": {
           "presence": 8,
-          "masterleadch": 6,
-          "bass": 10,
-          "middle": 10,
-          "treble": 6.5,
+          "master": 6,
+          "leadbass": 10,
+          "leadmiddle": 10,
+          "leadtreble": 6.5,
           "gain": 3
         }
       },
       "notApplicable": [
+        {
+          "key": "cleanbass",
+          "channel": 2
+        },
+        {
+          "key": "cleanmiddle",
+          "channel": 2
+        },
+        {
+          "key": "cleantreble",
+          "channel": 2
+        },
         {
           "key": "pullboost",
           "channel": 2
@@ -79962,22 +80103,25 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 2,
           "process": 0
-        }
+        },
+        "loop": true
       },
       {
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 6,
-          "200hz": 4,
-          "400hz": 0,
-          "800hz": 0,
-          "16khz": 2,
-          "32khz": 2,
-          "64khz": 0,
+          "b100": 6,
+          "b200": 4,
+          "b400": 0,
+          "b800": 0,
+          "b1600": 2,
+          "b3200": 2,
+          "b6400": 0,
           "level": 0
-        }
+        },
+        "loop": true
       }
     ]
   },
@@ -80014,25 +80158,25 @@
       "channel": 1,
       "values": {
         "presence": 3,
-        "bass": 3.5,
-        "middle": 3.5,
-        "treble": 5,
+        "cleanbass": 3.5,
+        "cleanmiddle": 3.5,
+        "cleantreble": 5,
         "pullboost": true,
         "volume": 6
       },
       "byChannel": {
         "1": {
           "presence": 3,
-          "bass": 3.5,
-          "middle": 3.5,
-          "treble": 5,
+          "cleanbass": 3.5,
+          "cleanmiddle": 3.5,
+          "cleantreble": 5,
           "pullboost": true,
           "volume": 6
         }
       },
       "notApplicable": [
         {
-          "key": "masterleadch",
+          "key": "master",
           "channel": 1
         },
         {
@@ -80076,25 +80220,25 @@
       "channel": 1,
       "values": {
         "presence": 5,
-        "bass": 5.5,
-        "middle": 3,
-        "treble": 4.5,
+        "cleanbass": 5.5,
+        "cleanmiddle": 3,
+        "cleantreble": 4.5,
         "pullboost": false,
         "volume": 5.5
       },
       "byChannel": {
         "1": {
           "presence": 5,
-          "bass": 5.5,
-          "middle": 3,
-          "treble": 4.5,
+          "cleanbass": 5.5,
+          "cleanmiddle": 3,
+          "cleantreble": 4.5,
           "pullboost": false,
           "volume": 5.5
         }
       },
       "notApplicable": [
         {
-          "key": "masterleadch",
+          "key": "master",
           "channel": 1
         },
         {
@@ -80109,22 +80253,25 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 2,
           "process": 6
-        }
+        },
+        "loop": true
       },
       {
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 0,
-          "200hz": 0,
-          "400hz": 4,
-          "800hz": 0,
-          "16khz": 2,
-          "32khz": 0,
-          "64khz": 0,
+          "b100": 0,
+          "b200": 0,
+          "b400": 4,
+          "b800": 0,
+          "b1600": 2,
+          "b3200": 0,
+          "b6400": 0,
           "level": 0
-        }
+        },
+        "loop": true
       }
     ]
   },
@@ -81346,8 +81493,10 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 6,
           "process": 5
-        }
+        },
+        "loop": true
       }
     ]
   },
@@ -81608,20 +81757,22 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 3,
           "process": 0
-        }
+        },
+        "loop": true
       },
       {
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 0,
-          "200hz": 2,
-          "400hz": 1,
-          "800hz": 0,
-          "16khz": 0,
-          "32khz": 0,
-          "64khz": 0,
+          "b100": 0,
+          "b200": 2,
+          "b400": 1,
+          "b800": 0,
+          "b1600": 0,
+          "b3200": 0,
+          "b6400": 0,
           "level": 0
         }
       }
@@ -81929,13 +82080,13 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": -6,
-          "200hz": -8,
-          "400hz": 0,
-          "800hz": 0,
-          "16khz": 0,
-          "32khz": 4,
-          "64khz": 0,
+          "b100": -6,
+          "b200": -8,
+          "b400": 0,
+          "b800": 0,
+          "b1600": 0,
+          "b3200": 4,
+          "b6400": 0,
           "level": 0
         }
       },
@@ -82348,13 +82499,13 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 0,
-          "200hz": -4,
-          "400hz": -4,
-          "800hz": -2,
-          "16khz": 0,
-          "32khz": 2,
-          "64khz": 0,
+          "b100": 0,
+          "b200": -4,
+          "b400": -4,
+          "b800": -2,
+          "b1600": 0,
+          "b3200": 2,
+          "b6400": 0,
           "level": 2
         }
       }
@@ -82981,15 +83132,16 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 12,
-          "200hz": 0,
-          "400hz": 0,
-          "800hz": 0,
-          "16khz": -3,
-          "32khz": 5,
-          "64khz": 7,
+          "b100": 12,
+          "b200": 0,
+          "b400": 0,
+          "b800": 0,
+          "b1600": -3,
+          "b3200": 5,
+          "b6400": 7,
           "level": 0
-        }
+        },
+        "loop": true
       }
     ]
   },
@@ -83059,15 +83211,16 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 5,
-          "200hz": 0,
-          "400hz": 0,
-          "800hz": 0,
-          "16khz": -3,
-          "32khz": 4,
-          "64khz": 4,
+          "b100": 5,
+          "b200": 0,
+          "b400": 0,
+          "b800": 0,
+          "b1600": -3,
+          "b3200": 4,
+          "b6400": 4,
           "level": 0
-        }
+        },
+        "loop": true
       }
     ]
   },
@@ -83107,7 +83260,7 @@
         "treble": 9,
         "middle": 10,
         "bass": 8,
-        "gain": 7
+        "gaina": 7
       },
       "byChannel": {
         "1": {
@@ -83116,7 +83269,7 @@
           "treble": 9,
           "middle": 10,
           "bass": 8,
-          "gain": 7
+          "gaina": 7
         }
       },
       "notApplicable": [
@@ -83168,7 +83321,7 @@
         "treble": 10,
         "middle": 9,
         "bass": 8.5,
-        "gain": 5.5
+        "gaina": 5.5
       },
       "byChannel": {
         "1": {
@@ -83177,7 +83330,7 @@
           "treble": 10,
           "middle": 9,
           "bass": 8.5,
-          "gain": 5.5
+          "gaina": 5.5
         }
       },
       "notApplicable": [
@@ -83229,7 +83382,7 @@
         "treble": 9,
         "middle": 9,
         "bass": 10,
-        "gain": 4
+        "gaina": 4
       },
       "byChannel": {
         "1": {
@@ -83238,7 +83391,7 @@
           "treble": 9,
           "middle": 9,
           "bass": 10,
-          "gain": 4
+          "gaina": 4
         }
       },
       "notApplicable": [
@@ -83290,7 +83443,7 @@
         "treble": 8.5,
         "middle": 8.5,
         "bass": 10,
-        "gain": 3
+        "gaina": 3
       },
       "byChannel": {
         "1": {
@@ -83299,7 +83452,7 @@
           "treble": 8.5,
           "middle": 8.5,
           "bass": 10,
-          "gain": 3
+          "gaina": 3
         }
       },
       "notApplicable": [
@@ -83349,14 +83502,14 @@
         "attenuator": 2.5,
         "volumeb": 9,
         "shape": 5,
-        "gain": 4.2
+        "gainb": 4.2
       },
       "byChannel": {
         "2": {
           "attenuator": 2.5,
           "volumeb": 9,
           "shape": 5,
-          "gain": 4.2
+          "gainb": 4.2
         }
       },
       "notApplicable": [
@@ -83374,6 +83527,10 @@
         },
         {
           "key": "bass",
+          "channel": 2
+        },
+        {
+          "key": "gaina",
           "channel": 2
         }
       ]
@@ -83414,14 +83571,14 @@
         "attenuator": 2.5,
         "volumeb": 9,
         "shape": 5,
-        "gain": 7
+        "gainb": 7
       },
       "byChannel": {
         "2": {
           "attenuator": 2.5,
           "volumeb": 9,
           "shape": 5,
-          "gain": 7
+          "gainb": 7
         }
       },
       "notApplicable": [
@@ -83439,6 +83596,10 @@
         },
         {
           "key": "bass",
+          "channel": 2
+        },
+        {
+          "key": "gaina",
           "channel": 2
         }
       ]
@@ -83481,7 +83642,7 @@
         "treble": 10,
         "middle": 6,
         "bass": 10,
-        "gain": 7
+        "gaina": 7
       },
       "byChannel": {
         "1": {
@@ -83490,7 +83651,7 @@
           "treble": 10,
           "middle": 6,
           "bass": 10,
-          "gain": 7
+          "gaina": 7
         }
       },
       "notApplicable": [
@@ -83542,7 +83703,7 @@
         "treble": 9,
         "middle": 5,
         "bass": 10,
-        "gain": 6
+        "gaina": 6
       },
       "byChannel": {
         "1": {
@@ -83551,7 +83712,7 @@
           "treble": 9,
           "middle": 5,
           "bass": 10,
-          "gain": 6
+          "gaina": 6
         }
       },
       "notApplicable": [
@@ -83581,22 +83742,25 @@
         "id": "bbe-sonic-stomp",
         "name": "BBE Sonic Stomp",
         "values": {
+          "locontour": 5,
           "process": 0
-        }
+        },
+        "loop": true
       },
       {
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": 3,
-          "200hz": 0,
-          "400hz": 0,
-          "800hz": 0,
-          "16khz": 0,
-          "32khz": 0,
-          "64khz": 0,
+          "b100": 3,
+          "b200": 0,
+          "b400": 0,
+          "b800": 0,
+          "b1600": 0,
+          "b3200": 0,
+          "b6400": 0,
           "level": 0
-        }
+        },
+        "loop": true
       }
     ]
   },
@@ -85105,13 +85269,13 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": -6,
-          "200hz": -15,
-          "400hz": -15,
-          "800hz": 0,
-          "16khz": 15,
-          "32khz": 15,
-          "64khz": 15,
+          "b100": -6,
+          "b200": -15,
+          "b400": -15,
+          "b800": 0,
+          "b1600": 15,
+          "b3200": 15,
+          "b6400": 15,
           "level": 2
         }
       }
@@ -85175,13 +85339,13 @@
         "id": "boss-ge-7",
         "name": "Boss GE-7",
         "values": {
-          "100hz": -6,
-          "200hz": -15,
-          "400hz": -15,
-          "800hz": 0,
-          "16khz": 15,
-          "32khz": 15,
-          "64khz": 15,
+          "b100": -6,
+          "b200": -15,
+          "b400": -15,
+          "b800": 0,
+          "b1600": 15,
+          "b3200": 15,
+          "b6400": 15,
           "level": 2
         }
       }
@@ -99444,7 +99608,12 @@
           "lomid": 1
         }
       },
-      "notApplicable": []
+      "notApplicable": [
+        {
+          "key": "bright_2",
+          "channel": 1
+        }
+      ]
     },
     "uninterpretedSettings": []
   },

@@ -19,7 +19,7 @@ const startScore = () => run('(()=>{ const { def, as } = cur(), f = (def.default
 assert.equal(run('CAPTURES.length'), 2190);
 assert.equal(run('new Set(CAPTURES.map(c=>c.id)).size'), 2190);
 assert.equal(run('CAPTURES.some(c=>c.name.startsWith("DEMO"))'), false);
-assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 20);
+assert.equal(run('AMP_DEFS.filter(a=>a.panel!=="generic").length'), 25);
 assert.equal(run('AMP_DEFS.some(a=>a.id==="marshall-jcm800-2203")'), false);
 
 run('state.amp="marshall-jcm800-1987"');
@@ -177,7 +177,7 @@ const sig = run('renderStage()');
 assert.ok(sig.includes('class="gswitches" style="grid-template-rows:repeat(3,auto)"') && sig.includes('class="gknobs" style="grid-template-rows:repeat(2,auto)"'));
 assert.ok(sig.indexOf('>Gain 1<') < sig.indexOf('>Gain 2<') && sig.indexOf('>Gain 2<') < sig.indexOf('>Bass<') && sig.indexOf('>Bass<') < sig.indexOf('>Middle<'));
 // channels side by side as far as they fit without wrapping their blocks
-run('state.amp="custom-audio-amplifiers-3-se-preamp"');
+run('state.amp="unverified-bogna-x-101b"');
 assert.ok(run('renderStage()').includes('grid-template-columns:repeat(3,minmax(0,1fr))'));
 run('state.amp="mesa-boogie-studio-preamp-mesa-boogie-2-90-simulclass"');
 assert.ok(!run('renderStage()').includes('gbody wrapped')); // switches, knobs and EQ sliders in one row
@@ -247,12 +247,48 @@ assert.ok(run('!AMP_DEFS.some(d=>d.chainOnly) && !!gearDef("boss-sd-1") && gearD
 run('state.amp="bogner-uberschall-first-edition"; loadCapture(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3").id)');
 assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,cur().as).score'), 100);
 assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,Object.assign({},cur().as,{chain:[]})).score'), 60); // no pedal on your side: at most partial
-assert.ok(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,cur().as).reasons.some(r=>/Same pedal in front/.test(r.text))'));
+assert.ok(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,cur().as).reasons.some(r=>/Same pedal · /.test(r.text))'));
 run('setCtrl(ctrlByKey("p0:gain"), null, 10)');
 assert.equal(run('cur().as.chain[0].values.gain'), 10);
 assert.ok(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Uber 3"),cur().def,cur().as).score') < 100); // the pedal's knobs count too
 assert.ok(run('renderStage()').includes('id="p0:k-gain-"') && run('renderStage()').includes('class="cab chainpedal bbcab"'));
 run('state.amps["bogner-uberschall-first-edition"]=initialAmpState(cur().def)');
+
+// GE-7 (chain only, ±15 dB sliders), Sonic Stomp and MT15 (a tone stack per channel; the other channel's
+// knobs are written N/A in the same description).
+assert.ok(run('!AMP_DEFS.some(d=>d.id==="boss-ge-7") && gearDef("boss-ge-7").panel==="ge7"'));
+assert.equal(run('JSON.stringify(CAPTURES.find(c=>(c.chain||[]).some(p=>p.id==="boss-ge-7")).chain.find(p=>p.id==="boss-ge-7").values)'), JSON.stringify({ b100:0, b200:-2, b400:-5, b800:0, b1600:0, b3200:2, b6400:2, level:0 }));
+run('state.amp="paul-reed-smith-mt15"');
+assert.equal(run('CAPTURES.filter(c=>c.ampId==="paul-reed-smith-mt15"&&c.uninterpretedSettings.length).length'), 0);
+const mtLead = run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Paul\'s MT16 1").settings.values)');
+assert.equal(mtLead, JSON.stringify({ presence:5, master:6.5, leadbass:8, leadmiddle:5, leadtreble:6.5, gain:5 }));
+assert.equal(startScore(), 100);
+assert.ok(run('renderStage()').includes('class="cab mtcab"') && run('renderStage()').includes('id="t-channel-1"'));
+run('state.amp="bbe-sonic-stomp"');
+assert.equal(startScore(), 100);
+assert.ok(run('renderStage()').includes('class="cab sscab"'));
+
+// Orange Thunderverb 50: channel A and B knobs apart; each description lists both Gains, the other N/A.
+run('state.amp="orange-thunderverb-50"');
+assert.equal(run('CAPTURES.filter(c=>c.ampId==="orange-thunderverb-50"&&c.uninterpretedSettings.length).length'), 0);
+assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Range Stormverb 5").settings.values)'), JSON.stringify({ attenuator:2.5, volumeb:9, shape:5, gainb:4.2 }));
+assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Range Stormverb 1").settings.values.gaina'), 7);
+assert.equal(startScore(), 100);
+assert.ok(run('renderStage()').includes('class="cab tvcab"') && run('renderStage()').includes('id="t-channel-1"'));
+
+// Custom Audio 3+SE: per-channel knobs ("Channel: 3 Lead"); the + 2:90 entry reads on past the
+// "Mesa Boogie® 2:90 Simulclass®" line for the power amp's settings.
+for (const id of ['custom-audio-amplifiers-3-se-preamp', 'custom-audio-amplifiers-3-se-preamp-mesa-boogie-2-90-simulclass']) {
+  run(`state.amp=${JSON.stringify(id)}`);
+  assert.equal(run(`CAPTURES.filter(c=>c.ampId===${JSON.stringify(id)}).length`), 8);
+  assert.equal(run(`CAPTURES.filter(c=>c.ampId===${JSON.stringify(id)}&&c.uninterpretedSettings.length).length`), 0);
+  assert.equal(startScore(), 100);
+  assert.ok(run('renderStage()').includes('class="c3face"') && run('renderStage()').includes('id="k-gain-3"'));
+}
+assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Custom 3SE 7").settings.channel'), 1);
+assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Custom 3SE 7").settings.values.bright'), false);
+assert.equal(run('JSON.stringify(["level","modern","halfDrive","deep"].map(k=>CAPTURES.find(c=>c.name.trim()==="Custom 3SE+290 6").settings.values[k]))'), JSON.stringify([5, true, false, true]));
+assert.ok(run('renderStage()').includes('s9face'));
 
 // Capture type labels: no version means the original Neural Capture (V1).
 assert.equal(run('captureTypeLabel({captureType:"Neural Capture"})'), 'Neural Capture V1');

@@ -450,18 +450,24 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .bbname span{font-size:15px;font-style:normal}
 
 /* ---------- pedals in front of the gear ---------- */
-.chainrow{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;min-width:0;max-width:100%}
+/* one row that scrolls sideways rather than wrapping; centred when it fits (auto margins keep both ends reachable);
+   positioned so the hidden inputs of controls inside it scroll and clip with it */
+.chainrow{position:relative;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:10px;min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:6px}
+.chainrow>:first-child{margin-left:auto}
+.chainrow>:last-child{margin-right:auto}
+.chainrow>*{flex:none}
 .chainarrow.to::before{content:'→'}
-@media (max-width:948px){.chainrow{flex-direction:column;gap:6px}.chainarrow.to::before{content:'↓'}}
 /* with pedals in front, the chain gets all the room left of the buttons, so the gear keeps its full width */
 .bench.withchain{grid-template-columns:minmax(0,1fr) auto}
 .bench.withchain>.chainrow{grid-column:1;justify-self:stretch}
 .bench.withchain .infowrap{grid-column:2}
 @media (max-width:700px){.bench.withchain{grid-template-columns:minmax(0,1fr)}.bench.withchain .infowrap{grid-column:1}}
-.chainpedals{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;min-width:0}
-.chainrow .cab{margin:0}
+.chainpedals{display:flex;flex-wrap:nowrap;align-items:center;gap:10px}
+.chainrow .cab{margin-top:0;margin-bottom:0}
 .chainarrow{font-size:20px;color:var(--dim)}
 .chainitem{display:flex;flex-direction:column;align-items:center;gap:4px}
+.chainloop{display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 8px 8px;border:1px dashed var(--line2);border-radius:10px}
+.chaintag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--dim)}
 .chainlink{max-width:220px;padding:2px 6px;border:0;border-radius:4px;background:transparent;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chainlink.go{color:var(--amber);text-decoration:underline;text-decoration-color:rgba(240,180,82,.4);text-underline-offset:2px}
 .chainlink.go:hover{background:rgba(240,180,82,.1);color:#f4c06a}
@@ -485,6 +491,104 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #f0b
 .pedalcab.compact .knobbox,.pedalcab.compact .kctl,.pedalcab.compact .kwrap{width:42px;height:42px}
 .pedalcab.compact .kwrap svg{width:42px;height:42px}
 .pedalcab.compact .knobbox .ro{left:28px;top:30px}
+
+/* ---------- Boss GE-7 panel ---------- */
+.gecab{background:#cfccc2;background-image:none;box-shadow:inset 0 0 0 1px #8e8b80;border-radius:10px;padding:7px 7px 4px;gap:4px}
+.geface{position:relative;flex:none;border-radius:6px;background:#1c1d22;border:1px solid #000}
+.gelab{position:absolute;top:8px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:10.5px;color:#f2f2f2;white-space:nowrap;border-bottom:1px solid #8f8f8f;padding:0 2px 1px}
+.gescale{position:absolute;left:8px;transform:translateY(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:9px;color:#e8e8e8}
+.gedash{position:absolute;height:1.5px;background:#d8d8d8;transform:translateY(-50%)}
+.gediv{position:absolute;width:1.5px;background:#d8d8d8}
+.gef{position:absolute;width:24px}
+.getrack{position:relative;display:block;width:24px;touch-action:none;cursor:ns-resize}
+.geslot{position:absolute;left:8px;top:0;bottom:0;width:8px;border-radius:4px;background:#050506;border:1px solid #3a3b40}
+.gecap{left:0;width:24px;border-radius:7px;background:#ece5ca;border:1px solid #8f8a76}
+.gecap::after{left:4px;right:4px;top:45%;height:1.5px;background:#bdb59a}
+.fader-in:focus-visible + .getrack .fcap{outline:2px solid #f0b452;outline-offset:2px}
+.gero{transform:translateX(-50%);font-size:8.5px}
+.gename{align-self:center;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:13px;letter-spacing:.04em;color:#3b3a44}
+.gename b{font-weight:700;margin-left:4px}
+
+/* ---------- BBE Sonic Stomp panel ---------- */
+.sscab{background:#120c0c;background-image:none;box-shadow:inset 0 0 0 1px #000;border-radius:14px;padding:6px}
+.ssface{position:relative;flex:none;border-radius:12px;background:#d8261e;overflow:hidden}
+.ssline{position:absolute;inset:7px 7px -10px;border:2px solid #fbe9e6;border-bottom:0;border-radius:9px 9px 0 0;pointer-events:none}
+.ssk{position:absolute;transform:translate(-50%,-50%)}
+.ssk .ro{right:-4px;bottom:2px;left:auto;top:auto}
+.ssk .knob-in:focus-visible + .kwrap{outline:2px solid #fff;outline-offset:2px}
+.sslab{position:absolute;transform:translate(-50%,-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:13px;letter-spacing:.03em;color:#fbe9e6;white-space:nowrap}
+.ssname{position:absolute;left:50%;transform:translate(-50%,-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-style:italic;font-size:26px;color:#fdf3f1;white-space:nowrap}
+
+/* ---------- PRS MT15 panel ---------- */
+.mtcab{gap:10px;border-radius:10px}
+.mtgrille{position:relative;height:56px;border-radius:4px;background-color:#101010;background-image:radial-gradient(circle,#1d1d1d 1.6px,transparent 1.8px);background-size:7px 7px;border:2px solid #050505}
+.mtgrille span{position:absolute;right:18px;top:10px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:500;font-size:22px;letter-spacing:.04em;color:#d23a32}
+.mtface{position:relative;flex:none;width:672px;height:100px;border-radius:4px;background:#0d0d0d;border:1px solid #000;box-shadow:inset 0 0 0 1px #262626}
+.mthead{position:absolute;top:6px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.04em;color:#f0f0f0;white-space:nowrap}
+.mtsub{position:absolute;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:7px;letter-spacing:.04em;color:#cfcfcf;white-space:nowrap}
+.mtlab{position:absolute;top:19px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.03em;color:#f0f0f0;white-space:nowrap}
+.mtk{position:absolute;top:60px;width:40px;height:40px;transform:translate(-50%,-50%)}
+.mtk .ro{left:26px;top:28px}
+.mtk.pulled::before{content:'';position:absolute;left:-1px;top:-1px;width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 2px #9a9a9a;pointer-events:none}
+.mtbracket{position:absolute;top:84px;height:8px;border:1.5px solid #cfcfcf;border-top:0;border-radius:0 0 6px 6px}
+.mtpull{position:absolute;top:30px;transform:translateX(-50%);display:flex;align-items:center;gap:3px;padding:1px 4px;border:0;border-radius:3px;background:transparent;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:600;font-size:7px;letter-spacing:.04em;color:#e8e8e8;white-space:nowrap}
+.mtpull:hover{background:#1f1f1f}
+.mtpull .pdot{width:5px;height:5px}
+.mtpull[aria-pressed=true] .pdot{background:#f0f0f0;border-color:#f0f0f0}
+.mtoff{opacity:.32}
+@media (max-width:760px){.mtface{zoom:.5}.mtgrille{height:40px}}
+@media (max-width:380px){.mtface{zoom:.42}}
+
+/* ---------- Orange Thunderverb 50 panel ---------- */
+.tvcab{background:#ef8a1f;background-image:none;box-shadow:inset 0 0 0 2px #b86410,inset 0 0 0 7px #ef8a1f;border-radius:10px;padding:16px}
+.tvface{position:relative;flex:none;width:616px;height:196px;border-radius:3px;background:#f4f2ec;border:2px solid #1a1a1a;box-shadow:inset 0 0 0 3px #f4f2ec,inset 0 0 0 4px #1a1a1a}
+.tvname{position:absolute;left:24px;top:14px;display:flex;align-items:baseline;gap:22px;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:34px;letter-spacing:.06em;color:#141414;line-height:1}
+.tvname span{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:13px;letter-spacing:.04em}
+.tvblack{position:absolute;left:8px;right:8px;top:62px;height:12px;background:#141414}
+.tvbar{position:absolute;top:63px;height:10px;border-radius:5px;background:#f4f2ec;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:7.5px;letter-spacing:.06em;color:#141414;display:flex;align-items:center;justify-content:center}
+.tvorange{position:absolute;left:8px;right:8px;top:74px;height:22px;background:#ef8a1f}
+.tvicon{position:absolute;top:77px}
+.tvlab{position:absolute;top:100px;transform:translateX(-50%);font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.03em;color:#141414;white-space:nowrap}
+.tvk{position:absolute;top:150px;transform:translate(-50%,-50%)}
+.tvk .ro{left:auto;right:-14px;top:auto;bottom:-6px}
+.tvk .knob-in:focus-visible + .kwrap{outline-color:#141414}
+.tvoff{opacity:.3}
+.tvtgl .tlbl{color:#3a3a3a;font-weight:700}
+.tvtgl .tlbl[aria-pressed=true]{color:#141414;text-decoration-color:#ef8a1f}
+.tvtgl .tlbl:hover{background:#e6e3da}
+@media (max-width:760px){.tvface{zoom:.5}.tvcab{padding:8px}}
+@media (max-width:380px){.tvface{zoom:.42}}
+
+/* ---------- Custom Audio 3+SE panel ---------- */
+.c3face{position:relative;flex:none;width:850px;height:176px;max-width:none;border-radius:3px;background:#c4c6c7 repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 1px,rgba(0,0,0,.035) 1px 2px);border:1px solid #8d9092;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;color:#1e1f20}
+.c3ears i{position:absolute;width:14px;height:7px;border-radius:4px;background:var(--bg)}
+.c3ears i:nth-child(1){left:6px;top:14px}.c3ears i:nth-child(2){left:6px;bottom:14px}.c3ears i:nth-child(3){right:6px;top:14px}.c3ears i:nth-child(4){right:6px;bottom:14px}
+.c3lines{position:absolute;left:0;top:0;pointer-events:none}
+.c3k{position:absolute;width:36px;height:36px;transform:translate(-50%,-50%)}
+.c3k .ro{left:46px;top:12px}
+.c3k .knob-in:focus-visible + .kwrap{outline:2px solid #1e1f20;outline-offset:1px;border-radius:50%}
+.c3n{position:absolute;transform:translate(-50%,-50%);font-size:6px;font-weight:600;line-height:1;color:#1e1f20;pointer-events:none}
+.c3n.pm{font-size:9px;font-weight:700}
+.c3d{position:absolute;width:2px;height:2px;margin:-1px 0 0 -1px;border-radius:50%;background:#1e1f20;pointer-events:none}
+.c3lab{position:absolute;left:50%;top:40px;transform:translateX(-50%);font-size:6.5px;font-weight:700;letter-spacing:.04em;white-space:nowrap;line-height:1}
+.c3off{opacity:.38}
+.c3tog{position:absolute;width:30px;height:40px;transform:translate(-50%,-50%);padding:4px 0 0;border:0;border-radius:4px;background:transparent;color:inherit;font:inherit}
+.c3tog svg{display:block;margin:0 auto}
+.c3tog .c3lab{top:49px}
+.c3tog .c3st{position:absolute;left:25px;top:12px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4a4b4c}
+.c3tog:hover{background:rgba(0,0,0,.06)}
+.c3tog:focus-visible,.c3ch:focus-visible{outline:2px solid #1e1f20;outline-offset:1px}
+.c3ch{position:absolute;left:546px;transform:translateY(-50%);display:flex;align-items:center;gap:7px;min-height:24px;padding:2px 5px;border:0;border-radius:4px;background:transparent;color:#1e1f20;font:inherit;font-size:9px;font-weight:700;letter-spacing:.04em}
+.c3ch:hover{background:rgba(0,0,0,.07)}
+.c3led{width:7px;height:7px;border-radius:50%;background:#4a2422;box-shadow:inset 0 0 0 1px #2a1414}
+.c3ch.on .c3led{background:#ff3b30;box-shadow:0 0 6px 1px rgba(255,59,48,.7)}
+.c3ch.on{text-decoration:underline;text-underline-offset:3px}
+.c3eq{position:absolute;left:690px;top:24px;font-size:9px;font-weight:700;letter-spacing:.06em}
+.c3name{position:absolute;left:694px;top:72px;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:16px;letter-spacing:.07em;line-height:1.02}
+.c3name span{display:block;margin-top:7px;font-family:'Barlow Semi Condensed','Arial Narrow',sans-serif;font-style:italic;font-weight:600;font-size:9.5px;letter-spacing:.02em}
+@media (max-width:1000px){.c3face{zoom:.74}}
+@media (max-width:700px){.c3face{zoom:.39}}
+@media (max-width:380px){.c3face{zoom:.33}}
 
 /* ---------- generic panel ---------- */
 .gwrap{display:flex;flex-direction:column;gap:8px;min-width:0;max-width:100%}

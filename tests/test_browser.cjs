@@ -244,12 +244,31 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await topIs('Bogna Uber 4', 100);
     await page.evaluate(()=>{ update({ openId:CAPTURES.find(c=>c.name.trim()==='Bogna Uber 4').id }); });
     await page.waitForSelector('.drawer');
-    assert.match(await page.locator('.drawer .cmp').innerText(), /In front\s+Xotic Effects BB Preamp\s+Xotic Effects BB Preamp[\s\S]*BB Preamp · Gain/);
+    assert.match(await page.locator('.drawer .cmp').innerText(), /Pedals\s+Xotic Effects BB Preamp\s+Xotic Effects BB Preamp[\s\S]*BB Preamp · Gain/);
     await page.keyboard.press('Escape');
     await go(url+'?amp=bogner-uberschall-first-edition');
     assert.equal(await page.evaluate(()=>cur().as.chain.length), 1); // saved
     await page.locator('#reset').click();
     await page.waitForFunction(()=>(!cur().as.chain || !cur().as.chain.length) && !document.querySelector('.chainpedal'));
+
+    // Pedals marked "In efx loop" sit right of the gear, in an FX LOOP group; the others left of it.
+    await go(url+'?amp=paul-reed-smith-mt15');
+    await page.waitForSelector('#stage .chainloop');
+    assert.deepEqual(await page.evaluate(()=>{ const g = document.querySelector('#stage .cab:not(.chainpedal)').getBoundingClientRect();
+      return [...document.querySelectorAll('#stage .chainitem')].map(p => [p.querySelector('.chainlink').textContent.replace('↗', '').trim(), p.getBoundingClientRect().left > g.right ? 'loop' : 'front']); }),
+      [['Xotic Effects BB Preamp', 'front'], ['BBE Sonic Stomp', 'loop'], ['Boss GE-7', 'loop']]);
+    // A long chain stays on one row that scrolls, starting with the gear centred.
+    await page.setViewportSize({ width:390, height:800 });
+    await go(url+'?amp=paul-reed-smith-mt15');
+    await page.waitForFunction(()=>{ const r = document.querySelector('#stage .chainrow'), g = r && r.querySelector('.cab:not(.chainpedal)'); if (!g) return false; const rr = r.getBoundingClientRect(), gr = g.getBoundingClientRect(); return r.scrollWidth > r.clientWidth && r.scrollLeft > 0 && Math.abs((gr.left + gr.right)/2 - (rr.left + rr.left + r.clientWidth)/2) <= 2; });
+    assert.equal(await page.evaluate(()=>new Set([...document.querySelectorAll('#stage .chainrow > *')].map(e => Math.round(e.getBoundingClientRect().top + e.getBoundingClientRect().height/2))).size > 0 && [...document.querySelectorAll('#stage .chainpedals > .chainitem')].every((e, i, a) => !i || e.getBoundingClientRect().left > a[i-1].getBoundingClientRect().left)), true); // one row, left to right
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth - document.documentElement.clientWidth), 0);
+    await page.setViewportSize({ width:1280, height:900 });
+    // a chain that fits is centred (it only scrolls to centre the gear when it overflows)
+    await go(url+'?amp=bogner-uberschall-first-edition');
+    await page.evaluate(()=>{ loadCapture(CAPTURES.find(c=>c.name.trim()==='Bogna Uber 3').id); });
+    await page.waitForFunction(()=>{ const r = document.querySelector('#stage .chainrow'); if (!r || r.scrollWidth > r.clientWidth) return false; const b = r.getBoundingClientRect(), f = r.firstElementChild.getBoundingClientRect(), l = r.lastElementChild.getBoundingClientRect(); return Math.abs((f.left - b.left) - (b.right - l.right)) <= 4; });
+    await page.locator('#reset').click();
 
     // A pedal's page links to the gear it's used in front of (opening it with that pedal in front);
     // in a chain, the link above a pedal opens the pedal's own page; Back returns.

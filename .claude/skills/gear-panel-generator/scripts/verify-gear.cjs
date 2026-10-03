@@ -81,7 +81,8 @@ const ok = (m) => console.log('  ok  ' + m);
     // 3. dragging (wait for the re-render after Reset, or the element may be detached mid-measure)
     await page.evaluate(() => document.getElementById('reset').click());
     await page.waitForTimeout(80);
-    const knob = page.locator('[data-drag=knob]').first();
+    // the gear's own knobs, not a pedal in front of it (pedals may be scrolled out of view)
+    const knob = page.locator('#stage .cab:not(.chainpedal) [data-drag=knob]').first();
     if (await knob.count()) {
       const key = await knob.getAttribute('data-ctrl'), ch = await knob.getAttribute('data-ch');
       const v0 = await page.evaluate(([k, c]) => getVal(cur().def, cur().as, ctrlByKey(k), c === '' ? null : Number(c)), [key, ch]);

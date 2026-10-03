@@ -5374,6 +5374,1366 @@
     ]
   },
   {
+    "id": "boss-ge-7",
+    "brand": "Boss",
+    "model": "GE-7",
+    "panel": "ge7",
+    "category": "Pedals",
+    "chainOnly": true,
+    "fullName": "GE-7 Equalizer · 7-band graphic EQ pedal",
+    "definitionSource": "pedal photo + chain settings",
+    "match": {
+      "source": "\\bGE-?7\\b"
+    },
+    "channels": null,
+    "controls": [
+      {
+        "key": "b100",
+        "label": "100",
+        "aliases": [
+          "100Hz",
+          "100hz",
+          "100"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6
+      },
+      {
+        "key": "b200",
+        "label": "200",
+        "aliases": [
+          "200Hz",
+          "200hz",
+          "200"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6
+      },
+      {
+        "key": "b400",
+        "label": "400",
+        "aliases": [
+          "400Hz",
+          "400hz",
+          "400"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6
+      },
+      {
+        "key": "b800",
+        "label": "800",
+        "aliases": [
+          "800Hz",
+          "800hz",
+          "800"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6
+      },
+      {
+        "key": "b1600",
+        "label": "1.6k",
+        "aliases": [
+          "1.6kHz",
+          "1.6khz"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6
+      },
+      {
+        "key": "b3200",
+        "label": "3.2k",
+        "aliases": [
+          "3.2kHz",
+          "3.2khz"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6
+      },
+      {
+        "key": "b6400",
+        "label": "6.4k",
+        "aliases": [
+          "6.4kHz",
+          "6.4khz"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6
+      },
+      {
+        "key": "level",
+        "label": "LEVEL",
+        "aliases": [
+          "Level"
+        ],
+        "kind": "fader",
+        "scope": "global",
+        "min": -15,
+        "max": 15,
+        "step": 0.5,
+        "weight": 0.6,
+        "primary": true
+      }
+    ],
+    "panelOrder": [
+      "b100",
+      "b200",
+      "b400",
+      "b800",
+      "b1600",
+      "b3200",
+      "b6400",
+      "level"
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "b100": 0,
+        "b200": 0,
+        "b400": 0,
+        "b800": 0,
+        "b1600": 0,
+        "b3200": 0,
+        "b6400": 0,
+        "level": 0
+      }
+    },
+    "defaultsNote": "Only ever captured in front of other gear (no captures of its own). Sliders are ±15 dB; the LED, jacks, footswitch and the lower body are left out.",
+    "captureCount": 0
+  },
+  {
+    "id": "bbe-sonic-stomp",
+    "brand": "BBE",
+    "model": "Sonic Stomp",
+    "panel": "sonicstomp",
+    "category": "Pedals",
+    "fullName": "Sonic Stomp · Sonic Maximizer pedal",
+    "definitionSource": "pedal photo + capture settings",
+    "match": {
+      "source": "\\bSonic\\s*Stomp\\b"
+    },
+    "channels": null,
+    "controls": [
+      {
+        "key": "locontour",
+        "label": "LO CONTOUR",
+        "aliases": [
+          "Lo Contour",
+          "Low Contour",
+          "Lo-Contour"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "process",
+        "label": "PROCESS",
+        "aliases": [
+          "Process"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1.5,
+        "primary": true
+      }
+    ],
+    "panelOrder": [
+      "locontour",
+      "process"
+    ],
+    "defaults": {
+      "channel": null,
+      "ch": {},
+      "global": {
+        "locontour": 5,
+        "process": 0
+      }
+    },
+    "defaultsNote": "The footswitch, jacks, BBE logo and the lower body are left out.",
+    "captureCount": 4,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "BBD SonicMax 1",
+        "downloads": 33
+      }
+    ]
+  },
+  {
+    "id": "paul-reed-smith-mt15",
+    "brand": "Paul Reed Smith",
+    "model": "MT15",
+    "panel": "mt15",
+    "category": "Amps",
+    "fullName": "MT15 · two-channel 15 W head",
+    "definitionSource": "front panel photo + capture settings",
+    "match": {
+      "source": "\\bMT\\s*-?15\\b"
+    },
+    "channels": [
+      {
+        "n": 1,
+        "name": "Clean",
+        "aliases": [
+          "Clean"
+        ]
+      },
+      {
+        "n": 2,
+        "name": "Lead",
+        "aliases": [
+          "Lead"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "key": "presence",
+        "label": "PRESENCE",
+        "aliases": [
+          "Presence"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.8
+      },
+      {
+        "key": "master",
+        "label": "MASTER",
+        "aliases": [
+          "Master (Lead CH)",
+          "Master (Lead Channel)",
+          "Master",
+          "Lead Master"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.8,
+        "channels": [
+          2
+        ]
+      },
+      {
+        "key": "cleanbass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          1
+        ]
+      },
+      {
+        "key": "cleanmiddle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          1
+        ]
+      },
+      {
+        "key": "cleantreble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          1
+        ]
+      },
+      {
+        "key": "pullboost",
+        "label": "PULL BOOST",
+        "aliases": [
+          "Pull Boost"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "channels": [
+          1
+        ],
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "volume",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "channels": [
+          1
+        ],
+        "primary": true
+      },
+      {
+        "key": "leadbass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          2
+        ]
+      },
+      {
+        "key": "leadmiddle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          2
+        ]
+      },
+      {
+        "key": "leadtreble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          2
+        ]
+      },
+      {
+        "key": "gain",
+        "label": "GAIN",
+        "aliases": [
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "channels": [
+          2
+        ],
+        "primary": true
+      }
+    ],
+    "panelOrder": [
+      "presence",
+      "master",
+      "cleanbass",
+      "cleanmiddle",
+      "cleantreble",
+      "volume",
+      "leadbass",
+      "leadmiddle",
+      "leadtreble",
+      "gain"
+    ],
+    "defaults": {
+      "channel": 2,
+      "ch": {},
+      "global": {
+        "presence": 0,
+        "master": 7.5,
+        "cleanbass": 5.5,
+        "cleanmiddle": 3,
+        "cleantreble": 4.5,
+        "pullboost": false,
+        "volume": 5.5,
+        "leadbass": 10,
+        "leadmiddle": 6.5,
+        "leadtreble": 10,
+        "gain": 1
+      },
+      "chain": [
+        {
+          "id": "xotic-effects-bb-preamp",
+          "name": "Xotic Effects BB Preamp",
+          "values": {
+            "gain": 1.5,
+            "volume": 8,
+            "treble": 6,
+            "bass": 7.5
+          }
+        },
+        {
+          "id": "bbe-sonic-stomp",
+          "name": "BBE Sonic Stomp",
+          "values": {
+            "locontour": 2,
+            "process": 0
+          },
+          "loop": true
+        },
+        {
+          "id": "boss-ge-7",
+          "name": "Boss GE-7",
+          "values": {
+            "b100": 6,
+            "b200": 4,
+            "b400": 0,
+            "b800": 0,
+            "b1600": 0,
+            "b3200": 0,
+            "b6400": 0,
+            "level": 0
+          },
+          "loop": true
+        }
+      ]
+    },
+    "defaultsNote": "Each channel has its own Bass/Middle/Treble; captures list both channels’ knobs, with the other channel’s written N/A. Master only works on the lead channel; the controls the selected channel doesn’t use are dimmed. The LEAD/CLEAN switch picks the channel. Power and standby switches, the input and the PRS signature are left out.",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Paul's MT16 8",
+        "downloads": 104
+      },
+      {
+        "channel": 2,
+        "name": "Paul's MT16 5",
+        "downloads": 174
+      }
+    ]
+  },
+  {
+    "id": "orange-thunderverb-50",
+    "brand": "Orange",
+    "model": "Thunderverb 50",
+    "panel": "thunderverb",
+    "category": "Amps",
+    "fullName": "Thunderverb 50 · two-channel head with reverb",
+    "definitionSource": "front panel photo + capture settings",
+    "match": {
+      "source": "\\bThunderverb\\W*50\\b"
+    },
+    "channels": [
+      {
+        "n": 1,
+        "name": "A",
+        "aliases": [
+          "A",
+          "Channel A"
+        ]
+      },
+      {
+        "n": 2,
+        "name": "B",
+        "aliases": [
+          "B",
+          "Channel B"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "key": "attenuator",
+        "label": "ATTENUATOR",
+        "aliases": [
+          "Attenuator"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.6
+      },
+      {
+        "key": "reverb",
+        "label": "REVERB",
+        "aliases": [
+          "Reverb"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0
+      },
+      {
+        "key": "volumea",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume A",
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.8,
+        "channels": [
+          1
+        ]
+      },
+      {
+        "key": "treble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          1
+        ]
+      },
+      {
+        "key": "middle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          1
+        ]
+      },
+      {
+        "key": "bass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          1
+        ]
+      },
+      {
+        "key": "gaina",
+        "label": "GAIN",
+        "aliases": [
+          "Gain",
+          "Gain A"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "channels": [
+          1
+        ],
+        "primary": true
+      },
+      {
+        "key": "volumeb",
+        "label": "VOLUME",
+        "aliases": [
+          "Volume B",
+          "Volume"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.8,
+        "channels": [
+          2
+        ]
+      },
+      {
+        "key": "shape",
+        "label": "SHAPE",
+        "aliases": [
+          "Shape"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1,
+        "channels": [
+          2
+        ]
+      },
+      {
+        "key": "gainb",
+        "label": "GAIN",
+        "aliases": [
+          "Gain",
+          "Gain B"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "channels": [
+          2
+        ],
+        "primary": true
+      }
+    ],
+    "panelOrder": [
+      "attenuator",
+      "reverb",
+      "volumea",
+      "treble",
+      "middle",
+      "bass",
+      "gaina",
+      "volumeb",
+      "shape",
+      "gainb"
+    ],
+    "defaults": {
+      "channel": 1,
+      "ch": {},
+      "global": {
+        "attenuator": 2,
+        "reverb": 0,
+        "volumea": 8,
+        "treble": 9,
+        "middle": 5,
+        "bass": 10,
+        "gaina": 6,
+        "volumeb": 9,
+        "shape": 5,
+        "gainb": 7
+      },
+      "chain": [
+        {
+          "id": "xotic-effects-bb-preamp",
+          "name": "Xotic Effects BB Preamp",
+          "values": {
+            "gain": 1.5,
+            "volume": 6.5,
+            "treble": 6.5,
+            "bass": 7
+          }
+        },
+        {
+          "id": "bbe-sonic-stomp",
+          "name": "BBE Sonic Stomp",
+          "values": {
+            "locontour": 5,
+            "process": 0
+          },
+          "loop": true
+        },
+        {
+          "id": "boss-ge-7",
+          "name": "Boss GE-7",
+          "values": {
+            "b100": 3,
+            "b200": 0,
+            "b400": 0,
+            "b800": 0,
+            "b1600": 0,
+            "b3200": 0,
+            "b6400": 0,
+            "level": 0
+          },
+          "loop": true
+        }
+      ]
+    },
+    "defaultsNote": "Channel A has its own Volume, Treble, Middle, Bass and Gain; channel B its Volume, Shape and Gain; the Attenuator is shared. Captures list both channels’ Gain, with the other channel’s written N/A. The CHANNEL switch picks the channel; the controls the selected channel doesn’t use are dimmed. Reverb is on the panel but no capture records it: shown, not matched. Standby, the jewel light, the input and the logo and crest are left out.",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Range Stormverb 8",
+        "downloads": 155
+      },
+      {
+        "channel": 2,
+        "name": "Range Stormverb 6",
+        "downloads": 75
+      }
+    ]
+  },
+  {
+    "id": "custom-audio-amplifiers-3-se-preamp",
+    "brand": "Custom Audio Amplifiers",
+    "model": "3+SE Preamp",
+    "panel": "ca3se",
+    "category": "Amps",
+    "fullName": "3+ SE Tube Preamp · three-channel 2U rack preamp",
+    "definitionSource": "front panel photo + capture settings",
+    "match": {
+      "source": "\\b3\\s*\\+\\s*SE\\b(?![^\\n]*2\\W*:?\\W*(?:90|Ninety))"
+    },
+    "channels": [
+      {
+        "n": 1,
+        "name": "Clean",
+        "aliases": [
+          "Clean",
+          "1 Clean",
+          "Ch1 Clean"
+        ]
+      },
+      {
+        "n": 2,
+        "name": "Crunch",
+        "aliases": [
+          "Crunch",
+          "2 Crunch",
+          "Ch2 Crunch"
+        ]
+      },
+      {
+        "n": 3,
+        "name": "Lead",
+        "aliases": [
+          "Lead",
+          "3 Lead",
+          "Ch3 Lead"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "key": "bright",
+        "label": "BRIGHT",
+        "aliases": [
+          "Bright"
+        ],
+        "kind": "switch",
+        "scope": "channel",
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "gain",
+        "label": "GAIN",
+        "aliases": [
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "bass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "middle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid",
+          "Mids"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "treble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "master",
+        "label": "MASTER",
+        "aliases": [
+          "Master",
+          "Master Volume"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.5
+      },
+      {
+        "key": "eqlevel",
+        "label": "EQ LEVEL",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0
+      },
+      {
+        "key": "eqtreble",
+        "label": "EQ TREBLE",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0
+      },
+      {
+        "key": "eqbass",
+        "label": "EQ BASS",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0
+      }
+    ],
+    "panelOrder": [
+      "bright",
+      "gain",
+      "bass",
+      "middle",
+      "treble",
+      "master",
+      "eqlevel",
+      "eqtreble",
+      "eqbass"
+    ],
+    "defaults": {
+      "channel": 1,
+      "ch": {
+        "1": {
+          "bright": true,
+          "gain": 2,
+          "bass": 5,
+          "middle": 6,
+          "treble": 5,
+          "master": 5
+        },
+        "2": {
+          "bright": true,
+          "gain": 8,
+          "bass": 6,
+          "middle": 7,
+          "treble": 10,
+          "master": 5
+        },
+        "3": {
+          "bright": true,
+          "gain": 7,
+          "bass": 4,
+          "middle": 4,
+          "treble": 8,
+          "master": 5
+        }
+      },
+      "global": {
+        "eqlevel": 5,
+        "eqtreble": 5,
+        "eqbass": 5
+      }
+    },
+    "defaultsNote": "The global EQ section (LEVEL, TREB and the knob under it, read as BASS) is never recorded, so it is shown but not matched (⊘). Each channel has its own BRIGHT switch and five knobs; the CH LEDs pick the channel. The input jack, screws and EQ LED are left out.",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Custom 3SE 6",
+        "downloads": 110
+      },
+      {
+        "channel": 2,
+        "name": "Custom 3SE 3",
+        "downloads": 95
+      },
+      {
+        "channel": 3,
+        "name": "Custom 3SE 1",
+        "downloads": 105
+      }
+    ]
+  },
+  {
+    "id": "custom-audio-amplifiers-3-se-preamp-mesa-boogie-2-90-simulclass",
+    "brand": "Custom Audio Amplifiers",
+    "model": "3+SE Preamp + Mesa/Boogie 2:90",
+    "panel": "ca3se290",
+    "category": "Amps",
+    "fullName": "3+ SE preamp into a Mesa/Boogie Simul-Class 2:90 power amp · rack",
+    "definitionSource": "front panel photos + capture settings",
+    "match": {
+      "source": "\\b3\\s*\\+\\s*SE\\b[^\\n]*2\\W*:?\\W*(?:90|Ninety)"
+    },
+    "parse": {
+      "readOn": [
+        "Mesa Boogie 2"
+      ],
+      "sections": [
+        {
+          "startsAt": "Mesa Boogie 2",
+          "rename": {}
+        }
+      ]
+    },
+    "channels": [
+      {
+        "n": 1,
+        "name": "Clean",
+        "aliases": [
+          "Clean",
+          "1 Clean",
+          "Ch1 Clean"
+        ]
+      },
+      {
+        "n": 2,
+        "name": "Crunch",
+        "aliases": [
+          "Crunch",
+          "2 Crunch",
+          "Ch2 Crunch"
+        ]
+      },
+      {
+        "n": 3,
+        "name": "Lead",
+        "aliases": [
+          "Lead",
+          "3 Lead",
+          "Ch3 Lead"
+        ]
+      }
+    ],
+    "controls": [
+      {
+        "key": "bright",
+        "label": "BRIGHT",
+        "aliases": [
+          "Bright"
+        ],
+        "kind": "switch",
+        "scope": "channel",
+        "weight": 0.8,
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ]
+      },
+      {
+        "key": "gain",
+        "label": "GAIN",
+        "aliases": [
+          "Gain"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 2.5,
+        "primary": true
+      },
+      {
+        "key": "bass",
+        "label": "BASS",
+        "aliases": [
+          "Bass"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "middle",
+        "label": "MIDDLE",
+        "aliases": [
+          "Middle",
+          "Mid",
+          "Mids"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "treble",
+        "label": "TREBLE",
+        "aliases": [
+          "Treble"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "master",
+        "label": "MASTER",
+        "aliases": [
+          "Master",
+          "Master Volume"
+        ],
+        "kind": "knob",
+        "scope": "channel",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0.5
+      },
+      {
+        "key": "eqlevel",
+        "label": "EQ LEVEL",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0
+      },
+      {
+        "key": "eqtreble",
+        "label": "EQ TREBLE",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0
+      },
+      {
+        "key": "eqbass",
+        "label": "EQ BASS",
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 0
+      },
+      {
+        "key": "level",
+        "label": "LEVEL",
+        "aliases": [
+          "Level",
+          "Power Level"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "weight": 1
+      },
+      {
+        "key": "powerPresence",
+        "label": "POWER PRESENCE",
+        "aliases": [
+          "Presence A",
+          "Presence B",
+          "Power Presence"
+        ],
+        "kind": "knob",
+        "scope": "global",
+        "min": 0,
+        "max": 10,
+        "step": 0.5,
+        "weight": 0
+      },
+      {
+        "key": "deep",
+        "label": "DEEP",
+        "kind": "switch",
+        "scope": "global",
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ],
+        "weight": 0.8
+      },
+      {
+        "key": "halfDrive",
+        "label": "1/2 DRIVE",
+        "aliases": [
+          "Half Drive",
+          "Half",
+          "1/2 Drive"
+        ],
+        "kind": "switch",
+        "scope": "global",
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ],
+        "weight": 0.8
+      },
+      {
+        "key": "modern",
+        "label": "MODERN",
+        "kind": "switch",
+        "scope": "global",
+        "options": [
+          {
+            "v": true,
+            "label": "ON"
+          },
+          {
+            "v": false,
+            "label": "OFF"
+          }
+        ],
+        "weight": 0.8
+      }
+    ],
+    "panelOrder": [
+      "bright",
+      "gain",
+      "bass",
+      "middle",
+      "treble",
+      "master",
+      "eqlevel",
+      "eqtreble",
+      "eqbass",
+      "level",
+      "powerPresence",
+      "deep",
+      "halfDrive",
+      "modern"
+    ],
+    "defaults": {
+      "channel": 3,
+      "ch": {
+        "1": {
+          "bright": true,
+          "gain": 10,
+          "bass": 3,
+          "middle": 4,
+          "treble": 7,
+          "master": 5
+        },
+        "2": {
+          "bright": true,
+          "gain": 8,
+          "bass": 6,
+          "middle": 7,
+          "treble": 10,
+          "master": 5
+        },
+        "3": {
+          "bright": true,
+          "gain": 7,
+          "bass": 4,
+          "middle": 4,
+          "treble": 8,
+          "master": 5
+        }
+      },
+      "global": {
+        "eqlevel": 5,
+        "eqtreble": 5,
+        "eqbass": 5,
+        "level": 3,
+        "powerPresence": 5,
+        "deep": true,
+        "halfDrive": false,
+        "modern": true
+      },
+      "chain": [
+        {
+          "id": "xotic-effects-bb-preamp",
+          "name": "Xotic Effects BB Preamp",
+          "values": {
+            "gain": 1,
+            "volume": 5,
+            "treble": 6.5,
+            "bass": 4.5
+          }
+        }
+      ]
+    },
+    "defaultsNote": "The 3+SE above the Simul-Class 2:90 it was captured through; the 2:90 settings follow a “Mesa Boogie® 2:90 Simulclass®” line. No capture states the 2:90’s Presence, so it isn’t matched (⊘). The global EQ section (LEVEL, TREB and the knob under it, read as BASS) is never recorded, so it is shown but not matched (⊘). Each channel has its own BRIGHT switch and five knobs; the CH LEDs pick the channel. The input jack, screws and EQ LED are left out.",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Custom 3SE+290 8",
+        "downloads": 123
+      },
+      {
+        "channel": 2,
+        "name": "Custom 3SE+290 3",
+        "downloads": 176
+      },
+      {
+        "channel": 3,
+        "name": "Custom 3SE+290 1",
+        "downloads": 198
+      }
+    ]
+  },
+  {
     "id": "ada-mp-1-preamp",
     "brand": "ADA",
     "model": "MP-1 Preamp",
@@ -6657,61 +8017,6 @@
     ]
   },
   {
-    "id": "bbe-sonic-stomp",
-    "brand": "BBE",
-    "model": "Sonic Stomp",
-    "source": "description",
-    "panel": "generic",
-    "channels": null,
-    "controls": [
-      {
-        "key": "locontour",
-        "label": "Lo Contour",
-        "aliases": [
-          "Lo Contour"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "process",
-        "label": "Process",
-        "aliases": [
-          "Process"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      }
-    ],
-    "defaults": {
-      "channel": null,
-      "ch": {},
-      "global": {
-        "locontour": 5,
-        "process": 0
-      }
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "captureCount": 4,
-    "category": "Pedals",
-    "defaultsFrom": [
-      {
-        "channel": null,
-        "name": "BBD SonicMax 1",
-        "downloads": 33
-      }
-    ]
-  },
-  {
     "id": "beetronics-vezzpa-octave-stinger",
     "brand": "Beetronics",
     "model": "Vezzpa Octave Stinger",
@@ -7220,139 +8525,6 @@
         "downloads": 52
       }
     ]
-  },
-  {
-    "id": "boss-ge-7",
-    "brand": "Boss",
-    "model": "GE-7",
-    "source": "description",
-    "panel": "generic",
-    "channels": null,
-    "controls": [
-      {
-        "key": "100hz",
-        "label": "100Hz",
-        "aliases": [
-          "100Hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": -6,
-        "max": 12,
-        "step": 0.1
-      },
-      {
-        "key": "200hz",
-        "label": "200Hz",
-        "aliases": [
-          "200Hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": -15,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "400hz",
-        "label": "400hz",
-        "aliases": [
-          "400hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": -15,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "800hz",
-        "label": "800hz",
-        "aliases": [
-          "800hz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": -2,
-        "max": 10,
-        "step": 0.1
-      },
-      {
-        "key": "16khz",
-        "label": "1.6kHz",
-        "aliases": [
-          "1.6kHz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": -3,
-        "max": 15,
-        "step": 0.1
-      },
-      {
-        "key": "32khz",
-        "label": "3.2kHz",
-        "aliases": [
-          "3.2kHz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": 0,
-        "max": 15,
-        "step": 0.1
-      },
-      {
-        "key": "64khz",
-        "label": "6.4kHz",
-        "aliases": [
-          "6.4kHz"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "fader",
-        "min": 0,
-        "max": 15,
-        "step": 0.1
-      },
-      {
-        "key": "level",
-        "label": "Level",
-        "aliases": [
-          "Level"
-        ],
-        "scope": "global",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1
-      }
-    ],
-    "defaults": {
-      "channel": null,
-      "ch": {},
-      "global": {
-        "100hz": 5,
-        "200hz": 5,
-        "400hz": 5,
-        "800hz": 5,
-        "16khz": 5,
-        "32khz": 5,
-        "64khz": 5,
-        "level": 5
-      }
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "category": "Pedals",
-    "chainOnly": true,
-    "captureCount": 0
   },
   {
     "id": "boss-hm-2",
@@ -8229,440 +9401,6 @@
         "channel": 2,
         "name": "Corn Vixen 1",
         "downloads": 1405
-      }
-    ]
-  },
-  {
-    "id": "custom-audio-amplifiers-3-se-preamp",
-    "brand": "Custom Audio Amplifiers",
-    "model": "3+SE preamp",
-    "source": "description",
-    "panel": "generic",
-    "channels": [
-      {
-        "n": 1,
-        "name": "1 Clean",
-        "aliases": [
-          "1 Clean"
-        ]
-      },
-      {
-        "n": 2,
-        "name": "2 Crunch",
-        "aliases": [
-          "2 Crunch"
-        ]
-      },
-      {
-        "n": 3,
-        "name": "3 Lead",
-        "aliases": [
-          "3 Lead"
-        ]
-      }
-    ],
-    "controls": [
-      {
-        "key": "bright",
-        "label": "Bright",
-        "aliases": [
-          "Bright"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ],
-        "channelOptions": {
-          "1": [
-            true,
-            false
-          ],
-          "2": [
-            true
-          ],
-          "3": [
-            true
-          ]
-        },
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "gain",
-        "label": "Gain",
-        "aliases": [
-          "Gain"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ],
-        "primary": true
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "master",
-        "label": "Master",
-        "aliases": [
-          "Master"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      }
-    ],
-    "defaults": {
-      "channel": 1,
-      "ch": {
-        "1": {
-          "bright": true,
-          "gain": 2,
-          "bass": 5,
-          "middle": 6,
-          "treble": 5,
-          "master": 5
-        },
-        "2": {
-          "bright": true,
-          "gain": 8,
-          "bass": 6,
-          "middle": 7,
-          "treble": 10,
-          "master": 5
-        },
-        "3": {
-          "bright": true,
-          "gain": 7,
-          "bass": 4,
-          "middle": 4,
-          "treble": 8,
-          "master": 5
-        }
-      },
-      "global": {}
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "captureCount": 8,
-    "category": "Amps",
-    "defaultsFrom": [
-      {
-        "channel": 1,
-        "name": "Custom 3SE 6",
-        "downloads": 110
-      },
-      {
-        "channel": 2,
-        "name": "Custom 3SE 3",
-        "downloads": 95
-      },
-      {
-        "channel": 3,
-        "name": "Custom 3SE 1",
-        "downloads": 105
-      }
-    ]
-  },
-  {
-    "id": "custom-audio-amplifiers-3-se-preamp-mesa-boogie-2-90-simulclass",
-    "brand": "Custom Audio Amplifiers",
-    "model": "3+SE preamp + Mesa Boogie 2:90 Simulclass",
-    "source": "description",
-    "panel": "generic",
-    "channels": [
-      {
-        "n": 1,
-        "name": "1 Clean",
-        "aliases": [
-          "1 Clean"
-        ]
-      },
-      {
-        "n": 2,
-        "name": "2 Crunch",
-        "aliases": [
-          "2 Crunch"
-        ]
-      },
-      {
-        "n": 3,
-        "name": "3 Lead",
-        "aliases": [
-          "3 Lead"
-        ]
-      }
-    ],
-    "controls": [
-      {
-        "key": "bright",
-        "label": "Bright",
-        "aliases": [
-          "Bright"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ],
-        "channelOptions": {
-          "1": [
-            true,
-            false
-          ],
-          "2": [
-            true
-          ],
-          "3": [
-            true
-          ]
-        },
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "gain",
-        "label": "Gain",
-        "aliases": [
-          "Gain"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ],
-        "primary": true
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      },
-      {
-        "key": "master",
-        "label": "Master",
-        "aliases": [
-          "Master"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2,
-          3
-        ]
-      }
-    ],
-    "defaults": {
-      "channel": 3,
-      "ch": {
-        "1": {
-          "bright": true,
-          "gain": 10,
-          "bass": 3,
-          "middle": 4,
-          "treble": 7,
-          "master": 5
-        },
-        "2": {
-          "bright": true,
-          "gain": 8,
-          "bass": 6,
-          "middle": 7,
-          "treble": 10,
-          "master": 5
-        },
-        "3": {
-          "bright": true,
-          "gain": 7,
-          "bass": 4,
-          "middle": 4,
-          "treble": 8,
-          "master": 5
-        }
-      },
-      "global": {},
-      "chain": [
-        {
-          "id": "xotic-effects-bb-preamp",
-          "name": "Xotic Effects BB Preamp",
-          "values": {
-            "gain": 1,
-            "volume": 5,
-            "treble": 6.5,
-            "bass": 4.5
-          }
-        }
-      ]
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "captureCount": 8,
-    "category": "Amps",
-    "defaultsFrom": [
-      {
-        "channel": 1,
-        "name": "Custom 3SE+290 8",
-        "downloads": 123
-      },
-      {
-        "channel": 2,
-        "name": "Custom 3SE+290 3",
-        "downloads": 176
-      },
-      {
-        "channel": 3,
-        "name": "Custom 3SE+290 1",
-        "downloads": 198
       }
     ]
   },
@@ -19250,6 +19988,7 @@
           "id": "bbe-sonic-stomp",
           "name": "BBE Sonic Stomp",
           "values": {
+            "locontour": 5,
             "process": 5
           }
         }
@@ -20535,13 +21274,13 @@
           "id": "boss-ge-7",
           "name": "Boss GE-7",
           "values": {
-            "100hz": 0,
-            "200hz": -4,
-            "400hz": -4,
-            "800hz": -2,
-            "16khz": 0,
-            "32khz": 2,
-            "64khz": 0,
+            "b100": 0,
+            "b200": -4,
+            "b400": -4,
+            "b800": -2,
+            "b1600": 0,
+            "b3200": 2,
+            "b6400": 0,
             "level": 2
           }
         }
@@ -20845,232 +21584,6 @@
     ]
   },
   {
-    "id": "orange-thunderverb-50",
-    "brand": "Orange",
-    "model": "Thunderverb 50",
-    "source": "description",
-    "panel": "generic",
-    "channels": [
-      {
-        "n": 1,
-        "name": "A",
-        "aliases": [
-          "A"
-        ]
-      },
-      {
-        "n": 2,
-        "name": "B",
-        "aliases": [
-          "B"
-        ]
-      }
-    ],
-    "controls": [
-      {
-        "key": "attenuator",
-        "label": "Attenuator",
-        "aliases": [
-          "Attenuator"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2
-        ]
-      },
-      {
-        "key": "volumea",
-        "label": "Volume A",
-        "aliases": [
-          "Volume A"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1
-        ],
-        "primary": true
-      },
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1
-        ]
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1
-        ]
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1
-        ]
-      },
-      {
-        "key": "gain",
-        "label": "Gain",
-        "aliases": [
-          "Gain"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2
-        ]
-      },
-      {
-        "key": "volumeb",
-        "label": "Volume B",
-        "aliases": [
-          "Volume B"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          2
-        ],
-        "primary": true
-      },
-      {
-        "key": "shape",
-        "label": "Shape",
-        "aliases": [
-          "Shape"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          2
-        ]
-      }
-    ],
-    "defaults": {
-      "channel": 1,
-      "ch": {
-        "1": {
-          "attenuator": 2,
-          "volumea": 8,
-          "treble": 9,
-          "middle": 5,
-          "bass": 10,
-          "gain": 6
-        },
-        "2": {
-          "attenuator": 2.5,
-          "gain": 7,
-          "volumeb": 9,
-          "shape": 5
-        }
-      },
-      "global": {},
-      "chain": [
-        {
-          "id": "xotic-effects-bb-preamp",
-          "name": "Xotic Effects BB Preamp",
-          "values": {
-            "gain": 1.5,
-            "volume": 6.5,
-            "treble": 6.5,
-            "bass": 7
-          }
-        },
-        {
-          "id": "bbe-sonic-stomp",
-          "name": "BBE Sonic Stomp",
-          "values": {
-            "process": 0
-          }
-        },
-        {
-          "id": "boss-ge-7",
-          "name": "Boss GE-7",
-          "values": {
-            "100hz": 3,
-            "200hz": 0,
-            "400hz": 0,
-            "800hz": 0,
-            "16khz": 0,
-            "32khz": 0,
-            "64khz": 0,
-            "level": 0
-          }
-        }
-      ]
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "captureCount": 8,
-    "category": "Amps",
-    "defaultsFrom": [
-      {
-        "channel": 1,
-        "name": "Range Stormverb 8",
-        "downloads": 155
-      },
-      {
-        "channel": 2,
-        "name": "Range Stormverb 6",
-        "downloads": 75
-      }
-    ]
-  },
-  {
     "id": "otsola-mk1",
     "brand": "Otsola",
     "model": "Mk1",
@@ -21143,243 +21656,6 @@
         "channel": null,
         "name": "Otso Bender Mk1 1",
         "downloads": 62
-      }
-    ]
-  },
-  {
-    "id": "paul-reed-smith-mt15",
-    "brand": "Paul Reed Smith",
-    "model": "MT15",
-    "source": "description",
-    "panel": "generic",
-    "channels": [
-      {
-        "n": 1,
-        "name": "Clean",
-        "aliases": [
-          "Clean"
-        ]
-      },
-      {
-        "n": 2,
-        "name": "Lead",
-        "aliases": [
-          "Lead"
-        ]
-      }
-    ],
-    "controls": [
-      {
-        "key": "presence",
-        "label": "Presence",
-        "aliases": [
-          "Presence"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2
-        ]
-      },
-      {
-        "key": "masterleadch",
-        "label": "Master (Lead CH)",
-        "aliases": [
-          "Master (Lead CH)"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          2
-        ]
-      },
-      {
-        "key": "bass",
-        "label": "Bass",
-        "aliases": [
-          "Bass"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2
-        ]
-      },
-      {
-        "key": "middle",
-        "label": "Middle",
-        "aliases": [
-          "Middle"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2
-        ]
-      },
-      {
-        "key": "treble",
-        "label": "Treble",
-        "aliases": [
-          "Treble"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1,
-          2
-        ]
-      },
-      {
-        "key": "gain",
-        "label": "Gain",
-        "aliases": [
-          "Gain"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          2
-        ],
-        "primary": true
-      },
-      {
-        "key": "pullboost",
-        "label": "Pull Boost",
-        "aliases": [
-          "Pull Boost"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "switch",
-        "options": [
-          {
-            "v": true,
-            "label": "ON"
-          },
-          {
-            "v": false,
-            "label": "OFF"
-          }
-        ],
-        "channels": [
-          1
-        ]
-      },
-      {
-        "key": "volume",
-        "label": "Volume",
-        "aliases": [
-          "Volume"
-        ],
-        "scope": "channel",
-        "weight": 1,
-        "kind": "knob",
-        "min": 0,
-        "max": 10,
-        "step": 0.1,
-        "channels": [
-          1
-        ],
-        "primary": true
-      }
-    ],
-    "defaults": {
-      "channel": 2,
-      "ch": {
-        "1": {
-          "presence": 5,
-          "bass": 5.5,
-          "middle": 3,
-          "treble": 4.5,
-          "pullboost": false,
-          "volume": 5.5
-        },
-        "2": {
-          "presence": 0,
-          "masterleadch": 7.5,
-          "bass": 10,
-          "middle": 6.5,
-          "treble": 10,
-          "gain": 1
-        }
-      },
-      "global": {},
-      "chain": [
-        {
-          "id": "xotic-effects-bb-preamp",
-          "name": "Xotic Effects BB Preamp",
-          "values": {
-            "gain": 1.5,
-            "volume": 8,
-            "treble": 6,
-            "bass": 7.5
-          }
-        },
-        {
-          "id": "bbe-sonic-stomp",
-          "name": "BBE Sonic Stomp",
-          "values": {
-            "process": 0
-          }
-        },
-        {
-          "id": "boss-ge-7",
-          "name": "Boss GE-7",
-          "values": {
-            "100hz": 6,
-            "200hz": 4,
-            "400hz": 0,
-            "800hz": 0,
-            "16khz": 0,
-            "32khz": 0,
-            "64khz": 0,
-            "level": 0
-          }
-        }
-      ]
-    },
-    "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
-    "captureCount": 8,
-    "category": "Amps",
-    "defaultsFrom": [
-      {
-        "channel": 1,
-        "name": "Paul's MT16 8",
-        "downloads": 104
-      },
-      {
-        "channel": 2,
-        "name": "Paul's MT16 5",
-        "downloads": 174
       }
     ]
   },
@@ -22104,13 +22380,13 @@
           "id": "boss-ge-7",
           "name": "Boss GE-7",
           "values": {
-            "100hz": -6,
-            "200hz": -8,
-            "400hz": 0,
-            "800hz": 0,
-            "16khz": 0,
-            "32khz": 4,
-            "64khz": 0,
+            "b100": -6,
+            "b200": -8,
+            "b400": 0,
+            "b800": 0,
+            "b1600": 0,
+            "b3200": 4,
+            "b6400": 0,
             "level": 0
           }
         },
@@ -22833,13 +23109,13 @@
           "id": "boss-ge-7",
           "name": "Boss GE-7",
           "values": {
-            "100hz": -6,
-            "200hz": -15,
-            "400hz": -15,
-            "800hz": 0,
-            "16khz": 15,
-            "32khz": 15,
-            "64khz": 15,
+            "b100": -6,
+            "b200": -15,
+            "b400": -15,
+            "b800": 0,
+            "b1600": 15,
+            "b3200": 15,
+            "b6400": 15,
             "level": 2
           }
         }

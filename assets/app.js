@@ -60,11 +60,17 @@ function getVal(def, as, c, n){
   if (c.pedal != null) return pedalVal(as, c.pedal, c.baseKey);
   return c.scope === 'channel' ? (as.ch[n] || {})[c.key] : as.global[c.key];
 }
-// Pedals in front of the gear (as.chain, in signal order): [{id, name, values}]. A pedal's controls live
-// on the page under prefixed keys ("p0:gain"), resolved to wrappers that read and write its values.
+// Pedals with the gear (as.chain, in signal order): [{id, name, values, loop}] — in front, or in its
+// effects loop (loop: true, drawn to the right of the gear). A pedal's controls live on the page under
+// prefixed keys ("p0:gain"), resolved to wrappers that read and write its values.
 const chainOf = (as) => as.chain || [];
-const chainKey = (list) => (list || []).map(p => p.id || 'name:'+String(p.name).toLowerCase()).join('>');
-const chainName = (list) => (list || []).map(p => { const d = p.id && gearDef(p.id); return d ? d.brand+' '+d.model : p.name; }).join(' → ');
+const chainKey = (list) => (list || []).map(p => (p.id || 'name:'+String(p.name).toLowerCase())+(p.loop ? '@loop' : '')).join('>');
+// "A → B · loop: C → D" (front pedals, then the ones in the effects loop)
+function chainLabel(list, nameOf){
+  const front = (list || []).filter(p => !p.loop).map(nameOf), loop = (list || []).filter(p => p.loop).map(nameOf);
+  return front.join(' → ')+(loop.length ? (front.length ? ' · ' : '')+'loop: '+loop.join(' → ') : '');
+}
+const chainName = (list) => chainLabel(list, p => { const d = p.id && gearDef(p.id); return d ? d.brand+' '+d.model : p.name; });
 function pedalVal(as, i, key){
   const p = chainOf(as)[i], d = p && p.id && gearDef(p.id);
   if (!p) return undefined;
@@ -190,11 +196,11 @@ function settingsSimilarity(cap, def, as){
   if (yours.length || theirs.length) {
     if (chainKey(yours) !== chainKey(theirs)) {
       total *= PEDAL_MISS;
-      reasons.push({kind:'off', text:(theirs.length ? chainName(theirs)+' in front' : 'No pedal in front')+' · yours '+(yours.length ? chainName(yours) : 'none')});
+      reasons.push({kind:'off', text:(theirs.length ? 'Pedals: '+chainName(theirs) : 'No pedals')+' · yours '+(yours.length ? chainName(yours) : 'none')});
     } else {
       const ps = chainSimilarity(theirs, yours);
-      if (ps) { total = total*(1 - PEDAL_SHARE) + ps.sim*PEDAL_SHARE; reasons.push({kind:ps.worst && ps.worst.d > 1 ? diffKind(ps.worst.d) : 'match', text:ps.worst && ps.worst.d > 1 ? ps.worst.text : 'Same pedal'+(theirs.length > 1 ? 's' : '')+' in front · '+chainName(theirs)}); }
-      else reasons.push({kind:'match', text:'Same pedal'+(theirs.length > 1 ? 's' : '')+' in front · '+chainName(theirs)});
+      if (ps) { total = total*(1 - PEDAL_SHARE) + ps.sim*PEDAL_SHARE; reasons.push({kind:ps.worst && ps.worst.d > 1 ? diffKind(ps.worst.d) : 'match', text:ps.worst && ps.worst.d > 1 ? ps.worst.text : 'Same pedal'+(theirs.length > 1 ? 's' : '')+' · '+chainName(theirs)}); }
+      else reasons.push({kind:'match', text:'Same pedal'+(theirs.length > 1 ? 's' : '')+' · '+chainName(theirs)});
     }
   }
   const score = Math.round(100 * total);
@@ -258,7 +264,7 @@ function restoreState(){
     as.chain = sv.chain.filter(p => p && typeof p.name === 'string' && (p.id === null || gearDef(p.id))).map(p => {
       const d = p.id && gearDef(p.id), values = {};
       if (d) d.controls.forEach(c => { const v = cleanValue(c, (p.values || {})[c.key]); if (v !== undefined) values[c.key] = v; });
-      return { id:p.id, name:p.name, values };
+      return { id:p.id, name:p.name, values, ...(p.loop ? { loop:true } : {}) };
     });
   });
   Object.entries(saved.weights || {}).forEach(([id, ws]) => {
@@ -303,7 +309,7 @@ const chainOpts = (id) => (CHAIN_OPTS_ALL || (CHAIN_OPTS_ALL = buildChainOpts())
 function buildChainOpts(){
   const by = {};
   CAPTURES.forEach(c => { if (!c.ampId || !c.chain) return; const k = chainKey(c.chain), m = by[c.ampId] || (by[c.ampId] = new Map());
-    const o = m.get(k) || { key:k, chain:c.chain.map(p => ({ id:p.id, name:p.name })), count:0, from:null }; o.count++;
+    const o = m.get(k) || { key:k, chain:c.chain.map(p => ({ id:p.id, name:p.name, ...(p.loop ? { loop:true } : {}) })), count:0, from:null }; o.count++;
     if (!o.from || (c.downloads || 0) > (o.from.downloads || 0)) o.from = c; m.set(k, o); });
   return Object.fromEntries(Object.entries(by).map(([id, m]) => [id, [...m.values()].sort((a, b) => b.count - a.count || byName(chainName(a.chain), chainName(b.chain)))]));
 }
@@ -322,13 +328,13 @@ const deviceLabel = (id) => { const d = gearDef(id); return d ? d.brand+' '+d.mo
 // Opens gear with the most used of its chains that has this pedal in front.
 function openWithPedal(ampId, pedalId){
   const o = chainOpts(ampId).find(x => x.chain.some(p => p.id === pedalId));
-  if (o && state.amps[ampId]) state.amps[ampId].chain = o.from.chain.map(p => ({ id:p.id, name:p.name, values:Object.assign({}, p.values || {}) }));
+  if (o && state.amps[ampId]) state.amps[ampId].chain = o.from.chain.map(p => ({ id:p.id, name:p.name, values:Object.assign({}, p.values || {}), ...(p.loop ? { loop:true } : {}) }));
   pickAmp(ampId);
 }
 // Picking a chain starts its pedals from the most downloaded capture of this gear that uses it.
 function setChain(key){
   const { def, as } = cur(), o = chainOpts(def.id).find(x => x.key === key);
-  as.chain = o ? o.from.chain.map(p => ({ id:p.id, name:p.name, values:Object.assign({}, p.values || {}) })) : [];
+  as.chain = o ? o.from.chain.map(p => ({ id:p.id, name:p.name, values:Object.assign({}, p.values || {}), ...(p.loop ? { loop:true } : {}) })) : [];
   update({ loaded:null });
 }
 function cur(){ const def = ampById(state.amp); const as = state.amps[def.id]; return { def, as, ch:as.channel }; }
@@ -366,7 +372,7 @@ function loadCapture(id){
     });
   });
   if (def.channels) as.channel = s.channel != null ? s.channel : channels[0];
-  as.chain = (c.chain || []).map(p => ({ id:p.id, name:p.name, values:Object.assign({}, p.values || {}) }));
+  as.chain = (c.chain || []).map(p => ({ id:p.id, name:p.name, values:Object.assign({}, p.values || {}), ...(p.loop ? { loop:true } : {}) }));
   update(Object.assign(close, { amp:def.id, openId:null, limit:12, loaded:{ amp:def.id, name:c.name } }));
 }
 
@@ -387,7 +393,8 @@ const JP_LED = { 1:'#5fe03a', 2:'#f2c52e', 3:'#f0412c' };
 const FG = {
   jp:{ capTop:(f) => 77 - (f*2 - 1)*62 - 6, inv:(y) => ((77 - y)/62 + 1)/2 },
   gen:{ capTop:(f) => (1 - f)*108, inv:(y) => 1 - (y - 6)/108 },
-  mk:{ capTop:(f) => (1 - f)*70, inv:(y) => 1 - (y - 5)/70 } // Mark IIC+ sliders: 80px track, 10px cap
+  mk:{ capTop:(f) => (1 - f)*70, inv:(y) => 1 - (y - 5)/70 }, // Mark IIC+ sliders: 80px track, 10px cap
+  ge:{ capTop:(f, h) => (1 - f)*h*0.88, inv:(y, h) => 1 - (y - h*0.06)/(h*0.88) } // GE-7: cap 12% of the track, any track height
 };
 function tip(pos){ return { pos }; }
 function posFor(idx, count){ return idx === 0 ? 'up' : idx === count - 1 ? 'down' : 'mid'; }
@@ -1011,6 +1018,170 @@ function bbPanelHTML(def, as, s = 1){
   return h + '<span class="bbname" style="left:'+Math.round(114*s)+'px;top:'+(s < 1 ? 186 : 208)+'px" aria-hidden="true">BB<span>-preamp</span></span></div>';
 }
 
+// Boss GE-7: the black slider panel of the pedal with a thin margin of its grey body (the LED, jacks,
+// footswitch and lower body are left out): seven ±15 dB band sliders (100 … 6.4k) and LEVEL behind its
+// divider line, the printed +15 / 0 / −15 scale and the dashes between the sliders, cream slider caps,
+// and the name on the grey body below. s scales the sliders and the case (in front of other gear);
+// text keeps its size.
+const GE_KEYS = ['b100', 'b200', 'b400', 'b800', 'b1600', 'b3200', 'b6400', 'level'];
+function ge7PanelHTML(def, as, s = 1){
+  const g = as.global, C = (k) => def.controls.find(c => c.key === k);
+  const W = Math.round(300*s), top = 30, H = Math.round(124*s), xs = GE_KEYS.map((k, i) => Math.round((i < 7 ? 52 + i*30 : 268)*s));
+  let h = '<div class="geface" style="width:'+W+'px;height:'+(top + H + 34)+'px" role="group" aria-label="'+esc(def.brand+' '+def.model+' controls')+'">';
+  // printed scale: +15 / 0 / −15 and the dashes between the sliders at every 5 dB
+  [[15, '+15'], [0, '0'], [-15, '−15']].forEach(([db, lab]) => { h += '<span class="gescale" style="top:'+(top + H*0.06 + (15 - db)/30*H*0.88)+'px">'+lab+'</span>'; });
+  for (let db = -15; db <= 15; db += 5) for (let i = 0; i < 8; i++) {
+    const x = i < 7 ? xs[i] + 15*s : xs[7] + 15*s, y = top + H*0.06 + (15 - db)/30*H*0.88;
+    if (i === 6) continue;
+    h += '<span class="gedash" style="left:'+(x - 4)+'px;top:'+y+'px;width:'+(db === 0 ? 9 : 7)+'px"></span>';
+  }
+  h += '<span class="gediv" style="left:'+Math.round(250*s)+'px;top:'+(top + 6)+'px;height:'+(H - 12)+'px"></span>';
+  GE_KEYS.forEach((k, i) => {
+    const c = C(k), v = g[k], f = (v - c.min)/(c.max - c.min), capH = H*0.12;
+    h += '<span class="gelab" style="left:'+xs[i]+'px">'+esc(i < 7 ? c.label : 'Level')+'</span>';
+    h += '<label class="gef" style="left:'+(xs[i] - 12)+'px;top:'+top+'px;height:'+H+'px">'+faderInput(c, null, v, '')
+      + '<span class="getrack" data-drag="fader" data-geo="ge" data-ctrl="'+k+'" data-ch="" style="height:'+H+'px"><span class="geslot"></span>'
+      + '<span class="fcap gecap" style="top:'+((1 - f)*H*0.88).toFixed(1)+'px;height:'+capH.toFixed(1)+'px"></span></span></label>'
+      + '<span class="ro gero" style="left:'+xs[i]+'px;top:'+(top + H + 4)+'px" aria-hidden="true">'+f1(v)+'</span>';
+  });
+  return h + '</div><div class="gename" aria-hidden="true">Equalizer <b>GE-7</b></div>';
+}
+
+// BBE Sonic Stomp: the red pedal's control area with a thin margin (the footswitch, jacks, BBE logo and
+// "Sonic Maximizer" are left out): two silver knobs with a black indicator dot over the printed dot scale
+// (0 · 5 · 10), LO CONTOUR and PROCESS below them, and the name in plain text where the script is.
+// s scales the knobs and the case (in front of other gear); text keeps its size.
+const SS_SCALE = (function(){
+  let s = ''; for (let v = 0; v <= 10; v++) { const a = (-150 + v*30)*Math.PI/180; s += '<circle cx="'+(40 + 36*Math.sin(a)).toFixed(1)+'" cy="'+(40 - 36*Math.cos(a)).toFixed(1)+'" r="1.8" fill="#fbe9e6"/>'; }
+  return s + '<text x="14" y="76" font-size="9" fill="#fbe9e6" font-family="Barlow Semi Condensed,Arial Narrow,sans-serif" font-weight="700">0</text><text x="37" y="6" font-size="9" fill="#fbe9e6" font-family="Barlow Semi Condensed,Arial Narrow,sans-serif" font-weight="700">5</text><text x="61" y="76" font-size="9" fill="#fbe9e6" font-family="Barlow Semi Condensed,Arial Narrow,sans-serif" font-weight="700">10</text>';
+})();
+function ssKnobHTML(c, v, x, y, s){
+  const k = Math.round(80*s), angle = (-150 + (v - c.min)/(c.max - c.min)*300).toFixed(1);
+  return '<div class="ssk" style="left:'+x+'px;top:'+y+'px;width:'+k+'px;height:'+k+'px"><label class="kctl" style="width:'+k+'px;height:'+k+'px"><input id="k-'+c.key+'-" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
+    + ' aria-label="'+esc(nice(c.label))+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="">'
+    + '<span class="kwrap" style="width:'+k+'px;height:'+k+'px" data-drag="knob" data-ctrl="'+c.key+'" data-ch=""><svg viewBox="0 0 80 80" width="'+k+'" height="'+k+'" aria-hidden="true">'+SS_SCALE
+    + '<g transform="rotate('+angle+' 40 40)"><circle cx="40" cy="40" r="25" fill="#c9c9c9" stroke="#8a8a8a" stroke-width="1.2"/><circle cx="40" cy="40" r="19" fill="#e4e4e4" stroke="#b5b5b5" stroke-width="1"/><circle cx="40" cy="25" r="2.6" fill="#141414"/></g></svg></span></label><span class="ro" aria-hidden="true">'+f1(v)+'</span></div>';
+}
+function sonicStompPanelHTML(def, as, s = 1){
+  const g = as.global, C = (k) => def.controls.find(c => c.key === k), W = Math.round(260*s), y = Math.round(54*s);
+  let h = '<div class="ssface" style="width:'+W+'px;height:'+(y + 106)+'px" role="group" aria-label="'+esc(def.brand+' '+def.model+' controls')+'"><span class="ssline" aria-hidden="true"></span>';
+  [['locontour', 70], ['process', 190]].forEach(([k, x]) => { const c = C(k); h += ssKnobHTML(c, g[k], Math.round(x*s), y, s) + '<span class="sslab" style="left:'+Math.round(x*s)+'px;top:'+(y + 40*s + 10)+'px">'+esc(c.label)+'</span>'; });
+  return h + '<span class="ssname" style="top:'+(y + 40*s + 42)+'px" aria-hidden="true">Sonic Stomp</span></div>';
+}
+
+// PRS MT15: the black faceplate under the grille (power and standby switches, the input and the PRS
+// signature are left out; the grille keeps its red MT15). Left→right: PRESENCE, MASTER (lead channel),
+// the CLEAN CHANNEL group (BASS · MIDDLE · TREBLE with PULL BOOST · VOLUME) and the LEAD CHANNEL group
+// (BASS · MIDDLE · TREBLE · GAIN), each with its bracket, then the LEAD/CLEAN switch that picks the
+// channel. Each channel has its own tone stack; the controls the selected channel doesn't use are dimmed.
+const MT_KNOBS = [['presence', 36], ['master', 96], ['cleanbass', 168], ['cleanmiddle', 226], ['cleantreble', 284], ['volume', 344], ['leadbass', 412], ['leadmiddle', 470], ['leadtreble', 528], ['gain', 588]];
+const mtOff = (c, as) => available(c, as.channel) ? '' : ' mtoff';
+function mtKnobHTML(def, as, c, x){
+  const v = as.global[c.key], off = mtOff(c, as), angle = (-150 + (v - c.min)/(c.max - c.min)*300).toFixed(1), pulled = c.key === 'cleantreble' && as.global.pullboost === true;
+  const aria = nice(c.label)+(c.channels ? ' ('+c.channels.map(n => chName(def, n)).join(' and ')+(off ? ', not used on the '+chName(def, as.channel)+' channel' : '')+')' : '');
+  return '<span class="mtlab'+off+'" style="left:'+x+'px">'+esc(c.label)+'</span>'
+    + '<div class="mtk'+off+(pulled ? ' pulled' : '')+'" style="left:'+x+'px"><label class="kctl" style="width:40px;height:40px"><input id="k-'+c.key+'-" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
+    + ' aria-label="'+esc(aria)+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="">'
+    + '<span class="kwrap" style="width:40px;height:40px" data-drag="knob" data-ctrl="'+c.key+'" data-ch=""><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><g transform="rotate('+angle+' 20 20)">'
+    + '<circle cx="20" cy="20" r="14.5" fill="#101010" stroke="#3a3a3a" stroke-width="1.6" stroke-dasharray="1.4 1.4"/><circle cx="20" cy="20" r="10.5" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>'
+    + '<path d="M20 6.5 L20 14" stroke="#f0f0f0" stroke-width="2.2" stroke-linecap="round"/></g></svg></span></label><span class="ro" aria-hidden="true">'+f1(v)+'</span></div>';
+}
+function mt15PanelHTML(def, as){
+  const g = as.global, C = (k) => def.controls.find(c => c.key === k), pb = C('pullboost'), pbOff = mtOff(pb, as), pbOn = g.pullboost === true;
+  let h = '<div class="mtface" role="group" aria-label="'+esc(def.brand+' '+def.model+' front panel')+'">';
+  h += '<span class="mtsub" style="left:96px;top:30px">LEAD CHANNEL</span>';
+  h += '<span class="mthead" style="left:256px">CLEAN CHANNEL</span><span class="mtbracket" style="left:156px;width:200px"></span>';
+  h += '<span class="mthead" style="left:500px">LEAD CHANNEL</span><span class="mtbracket" style="left:400px;width:200px"></span>';
+  MT_KNOBS.forEach(([k, x]) => { if (C(k)) h += mtKnobHTML(def, as, C(k), x); });
+  h += '<button id="p-pullboost-" class="mtpull'+pbOff+'" style="left:284px" aria-pressed="'+pbOn+'" aria-label="'+esc('Pull Boost (clean treble): '+(pbOn ? 'pulled, on' : 'pushed in, off')+(pbOff ? ', not used on the '+chName(def, as.channel)+' channel' : ''))+'"'
+    + ' data-act="pick" data-target="ctrl" data-key="pullboost" data-ch="" data-v="'+jattr(!pbOn)+'"><span class="pdot" aria-hidden="true"></span>PULL BOOST</button>';
+  h += '<div class="mttgl">'+jpToggle(640, 50, [{v:2, label:'LEAD'}, {v:1, label:'CLEAN'}], as.channel, {channel:true}, 'Channel (lead or clean)', [{x:640, y:22}, {x:640, y:78}])+'</div>';
+  return h + '</div>';
+}
+
+// Orange Thunderverb 50: the white faceplate inside the orange tolex (standby, the jewel light, the input,
+// the logo and the crest are left out; the name stays as plain text). Under the name, the black strip with
+// the CHANNEL A / CHANNEL B bars, the orange strip with Orange's pictograms and the labels, then the
+// knobs: ATTENUATOR · REVERB, channel A (VOLUME · TREBLE · MIDDLE · BASS · GAIN), channel B (VOLUME ·
+// SHAPE · GAIN), big and small black ribbed knobs as on the amp. The CHANNEL switch picks the channel;
+// the controls the selected channel doesn't use are dimmed. Reverb isn't recorded (shown, not matched).
+const TV_KNOBS = [['attenuator', 124, 1], ['reverb', 180, 1], ['volumea', 236, 1], ['treble', 284, 0], ['middle', 326, 0], ['bass', 368, 0], ['gaina', 418, 1], ['volumeb', 474, 1], ['shape', 522, 0], ['gainb', 570, 1]];
+const TV_ICON = {
+  channel:'<path d="M1 11V5h4v6h4V5h3"/><path d="M13 8q2-5 4 0t4 0"/>',
+  attenuator:'<path d="M2 6h3l4-4v12l-4-4H2z"/><path d="M15 3v9M12 9l3 3 3-3"/>',
+  reverb:'<circle cx="4" cy="8" r="2.6"/><circle cx="9" cy="8" r="2.6"/><circle cx="14" cy="8" r="2.6"/><circle cx="19" cy="8" r="2.6"/>',
+  volume:'<path d="M2 6h3l4-4v12l-4-4H2z"/><path d="M12 4q4 4 0 8M15 2q6 6 0 12"/>',
+  treble:'<path d="M5 14V2q5 1 1 6q-4 3 0 5"/><path d="M15 13V4M12 7l3-3 3 3"/>',
+  middle:'<path d="M1 8h6M5 5l3 3-3 3"/><circle cx="11" cy="8" r="1.6"/><path d="M21 8h-6M17 5l-3 3 3 3"/>',
+  bass:'<path d="M3 13q7-2 5-8q-3-3-5 0"/><circle cx="10" cy="5" r=".8"/><circle cx="10" cy="9" r=".8"/><path d="M16 3v9M13 9l3 3 3-3"/>',
+  gain:'<path d="M1 12l4-6 3 4 4-7 3 6 4-5"/>',
+  shape:'<path d="M2 3v10l9-5zM20 3v10l-9-5z"/>'
+};
+const tvIcon = (k, x) => '<svg class="tvicon" style="left:'+x+'px" viewBox="0 0 22 16" width="22" height="16" aria-hidden="true" fill="none" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'+TV_ICON[k]+'</svg>';
+const tvOff = (c, as) => available(c, as.channel) ? '' : ' tvoff';
+function tvKnobHTML(def, as, c, x, big){
+  const v = as.global[c.key], off = tvOff(c, as), k = big ? 46 : 34, r = k/2, angle = (-150 + (v - c.min)/(c.max - c.min)*300).toFixed(1);
+  let ribs = ''; for (let i = 0; i < 12; i++) { const a = i*30*Math.PI/180; ribs += '<path d="M'+(r + (r - 1)*Math.sin(a)).toFixed(1)+' '+(r - (r - 1)*Math.cos(a)).toFixed(1)+'L'+(r + (r - 5)*Math.sin(a)).toFixed(1)+' '+(r - (r - 5)*Math.cos(a)).toFixed(1)+'"/>'; }
+  const aria = nice(c.label)+(c.channels ? ' (channel '+c.channels.map(n => chName(def, n)).join(' and ')+(off ? ', not used on channel '+chName(def, as.channel) : '')+')' : '')+(c.weight > 0 ? '' : ' (not used for matching)');
+  return '<div class="tvk'+off+'" style="left:'+x+'px;width:'+k+'px;height:'+k+'px"><label class="kctl" style="width:'+k+'px;height:'+k+'px"><input id="k-'+c.key+'-" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
+    + ' aria-label="'+esc(aria)+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="">'
+    + '<span class="kwrap" style="width:'+k+'px;height:'+k+'px" data-drag="knob" data-ctrl="'+c.key+'" data-ch=""><svg viewBox="0 0 '+k+' '+k+'" width="'+k+'" height="'+k+'" aria-hidden="true"><g transform="rotate('+angle+' '+r+' '+r+')">'
+    + '<circle cx="'+r+'" cy="'+r+'" r="'+(r - 1)+'" fill="#111" stroke="#3a3a3a" stroke-width="1"/><g stroke="#2c2c2c" stroke-width="2">'+ribs+'</g>'
+    + '<circle cx="'+r+'" cy="'+r+'" r="'+(r - 6)+'" fill="#151515" stroke="#2a2a2a" stroke-width="1"/><path d="M'+r+' 3 L'+r+' '+(r - 2)+'" stroke="#e9e9e9" stroke-width="2" stroke-linecap="round"/></g></svg></span></label><span class="ro" aria-hidden="true">'+f1(v)+'</span></div>';
+}
+function thunderverbPanelHTML(def, as){
+  const C = (k) => def.controls.find(c => c.key === k);
+  let h = '<div class="tvface" role="group" aria-label="'+esc(def.brand+' '+def.model+' front panel')+'">';
+  h += '<span class="tvname" aria-hidden="true">ORANGE<span>THUNDERVERB 50</span></span>';
+  h += '<span class="tvblack" aria-hidden="true"></span><span class="tvbar" style="left:210px;width:236px">CHANNEL A</span><span class="tvbar" style="left:452px;width:144px">CHANNEL B</span>';
+  h += '<span class="tvorange" aria-hidden="true"></span>'+tvIcon('channel', 49);
+  TV_KNOBS.forEach(([k, x]) => { const ic = k === 'volumea' || k === 'volumeb' ? 'volume' : k === 'gaina' || k === 'gainb' ? 'gain' : k; h += tvIcon(ic, x - 11); });
+  h += '<span class="tvlab" style="left:60px">CHANNEL</span>';
+  TV_KNOBS.forEach(([k, x, big]) => { const c = C(k), off = tvOff(c, as); h += '<span class="tvlab'+off+'" style="left:'+x+'px">'+(c.weight === 0 ? '<span class="nsmark" aria-hidden="true">⊘</span>' : '')+esc(c.label)+'</span>' + tvKnobHTML(def, as, c, x, big); });
+  h += '<div class="tvtgl">'+jpToggle(60, 150, def.channels.map(ch => ({ v:ch.n, label:ch.name })), as.channel, {channel:true}, 'Channel (A or B)', [{x:60, y:126}, {x:60, y:176}])+'</div>';
+  return h + '</div>';
+}
+
+// Custom Audio Amplifiers 3+SE: the brushed silver 2U rack face. Three outlined channel rows, each with
+// its own BRIGHT mini toggle and GAIN · BASS · MIDDLE · TREBLE · MASTER (black knobs on printed 0–10
+// scales, labels under them), ending in the channel's LED (the channel selector here; the selected
+// channel's LED is lit, the other rows are dimmed). The L-shaped EQ box to the right holds LEVEL, TREB
+// and BASS (never recorded: shown, not matched); the name sits beside it in plain text. The input jack,
+// screws and the EQ LED are left out. The 2:90 combo stacks the Simul-Class 2:90 face under it.
+const C3_X = { bright:84, gain:132, bass:226, middle:312, treble:398, master:485 };
+const C3_Y = [30, 86, 142];
+const C3_NUMS = [0,1,2,3,4,5,6,7,8,9,10].map(v => { const a = (-150 + v*30)*Math.PI/180; return '<span class="c3n" style="left:'+(18 + 23*Math.sin(a)).toFixed(1)+'px;top:'+(18 - 23*Math.cos(a)).toFixed(1)+'px">'+v+'</span>'; }).join('');
+const C3_DOTS = [0,1,2,3,4,5,6,7,8,9,10].map(v => { const a = (-150 + v*30)*Math.PI/180; return '<span class="c3d" style="left:'+(18 + 23*Math.sin(a)).toFixed(1)+'px;top:'+(18 - 23*Math.cos(a)).toFixed(1)+'px"></span>'; }).join('')
+  + '<span class="c3n pm" style="left:-6px;top:20px">−</span><span class="c3n pm" style="left:42px;top:20px">+</span>';
+function c3KnobHTML(def, as, c, n, x, y, lab, aria, scale){
+  const v = n == null ? as.global[c.key] : as.ch[n][c.key], off = n != null && n !== as.channel ? ' c3off' : '', angle = (-150 + (v - c.min)/(c.max - c.min)*300).toFixed(1);
+  return '<div class="c3k'+off+'" style="left:'+x+'px;top:'+y+'px"><span aria-hidden="true">'+scale+'</span><label class="kctl" style="width:36px;height:36px"><input id="k-'+c.key+'-'+chAttr(n)+'" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
+    + ' aria-label="'+esc(aria+(c.weight > 0 ? '' : ' (not used for matching)'))+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="'+chAttr(n)+'">'
+    + '<span class="kwrap" style="width:36px;height:36px" data-drag="knob" data-ctrl="'+c.key+'" data-ch="'+chAttr(n)+'"><svg viewBox="0 0 60 60" width="36" height="36" aria-hidden="true"><g transform="rotate('+angle+' 30 30)">'
+    + '<path d="'+KNOB_PATH+'" fill="#121212" stroke="#000" stroke-width="1.2"/><circle cx="30" cy="30" r="19" fill="#1b1b1b" stroke="#2c2c2c" stroke-width="1"/>'
+    + '<path d="M30 25 L30 6" stroke="#f4f4f4" stroke-width="3.2" stroke-linecap="round"/></g></svg></span></label>'
+    + '<span class="c3lab" aria-hidden="true">'+(c.weight === 0 ? '<span class="nsmark">⊘</span>' : '')+lab+'</span><span class="ro" aria-hidden="true">'+f1(v)+'</span></div>';
+}
+function ca3sePanelHTML(def, as){
+  const C = (k) => def.controls.find(c => c.key === k), sel = as.channel;
+  let h = '<div class="c3face" role="group" aria-label="'+esc('Custom Audio Amplifiers 3+SE front panel')+'"><span class="c3ears" aria-hidden="true"><i></i><i></i><i></i><i></i></span>'
+    + '<svg class="c3lines" viewBox="0 0 850 176" width="850" height="176" aria-hidden="true"><g fill="none" stroke="#2e2f30" stroke-width="1.1">'
+    + '<rect x="52" y="3.5" width="538" height="56" rx="7"/><rect x="52" y="59.5" width="538" height="56" rx="7"/><rect x="52" y="115.5" width="538" height="56" rx="7"/>'
+    + '<path d="M601 3.5 H705 a7 7 0 0 1 7 7 V52.5 a7 7 0 0 1 -7 7 H680 V164.5 a7 7 0 0 1 -7 7 H601 a7 7 0 0 1 -7 -7 V10.5 a7 7 0 0 1 7 -7 Z"/></g></svg>';
+  def.channels.forEach((chn, r) => {
+    const n = chn.n, y = C3_Y[r], cs = as.ch[n], on = n === sel, off = on ? '' : ' c3off', not = on ? '' : ', not used on channel '+sel+' '+chName(def, sel);
+    const b = C('bright'), bon = cs.bright === true;
+    h += '<button id="p-bright-'+n+'" class="c3tog'+off+'" style="left:'+C3_X.bright+'px;top:'+(y - 7)+'px" aria-pressed="'+bon+'" aria-label="'+esc('Channel '+n+' '+chn.name+' bright: '+(bon ? 'on' : 'off')+not)+'"'
+      + ' data-act="pick" data-target="ctrl" data-key="bright" data-ch="'+n+'" data-v="'+jattr(!bon)+'">'+togSVG(tip(bon ? 'up' : 'down'))+'<span class="c3lab">'+(b.weight === 0 ? '<span class="nsmark">⊘</span>' : '')+'BRIGHT</span><span class="c3st">'+(bon ? 'ON' : 'OFF')+'</span></button>';
+    ['gain', 'bass', 'middle', 'treble', 'master'].forEach(k => { const c = C(k); h += c3KnobHTML(def, as, c, n, C3_X[k], y, c.label, 'Channel '+n+' '+chn.name+' '+nice(c.label)+not, C3_NUMS); });
+    h += '<button id="cs-'+n+'" class="c3ch'+(on ? ' on' : '')+'" style="top:'+y+'px" aria-pressed="'+on+'" aria-label="'+esc('Channel '+n+' '+chn.name+(on ? ', selected' : ''))+'" data-act="channel" data-n="'+n+'"><span class="c3led" aria-hidden="true"></span>CH'+n+'</button>';
+  });
+  [['eqlevel', 'LEVEL', C3_NUMS], ['eqtreble', 'TREB', C3_DOTS], ['eqbass', 'BASS', C3_DOTS]].forEach(([k, lab, scale], r) => { const c = C(k); h += c3KnobHTML(def, as, c, null, 624, C3_Y[r], lab, 'EQ '+nice(lab === 'TREB' ? 'TREBLE' : lab), scale); });
+  h += '<span class="c3eq" aria-hidden="true">EQ</span>';
+  h += '<span class="c3name" aria-hidden="true">CUSTOM<br>AUDIO<br>AMPLIFIERS<span>3+ SE Tube Preamp</span></span>';
+  return h + '</div>';
+}
+
 // Generic panels (gear without a custom panel), laid out by heuristics with nothing gear-specific.
 // Amps are wide, so everything runs horizontally: the gear name on one line on top, then one section
 // per channel (plus any global controls), as many side by side as fit. Inside a section the blocks
@@ -1105,16 +1276,38 @@ function gPlan(secs, W){
 }
 // Room for the panel: the stage width minus the bench's side columns and the cabinet's padding.
 let gLastW = 0, gChainW = 0;
-const CHAIN_SIDE = 900; // pedals sit beside the gear from this stage width up, above it below
 function gLayoutWidth(){
   const s = document.getElementById('stage'), w = s && s.clientWidth;
   if (!w) return 1100;
-  const wide = w > 700, beside = w > CHAIN_SIDE && chainOf(cur().as).length;
-  return w - (wide ? 48 : 32) - (beside ? 68 + gChainW + 46 : wide ? 112 : 0) - (w > 380 ? 46 : 18);
+  const wide = w > 700, alone = w - (wide ? 48 : 32) - (wide ? 112 : 0) - (w > 380 ? 46 : 18);
+  if (!chainOf(cur().as).length) return alone;
+  // beside pedals (the chain is one scrolling row): plan for the room they leave, unless that's too narrow
+  const beside = w - (wide ? 48 : 32) - 68 - gChainW - 46 - (w > 380 ? 46 : 18);
+  return beside >= 520 ? beside : alone;
+}
+// The chain is one row that scrolls sideways: a new gear or chain starts with the gear centred (pedals
+// in front to its left, effects-loop pedals to its right); otherwise the scroll position is kept.
+let chainView = { key:null, left:0 };
+function keepChainScroll(){
+  const row = document.querySelector && document.querySelector('#stage .chainrow');
+  if (row) chainView.left = row.scrollLeft;
+}
+function placeChainScroll(){
+  const row = document.querySelector && document.querySelector('#stage .chainrow');
+  if (!row) { chainView.key = null; return; }
+  const { def, as } = cur(), key = def.id+'|'+chainKey(chainOf(as));
+  if (key !== chainView.key) {
+    // open with the gear centred in the row (as far as the row can scroll)
+    const gear = row.querySelector('.cab:not(.chainpedal)'), rr = row.getBoundingClientRect();
+    if (gear) { const g = gear.getBoundingClientRect(); row.scrollLeft = Math.max(0, g.left + g.width/2 - rr.left + row.scrollLeft - row.clientWidth/2); }
+  } else row.scrollLeft = chainView.left;
+  chainView.key = key;
+  // while editing weights, the editors follow the gear when the row scrolls
+  if (state.weightsOpen) row.addEventListener('scroll', () => { chainView.left = row.scrollLeft; update({}); }, { passive:true });
 }
 // After a render with pedals: their width decides the room left for generic gear beside them.
 function measureChain(){
-  const p = document.querySelector && document.querySelector('#stage .chainpedals'), w = p ? p.getBoundingClientRect().width : 0;
+  const ps = document.querySelectorAll ? [...document.querySelectorAll('#stage .chainpedals')] : [], w = ps.reduce((a, p) => a + p.getBoundingClientRect().width + 40, 0);
   if (Math.abs(w - gChainW) > 24) { gChainW = w; if (cur().def.panel === 'generic') update(); }
 }
 function genericPanelHTML(def, as){
@@ -1183,6 +1376,20 @@ function cabHTML(def, as, compact = false){
   } else if (def.panel === 'ecstasy') {
     // Amp head: a short grille over the faceplate (the logo artwork is left out)
     cab = '<div class="cab bgcab"><div class="bggrille" aria-hidden="true"></div>' + ecstasyPanelHTML(def, as) + '</div>';
+  } else if (def.panel === 'ca3se' || def.panel === 'ca3se290') {
+    cab = '<div class="cab txcab">' + ca3sePanelHTML(def, as) + (def.panel === 'ca3se290' ? s290PanelHTML(def, as) : '') + '</div>';
+  } else if (def.panel === 'thunderverb') {
+    // Amp head: the white faceplate inside the orange tolex (no grille on this head's front)
+    cab = '<div class="cab tvcab">' + thunderverbPanelHTML(def, as) + '</div>';
+  } else if (def.panel === 'ge7') {
+    // Pedal: the slider panel with a thin margin of the grey body
+    cab = '<div class="cab gecab">' + ge7PanelHTML(def, as, compact ? 0.8 : 1) + '</div>';
+  } else if (def.panel === 'sonicstomp') {
+    // Pedal: only the control area with a thin margin of the red enclosure
+    cab = '<div class="cab sscab">' + sonicStompPanelHTML(def, as, compact ? 0.74 : 1) + '</div>';
+  } else if (def.panel === 'mt15') {
+    // Amp head: the faceplate under the grille (the signature is left out; the red MT15 stays)
+    cab = '<div class="cab mtcab"><div class="mtgrille" aria-hidden="true"><span>MT15</span></div>' + mt15PanelHTML(def, as) + '</div>';
   } else if (def.panel === 'bbpreamp') {
     // Pedal: only the control area with a thin margin of the red enclosure
     cab = '<div class="cab bbcab">' + bbPanelHTML(def, as, compact ? 0.72 : 1) + '</div>';
@@ -1228,16 +1435,16 @@ function prefixPedal(html, pre){
   return html.replace(/(data-ctrl|data-key)="([^"]*)"/g, (m, a, v) => a+'="'+pre+v+'"').replace(/\bid="([^"]*)"/g, (m, v) => 'id="'+pre+v+'"').replace(/data-act="channel"/g, 'data-act="none"');
 }
 // Header menus: a field-like button and a popup list like the search's (brand, model, count).
-const chainShort = (list) => list.map(p => { const d = p.id && gearDef(p.id); return d ? d.model : p.name; }).join(' → ');
+const chainShort = (list) => chainLabel(list, p => { const d = p.id && gearDef(p.id); return d ? d.model : p.name; });
 function headerMenuItems(kind){
   const { def, as } = cur();
   if (kind === 'chain') {
     const curKey = chainKey(chainOf(as)), opts = chainOpts(def.id);
     if (!opts.length && !chainOf(as).length) return [];
-    const items = [{ v:'', main:'No pedal', selected:!curKey }];
+    const items = [{ v:'', main:'No pedals', selected:!curKey }];
     opts.forEach(o => {
       const one = o.chain.length === 1 && o.chain[0].id && gearDef(o.chain[0].id);
-      items.push({ v:o.key, top:one ? one.brand : o.chain.length+' pedals', main:one ? one.model : chainShort(o.chain), right:o.count+' '+(o.count === 1 ? 'capture' : 'captures'), selected:o.key === curKey });
+      items.push({ v:o.key, top:one ? one.brand+(o.chain[0].loop ? ' · in the effects loop' : '') : o.chain.length+' pedals', main:one ? one.model : chainShort(o.chain), right:o.count+' '+(o.count === 1 ? 'capture' : 'captures'), selected:o.key === curKey });
     });
     if (curKey && !opts.some(o => o.key === curKey)) items.push({ v:curKey, main:chainShort(chainOf(as)), selected:true });
     return items;
@@ -1284,18 +1491,20 @@ function renderStage(){
     h += '</div>';
   }
   const chainItems = headerMenuItems('chain'), useItems = headerMenuItems('usedin');
-  if (chainItems.length > 1 || chainOf(as).length) h += hmenuHTML('chain', 'In front', chainOf(as).length ? chainShort(chainOf(as)) : 'No pedal', chainItems, 'Pedals in front of the gear');
-  if (useItems.length) h += hmenuHTML('usedin', 'In front of', useItems.length+' '+(useItems.length === 1 ? 'amp' : 'amps'), useItems, def.model+' is used in front of');
+  if (chainItems.length > 1 || chainOf(as).length) h += hmenuHTML('chain', 'Pedals', chainOf(as).length ? chainShort(chainOf(as)) : 'None', chainItems, 'Pedals with the gear (in front, or in its effects loop)');
+  if (useItems.length) h += hmenuHTML('usedin', 'Used with', useItems.length+' '+(useItems.length === 1 ? 'amp' : 'amps'), useItems, def.model+' is used with');
   // while editing weights, Reset (settings) gives way to the weight buttons
   if (state.weightsOpen) h += '<button id="wt-reset" class="btn sm" data-act="w-reset"'+(state.weights[def.id] ? '' : ' disabled')+'>Reset weights</button><button id="wt-done" class="btn sm amber" data-act="weights">Done</button></div></div>';
   else h += '<button id="reset" class="btn sm" data-act="reset"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Reset</button></div></div>';
   let cab = cabHTML(def, as);
-  // pedals in front, in signal order, left of the gear (their control ids and keys prefixed p0:, p1:…)
+  // pedals in signal order: in front (left of the gear) and in its effects loop (right of it); their
+  // control ids and keys are prefixed p0:, p1:… by their place in the chain
   const chain = chainOf(as);
   if (chain.length) {
-    const pedals = chain.map((p, i) => {
+    const pedalHTML = (p, i) => {
       const d = p.id && gearDef(p.id);
       if (!d) return '<div class="chainitem"><span class="chainlink">'+esc(p.name)+'</span><div class="cab pedalcab chainpedal chainmissing" role="group" aria-label="'+esc(p.name)+'"><span>'+esc(p.name)+'</span><span class="cmnote">settings not available</span></div></div>';
+
       const pas = { channel:d.channels ? d.defaults.channel : null, ch:JSON.parse(JSON.stringify(d.defaults.ch || {})), global:Object.assign({}, d.defaults.global, p.values) };
       if (d.channels) pas.ch[String(pas.channel)] = Object.assign({}, pas.ch[String(pas.channel)], p.values);
       const drawn = prefixPedal(cabHTML(d, pas, true), 'p'+i+':').replace(/^<div class="cab/, '<div class="cab chainpedal');
@@ -1303,10 +1512,15 @@ function renderStage(){
       const name = d.chainOnly ? '<span class="chainlink">'+esc(d.brand+' '+d.model)+'</span>'
         : '<button id="chain-go-'+i+'" class="chainlink go" data-act="amp" data-id="'+esc(d.id)+'" aria-label="'+esc('Open '+d.brand+' '+d.model)+'">'+esc(d.brand+' '+d.model)+'<span aria-hidden="true"> ↗</span></button>';
       return '<div class="chainitem">'+name+drawn+'</div>';
-    }).join('<span class="chainarrow" aria-hidden="true">→</span>');
+    };
+    const group = (loop) => chain.map((p, i) => [p, i]).filter(([p]) => !!p.loop === loop).map(([p, i]) => pedalHTML(p, i)).join('<span class="chainarrow" aria-hidden="true">→</span>');
+    const front = group(false), loopG = group(true), inert = state.weightsOpen ? ' inert' : '';
     if (state.weightsOpen) cab = cab.replace(/^<div class="cab/, '<div inert class="wedit cab');
-    // pedals to the left of the gear (signal flows left to right); above it on narrow screens
-    cab = '<div class="chainrow"><div class="chainpedals"'+(state.weightsOpen ? ' inert' : '')+'>'+pedals+'</div><span class="chainarrow to" aria-hidden="true"></span>'+cab+'</div>';
+    cab = '<div class="chainrow">'
+      + (front ? '<div class="chainpedals"'+inert+'>'+front+'</div><span class="chainarrow to" aria-hidden="true"></span>' : '')
+      + cab
+      + (loopG ? '<span class="chainarrow to" aria-hidden="true"></span><div class="chainloop" role="group" aria-label="Effects loop"><span class="chaintag">FX LOOP</span><div class="chainpedals"'+inert+'>'+loopG+'</div></div>' : '')
+      + '</div>';
   }
   if (state.infoOpen) h += '<button class="infoscrim" tabindex="-1" aria-hidden="true" data-act="info-close"></button>';
   // weight editing: the panel is dimmed and locked; each control's weight floats over it (placeWeights)
@@ -1476,7 +1690,7 @@ function renderDrawer(){
     const yc = chainOf(as), tc = c.chain || [];
     if (yc.length || tc.length) {
       const same = chainKey(yc) === chainKey(tc);
-      rows.push(['In front', yc.length ? chainName(yc) : 'No pedal', tc.length ? chainName(tc) : 'No pedal', same ? 'match' : 'off', '']);
+      rows.push(['Pedals', yc.length ? chainName(yc) : 'None', tc.length ? chainName(tc) : 'None', same ? 'match' : 'off', '']);
       if (same) tc.forEach((p, i) => {
         const d = p.id && gearDef(p.id); if (!d || !p.values) return;
         d.controls.filter(x => !x.channels).forEach(x => {
@@ -1813,7 +2027,9 @@ function render(){
   if (capActive) capq.setAttribute('aria-activedescendant', capActive.id); else capq.removeAttribute('aria-activedescendant');
 
   // workbench + matches
+  keepChainScroll();
   el('stage').innerHTML = renderStage();
+  placeChainScroll();
   measureChain();
   placeWeights();
   updateResults();
@@ -1920,7 +2136,7 @@ function dragMove(e){
   const c = drag.c, span = c.max - c.min;
   const nv = drag.kind === 'knob'
     ? snap(c, drag.v + (drag.y - e.clientY)/14 * span/10)
-    : snap(c, c.min + drag.geo.inv(e.clientY - drag.rect.top) * span);
+    : snap(c, c.min + drag.geo.inv(e.clientY - drag.rect.top, drag.rect.height) * span);
   const { def, as } = cur();
   if (nv !== getVal(def, as, c, drag.n)) setCtrl(c, drag.n, nv);
 }
