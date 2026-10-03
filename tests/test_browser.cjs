@@ -212,6 +212,23 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     await page.keyboard.press('Escape');
     await page.waitForFunction(()=>!document.querySelector('#wt-done') && document.querySelector('#reset') && !document.querySelector('#stage .cab').inert && document.activeElement?.id === 'wt-btn');
 
+    // Double-clicking a control returns it to the gear's starting value (knob, and a switch by its position label).
+    await go(url+'?amp=mesa-boogie-mark2c');
+    await page.locator('#k-treble-').press('Home');
+    await page.waitForFunction(()=>state.amps['mesa-boogie-mark2c'].global.treble === 0);
+    await page.locator('.kwrap[data-ctrl="treble"]').dblclick();
+    await page.waitForFunction(()=>state.amps['mesa-boogie-mark2c'].global.treble === ampById('mesa-boogie-mark2c').defaults.global.treble);
+    await page.locator('#t-powermode--1').click();
+    await page.waitForFunction(()=>state.amps['mesa-boogie-mark2c'].global.powermode === 'Class A');
+    await page.locator('#t-powermode--1').dblclick();
+    await page.waitForFunction(()=>state.amps['mesa-boogie-mark2c'].global.powermode === 'Simulclass');
+    // per channel: a channel control goes back to that channel's own starting value
+    await go(url+'?amp=jp2c');
+    await page.evaluate(()=>{ setChannel(2); setCtrl(ctrlByKey('gain'), 2, 0); });
+    await page.waitForFunction(()=>state.amps.jp2c.ch[2].gain === 0);
+    await page.locator('.kwrap[data-ctrl="gain"][data-ch="2"]').dblclick();
+    await page.waitForFunction(()=>state.amps.jp2c.ch[2].gain === ampById('jp2c').defaults.ch['2'].gain);
+
     // Results are redone at most every 150 ms while controls move, but always land on the last settings.
     await go(url+'?amp=jp2c');
     await page.evaluate(()=>{ const { def, as } = cur(), c = def.controls.find(x => x.primary); for (let v = 0; v <= 10; v += 0.5) setCtrl(c, as.channel, v); });
@@ -309,7 +326,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright-core')
     // Saved values that don't fit the current data are ignored, never restored.
     await page.evaluate(()=>localStorage.setItem('capture-finder:v1', JSON.stringify({amp:'no-such-gear', amps:{jp2c:{channel:9, ch:{3:{gain:99, master:'loud'}}, global:{shred:'max'}}}})));
     await go(url);
-    await page.waitForFunction(()=>state.amp==='jp2c' && state.amps.jp2c.channel===3 && state.amps.jp2c.ch[3].gain===7.5 && state.amps.jp2c.global.shred==='off');
+    await page.waitForFunction(()=>{ const d = ampById('jp2c').defaults, s = state.amps.jp2c; return state.amp==='jp2c' && s.channel===d.channel && s.ch[3].gain===d.ch['3'].gain && s.global.shred===d.global.shred; }); // invalid saved values fall back to the starting settings
     await page.evaluate(()=>localStorage.setItem('capture-finder:v1', '{not json'));
     await go(url);
     await page.waitForFunction(()=>state.amp==='jp2c');

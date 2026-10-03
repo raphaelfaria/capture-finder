@@ -560,7 +560,43 @@ export function inferAmp(identity, rows, valueAliases = null) {
     if (!here.some((c) => c.primary)) { const main = here.find((c) => isMain(c) && (!c.channels || c.channels.every((m) => m === n || !hasMain(m)))); if (main) main.primary = true; }
   }
   return { ...identity, panel: 'generic', channels: channelDefs, controls, defaults, definitionSource: 'capture descriptions', ...(valueAliases ? { valueAliases } : {}),
-    defaultsNote: 'Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.' };
+    defaultsNote: 'Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.' };
+}
+
+// Starting settings (what Reset and double-click restore), for every gear: each channel starts from its
+// most downloaded capture, with anything that capture doesn't state taken from the next most downloaded
+// capture of that channel that does. The starting channel is the one of the gear's most downloaded
+// capture; controls shared by several channels, and global ones, come from the starting channel's
+// captures first. Values no capture states keep the definition's own defaults. Ties: capture name.
+export function downloadDefaults(def, caps) {
+  const ranked = caps.filter((c) => c.settings).sort((a, b) => (b.downloads ?? -1) - (a.downloads ?? -1) || byText(a.name, b.name));
+  if (!ranked.length) return null;
+  const many = (cap) => Object.keys(cap.settings.byChannel || {}).length > 1;
+  const covers = (cap, n) => n === null || cap.settings.channel === n || (many(cap) && !!cap.settings.byChannel[n]);
+  const valuesOf = (cap, n) => many(cap) && n !== null ? { ...cap.settings.values, ...(cap.settings.byChannel[n] || {}) } : cap.settings.values;
+  const valid = (c, v) => c.kind === 'switch' ? (c.options || []).some((o) => o.v === v) : typeof v === 'number' && v >= c.min && v <= c.max;
+  const pick = (c, n) => { for (const cap of ranked) if (covers(cap, n)) { const v = valuesOf(cap, n)[c.key]; if (v !== undefined && v !== null && valid(c, v)) return v; } };
+  const defaults = JSON.parse(JSON.stringify(def.defaults)), from = [];
+  if (def.channels) {
+    const top = ranked.find((cap) => def.channels.some((ch) => ch.n === cap.settings.channel));
+    if (top) defaults.channel = top.settings.channel;
+    for (const ch of def.channels) { const cap = ranked.find((c) => covers(c, ch.n)); if (cap) from.push({ channel: ch.n, name: cap.name, downloads: cap.downloads }); }
+  } else from.push({ channel: null, name: ranked[0].name, downloads: ranked[0].downloads });
+  for (const c of def.controls) {
+    if (c.scope === 'channel') {
+      for (const ch of def.channels || []) {
+        if (c.channels && !c.channels.includes(ch.n)) continue;
+        const v = pick(c, ch.n);
+        if (v !== undefined) (defaults.ch[String(ch.n)] || (defaults.ch[String(ch.n)] = {}))[c.key] = v;
+      }
+    } else {
+      const start = def.channels ? defaults.channel : null;
+      const order = !def.channels ? [null] : c.channels ? [...(c.channels.includes(start) ? [start] : []), ...c.channels.filter((n) => n !== start)] : [start, null];
+      let v; for (const n of order) { v = pick(c, n); if (v !== undefined) break; }
+      if (v !== undefined) defaults.global[c.key] = v;
+    }
+  }
+  return { defaults, from };
 }
 
 /** App capture record: identifying fields, mapping, parsed settings, tags and the description (as
@@ -615,6 +651,10 @@ export function build(rawPath = path.join(ROOT, 'data/captures-raw.json'), outpu
   const customIds = new Set(customs.map((a) => a.id));
   const amps = [...customs, ...[...definitions.values()].filter((d) => !customIds.has(d.id)).sort((a, b) => byText(a.brand, b.brand) || byText(a.model, b.model))];
   const captures = raws.map((raw, i) => { const identity = identities.get(rows[i].capture_id); return toCapture(raw, identity, identity ? definitions.get(identity.id) : null); });
+  for (const d of amps) {
+    const start = downloadDefaults(d, captures.filter((c) => c.ampId === d.id));
+    if (start) { d.defaults = start.defaults; d.defaultsFrom = start.from; }
+  }
   const stats = { captures: captures.length, amps: amps.length, mapped: captures.filter((c) => c.ampId !== null).length,
     parsed: captures.filter((c) => c.settings !== null).length, unmapped: captures.filter((c) => c.ampId === null).length };
   const report = { summary: stats, unmapped: captures.filter((c) => c.ampId === null).map((c) => ({ id: c.id, name: c.name, type: c.deviceType })),

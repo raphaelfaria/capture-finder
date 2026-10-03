@@ -14,6 +14,8 @@ function element(id) {
 const context = vm.createContext({console, URLSearchParams, location:{search:''}, requestAnimationFrame(){return 1;}, window:{addEventListener(){}, CF_DATA}, document:{getElementById:element, addEventListener(){}, querySelectorAll(){return [];}, body:{style:{}}, activeElement:null}});
 vm.runInContext(read('assets/app.js'), context);
 const run = code => vm.runInContext(code, context);
+// The starting settings are each channel's most downloaded capture: that capture scores 100 at them.
+const startScore = () => run('(()=>{ const { def, as } = cur(), f = (def.defaultsFrom || []).find(x => x.channel === (def.channels ? as.channel : null)) || (def.defaultsFrom || [])[0]; return settingsSimilarity(CAPTURES.find(c => c.ampId === def.id && c.name === f.name), def, as).score; })()');
 assert.equal(run('CAPTURES.length'), 2190);
 assert.equal(run('new Set(CAPTURES.map(c=>c.id)).size'), 2190);
 assert.equal(run('CAPTURES.some(c=>c.name.startsWith("DEMO"))'), false);
@@ -22,7 +24,7 @@ assert.equal(run('AMP_DEFS.some(a=>a.id==="marshall-jcm800-2203")'), false);
 
 run('state.amp="marshall-jcm800-1987"');
 assert.equal(run('filteredCaptures().ampCaps.length'), 10);
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Brit 1987 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 run('state.amps[state.amp].global.volumeI=0');
 assert.ok(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Brit 1987 1"),cur().def,cur().as).score') < 100);
 assert.equal(run('settingsSimilarity({settings:null},cur().def,cur().as).status'), 'unparsed');
@@ -44,6 +46,7 @@ assert.notEqual(run('switchValue(ctrlByKey("shred"),"ch2",3)'), run('switchValue
 assert.equal(run('captureValues({settings:{values:{},byChannel:{1:{gain:2},2:{gain:8}}}},1).gain'), 2);
 assert.equal(run('captureValues({settings:{values:{},byChannel:{1:{gain:2},2:{gain:8}}}},3).gain'), undefined);
 // Unstated channels reduce confidence less than a known different channel.
+run('state.amps.jp2c.channel=3; state.amps.jp2c.ch[3].gain=7.5'); // a fixed state (the starting settings come from the captures)
 assert.ok(run('settingsSimilarity({settings:{channel:null,values:{gain:7.5}}},cur().def,cur().as).score') > run('settingsSimilarity({settings:{channel:2,values:{gain:7.5}}},cur().def,cur().as).score'));
 // N/A is excluded from applicable coverage rather than counted as missing.
 assert.ok(run('settingsSimilarity({settings:{channel:3,values:{gain:7.5},notApplicable:[{key:"treble",channel:3}]}},cur().def,cur().as).coverage') > run('settingsSimilarity({settings:{channel:3,values:{gain:7.5}}},cur().def,cur().as).coverage'));
@@ -52,14 +55,14 @@ assert.ok(run('settingsSimilarity({settings:{channel:3,values:{gain:7.5},notAppl
 run('state.amp="mesa-boogie-triaxis-preamp"');
 assert.equal(run('filteredCaptures().ampCaps.length'), 8);
 assert.deepEqual(run('filteredCaptures().ampCaps.map(c=>c.settings.channel).join()'), '1,2,3,4,5,6,7,8');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="CA 3Axe 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('settingsSimilarity(CAPTURES.find(c=>c.name==="CA 3Axe 2"),cur().def,cur().as).score') < 60);
 run('state.amps[state.amp].channel=5');
 assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="CA 3Axe 5"),cur().def,cur().as).reasons[0].kind'), 'match');
 assert.ok(run('renderStage()').includes('id="mode-5" class="txled on"'));
 assert.ok(!run('renderStage()').includes('chtabs'));
 run('state.amp="mesa-boogie-triaxis-preamp-mesa-boogie-2-90-simulclass"');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="CA 3Axe+290 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.equal(run('CAPTURES.find(c=>c.name==="CA 3Axe+290 1").settings.values.presence'), 3.5);
 assert.equal(run('CAPTURES.find(c=>c.name==="CA 3Axe+290 1").settings.values.powerPresence'), 0);
 
@@ -67,33 +70,33 @@ assert.equal(run('CAPTURES.find(c=>c.name==="CA 3Axe+290 1").settings.values.pow
 run('state.amp="aguilar-tone-hammer-500"');
 assert.equal(run('filteredCaptures().ampCaps.length'), 47);
 assert.ok(run('filteredCaptures().ampCaps.every(c=>c.settings && !c.uninterpretedSettings.length && Object.keys(c.settings.values).length===6)'));
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Aggi Hammer 500 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('class="cab thcab"') && run('renderStage()').includes('Single channel'));
 
 // Ibanez TS9: custom pedal panel (control area only), all 12 captures parse.
 run('state.amp="ibanez-ts9-tube-screamer"');
 assert.equal(run('filteredCaptures().ampCaps.length'), 12);
 assert.ok(run('filteredCaptures().ampCaps.every(c=>c.settings && Object.keys(c.settings.values).length===3)'));
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Iba Green 9 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('class="cab tscab"') && !run('renderStage()').includes('grille'));
 
 // Origin Effects Cali76: Ratio is a 4-position switch; DRY is shown but not matched.
 run('state.amp="origin-effects-cali76"');
 assert.equal(run('filteredCaptures().ampCaps.length'), 32);
 assert.equal(run('JSON.stringify([...new Set(filteredCaptures().ampCaps.map(c=>c.settings.values.ratio))].sort((a,b)=>a-b))'), '[4,8,12,20]');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="OC-76 Comp 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 run('state.amps[state.amp].global.dry=7');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="OC-76 Comp 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('class="cab cacab"') && run('renderStage()').includes('aria-label="Ratio 20:1"'));
 
 // Neural DSP Darkglass Ultra / Ultimate share the Microtubes B7K Ultra panel; Ultimate compares only
 // its B7K/VU pedal section (the compressor's Level/Blend come before it and are not read).
 run('state.amp="neural-dsp-darkglass-ultra"');
 assert.equal(run('cur().def.category'), 'Overdrive');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Darkglass Ultimate 8"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('class="cab b7cab"') && run('renderStage()').includes('id="p-distortion-"'));
 run('state.amp="neural-dsp-darkglass-ultimate"');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Darkglass Ultimate 3"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.equal(run('CAPTURES.find(c=>c.name==="Darkglass Ultimate 7").settings.values.blend'), 4);
 
 // Bogner Ecstasy 100B (custom): every physical knob is its own control on its channel(s) —
@@ -103,7 +106,7 @@ run('state.amp="bogner-ecstasy-100b"');
 assert.equal(run('CAPTURES.filter(c=>c.ampId==="bogner-ecstasy-100b"&&c.uninterpretedSettings.length).length'), 0);
 assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name==="Bogna X100B Ch2 1").settings.values)'), JSON.stringify({presence:6,mastervol:6.5,excursion:'Tight',vol2:6,treble23:6,middle23:4,bass23:5,gain2:9,air:'Lo',gainsw:'Lo',preeq2:'Dark',variac:false,soundstyle:'New'}));
 assert.equal(run('CAPTURES.find(c=>c.name==="Bogna X100B Ch1 1").settings.values.treble1'), 6.5);
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Bogna X100B Ch2 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('class="cab bgcab"') && run('renderStage()').includes('id="t-soundstyle--1"'));
 // "Normal"/"Middle" Pre EQ positions mean Mid.
 assert.ok(run('CAPTURES.filter(c=>c.ampId==="bogner-ecstasy-100b").every(c=>!["Normal","Middle"].includes(c.settings.values.preeq2||c.settings.values.preeq3))'));
@@ -112,10 +115,10 @@ assert.ok(run('CAPTURES.filter(c=>c.ampId==="bogner-ecstasy-100b").every(c=>!["N
 run('state.amp="bogner-ecstasy-100b-preamp-section"');
 assert.equal(run('CAPTURES.find(c=>c.name==="Bogna X100B Pre Ch3 Lead 1").settings.values.gainmode'), 'Lead');
 assert.equal(run('CAPTURES.find(c=>c.name==="Bogna X100B Pre Ch3 Lead 1").settings.values.gainsw'), 'Lo');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Bogna X100B Pre Ch2 Hi 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 90); // its most downloaded capture is a channel 3 Plexi one, which never states the Gain Lo/Hi switch
 assert.ok(!run('renderStage()').includes('PRESENCE') && run('renderStage()').includes('id="k-gain2-"'));
 run('state.amp="bogner-ecstasy-100b-power-amp-section"');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name==="Bogna X100B PA NEW 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('id="t-soundstyle--1"') && !run('renderStage()').includes('id="k-gain2-"'));
 
 // Mark IIC+: the two "Pull Bright" lines go to Volume 1 then Lead Master; pedal blocks after the
@@ -124,7 +127,7 @@ run('state.amp="mesa-boogie-mark2c"');
 assert.equal(run('CAPTURES.filter(c=>c.ampId==="mesa-boogie-mark2c"&&c.uninterpretedSettings.length).length'), 0);
 assert.equal(run('JSON.stringify([CAPTURES.find(c=>c.name.trim()==="CA MkCC+ 1").settings.values.pullbright1,CAPTURES.find(c=>c.name.trim()==="CA MkCC+ 1").settings.values.pullbright2])'), "[false,true]");
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="CA MkCC+ 6").settings.values.volume'), 7);
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="CA MkCC+ 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 run('loadCapture(CAPTURES.find(c=>c.name.trim()==="CA MkCC+ 3").id)');
 assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="CA MkCC+ 3"),cur().def,cur().as).score'), 100);
 assert.ok(run('renderStage()').includes('class="cab mkcab"') && run('renderStage()').includes('id="t-powermode--1"') && run('renderStage()').includes('class="mkk mkoff"'));
@@ -135,11 +138,11 @@ run('state.amp="fender-hot-rod-deluxe"');
 assert.equal(run('CAPTURES.filter(c=>c.ampId==="fender-hot-rod-deluxe"&&c.uninterpretedSettings.length).length'), 0);
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="US HRDLX ChB 13").settings.channel'), 2);
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="US HRDLX ChB 13").settings.values.moredrive'), true);
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="US HRDLX ChA 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('id="hr-select"') && !run('renderStage()').includes('id="tab-1"') && run('renderStage()').includes('class="hrk hroff"'));
 run('state.amp="fender-hot-rod-deluxe-power-amp-section"');
 assert.equal(run('CAPTURES.filter(c=>c.ampId==="fender-hot-rod-deluxe-power-amp-section").length'), 8);
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="US HRDLX PA 6V6 5"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('id="k-presence-"') && !run('renderStage()').includes('id="k-volume-"'));
 
 // Every capture links to its own Cortex Cloud page.
@@ -186,7 +189,7 @@ assert.equal(run('CAPTURES.filter(c=>c.ampId==="mesa-boogie-mark3-red-stripe"&&c
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 1").settings.values.pullrhythm2'), false);
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 3").settings.values.pullrhythm2'), true);
 assert.equal(run('JSON.stringify([CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 4").settings.values.pullbright1, CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 4").settings.values.pullbright2])'), '[true,true]');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="CA MkIIIRed 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 const m3 = run('renderStage()');
 assert.ok(m3.includes('class="mkface m3"') && m3.includes('id="p-pullrhythm2-"') && m3.includes('id="t-eqmode--1"') && !m3.includes('powermode'));
 run('state.amp="mesa-boogie-mark2c"');
@@ -216,13 +219,13 @@ run('state.amp="bogner-fish-preamp"');
 assert.equal(run('CAPTURES.filter(c=>/^bogner-fish/.test(c.ampId||"")&&c.uninterpretedSettings.length).length'), 0);
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Bogna Fish 1").settings.channel'), 1);
 assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Fish 7").settings.values)'), JSON.stringify({ sharkvol:6.5, sharktreble:5, sharkbass:8, brightdark:'Dark', balls:5, presence:5, mastervol:10 }));
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Fish 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 const fishStage = run('renderStage()');
 assert.ok(fishStage.includes('id="fs-ch-3"') && fishStage.includes('id="tab-1"') && fishStage.includes('REAR PANEL') && fishStage.includes('class="fsk fsoff"'));
 run('state.amp="bogner-fish-preamp-mesa-boogie-2-ninety-simul-class"');
 assert.equal(run('JSON.stringify(CAPTURES.find(c=>c.name.trim()==="Bogna Fish+290 3").settings.values)'), JSON.stringify({ sharktreble:5, sharkbass:8, brightdark:'Bright', sharkvol:8, balls:2, level:3.5, powerPresence:1, modern:false, halfDrive:false, deep:false }));
 assert.equal(run('CAPTURES.find(c=>c.name.trim()==="Bogna Fish+290 2").settings.values.jazzfunk'), 'Middle');
-assert.equal(run('settingsSimilarity(CAPTURES.find(c=>c.name.trim()==="Bogna Fish+290 1"),cur().def,cur().as).score'), 100);
+assert.equal(startScore(), 100);
 assert.ok(run('renderStage()').includes('Simul-Class 2:Ninety') && !run('renderStage()').includes('REAR PANEL'));
 
 // Capture type labels: no version means the original Neural Capture (V1).

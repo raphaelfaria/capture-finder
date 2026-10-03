@@ -69,6 +69,9 @@ The panel is the gear's own face with the parts that aren't settings cut away �
 - **Reference code:** each existing custom panel is a `cab` branch in `renderStage()` plus its `…PanelHTML` function in `assets/app.js` and CSS block in `assets/app.css`; read the closest one before writing a new panel.
 - **Screenshots:** headless Chrome `--screenshot` can't go below ~500px wide; check 390px with Playwright (`verify-gear.cjs`), not with screenshots. Playwright comes from `npm install` (playwright-core driving the installed Chrome; no browser download).
 
+## Starting settings
+- The build sets every gear's starting settings (Reset, double-click) from its captures: per channel the most downloaded capture, gaps from the next most downloaded; the start channel is the one of the most downloaded capture; the (i) notes list them (`defaultsFrom`). Still write complete `defaults` in a definition (they are the fallback for values no capture states), but don't hand-pick a starting capture or write "Starting settings: …" in the `defaultsNote`.
+
 ## Weights and matching
 - Exactly one `primary:true` control per channel (main gain/drive/volume; for a compressor the compression amount, e.g. Input/Comp); gear with a gain knob per channel marks each, limited to its channel. Every control gets a deliberate weight (0 = shown, not matched). Typical: primary 2–3, tone knobs 1, switches that change voicing 0.8–2, output/level ~0.5–1, secondary pulls ~1.
 - Controls that depend on an enable switch use `requires` + `group`; unknown enablement never implies ON unless the definition says so with `assumeWhenMissing`.

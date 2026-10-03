@@ -277,51 +277,51 @@
       }
     ],
     "defaults": {
-      "channel": 3,
+      "channel": 1,
       "ch": {
         "1": {
-          "gain": 4,
+          "gain": 3.5,
           "master": 6,
-          "presence": 6,
-          "treble": 7,
-          "mid": 8,
-          "bass": 7,
+          "presence": 6.5,
+          "treble": 7.5,
+          "mid": 7.5,
+          "bass": 10,
           "eqOn": true,
-          "eq80": 6.5,
-          "eq240": 5.5,
-          "eq750": 4.5,
+          "eq80": 7,
+          "eq240": 6,
+          "eq750": 4,
           "eq2200": 5,
-          "eq6600": 6.5
+          "eq6600": 7
         },
         "2": {
-          "gain": 5.5,
+          "gain": 3.5,
           "pullGain": false,
           "master": 7,
-          "presence": 5,
-          "pullPres": true,
-          "treble": 6.5,
-          "mid": 5,
+          "presence": 5.5,
+          "pullPres": false,
+          "treble": 10,
+          "mid": 10,
+          "bass": 6.5,
+          "eqOn": true,
+          "eq80": 7,
+          "eq240": 4,
+          "eq750": 3,
+          "eq2200": 5.5,
+          "eq6600": 7
+        },
+        "3": {
+          "gain": 8.5,
+          "pullGain": false,
+          "master": 6.5,
+          "presence": 8,
+          "pullPres": false,
+          "treble": 7,
+          "mid": 7,
           "bass": 6,
           "eqOn": true,
           "eq80": 7,
-          "eq240": 4.5,
-          "eq750": 3,
-          "eq2200": 5.5,
-          "eq6600": 6
-        },
-        "3": {
-          "gain": 7.5,
-          "pullGain": false,
-          "master": 6,
-          "presence": 7.5,
-          "pullPres": true,
-          "treble": 8,
-          "mid": 8,
-          "bass": 3,
-          "eqOn": true,
-          "eq80": 7,
           "eq240": 5,
-          "eq750": 3.5,
+          "eq750": 4,
           "eq2200": 5,
           "eq6600": 7
         }
@@ -330,9 +330,26 @@
         "shred": "off"
       }
     },
-    "defaultsNote": "Reference starting positions, not a capture. Master is excluded. A capture that doesn't state EQ on/off is taken as EQ on.",
+    "defaultsNote": "Master is excluded. A capture that doesn't state EQ on/off is taken as EQ on.",
     "captureCount": 160,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "CA John Ch1 2",
+        "downloads": 2361
+      },
+      {
+        "channel": 2,
+        "name": "CA John Ch2 1",
+        "downloads": 692
+      },
+      {
+        "channel": 3,
+        "name": "CA John Ch3 26",
+        "downloads": 1619
+      }
+    ]
   },
   {
     "id": "marshall-jcm800-1987",
@@ -493,9 +510,16 @@
         "patchcable": "2 Low to 1 High"
       }
     },
-    "defaultsNote": "Starting settings: Brit 1987 1. Two blendable input channels (I: High Treble; II: Normal), not footswitchable channels. Patch routes shown are those recorded in this dataset.",
+    "defaultsNote": "Two blendable input channels (I: High Treble; II: Normal), not footswitchable channels. Patch routes shown are those recorded in this dataset.",
     "captureCount": 10,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Brit 1987 1",
+        "downloads": 6263
+      }
+    ]
   },
   {
     "id": "mesa-boogie-triaxis-preamp",
@@ -706,23 +730,65 @@
       "dynamicvoice"
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 8,
       "ch": {},
       "global": {
-        "gain": 5,
-        "treble": 4,
-        "middle": 7.5,
-        "bass": 6.5,
-        "lead1drive": 6.5,
-        "lead2drive": 8,
-        "master": 6.5,
-        "presence": 0,
-        "dynamicvoice": 3.5
+        "gain": 8,
+        "treble": 6,
+        "middle": 4,
+        "bass": 5,
+        "lead1drive": 7.5,
+        "lead2drive": 9,
+        "master": 4,
+        "presence": 3,
+        "dynamicvoice": 3
       }
     },
-    "defaultsNote": "Starting settings: CA 3Axe 1 (RHY Green); Lead drive starting values are mid-range of the recorded ones. The eight modes are the RHY/LD1/LD2 LED matrix, not footswitchable amp channels.",
+    "defaultsNote": "The eight modes are the RHY/LD1/LD2 LED matrix, not footswitchable amp channels.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "CA 3Axe 1",
+        "downloads": 55
+      },
+      {
+        "channel": 2,
+        "name": "CA 3Axe 2",
+        "downloads": 57
+      },
+      {
+        "channel": 3,
+        "name": "CA 3Axe 3",
+        "downloads": 63
+      },
+      {
+        "channel": 4,
+        "name": "CA 3Axe 4",
+        "downloads": 50
+      },
+      {
+        "channel": 5,
+        "name": "CA 3Axe 5",
+        "downloads": 43
+      },
+      {
+        "channel": 6,
+        "name": "CA 3Axe 6",
+        "downloads": 60
+      },
+      {
+        "channel": 7,
+        "name": "CA 3Axe 7",
+        "downloads": 78
+      },
+      {
+        "channel": 8,
+        "name": "CA 3Axe 8",
+        "downloads": 90
+      }
+    ]
   },
   {
     "id": "mesa-boogie-triaxis-preamp-mesa-boogie-2-90-simulclass",
@@ -1024,28 +1090,50 @@
       "dynamicvoice"
     ],
     "defaults": {
-      "channel": 2,
+      "channel": 8,
       "ch": {},
       "global": {
-        "gain": 6,
-        "treble": 2,
-        "middle": 7.5,
-        "bass": 10,
+        "gain": 8,
+        "treble": 6,
+        "middle": 4,
+        "bass": 5,
         "lead1drive": 6,
         "lead2drive": 9,
-        "master": 6,
-        "presence": 3.5,
-        "dynamicvoice": 2,
-        "level": 5.5,
+        "master": 4,
+        "presence": 3,
+        "dynamicvoice": 3,
+        "level": 5,
         "powerPresence": 0,
         "deep": true,
         "halfDrive": false,
         "modern": true
       }
     },
-    "defaultsNote": "Starting settings: CA 3Axe+290 1 (RHY Yellow). Captures record one power-amp Level/Presence without saying side A or B; they are shown in the A position.",
+    "defaultsNote": "Captures record one power-amp Level/Presence without saying side A or B; they are shown in the A position.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 2,
+        "name": "CA 3Axe+290 1",
+        "downloads": 70
+      },
+      {
+        "channel": 5,
+        "name": "CA 3Axe+290 2",
+        "downloads": 77
+      },
+      {
+        "channel": 7,
+        "name": "CA 3Axe+290 3",
+        "downloads": 112
+      },
+      {
+        "channel": 8,
+        "name": "CA 3Axe+290 4",
+        "downloads": 141
+      }
+    ]
   },
   {
     "id": "aguilar-tone-hammer-500",
@@ -1147,17 +1235,24 @@
       "channel": null,
       "ch": {},
       "global": {
-        "gain": 3.5,
-        "midlevel": 3.5,
-        "bass": 3.5,
+        "gain": 6.5,
+        "midlevel": 6.5,
+        "bass": 5.2,
         "drive": 0,
-        "midfreq": 3.5,
-        "treble": 5
+        "midfreq": 5,
+        "treble": 8
       }
     },
-    "defaultsNote": "Starting settings: Aggi Hammer 500 1. Master, the −10 dB pad and the rear/side jacks are not recorded in any capture and are not shown.",
+    "defaultsNote": "Master, the −10 dB pad and the rear/side jacks are not recorded in any capture and are not shown.",
     "captureCount": 47,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Aggi Hammer 500 25",
+        "downloads": 238
+      }
+    ]
   },
   {
     "id": "ibanez-ts9-tube-screamer",
@@ -1221,12 +1316,19 @@
       "ch": {},
       "global": {
         "drive": 0,
-        "tone": 3.5,
+        "tone": 6.5,
         "level": 10
       }
     },
-    "defaultsNote": "Starting settings: Iba Green 9 1. The status LED, footswitch, jacks and the lower body of the pedal are not recorded and are not shown.",
-    "captureCount": 12
+    "defaultsNote": "The status LED, footswitch, jacks and the lower body of the pedal are not recorded and are not shown.",
+    "captureCount": 12,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Iba Green 9 3",
+        "downloads": 83
+      }
+    ]
   },
   {
     "id": "origin-effects-cali76",
@@ -1346,13 +1448,20 @@
         "dry": 0,
         "output": 8,
         "inputcomp": 5,
-        "ratio": 20,
-        "attack": 10,
-        "release": 10
+        "ratio": 12,
+        "attack": 2,
+        "release": 6.5
       }
     },
-    "defaultsNote": "Starting settings: OC-76 Comp 1. DRY is on the pedal but not in any capture, so it is shown and not matched. The jacks, gain-reduction meter, LED and footswitch are not recorded and are not shown.",
-    "captureCount": 32
+    "defaultsNote": "DRY is on the pedal but not in any capture, so it is shown and not matched. The jacks, gain-reduction meter, LED and footswitch are not recorded and are not shown.",
+    "captureCount": 32,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "OC-76 Comp 14",
+        "downloads": 3085
+      }
+    ]
   },
   {
     "id": "neural-dsp-darkglass-ultra",
@@ -1589,23 +1698,30 @@
       "channel": null,
       "ch": {},
       "global": {
-        "master": 5.2,
-        "blend": 4.5,
-        "level": 6.2,
-        "drive": 4.5,
+        "master": 5.3,
+        "blend": 4.2,
+        "level": 5.2,
+        "drive": 6.5,
         "attack": "mid",
-        "grunt": "down",
-        "bass": 5.1,
-        "lomids": 3.5,
-        "himids": 5.5,
-        "treble": 4.5,
+        "grunt": "up",
+        "bass": 5.2,
+        "lomids": 3.8,
+        "himids": 4,
+        "treble": 7,
         "lomidsswitch": "down",
         "himidsswitch": "mid",
         "distortion": true
       }
     },
-    "defaultsNote": "Starting settings: Darkglass Ultimate 8 (the captures are named “Darkglass Ultimate”, but describe the Darkglass Ultra plugin). The mid-switch frequencies follow the order printed on the pedal. Bypass, LEDs and jacks are not recorded and are not shown.",
-    "captureCount": 5
+    "defaultsNote": "The captures are named “Darkglass Ultimate”, but describe the Darkglass Ultra plugin. The mid-switch frequencies follow the order printed on the pedal. Bypass, LEDs and jacks are not recorded and are not shown.",
+    "captureCount": 5,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Darkglass Ultimate 12",
+        "downloads": 2671
+      }
+    ]
   },
   {
     "id": "neural-dsp-darkglass-ultimate",
@@ -1842,23 +1958,30 @@
       "channel": null,
       "ch": {},
       "global": {
-        "master": 4.8,
-        "blend": 3.9,
-        "level": 6,
-        "drive": 2.2,
+        "master": 5.8,
+        "blend": 4,
+        "level": 5.8,
+        "drive": 4,
         "attack": "mid",
         "grunt": "down",
-        "bass": 5.3,
-        "lomids": 4,
-        "himids": 6.2,
+        "bass": 5,
+        "lomids": 4.3,
+        "himids": 5.6,
         "treble": 4.2,
         "lomidsswitch": "down",
         "himidsswitch": "mid",
         "distortion": true
       }
     },
-    "defaultsNote": "Starting settings: Darkglass Ultimate 3. Only the plugin's B7K/VU pedal section is compared; its compressor, fuzz, cab and EQ settings stay in the description. The mid-switch frequencies follow the order printed on the pedal.",
-    "captureCount": 7
+    "defaultsNote": "Only the plugin's B7K/VU pedal section is compared; its compressor, fuzz, cab and EQ settings stay in the description. The mid-switch frequencies follow the order printed on the pedal.",
+    "captureCount": 7,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Darkglass Ultimate 7",
+        "downloads": 6428
+      }
+    ]
   },
   {
     "id": "bogner-ecstasy-100b",
@@ -2364,13 +2487,13 @@
         "presence": 6,
         "mastervol": 6.5,
         "excursion": "Tight",
-        "vol1": 8,
-        "treble1": 6.5,
-        "middle1": 3.5,
+        "vol1": 7,
+        "treble1": 6,
+        "middle1": 6,
         "bass1": 4,
-        "preeq1": "Neutral",
-        "gain1": 6,
-        "vol3": 5,
+        "preeq1": "Bright 2",
+        "gain1": 4,
+        "vol3": 10,
         "vol2": 6,
         "gainmode": "Plexi",
         "treble23": 6,
@@ -2378,16 +2501,33 @@
         "middle23": 4,
         "gainsw": "Lo",
         "bass23": 5,
-        "preeq3": "Dark",
-        "gain3": 3.5,
+        "preeq3": "Bright",
+        "gain3": 1.5,
         "preeq2": "Dark",
         "gain2": 9,
         "soundstyle": "New",
         "variac": false
       }
     },
-    "defaultsNote": "Starting settings: Bogna X100B Ch2 1 (channel 1 and 3 controls from Ch1 1 and Ch3 1). Channel 1 has its own Treble/Middle/Bass; channels 2 and 3 share theirs, plus the Air and Gain Lo/Hi switches. Sound Style and Variac are rear-panel switches, shown at the left. Pre EQ “Normal”/“Middle” in descriptions means Mid.",
-    "captureCount": 46
+    "defaultsNote": "Channel 1 has its own Treble/Middle/Bass; channels 2 and 3 share theirs, plus the Air and Gain Lo/Hi switches. Sound Style and Variac are rear-panel switches, shown at the left. Pre EQ “Normal”/“Middle” in descriptions means Mid.",
+    "captureCount": 46,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Bogna X100B Ch1 6",
+        "downloads": 232
+      },
+      {
+        "channel": 2,
+        "name": "Bogna X100B Ch2 1",
+        "downloads": 1972
+      },
+      {
+        "channel": 3,
+        "name": "Bogna X100B Ch3 11",
+        "downloads": 261
+      }
+    ]
   },
   {
     "id": "bogner-ecstasy-100b-preamp-section",
@@ -2807,31 +2947,48 @@
       "gain2"
     ],
     "defaults": {
-      "channel": 2,
+      "channel": 3,
       "ch": {},
       "global": {
-        "vol1": 6.5,
-        "treble1": 6,
-        "middle1": 6,
-        "bass1": 6.5,
-        "preeq1": "Bright 1",
-        "gain1": 4,
+        "vol1": 7,
+        "treble1": 4,
+        "middle1": 3.5,
+        "bass1": 5,
+        "preeq1": "Neutral",
+        "gain1": 6.5,
         "vol3": 8,
         "vol2": 6.5,
-        "gainmode": "Lead",
-        "treble23": 6,
-        "air": "Hi",
-        "middle23": 6.5,
+        "gainmode": "Plexi",
+        "treble23": 5.5,
+        "air": "Lo",
+        "middle23": 3.5,
         "gainsw": "Hi",
         "bass23": 5,
-        "preeq3": "Dark",
-        "gain3": 4.5,
+        "preeq3": "Mid",
+        "gain3": 3.5,
         "preeq2": "Dark",
         "gain2": 6.5
       }
     },
-    "defaultsNote": "Starting settings: Bogna X100B Pre Ch2 Hi 1 (channel 1 and 3 controls from Pre Ch1 1 and Pre Ch3 Lead 1). Only the preamp's per-channel controls are captured; Presence, Master, Excursion and the rear switches belong to the power amp section. The descriptions write Gain Mode as a second “Gain” line (Lead/Plexi).",
-    "captureCount": 87
+    "defaultsNote": "Only the preamp's per-channel controls are captured; Presence, Master, Excursion and the rear switches belong to the power amp section. The descriptions write Gain Mode as a second “Gain” line (Lead/Plexi).",
+    "captureCount": 87,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Bogna X100B Pre Ch1 10",
+        "downloads": 77
+      },
+      {
+        "channel": 2,
+        "name": "Bogna X100B Pre Ch2 Hi 2",
+        "downloads": 43
+      },
+      {
+        "channel": 3,
+        "name": "Bogna X100B Pre Ch3 Plexi 4",
+        "downloads": 200
+      }
+    ]
   },
   {
     "id": "bogner-ecstasy-100b-power-amp-section",
@@ -2940,14 +3097,21 @@
       "ch": {},
       "global": {
         "presence": 3.5,
-        "mastervol": 10,
+        "mastervol": 3.5,
         "excursion": "Tight",
         "soundstyle": "New",
-        "variac": false
+        "variac": true
       }
     },
-    "defaultsNote": "Starting settings: Bogna X100B PA NEW 1. The power amp section's controls only: Presence, Master Volume and Excursion on the front, Sound Style (written “Style”) and Variac on the rear panel.",
-    "captureCount": 19
+    "defaultsNote": "The power amp section's controls only: Presence, Master Volume and Excursion on the front, Sound Style (written “Style”) and Variac on the rear panel.",
+    "captureCount": 19,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Bogna X100B PA NEW+VAR 7",
+        "downloads": 116
+      }
+    ]
   },
   {
     "id": "mesa-boogie-mark2c",
@@ -3313,8 +3477,15 @@
         "powermode": "Simulclass"
       }
     },
-    "defaultsNote": "Starting settings: CA MkCC+ 1. The PULL labels above the knobs are the pull switches. Lead Drive, Lead Master and its Pull Bright only count while Pull Lead is on (dimmed otherwise). Presence and the Simul-Class / Class A switch sit on the rear panel; they are shown where the standby and power switches are. The EQ in/auto switch isn't recorded by any capture, so it is left out (every capture states the slider positions).",
-    "captureCount": 8
+    "defaultsNote": "The PULL labels above the knobs are the pull switches. Lead Drive, Lead Master and its Pull Bright only count while Pull Lead is on (dimmed otherwise). Presence and the Simul-Class / Class A switch sit on the rear panel; they are shown where the standby and power switches are. The EQ in/auto switch isn't recorded by any capture, so it is left out (every capture states the slider positions).",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "CA MkCC+ 1",
+        "downloads": 3560
+      }
+    ]
   },
   {
     "id": "fender-hot-rod-deluxe",
@@ -3517,19 +3688,31 @@
       "ch": {},
       "global": {
         "normalbright": false,
-        "volume": 2.5,
+        "volume": 3.5,
         "moredrive": false,
-        "drive": 3.5,
-        "treble": 3,
-        "bass": 3,
-        "middle": 3,
-        "master": 3.5,
+        "drive": 6,
+        "treble": 12,
+        "bass": 12,
+        "middle": 12,
+        "master": 5,
         "reverb": 0,
-        "presence": 10
+        "presence": 9
       }
     },
-    "defaultsNote": "Starting settings: US HRDLX ChA 1 (Drive, More Drive and Master from US HRDLX ChB 1). Captures call the channels A (Normal) and B (Drive); CHANNEL SELECT on the panel switches between them, and the controls the other channel doesn't use are dimmed. The knobs are printed 1–12; a few captures write 0, shown fully counter-clockwise like 1. Reverb is on the panel but no capture records it: shown, not matched.",
-    "captureCount": 47
+    "defaultsNote": "Captures call the channels A (Normal) and B (Drive); CHANNEL SELECT on the panel switches between them, and the controls the other channel doesn't use are dimmed. The knobs are printed 1–12; a few captures write 0, shown fully counter-clockwise like 1. Reverb is on the panel but no capture records it: shown, not matched.",
+    "captureCount": 47,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "US HRDLX ChA 19",
+        "downloads": 294
+      },
+      {
+        "channel": 2,
+        "name": "US HRDLX ChB 9",
+        "downloads": 138
+      }
+    ]
   },
   {
     "id": "fender-hot-rod-deluxe-power-amp-section",
@@ -3563,11 +3746,18 @@
       "channel": null,
       "ch": {},
       "global": {
-        "presence": 5
+        "presence": 1
       }
     },
-    "defaultsNote": "Starting settings: US HRDLX PA 6V6 5. The power amp section's only recorded control is Presence; the knobs are printed 1–12 and a capture at 0 is shown fully counter-clockwise like 1.",
-    "captureCount": 8
+    "defaultsNote": "The power amp section's only recorded control is Presence; the knobs are printed 1–12 and a capture at 0 is shown fully counter-clockwise like 1.",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "US HRDLX PA 6V6 2",
+        "downloads": 187
+      }
+    ]
   },
   {
     "id": "mesa-boogie-mark3-red-stripe",
@@ -3933,29 +4123,36 @@
       "global": {
         "volume": 10,
         "pullbright1": true,
-        "treble": 7,
+        "treble": 9,
         "pullshifttreble": true,
-        "bass": 4,
-        "pullshiftbass": true,
-        "middle": 4,
+        "bass": 0,
+        "pullshiftbass": false,
+        "middle": 5,
         "pullrhythm2": false,
-        "master1": 2,
-        "pulldeep": false,
+        "master1": 2.5,
+        "pulldeep": true,
         "leaddrive": 7.2,
-        "pulllead": false,
+        "pulllead": true,
         "leadmaster": 6,
         "pullbright2": true,
-        "eq80": 6.5,
-        "eq240": 5,
-        "eq750": 1.5,
-        "eq2200": 5.5,
-        "eq6600": 6.5,
+        "eq80": 5,
+        "eq240": 1.5,
+        "eq750": 0,
+        "eq2200": 5.2,
+        "eq6600": 6,
         "eqmode": "In",
-        "presence": 3
+        "presence": 0
       }
     },
-    "defaultsNote": "Starting settings: CA MkIIIRed 1 (Lead Drive and Lead Master from CA MkIIIRed 4). Same faceplate as the Mark IIC+, with PULL RHYTHM 2 on Middle (captures write it “Pull Rhythm” or “Pull Rhythm2”). Captures that don’t use the lead circuit write the lead controls as N/A; they only count while Pull Lead is on (dimmed otherwise). Presence sits on the rear panel; it’s shown where the standby and power switches are.",
-    "captureCount": 4
+    "defaultsNote": "Same faceplate as the Mark IIC+, with PULL RHYTHM 2 on Middle (captures write it “Pull Rhythm” or “Pull Rhythm2”). Captures that don’t use the lead circuit write the lead controls as N/A; they only count while Pull Lead is on (dimmed otherwise). Presence sits on the rear panel; it’s shown where the standby and power switches are.",
+    "captureCount": 4,
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "CA MkIIIRed 4",
+        "downloads": 480
+      }
+    ]
   },
   {
     "id": "bogner-fish-preamp",
@@ -4374,9 +4571,9 @@
         "stratogain": 2,
         "sharkvol": 6.5,
         "sharktreble": 5,
-        "sharkbass": 8,
-        "brightdark": "Dark",
-        "balls": 5,
+        "sharkbass": 6.5,
+        "brightdark": "Bright",
+        "balls": 8,
         "countrytreble": 8,
         "countrymiddle": 5,
         "countrybass": 8,
@@ -4386,8 +4583,30 @@
         "mastervol": 10
       }
     },
-    "defaultsNote": "Starting settings: Bogna Fish 1 (Country), 3 (Brown), 5 (Strato), 7 (Shark). The channel labels on the panel (STRATO ▶, BROWN ▶, SHARK ▶, ◀ COUNTRY) pick the channel; captures call Country “Clean”. Brown and Strato share the top-row tone stack. The controls the selected channel doesn’t use are dimmed. Presence and Master sit on the rear panel; they are shown where the power switch is.",
-    "captureCount": 8
+    "defaultsNote": "The channel labels on the panel (STRATO ▶, BROWN ▶, SHARK ▶, ◀ COUNTRY) pick the channel; captures call Country “Clean”. Brown and Strato share the top-row tone stack. The controls the selected channel doesn’t use are dimmed. Presence and Master sit on the rear panel; they are shown where the power switch is.",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Bogna Fish 1",
+        "downloads": 220
+      },
+      {
+        "channel": 2,
+        "name": "Bogna Fish 3",
+        "downloads": 79
+      },
+      {
+        "channel": 3,
+        "name": "Bogna Fish 8",
+        "downloads": 89
+      },
+      {
+        "channel": 4,
+        "name": "Bogna Fish 5",
+        "downloads": 129
+      }
+    ]
   },
   {
     "id": "bogner-fish-preamp-mesa-boogie-2-ninety-simul-class",
@@ -4867,21 +5086,21 @@
       "modern"
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {},
       "global": {
         "brownvol": 5,
         "stratovol": 5,
-        "treble24": 6,
-        "middle24": 8,
-        "bass24": 5,
+        "treble24": 8,
+        "middle24": 5,
+        "bass24": 6,
         "browngain": 8,
-        "stratogain": 3.5,
+        "stratogain": 10,
         "sharkvol": 8,
         "sharktreble": 5,
         "sharkbass": 8,
-        "brightdark": "Bright",
-        "balls": 2,
+        "brightdark": "Dark",
+        "balls": 8,
         "countrytreble": 8,
         "countrymiddle": 5,
         "countrybass": 5,
@@ -4891,11 +5110,33 @@
         "powerPresence": 2.5,
         "deep": true,
         "halfDrive": false,
-        "modern": true
+        "modern": false
       }
     },
-    "defaultsNote": "Starting settings: Bogna Fish+290 1 (Country), 7 (Brown), 5 (Strato), 3 (Shark). The Fish above the Simul-Class 2:Ninety it was captured through; captures write each channel’s level and gain knobs as plain “Volume” and “Gain”. Captures call Country “Clean”, and one sets its switch to the middle position (between Jazz and Funk).",
-    "captureCount": 8
+    "defaultsNote": "The Fish above the Simul-Class 2:Ninety it was captured through; captures write each channel’s level and gain knobs as plain “Volume” and “Gain”. Captures call Country “Clean”, and one sets its switch to the middle position (between Jazz and Funk).",
+    "captureCount": 8,
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Bogna Fish+290 1",
+        "downloads": 173
+      },
+      {
+        "channel": 2,
+        "name": "Bogna Fish+290 8",
+        "downloads": 195
+      },
+      {
+        "channel": 3,
+        "name": "Bogna Fish+290 4",
+        "downloads": 152
+      },
+      {
+        "channel": 4,
+        "name": "Bogna Fish+290 6",
+        "downloads": 150
+      }
+    ]
   },
   {
     "id": "ada-mp-1-preamp",
@@ -5079,37 +5320,49 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
           "overdrive1": 5,
-          "overdrive2": 5,
-          "mastergain": 5,
-          "bass": 5,
-          "mid": 5,
-          "treble": 5,
-          "presence": 5,
+          "overdrive2": 5.5,
+          "mastergain": 7.5,
+          "bass": 6,
+          "mid": 12,
+          "treble": 4,
+          "presence": 6,
           "voicing": "tube",
-          "programno": 5
+          "programno": 20
         },
         "2": {
-          "overdrive1": 5,
-          "overdrive2": 5,
-          "mastergain": 5,
-          "bass": 5,
-          "mid": 5,
-          "treble": 5,
-          "presence": 5,
+          "overdrive1": 7,
+          "overdrive2": 5.5,
+          "mastergain": 5.5,
+          "bass": 4,
+          "mid": -4,
+          "treble": 9,
+          "presence": 8,
           "voicing": "tube",
-          "programno": 5
+          "programno": 23
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "ABA MPre1 4",
+        "downloads": 46
+      },
+      {
+        "channel": 2,
+        "name": "ABA MPre1 1",
+        "downloads": 95
+      }
+    ]
   },
   {
     "id": "aguilar-ag700",
@@ -5266,21 +5519,28 @@
       "channel": null,
       "ch": {},
       "global": {
-        "gain": 5,
+        "gain": 3.5,
         "preeq": true,
         "output": "Pre EQ",
-        "bright": true,
+        "bright": false,
         "treble": 5,
         "highmid": 5,
         "lowmid": 5,
-        "deep": true,
+        "deep": false,
         "bass": 5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 52,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Aggi 700 2",
+        "downloads": 194
+      }
+    ]
   },
   {
     "id": "aguilar-db751",
@@ -5421,20 +5681,27 @@
       "channel": null,
       "ch": {},
       "global": {
-        "gain": 5,
-        "bright": true,
-        "treble": 5,
-        "mid": 5,
-        "bass": 5,
-        "deep": true,
-        "master": 5,
-        "6db": true
+        "gain": 2,
+        "bright": false,
+        "treble": 3.5,
+        "mid": 3.5,
+        "bass": 3.5,
+        "deep": false,
+        "master": 2,
+        "6db": false
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 36,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Aggi 751 1",
+        "downloads": 184
+      }
+    ]
   },
   {
     "id": "ampeg-svt",
@@ -5450,7 +5717,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
     "category": "Amps"
   },
@@ -5599,21 +5866,28 @@
       "channel": null,
       "ch": {},
       "global": {
-        "input": 5,
-        "gain": 5,
-        "hi": true,
-        "lo": true,
+        "input": 0,
+        "gain": 6.5,
+        "hi": false,
+        "lo": false,
         "bass": 5,
-        "midrange": 5,
-        "frequency": 5,
-        "treble": 5,
+        "midrange": 2.5,
+        "frequency": 1,
+        "treble": 7,
         "master": 5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Amped SV Classic 2",
+        "downloads": 436
+      }
+    ]
   },
   {
     "id": "ampeg-svt-2-pro",
@@ -5970,35 +6244,42 @@
       "channel": null,
       "ch": {},
       "global": {
-        "40": 5,
-        "90": 5,
-        "180": 5,
-        "300": 5,
-        "500": 5,
+        "40": 0,
+        "90": 0,
+        "180": 0,
+        "300": 0,
+        "500": 0,
         "15dbpad": true,
-        "mute": true,
-        "gain": 5,
-        "ultralo": true,
-        "bright": true,
-        "drive": 5,
+        "mute": false,
+        "gain": 3.5,
+        "ultralo": false,
+        "bright": false,
+        "drive": 0,
         "bass": 5,
         "midrange": 5,
-        "frequency": 5,
+        "frequency": 1,
         "treble": 5,
-        "master": 5,
-        "ultrahi": true,
-        "graphiceq": true,
-        "1khz": 5,
-        "2khz": 5,
-        "4khz": 5,
-        "10khz": 5,
-        "graphiceqlevel": 5
+        "master": 7,
+        "ultrahi": false,
+        "graphiceq": false,
+        "1khz": 0,
+        "2khz": 0,
+        "4khz": 0,
+        "10khz": 0,
+        "graphiceqlevel": 0
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 32,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Amped Super Valve Pro 1",
+        "downloads": 1676
+      }
+    ]
   },
   {
     "id": "ampeg-v-4b",
@@ -6119,19 +6400,26 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "treble": 5,
-        "midrange": 5,
-        "bass": 5,
+        "volume": 10,
+        "treble": 10,
+        "midrange": 2,
+        "bass": 2,
         "ultrahi": true,
-        "midfreq": 5,
-        "ultralo": true
+        "midfreq": 300,
+        "ultralo": false
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Amped V5B 4",
+        "downloads": 94
+      }
+    ]
   },
   {
     "id": "bbe-sonic-stomp",
@@ -6173,13 +6461,20 @@
       "ch": {},
       "global": {
         "locontour": 5,
-        "process": 5
+        "process": 0
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "BBD SonicMax 1",
+        "downloads": 33
+      }
+    ]
   },
   {
     "id": "beetronics-vezzpa-octave-stinger",
@@ -6241,15 +6536,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "sustain": 5,
-        "volume": 5,
-        "mode": "Fuzzzz"
+        "sustain": 10,
+        "volume": 2,
+        "mode": "Stinger"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 6,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Beehive Wasp Fuzz 6",
+        "downloads": 593
+      }
+    ]
   },
   {
     "id": "bogner-ecstasy-blue",
@@ -6473,25 +6775,32 @@
       "channel": null,
       "ch": {},
       "global": {
-        "variac": true,
+        "variac": false,
         "mode": "Plexi",
-        "preeq": "N",
-        "structure": 5,
+        "preeq": "B1",
+        "structure": 101,
         "structure_20th": "20th",
-        "volume": 5,
-        "treble": 5,
-        "middle": 5,
-        "bass": 5,
-        "gain": 5,
-        "boost": true,
-        "volumeboost": 5,
-        "gainboost": 5
+        "volume": 10,
+        "treble": 6.5,
+        "middle": 10,
+        "bass": 2,
+        "gain": 2,
+        "boost": false,
+        "volumeboost": 0,
+        "gainboost": 3.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Bogna X Blue 3",
+        "downloads": 65
+      }
+    ]
   },
   {
     "id": "bogner-harlow",
@@ -6558,16 +6867,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5,
-        "bloom": 5,
-        "tone": 5,
-        "qcin2level": 5
+        "level": 6.5,
+        "bloom": 6.5,
+        "tone": 6.5,
+        "qcin2level": 9
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Compressors"
+    "category": "Compressors",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Bogna Bloom 5",
+        "downloads": 883
+      }
+    ]
   },
   {
     "id": "bogner-uberschall-first-edition",
@@ -6674,19 +6990,26 @@
       "channel": null,
       "ch": {},
       "global": {
-        "mvolume": 5,
-        "volume": 5,
-        "presence": 5,
-        "treble": 5,
+        "mvolume": 6,
+        "volume": 6,
+        "presence": 8,
+        "treble": 0,
         "middle": 5,
-        "bass": 5,
-        "gain": 5
+        "bass": 8,
+        "gain": 2
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Bogna Uber 1",
+        "downloads": 3549
+      }
+    ]
   },
   {
     "id": "boss-bass-overdrive-odb-3",
@@ -6770,7 +7093,7 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5,
+        "level": 10,
         "eqhi": 5,
         "eqlo": 5,
         "balance": "10 (Blend 100% OD)",
@@ -6778,9 +7101,16 @@
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Chief Bass Overdrive 3",
+        "downloads": 52
+      }
+    ]
   },
   {
     "id": "boss-hm-2",
@@ -6848,16 +7178,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "lo": 5,
-        "hi": 5,
-        "dist": 5
+        "volume": 10,
+        "lo": 2,
+        "hi": 10,
+        "dist": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 15,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Chief HM2 4",
+        "downloads": 1090
+      }
+    ]
   },
   {
     "id": "carvin-x-100b-iv",
@@ -7231,52 +7568,64 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "75hz": 5,
-          "150hz": 5,
+          "75hz": 1,
+          "150hz": -2,
           "500hz": 5,
-          "15khz": 5,
-          "3khz": 5,
-          "presence": 5,
-          "treble": 5,
-          "mid": 5,
-          "bass": 5,
-          "master": 5,
-          "rhythm": 5,
+          "15khz": 11,
+          "3khz": 9,
+          "presence": 6,
+          "treble": 4,
+          "mid": 5.5,
+          "bass": 7,
+          "master": 6,
+          "rhythm": 3,
           "fsboost": true,
-          "channelswitch": true,
+          "channelswitch": false,
           "bright": false,
-          "lead": 5,
-          "drive": 5,
+          "lead": 9,
+          "drive": 7,
           "gain": false
         },
         "2": {
-          "75hz": 5,
-          "150hz": 5,
-          "500hz": 5,
-          "15khz": 5,
-          "3khz": 5,
-          "presence": 5,
+          "75hz": 7,
+          "150hz": 0,
+          "500hz": -4,
+          "15khz": -4,
+          "3khz": 6,
+          "presence": 6,
           "treble": 5,
           "mid": 5,
           "bass": 5,
-          "master": 5,
-          "rhythm": 5,
+          "master": 6.5,
+          "rhythm": 3,
           "fsboost": true,
           "channelswitch": true,
-          "lead": 5,
-          "drive": 5,
+          "lead": 8.5,
+          "drive": 7,
           "gain": false
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Cravin X100 1",
+        "downloads": 45
+      },
+      {
+        "channel": 2,
+        "name": "Cravin X100 4",
+        "downloads": 48
+      }
+    ]
   },
   {
     "id": "cornford-hellcat",
@@ -7418,29 +7767,41 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
+          "bass": 7,
+          "middle": 3.5,
+          "treble": 7,
           "vintagech2": 5,
-          "masterch2": 5
+          "masterch2": 6.5
         },
         "2": {
-          "modernch1": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "masterch1": 5
+          "modernch1": 10,
+          "bass": 7,
+          "middle": 8,
+          "treble": 7,
+          "masterch1": 6
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Corn Vixen 2",
+        "downloads": 61
+      },
+      {
+        "channel": 2,
+        "name": "Corn Vixen 1",
+        "downloads": 1405
+      }
+    ]
   },
   {
     "id": "custom-audio-amplifiers-3-se-preamp",
@@ -7606,35 +7967,52 @@
       "ch": {
         "1": {
           "bright": true,
-          "gain": 5,
+          "gain": 2,
           "bass": 5,
-          "middle": 5,
+          "middle": 6,
           "treble": 5,
           "master": 5
         },
         "2": {
           "bright": true,
-          "gain": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
+          "gain": 8,
+          "bass": 6,
+          "middle": 7,
+          "treble": 10,
           "master": 5
         },
         "3": {
           "bright": true,
-          "gain": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
+          "gain": 7,
+          "bass": 4,
+          "middle": 4,
+          "treble": 8,
           "master": 5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Custom 3SE 6",
+        "downloads": 110
+      },
+      {
+        "channel": 2,
+        "name": "Custom 3SE 3",
+        "downloads": 95
+      },
+      {
+        "channel": 3,
+        "name": "Custom 3SE 1",
+        "downloads": 105
+      }
+    ]
   },
   {
     "id": "custom-audio-amplifiers-3-se-preamp-mesa-boogie-2-90-simulclass",
@@ -7796,39 +8174,56 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 3,
       "ch": {
         "1": {
           "bright": true,
-          "gain": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
+          "gain": 10,
+          "bass": 3,
+          "middle": 4,
+          "treble": 7,
           "master": 5
         },
         "2": {
           "bright": true,
-          "gain": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
+          "gain": 8,
+          "bass": 6,
+          "middle": 7,
+          "treble": 10,
           "master": 5
         },
         "3": {
           "bright": true,
-          "gain": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
+          "gain": 7,
+          "bass": 4,
+          "middle": 4,
+          "treble": 8,
           "master": 5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Custom 3SE+290 8",
+        "downloads": 123
+      },
+      {
+        "channel": 2,
+        "name": "Custom 3SE+290 3",
+        "downloads": 176
+      },
+      {
+        "channel": 3,
+        "name": "Custom 3SE+290 1",
+        "downloads": 198
+      }
+    ]
   },
   {
     "id": "custom-keeley-4-knob-inspired",
@@ -7896,16 +8291,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "sus": 5,
-        "out": 5,
-        "att": 5,
-        "in": 5
+        "sus": 4,
+        "out": 5.5,
+        "att": 10,
+        "in": 4
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Compressors"
+    "category": "Compressors",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "4-Comp Custom 1",
+        "downloads": 163
+      }
+    ]
   },
   {
     "id": "custom-teabird",
@@ -7946,14 +8348,21 @@
       "channel": null,
       "ch": {},
       "global": {
-        "range": 5,
-        "boost": 5
+        "range": 9,
+        "boost": 3
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 7,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "TeaBird 1",
+        "downloads": 975
+      }
+    ]
   },
   {
     "id": "darkglass-alpha-omega-900",
@@ -8203,26 +8612,33 @@
       "global": {
         "passiveactive": "Active",
         "comp": 5,
-        "drive": 5,
-        "level": 5,
-        "blend": 5,
-        "gain": 5,
-        "lowshelf": 5,
-        "250hz": 5,
-        "500hz": 5,
-        "15khz": 5,
-        "3khz": 5,
-        "highshelf": 5,
+        "drive": 0,
+        "level": 10,
+        "blend": 0,
+        "gain": 10,
+        "lowshelf": 2,
+        "250hz": -2,
+        "500hz": -1,
+        "15khz": -1,
+        "3khz": 2,
+        "highshelf": 3,
         "distortion": true,
         "bite": true,
-        "growl": true,
+        "growl": false,
         "mod": 5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Douglas AO900 1",
+        "downloads": 2053
+      }
+    ]
   },
   {
     "id": "darkglass-alpha-omega-ultra",
@@ -8238,7 +8654,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
     "category": "Pedals"
   },
@@ -8256,7 +8672,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
     "category": "Pedals"
   },
@@ -8488,25 +8904,32 @@
       "global": {
         "passiveactive": "Active",
         "comp": 5,
-        "drive": 5,
-        "level": 5,
+        "drive": 0,
+        "level": 10,
         "microtubes": true,
-        "tone": 5,
-        "blend": 5,
-        "gain": 5,
-        "lowshelf": 5,
-        "250hz": 5,
-        "500hz": 5,
-        "15khz": 5,
-        "3khz": 5,
-        "highshelf": 5,
-        "vmtb3k": "VMT"
+        "tone": 3,
+        "blend": 10,
+        "gain": 10,
+        "lowshelf": 2,
+        "250hz": -2,
+        "500hz": -1,
+        "15khz": -1,
+        "3khz": 2,
+        "highshelf": 2,
+        "vmtb3k": "B3K"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 16,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Douglas MT900V2 1",
+        "downloads": 3011
+      }
+    ]
   },
   {
     "id": "darkglass-super-symmetry-115-gev",
@@ -8600,18 +9023,25 @@
       "channel": null,
       "ch": {},
       "global": {
-        "blend": 5,
-        "input": 5,
-        "compression": 5,
-        "output": 5,
-        "attack": 5,
-        "release": 5
+        "blend": 100,
+        "input": 7,
+        "compression": 9,
+        "output": 6,
+        "attack": 0,
+        "release": 0
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 7,
-    "category": "Compressors"
+    "category": "Compressors",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Symmetrical Comp 1",
+        "downloads": 693
+      }
+    ]
   },
   {
     "id": "darkglass-vintage-microtubes",
@@ -8627,7 +9057,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 3,
     "category": "Pedals"
   },
@@ -8645,7 +9075,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
     "category": "Pedals"
   },
@@ -8838,23 +9268,30 @@
       "ch": {},
       "global": {
         "master": 5,
-        "blend": 5,
-        "level": 5,
+        "blend": 10,
+        "level": 10,
         "drive": 5,
         "attack": "pos.up",
         "grunt": "pos.down",
-        "bass": 5,
-        "lowmidsfreq": 5,
-        "lomids": 5,
+        "bass": 6.5,
+        "lowmidsfreq": 250,
+        "lomids": 2,
         "highmids": 5,
-        "highmidsfreq": 5,
-        "treble": 5
+        "highmidsfreq": 750,
+        "treble": 8
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 5,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Douglas VU 1",
+        "downloads": 1373
+      }
+    ]
   },
   {
     "id": "dean-costello-audio-heavy-metal-warfare",
@@ -9055,24 +9492,31 @@
       "channel": null,
       "ch": {},
       "global": {
-        "input": 5,
-        "gainswitch": "HI",
-        "gain": 5,
-        "treble": 5,
-        "middle": 5,
-        "bass": 5,
+        "input": 1,
+        "gainswitch": "LO",
+        "gain": 7,
+        "treble": 7.5,
+        "middle": 4,
+        "bass": 5.5,
         "trebleswitch": "UP",
         "bassswitch": "Down",
-        "volume": 5,
-        "presence": 5,
-        "depth": 5,
-        "mids": 5
+        "volume": 2,
+        "presence": 8,
+        "depth": 4,
+        "mids": 4
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 14,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "DC Heavy Crusader 14",
+        "downloads": 700
+      }
+    ]
   },
   {
     "id": "diezel-herbert",
@@ -9327,37 +9771,49 @@
       "channel": 2,
       "ch": {
         "2": {
-          "gain": 5,
+          "gain": 7,
           "gain_minusplus": "minus",
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
+          "volume": 4.5,
+          "treble": 6.5,
+          "middle": 3.5,
+          "bass": 3,
           "midcut": false,
-          "mastervolume": 5,
-          "presence": 5,
-          "deep": 5
+          "mastervolume": 4.5,
+          "presence": 4.5,
+          "deep": 4.5
         },
         "3": {
-          "gain": 5,
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
+          "gain": 8,
+          "volume": 3,
+          "treble": 6.5,
+          "middle": 8,
+          "bass": 6.5,
           "midcut": true,
-          "mastervolume": 5,
+          "mastervolume": 3.5,
           "presence": 5,
           "deep": 5,
-          "intensity": 5,
-          "level": 5
+          "intensity": 3.5,
+          "level": 7
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 2,
+        "name": "D-Cell Herb 1",
+        "downloads": 2032
+      },
+      {
+        "channel": 3,
+        "name": "D-Cell Herb 4",
+        "downloads": 125
+      }
+    ]
   },
   {
     "id": "diezel-herbert-power-amp-section",
@@ -9418,9 +9874,16 @@
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "D-Cell PA-6550 11",
+        "downloads": 50
+      }
+    ]
   },
   {
     "id": "diezel-vh4",
@@ -9638,57 +10101,79 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 3,
       "ch": {
         "1": {
           "brightonoff": true,
-          "gain": 5,
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
+          "gain": 3.5,
+          "volume": 10,
+          "treble": 8,
+          "middle": 8,
+          "bass": 8,
           "mastervolume": 5,
           "presence": 5,
           "deep": 5
         },
         "2": {
           "brightonoff": true,
-          "gain": 5,
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "mastervolume": 5,
-          "presence": 5,
+          "gain": 8,
+          "volume": 8,
+          "treble": 8,
+          "middle": 8,
+          "bass": 8,
+          "mastervolume": 6.5,
+          "presence": 3.5,
           "deep": 5
         },
         "3": {
           "gain": 5,
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "mastervolume": 5,
-          "presence": 5,
-          "deep": 5
+          "volume": 8,
+          "treble": 9,
+          "middle": 8,
+          "bass": 6.5,
+          "mastervolume": 6.5,
+          "presence": 5.5,
+          "deep": 6
         },
         "4": {
           "gain": 5,
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
+          "volume": 4,
+          "treble": 7.5,
+          "middle": 5.5,
           "bass": 5,
           "mastervolume": 5,
           "presence": 5,
-          "deep": 5
+          "deep": 7
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 20,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "D-Cell H4 Ch1 3",
+        "downloads": 112
+      },
+      {
+        "channel": 2,
+        "name": "D-Cell H4 Ch2 2",
+        "downloads": 96
+      },
+      {
+        "channel": 3,
+        "name": "D-Cell H4 Ch3 1",
+        "downloads": 1465
+      },
+      {
+        "channel": 4,
+        "name": "D-Cell H4 Ch4 8",
+        "downloads": 260
+      }
+    ]
   },
   {
     "id": "dover-amplification-da-50",
@@ -9901,24 +10386,31 @@
       "ch": {
         "2": {
           "boost": true,
-          "gain": 5,
-          "master": 5,
-          "middle": 5,
-          "treble": 5,
-          "depth": 5,
-          "presence": 5,
-          "bass": 5,
-          "mids": 5,
-          "bsss": 5,
-          "mid": 5
+          "gain": 10,
+          "master": 4,
+          "middle": 4.8,
+          "treble": 8,
+          "depth": 4.5,
+          "presence": 8,
+          "bass": 6,
+          "mids": 4,
+          "bsss": 6,
+          "mid": 5.2
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 14,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 2,
+        "name": "Dovre 50 14",
+        "downloads": 711
+      }
+    ]
   },
   {
     "id": "driftwood-amplifiers-purple-nightmare",
@@ -10113,21 +10605,28 @@
       "ch": {
         "2": {
           "gainswitch": "High",
-          "volume": 5,
-          "bass": 5,
-          "mid": 5,
-          "treble": 5,
-          "gain": 5,
-          "rumble": 5,
-          "sharp": "7.5 right position"
+          "volume": 4,
+          "bass": 4.5,
+          "mid": 4.5,
+          "treble": 7,
+          "gain": 6,
+          "rumble": 3.5,
+          "sharp": "9 Middle Position"
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 2,
+        "name": "Drywood Purple Horror 10",
+        "downloads": 4261
+      }
+    ]
   },
   {
     "id": "dumble-overdrive-special",
@@ -10323,21 +10822,28 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
+        "volume": 4,
         "treble": 5,
         "middle": 5,
-        "bass": 5,
-        "content": 5,
-        "odvolume": 5,
+        "bass": 6,
+        "content": 4,
+        "odvolume": 6,
         "master": 5,
         "presence": 5,
         "switches": "OD Rock"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 29,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Dumbbell ODS 1",
+        "downloads": 10773
+      }
+    ]
   },
   {
     "id": "engl-inferno-marty-friedman-signature",
@@ -10551,35 +11057,47 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "gain": 5,
-          "bass": 5,
-          "middle": 5,
+          "gain": 7,
+          "bass": 9,
+          "middle": 6,
           "treble": 5,
-          "volume": 5,
+          "volume": 10,
           "gainboost": false,
-          "master": 5,
+          "master": 7,
           "bright": false
         },
         "2": {
-          "gain": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "volume": 5,
+          "gain": 7,
+          "bass": 8,
+          "middle": 6,
+          "treble": 6,
+          "volume": 10,
           "tone": true,
-          "gainboost": true,
-          "master": 5
+          "gainboost": false,
+          "master": 7.5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "ENG Marty's 6",
+        "downloads": 117
+      },
+      {
+        "channel": 2,
+        "name": "ENG Marty's 5",
+        "downloads": 443
+      }
+    ]
   },
   {
     "id": "engl-powerball-first-edition",
@@ -10964,36 +11482,43 @@
       "channel": null,
       "ch": {},
       "global": {
-        "channel1gain": 5,
+        "channel1gain": 8,
         "bright": false,
         "bottom": true,
-        "bass": 5,
-        "middle": 5,
-        "trebleclean": 5,
-        "cleanvolume": 5,
-        "channel12": 5,
+        "bass": 7.5,
+        "middle": 8,
+        "trebleclean": 6,
+        "cleanvolume": 10.5,
+        "channel12": 1,
         "gainlohi": "Lo",
-        "presence": 5,
-        "depthpunch": 5,
-        "mastera": 5,
-        "treblecrunch": 5,
-        "crunchvolume": 5,
-        "channel2gain": 5,
-        "lowleadbottom": true,
-        "midopen": 5,
-        "treble": 5,
-        "loleadvol": 5,
-        "openfocused": "Open",
+        "presence": 3,
+        "depthpunch": 7.5,
+        "mastera": 10.5,
+        "treblecrunch": 6,
+        "crunchvolume": 7,
+        "channel2gain": 7.5,
+        "lowleadbottom": false,
+        "midopen": 5.5,
+        "treble": 6.5,
+        "loleadvol": 6.5,
+        "openfocused": "Focused",
         "loleadbottom": true,
         "hileadbottom": true,
-        "hileadvol": 5,
-        "midfocused": 5
+        "hileadvol": 4,
+        "midfocused": 7.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "ENG Energy 1",
+        "downloads": 1641
+      }
+    ]
   },
   {
     "id": "engl-ritchie-blackmore-signature-100",
@@ -11211,24 +11736,31 @@
       "ch": {},
       "global": {
         "clean": 5,
-        "bright": true,
-        "lead": 5,
-        "bass": 5,
+        "bright": false,
+        "lead": 0,
+        "bass": 6.5,
         "middle": 5,
         "treble": 5,
-        "contour": true,
+        "contour": false,
         "gainlohi": "Lo",
         "cleanlead": "Clean",
-        "masteralogain": 5,
-        "leadpresence": 5,
-        "leadvolume": 5,
-        "masterbhigain": 5
+        "masteralogain": 5.5,
+        "leadpresence": 3,
+        "leadvolume": 4,
+        "masterbhigain": 6
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "ENG Rainbow 1",
+        "downloads": 2924
+      }
+    ]
   },
   {
     "id": "engl-savage-120",
@@ -11609,41 +12141,53 @@
       "channel": 1,
       "ch": {
         "1": {
-          "contour": true,
-          "bass": 5,
+          "contour": false,
+          "bass": 10,
           "middle": 5,
-          "treble": 5,
-          "master": 5,
-          "presence": 5,
-          "depthboost": true,
-          "sense": true,
-          "bright": true,
-          "gain": 5,
-          "preshape": true,
-          "crunch1gain": 5,
+          "treble": 5.5,
+          "master": 6,
+          "presence": 1,
+          "depthboost": false,
+          "sense": false,
+          "bright": false,
+          "gain": 6,
+          "preshape": false,
+          "crunch1gain": 3,
           "crunch1vol": 5
         },
         "2": {
           "leadboost": true,
-          "leadgain": 5,
+          "leadgain": 7.2,
           "contour": true,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
+          "bass": 6.8,
+          "middle": 7,
+          "treble": 7,
           "hibalance": 5,
           "roughsmooth": false,
-          "leadvol": 5,
-          "master": 5,
-          "presence": 5,
+          "leadvol": 4.2,
+          "master": 3.2,
+          "presence": 3.8,
           "depthboost": true
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 14,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "ENG Feral 120 12",
+        "downloads": 6209
+      },
+      {
+        "channel": 2,
+        "name": "ENG Feral 120 1",
+        "downloads": 1728
+      }
+    ]
   },
   {
     "id": "engl-tube-poweramp-930-60",
@@ -11705,15 +12249,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "presence": 5,
-        "depthboost": true
+        "volume": 2,
+        "presence": 1.5,
+        "depthboost": false
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "ENG PA-930 1",
+        "downloads": 56
+      }
+    ]
   },
   {
     "id": "evh-5150-iiis-el34-tubes",
@@ -11860,33 +12411,45 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
           "gain": 5,
-          "low": 5,
-          "mid": 5,
-          "high": 5,
-          "volume": 5,
-          "resonance": 5,
-          "presence": 5
+          "low": 8,
+          "mid": 4,
+          "high": 6.5,
+          "volume": 2.5,
+          "resonance": 7.5,
+          "presence": 5.5
         },
         "2": {
-          "gain": 5,
-          "low": 5,
-          "mid": 5,
-          "high": 5,
-          "volume": 5,
-          "resonance": 5,
-          "presence": 5
+          "gain": 4,
+          "low": 6,
+          "mid": 4,
+          "high": 6,
+          "volume": 2,
+          "resonance": 6.5,
+          "presence": 7
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 9,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "EV101IIIS EL34 1",
+        "downloads": 6376
+      },
+      {
+        "channel": 2,
+        "name": "EV101IIIS EL34 8",
+        "downloads": 9577
+      }
+    ]
   },
   {
     "id": "fender-deluxe-5e2-1958",
@@ -11960,16 +12523,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "tone": 5,
-        "instvol": 5,
-        "micvol": 5,
+        "tone": 12,
+        "instvol": 12,
+        "micvol": 0,
         "input": "Inst"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 37,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "US DLX 58 1",
+        "downloads": 3199
+      }
+    ]
   },
   {
     "id": "fender-princeton-65",
@@ -12037,16 +12607,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "input": 5,
-        "volume": 5,
-        "treble": 5,
-        "bass": 5
+        "input": 1,
+        "volume": 4,
+        "treble": 7,
+        "bass": 4.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "US Prince 65 1",
+        "downloads": 5421
+      }
+    ]
   },
   {
     "id": "fryette-pittbull-fifty-cl",
@@ -12396,24 +12973,24 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
           "boost": "Engaged",
           "edge": "Engaged",
           "shift": "Disengaged",
-          "mastereq": "Engaged",
-          "gain": 5,
-          "volume": 5,
-          "treble": 5,
-          "mids": 5,
-          "bass": 5,
-          "100hz": 5,
-          "250hz": 5,
-          "630hz": 5,
-          "12k": 5,
-          "23k": 5,
-          "5k": 5,
+          "mastereq": true,
+          "gain": 10,
+          "volume": 7.5,
+          "treble": 8,
+          "mids": 6,
+          "bass": 6,
+          "100hz": 1,
+          "250hz": 1,
+          "630hz": 0,
+          "12k": 1,
+          "23k": 2,
+          "5k": 3,
           "middle": 5
         },
         "2": {
@@ -12421,27 +12998,39 @@
           "edge": "Engaged",
           "shift": "Engaged",
           "mastereq": "Engaged",
-          "gain": 5,
-          "volume": 5,
-          "treble": 5,
-          "mids": 5,
-          "bass": 5,
-          "master": 5,
-          "100hz": 5,
-          "250hz": 5,
-          "630hz": 5,
-          "12k": 5,
-          "23k": 5,
-          "5k": 5,
-          "middle": 5
+          "gain": 7.5,
+          "volume": 7.5,
+          "treble": 6.5,
+          "mids": 4.5,
+          "bass": 5.5,
+          "master": 4.5,
+          "100hz": 1,
+          "250hz": 1,
+          "630hz": 0,
+          "12k": 1,
+          "23k": 2,
+          "5k": 3,
+          "middle": 4
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 14,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Fryed Pit Bull 50 13",
+        "downloads": 485
+      },
+      {
+        "channel": 2,
+        "name": "Fryed Pit Bull 50 2",
+        "downloads": 3149
+      }
+    ]
   },
   {
     "id": "fryette-sigx",
@@ -12757,44 +13346,56 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "chmode": "Burn",
-          "gain1": 5,
-          "gain2": 5,
+          "chmode": "Vintage",
+          "gain1": 10,
+          "gain2": 6.5,
           "boost": true,
           "gainmoreless": "More",
           "powershift": "100W",
-          "master": 5,
-          "scoopwood": "Scoop",
+          "master": 3.5,
+          "scoopwood": "Wood",
           "treble": 5,
-          "middle": 5,
+          "middle": 8,
           "bass": 5,
-          "presence": 5,
-          "depth": 5
+          "presence": 0,
+          "depth": 7
         },
         "2": {
           "chmode": "Brit",
-          "gain1": 5,
-          "gain2": 5,
+          "gain1": 6.5,
+          "gain2": 6.5,
           "boost": true,
           "gainmoreless": "More",
           "powershift": "100W",
-          "master": 5,
+          "master": 3.5,
           "scoopwood": "Scoop",
           "treble": 5,
           "middle": 5,
-          "bass": 5,
-          "presence": 5
+          "bass": 6.5,
+          "presence": 5.5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Fryed Sig10 8",
+        "downloads": 91
+      },
+      {
+        "channel": 2,
+        "name": "Fryed Sig10 1",
+        "downloads": 1369
+      }
+    ]
   },
   {
     "id": "gamechanger-plasma",
@@ -12862,16 +13463,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "voltage": 5,
-        "volume": 5,
-        "lowfreq": 5,
-        "highfreq": 5
+        "voltage": 8,
+        "volume": 10,
+        "lowfreq": 7,
+        "highfreq": 4
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Gametrader Magma 6",
+        "downloads": 44
+      }
+    ]
   },
   {
     "id": "gibson-ga-8",
@@ -12926,15 +13534,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "input": 5,
-        "volume": 5,
-        "tone": 5
+        "input": 1,
+        "volume": 4,
+        "tone": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 16,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Gibb GA8 8",
+        "downloads": 665
+      }
+    ]
   },
   {
     "id": "hallmark-guitars-nu-fuzz",
@@ -12975,14 +13590,21 @@
       "channel": null,
       "ch": {},
       "global": {
-        "tone": 5,
-        "level": 5
+        "tone": 10,
+        "level": 7.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Trademark Fuzz 8",
+        "downloads": 341
+      }
+    ]
   },
   {
     "id": "hiwatt-custom-pa100-hermansson-modified",
@@ -13364,78 +13986,100 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 4,
       "ch": {
         "1": {
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "gain": 5,
-          "presenceposition": 5,
-          "presence": 5,
-          "resonanceposition": 5,
-          "resonance": 5,
-          "ppimmaster": 5,
-          "master": 5,
-          "lomid": 5,
-          "midshift": 5,
-          "bright_1": 5,
-          "bright_2": 5
+          "volume": 8,
+          "treble": 6.5,
+          "middle": 6.5,
+          "bass": 6.5,
+          "gain": 6,
+          "presenceposition": 1,
+          "presence": 3,
+          "resonanceposition": 1,
+          "resonance": 6.5,
+          "ppimmaster": 6.5,
+          "master": 6,
+          "lomid": 1,
+          "midshift": 1,
+          "bright_1": 3,
+          "bright_2": 4
         },
         "2": {
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "gain": 5,
-          "presenceposition": 5,
+          "volume": 6.5,
+          "treble": 7,
+          "middle": 8,
+          "bass": 8,
+          "gain": 6.5,
+          "presenceposition": 1,
           "presence": 5,
-          "resonanceposition": 5,
-          "resonance": 5,
-          "ppimmaster": 5,
-          "master": 5,
-          "lomid": 5
+          "resonanceposition": 1,
+          "resonance": 6,
+          "ppimmaster": 6.5,
+          "master": 4,
+          "lomid": 1
         },
         "3": {
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "presenceposition": 5,
+          "volume": 7,
+          "treble": 6.5,
+          "middle": 6.2,
+          "bass": 5.2,
+          "presenceposition": 1,
           "presence": 5,
-          "resonanceposition": 5,
-          "resonance": 5,
+          "resonanceposition": 1,
+          "resonance": 6,
           "ppimmaster": 5,
-          "master": 5,
-          "lomid": 5,
-          "bright_1": 5,
-          "saturation": 5,
-          "gain1": 5,
-          "gain2": 5
+          "master": 4,
+          "lomid": 1,
+          "bright_1": 3,
+          "saturation": 1,
+          "gain1": 7,
+          "gain2": 6.5
         },
         "4": {
-          "volume": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "gain": 5,
-          "presenceposition": 5,
-          "presence": 5,
-          "resonanceposition": 5,
-          "resonance": 5,
-          "ppimmaster": 5,
-          "master": 5,
-          "lomid": 5,
-          "gainposition": 5
+          "volume": 9.5,
+          "treble": 4,
+          "middle": 6,
+          "bass": 1.5,
+          "gain": 9,
+          "presenceposition": 1,
+          "presence": 2,
+          "resonanceposition": 1,
+          "resonance": 6,
+          "ppimmaster": 7,
+          "master": 4,
+          "lomid": 1,
+          "gainposition": 3
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 40,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Watt Custom Clean 1",
+        "downloads": 138
+      },
+      {
+        "channel": 2,
+        "name": "Watt Custom 1959 2",
+        "downloads": 121
+      },
+      {
+        "channel": 3,
+        "name": "Watt Custom Jose 12",
+        "downloads": 78
+      },
+      {
+        "channel": 4,
+        "name": "Watt Custom VH 8",
+        "downloads": 232
+      }
+    ]
   },
   {
     "id": "hiwatt-custom-pa100-hermansson-modified-power-amp-section",
@@ -13541,19 +14185,26 @@
       "channel": null,
       "ch": {},
       "global": {
-        "presenceposition": 5,
-        "presence": 5,
-        "resonanceposition": 5,
-        "resonance": 5,
-        "ppimmaster": 5,
-        "master": 5,
-        "lomid": 5
+        "presenceposition": 1,
+        "presence": 2,
+        "resonanceposition": 1,
+        "resonance": 6.5,
+        "ppimmaster": 4,
+        "master": 6.5,
+        "lomid": 2
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 27,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Watt Custom LoMid2 4",
+        "downloads": 93
+      }
+    ]
   },
   {
     "id": "hiwatt-custom-pa100-hermansson-modified-preamp-section",
@@ -13787,50 +14438,72 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "volume": 5,
-          "gain1": 5,
-          "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "midshift": 5,
-          "bright": 5,
-          "brightlevel": 5
+          "volume": 10,
+          "gain1": 8,
+          "treble": 3,
+          "middle": 3.5,
+          "bass": 6.5,
+          "midshift": 2,
+          "bright": 1,
+          "brightlevel": 6
         },
         "2": {
-          "volume": 5,
-          "gain1": 5,
-          "treble": 5,
+          "volume": 6.5,
+          "gain1": 6.5,
+          "treble": 0,
           "middle": 5,
-          "bass": 5
+          "bass": 4
         },
         "3": {
-          "volume": 5,
-          "gain1": 5,
+          "volume": 7,
+          "gain1": 4,
           "treble": 5,
           "middle": 5,
-          "bass": 5,
-          "bright": 5,
-          "saturation": 5,
+          "bass": 3.5,
+          "bright": 1,
+          "saturation": 3,
           "gain2": 5
         },
         "4": {
           "volume": 5,
           "gain1": 5,
-          "treble": 5,
-          "middle": 5,
+          "treble": 6.5,
+          "middle": 8,
           "bass": 5,
-          "gainposition": 5
+          "gainposition": 2
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 112,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Watt Custom Pre Clean 7",
+        "downloads": 111
+      },
+      {
+        "channel": 2,
+        "name": "Watt Custom Pre 1959 10",
+        "downloads": 178
+      },
+      {
+        "channel": 3,
+        "name": "Watt Custom Pre Jose 9",
+        "downloads": 48
+      },
+      {
+        "channel": 4,
+        "name": "Watt Custom Pre VH 9",
+        "downloads": 45
+      }
+    ]
   },
   {
     "id": "humangear-animato",
@@ -13846,7 +14519,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
     "category": "Pedals"
   },
@@ -13876,13 +14549,20 @@
       "channel": null,
       "ch": {},
       "global": {
-        "balance": 5
+        "balance": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 2,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Iba Basic Fuzz 2",
+        "downloads": 167
+      }
+    ]
   },
   {
     "id": "ibanez-sonic-distortion-9",
@@ -13937,15 +14617,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "dist": 5,
+        "dist": 0,
         "tone": 5,
-        "level": 5
+        "level": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Iba Sonic Dist 9 2",
+        "downloads": 22
+      }
+    ]
   },
   {
     "id": "komet-concorde",
@@ -14059,19 +14746,26 @@
       "channel": null,
       "ch": {},
       "global": {
-        "response": "Fast",
-        "highcut": 5,
+        "response": "Gradual",
+        "highcut": 6.5,
         "presence": 5,
-        "bass": 5,
-        "midrange": 5,
-        "treble": 5,
-        "volume": 5
+        "bass": 6.5,
+        "midrange": 10,
+        "treble": 8,
+        "volume": 2.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 6,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Comet 60 4",
+        "downloads": 99
+      }
+    ]
   },
   {
     "id": "krank-rev1",
@@ -14207,21 +14901,28 @@
       "channel": 2,
       "ch": {
         "2": {
-          "presence": 5,
+          "presence": 3.5,
           "sweep": 5,
-          "bass": 5,
+          "bass": 6,
           "midrange": 5,
-          "treble": 5,
-          "master2": 5,
-          "gain": 5
+          "treble": 8,
+          "master2": 8,
+          "gain": 6.5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 2,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 2,
+        "name": "Crank Rev1 2",
+        "downloads": 111
+      }
+    ]
   },
   {
     "id": "lovepedal-5e3-deluxe",
@@ -14289,16 +14990,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5,
+        "level": 10,
         "gain": 5,
-        "treble": 5,
-        "bass": 5
+        "treble": 6,
+        "bass": 2.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 18,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Love DLX 12",
+        "downloads": 66
+      }
+    ]
   },
   {
     "id": "lovepedal-believe",
@@ -14350,9 +15058,16 @@
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 2,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Love Believer 2",
+        "downloads": 130
+      }
+    ]
   },
   {
     "id": "lovepedal-champ",
@@ -14380,13 +15095,20 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5
+        "level": 3
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Love Champion 4",
+        "downloads": 87
+      }
+    ]
   },
   {
     "id": "lovepedal-fuzz-master-iii",
@@ -14454,16 +15176,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5,
-        "drive": 5,
-        "bias": 5,
-        "blend": 5
+        "level": 10,
+        "drive": 10,
+        "bias": 10,
+        "blend": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 17,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Love Fuzz Lord III 1",
+        "downloads": 330
+      }
+    ]
   },
   {
     "id": "lovepedal-jtm",
@@ -14491,13 +15220,20 @@
       "channel": null,
       "ch": {},
       "global": {
-        "bias": 5
+        "bias": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 16,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Love TM 1",
+        "downloads": 40
+      }
+    ]
   },
   {
     "id": "lovepedal-mkiii-tonebender",
@@ -14539,14 +15275,21 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5,
-        "drive": 5
+        "level": 10,
+        "drive": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Love Bender Mk3 1",
+        "downloads": 403
+      }
+    ]
   },
   {
     "id": "lovepedal-od-eleven",
@@ -14614,16 +15357,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5,
-        "gain": 5,
-        "tone": 5,
-        "bass": 5
+        "level": 7,
+        "gain": 1,
+        "tone": 5.5,
+        "bass": 8
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 18,
-    "category": "Overdrive"
+    "category": "Overdrive",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Love Drive 11 18",
+        "downloads": 131
+      }
+    ]
   },
   {
     "id": "mxr-bass-fuzz-deluxe",
@@ -14691,16 +15441,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "dry": 5,
-        "wet": 5,
-        "tone": 5,
-        "fuzz": 5
+        "dry": 0,
+        "wet": 10,
+        "tone": 7.5,
+        "fuzz": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "MX BassFuzzDLX 3",
+        "downloads": 79
+      }
+    ]
   },
   {
     "id": "mxr-classic-distortion",
@@ -14755,15 +15512,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "output": 5,
-        "tone": 5,
-        "distortion": 5
+        "output": 10,
+        "tone": 3.5,
+        "distortion": 8.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "MX ClassicOD 10",
+        "downloads": 27
+      }
+    ]
   },
   {
     "id": "mad-professor-golden-cello",
@@ -14831,16 +15595,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "delay": 5,
-        "drive": 5,
-        "volume": 5,
-        "tone": 5
+        "delay": 0,
+        "drive": 3,
+        "volume": 10,
+        "tone": 5.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "MadPro Golden 1",
+        "downloads": 36
+      }
+    ]
   },
   {
     "id": "mad-professor-simble-overdrive",
@@ -14907,16 +15678,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "level": 5,
-        "sensitivity": 5,
-        "contour": 5,
-        "accent": 5
+        "level": 10,
+        "sensitivity": 3.5,
+        "contour": 7,
+        "accent": 4.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "MadPro SimpleOD 1",
+        "downloads": 34
+      }
+    ]
   },
   {
     "id": "malekko-b-assmaster",
@@ -15011,17 +15789,24 @@
       "channel": null,
       "ch": {},
       "global": {
-        "assvolume": 5,
+        "assvolume": 10,
         "ass": true,
-        "bassvolume": 5,
-        "harm": true,
-        "sensitivity": 5
+        "bassvolume": 10,
+        "harm": false,
+        "sensitivity": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 27,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "MKK Bass Lord 1",
+        "downloads": 58
+      }
+    ]
   },
   {
     "id": "markbass-little-mark-iii",
@@ -15141,20 +15926,27 @@
       "channel": null,
       "ch": {},
       "global": {
-        "gain": 5,
+        "gain": 2.2,
         "low": 5,
-        "midlow": 5,
-        "midhigh": 5,
+        "midlow": 4,
+        "midhigh": 3.5,
         "high": 5,
-        "vle": 5,
-        "vpf": 5,
-        "master": 5
+        "vle": 0,
+        "vpf": 3.5,
+        "master": 3
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 50,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Bass Mark LM3 50",
+        "downloads": 879
+      }
+    ]
   },
   {
     "id": "marshall-2210",
@@ -15261,19 +16053,26 @@
       "channel": null,
       "ch": {},
       "global": {
-        "presence": 5,
-        "mastervolume": 5,
-        "bass": 5,
-        "middle": 5,
-        "treble": 5,
-        "volume": 5,
-        "gain": 5
+        "presence": 2,
+        "mastervolume": 8,
+        "bass": 2,
+        "middle": 8,
+        "treble": 8,
+        "volume": 10,
+        "gain": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 42,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Brit 2210 8",
+        "downloads": 9320
+      }
+    ]
   },
   {
     "id": "marshall-2210-power-amp-section",
@@ -15301,13 +16100,20 @@
       "channel": null,
       "ch": {},
       "global": {
-        "presence": 5
+        "presence": 3
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Brit 2210 PA EL34 4",
+        "downloads": 263
+      }
+    ]
   },
   {
     "id": "marshall-2555-power-amp-section",
@@ -15388,16 +16194,23 @@
       "ch": {},
       "global": {
         "presence": 5,
-        "bass": 5,
-        "middle": 5,
-        "treble": 5,
-        "outputmaster": 5
+        "bass": 10,
+        "middle": 10,
+        "treble": 10,
+        "outputmaster": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 12,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Brit PA-EL34 1",
+        "downloads": 11725
+      }
+    ]
   },
   {
     "id": "marshall-silver-jubilee-2555",
@@ -15504,19 +16317,26 @@
       "channel": null,
       "ch": {},
       "global": {
-        "presence": 5,
-        "bass": 5,
-        "middle": 5,
+        "presence": 0,
+        "bass": 8,
+        "middle": 6,
         "treble": 5,
-        "outputmaster": 5,
-        "inputgain": 5,
-        "leadmaster": 5
+        "outputmaster": 8,
+        "inputgain": 6,
+        "leadmaster": 6.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 65,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Brit 2555 Rhy 15",
+        "downloads": 758
+      }
+    ]
   },
   {
     "id": "matchless-chieftain",
@@ -15611,17 +16431,24 @@
       "ch": {},
       "global": {
         "volume": 5,
-        "bass": 5,
-        "mid": 5,
-        "treble": 5,
+        "bass": 8,
+        "mid": 7,
+        "treble": 8,
         "brilliance": 5,
-        "master": 5
+        "master": 8
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "NoMatch Chief 1",
+        "downloads": 2880
+      }
+    ]
   },
   {
     "id": "mesa-boogie-2-ninety-simul-class",
@@ -15723,16 +16550,23 @@
       "ch": {},
       "global": {
         "level": 5,
-        "presence": 5,
+        "presence": 2,
         "deep": true,
-        "12drive": true,
+        "12drive": false,
         "modern": true
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 16,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "CA PA-Sim290 15",
+        "downloads": 51
+      }
+    ]
   },
   {
     "id": "mesa-boogie-bass-400",
@@ -15997,29 +16831,36 @@
       "channel": null,
       "ch": {},
       "global": {
-        "40": 5,
-        "100": 5,
-        "250": 5,
-        "625": 5,
-        "1560": 5,
-        "3900": 5,
-        "6600": 5,
-        "volume1": 5,
-        "volume1pullbright": true,
-        "volume2": 5,
-        "volume2pullbright": true,
+        "40": 2,
+        "100": 8,
+        "250": 0,
+        "625": 0,
+        "1560": 0,
+        "3900": 0,
+        "6600": 3,
+        "volume1": 4.5,
+        "volume1pullbright": false,
+        "volume2": 0,
+        "volume2pullbright": false,
         "master": 5,
-        "treble": 5,
-        "treblepullshift": true,
-        "bass": 5,
-        "basspullshift": true,
-        "middle": 5
+        "treble": 7.8,
+        "treblepullshift": false,
+        "bass": 7.6,
+        "basspullshift": false,
+        "middle": 5.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 31,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "CA 400 22",
+        "downloads": 1260
+      }
+    ]
   },
   {
     "id": "mesa-boogie-big-block-750",
@@ -16197,34 +17038,46 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "gain": 5,
-          "bass": 5,
-          "passivemid": 5,
-          "activemid": 5,
-          "frequency": 5,
-          "treble": 5,
-          "master": 5
+          "gain": 7.5,
+          "bass": 6,
+          "passivemid": 7,
+          "activemid": 3,
+          "frequency": 6,
+          "treble": 9,
+          "master": 4.5
         },
         "2": {
-          "gain": 5,
-          "bass": 5,
-          "passivemid": 5,
-          "activemid": 5,
-          "frequency": 5,
-          "treble": 5,
-          "overdrive": 5,
-          "odmaster": 5
+          "gain": 5.5,
+          "bass": 6.5,
+          "passivemid": 3.5,
+          "activemid": 8,
+          "frequency": 10,
+          "treble": 6.5,
+          "overdrive": 6.5,
+          "odmaster": 3
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 11,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "CA BigBrick750 1",
+        "downloads": 35
+      },
+      {
+        "channel": 2,
+        "name": "CA BigBrick750 5",
+        "downloads": 41
+      }
+    ]
   },
   {
     "id": "mesa-boogie-m6-carbine",
@@ -16355,19 +17208,26 @@
       "ch": {},
       "global": {
         "activepassive": "Passive",
-        "gain": 5,
-        "bass": 5,
-        "pulldeep": true,
+        "gain": 6.5,
+        "bass": 6.5,
+        "pulldeep": false,
         "mid": 5,
-        "voice": 5,
-        "treble": 5,
-        "master": 5
+        "voice": 3,
+        "treble": 6,
+        "master": 4.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 11,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "CA M6Rifle 1",
+        "downloads": 57
+      }
+    ]
   },
   {
     "id": "mesa-boogie-quad-preamp-mesa-boogie-2-90-simulclass",
@@ -16759,53 +17619,65 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "80": 5,
+          "80": 7.5,
           "240": 5,
-          "750": 5,
+          "750": 2.5,
           "2200": 5,
           "6600": 5,
-          "volume": 5,
+          "volume": 9.5,
           "pullbright_1": false,
           "pullbright_2": false,
-          "treble": 5,
+          "treble": 9,
           "pullshift_1": false,
           "pullshift_2": false,
-          "bass": 5,
-          "middle": 5,
+          "bass": 4.5,
+          "middle": 8,
           "pulldeep": true,
-          "master": 5,
-          "leaddrive": 5,
-          "leadmaster": 5
+          "master": 7.2,
+          "leaddrive": 4,
+          "leadmaster": 3.8
         },
         "2": {
-          "80": 5,
-          "240": 5,
-          "750": 5,
+          "80": 7.5,
+          "240": 4.8,
+          "750": 1,
           "2200": 5,
-          "6600": 5,
-          "volume": 5,
+          "6600": 6,
+          "volume": 9,
           "pullbright_1": false,
           "pullbright_2": false,
-          "treble": 5,
+          "treble": 8.5,
           "pullshift_1": true,
           "pullshift_2": true,
-          "bass": 5,
-          "middle": 5,
+          "bass": 8,
+          "middle": 7,
           "pulldeep": true,
-          "master": 5,
-          "leaddrive": 5,
-          "leadmaster": 5
+          "master": 8.5,
+          "leaddrive": 4,
+          "leadmaster": 6.5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 2,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "CA Quad+290 1",
+        "downloads": 104
+      },
+      {
+        "channel": 2,
+        "name": "CA Quad+290 2",
+        "downloads": 111
+      }
+    ]
   },
   {
     "id": "mesa-boogie-studio-preamp-mesa-boogie-2-90-simulclass",
@@ -17037,16 +17909,16 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "master": 5,
-        "treble": 5,
-        "bass": 5,
-        "middle": 5,
+        "volume": 4,
+        "master": 5.5,
+        "treble": 8,
+        "bass": 3.5,
+        "middle": 4,
         "leaddrive": 5,
-        "leadmaster": 5,
-        "80hz": 5,
-        "240hz": 5,
-        "750hz": 5,
+        "leadmaster": 3.5,
+        "80hz": 8,
+        "240hz": 4.5,
+        "750hz": 2,
         "2200hz": 5,
         "6600hz": 5,
         "leadmode": true,
@@ -17055,9 +17927,16 @@
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 2,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "CA Studio+290 2",
+        "downloads": 172
+      }
+    ]
   },
   {
     "id": "mesa-boogie-trem-o-verb-dual-rectifier",
@@ -17223,30 +18102,42 @@
       "channel": 1,
       "ch": {
         "1": {
-          "master": 5,
-          "presence": 5,
-          "bass": 5,
-          "mid": 5,
-          "treble": 5,
-          "gain": 5,
+          "master": 7.5,
+          "presence": 9,
+          "bass": 2,
+          "mid": 6,
+          "treble": 9,
+          "gain": 3.5,
           "power": "Bold"
         },
         "2": {
-          "master": 5,
-          "presence": 5,
-          "bass": 5,
-          "mid": 5,
-          "treble": 5,
-          "gain": 5,
+          "master": 5.5,
+          "presence": 6.5,
+          "bass": 2,
+          "mid": 7,
+          "treble": 7,
+          "gain": 4,
           "power": "Bold"
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 88,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "CA Tremo Clean 7",
+        "downloads": 80
+      },
+      {
+        "channel": 2,
+        "name": "CA Tremo Blues 1",
+        "downloads": 79
+      }
+    ]
   },
   {
     "id": "mesa-boogie-walkabout-300-watt-bass",
@@ -17262,7 +18153,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
     "category": "Amps"
   },
@@ -17437,23 +18328,30 @@
       "channel": null,
       "ch": {},
       "global": {
-        "stageiivol": 5,
-        "pullstageii": true,
-        "volume": 5,
-        "pullclean": true,
-        "systemlevel": 5,
-        "treble": 5,
-        "middle": 5,
-        "midshift": 5,
-        "bass": 5,
-        "master1": 5,
-        "presence": 5
+        "stageiivol": 3,
+        "pullstageii": false,
+        "volume": 10,
+        "pullclean": false,
+        "systemlevel": 9,
+        "treble": 10,
+        "middle": 10,
+        "midshift": 6,
+        "bass": 3,
+        "master1": 3.5,
+        "presence": 8
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 45,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "MetalX M1K Stage1 1",
+        "downloads": 106
+      }
+    ]
   },
   {
     "id": "naylor-duel-38",
@@ -17636,29 +18534,41 @@
         "1": {
           "gain": 5,
           "bite": "Down",
-          "master": 5,
-          "treble": 5,
+          "master": 3.5,
+          "treble": 6.5,
           "mid": 5,
           "bass": 5,
-          "pres": 5,
-          "volume": 5
+          "pres": 8,
+          "volume": 3
         },
         "2": {
-          "gain": 5,
+          "gain": 10,
           "bite": "Up",
-          "master": 5,
-          "treble": 5,
-          "mid": 5,
-          "bass": 5,
-          "pres": 5
+          "master": 8,
+          "treble": 8,
+          "mid": 6.5,
+          "bass": 8,
+          "pres": 8
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 15,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Nailer Battle 38 15",
+        "downloads": 464
+      },
+      {
+        "channel": 2,
+        "name": "Nailer Battle 38 1",
+        "downloads": 263
+      }
+    ]
   },
   {
     "id": "neural-dsp-archetype-tom-morello",
@@ -17817,23 +18727,30 @@
       "channel": null,
       "ch": {},
       "global": {
-        "presence": 5,
-        "volume_1": 5,
-        "volume_2": 5,
-        "reverb": 5,
-        "bass": 5,
-        "middle": 5,
-        "treble": 5,
-        "gain": 5,
-        "normalbass": 5,
-        "normaltreble": 5,
-        "normalvolume": 5
+        "presence": 7,
+        "volume_1": 10,
+        "volume_2": 6,
+        "reverb": 0,
+        "bass": 10,
+        "middle": 10,
+        "treble": 7,
+        "gain": 9.2,
+        "normalbass": 6,
+        "normaltreble": 9.5,
+        "normalvolume": 2
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 10,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Archetype: Tom Morello 10",
+        "downloads": 5248
+      }
+    ]
   },
   {
     "id": "neural-dsp-fortin-nts-suite",
@@ -18055,35 +18972,47 @@
       "channel": 1,
       "ch": {
         "1": {
-          "girth": 5,
-          "grind": 5,
-          "gain": 5,
-          "kill": true,
-          "volume": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "depth": 5,
-          "presence": 5,
-          "master": 5
+          "girth": 6.5,
+          "grind": 5.1,
+          "gain": 6,
+          "kill": false,
+          "volume": 8,
+          "bass": 6,
+          "middle": 7.8,
+          "treble": 7,
+          "depth": 4.5,
+          "presence": 7.5,
+          "master": 4
         },
         "2": {
-          "gain": 5,
-          "volume": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "depth": 5,
-          "presence": 5,
-          "master": 5
+          "gain": 3.5,
+          "volume": 5.5,
+          "bass": 6,
+          "middle": 6,
+          "treble": 4.8,
+          "depth": 7.8,
+          "presence": 6,
+          "master": 3.7
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 20,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Fortin NTS Suite 5",
+        "downloads": 6235
+      },
+      {
+        "channel": 2,
+        "name": "Fortin NTS Suite 20",
+        "downloads": 2138
+      }
+    ]
   },
   {
     "id": "omega-granophyre-power-amp-section",
@@ -18138,14 +19067,21 @@
       "ch": {},
       "global": {
         "master": 5,
-        "depth": 5,
-        "detail": 5
+        "depth": 10,
+        "detail": 3.5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 10,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "OMG PA-KT66 6",
+        "downloads": 71
+      }
+    ]
   },
   {
     "id": "orange-ad200-bass-mk3",
@@ -18246,18 +19182,25 @@
       "channel": null,
       "ch": {},
       "global": {
-        "input": "Passive",
-        "master": 5,
-        "treble": 5,
-        "middle": 5,
-        "bass": 5,
-        "gain": 5
+        "input": "Active",
+        "master": 7.5,
+        "treble": 9,
+        "middle": 2,
+        "bass": 2,
+        "gain": 9
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Range AD200 8",
+        "downloads": 173
+      }
+    ]
   },
   {
     "id": "orange-rocker-30",
@@ -18361,19 +19304,26 @@
       "channel": 1,
       "ch": {
         "1": {
-          "dirtyvolume": 5,
-          "dirtyhi": 5,
-          "dirtymid": 5,
-          "dirtylo": 5,
-          "dirtygain": 5
+          "dirtyvolume": 8.7,
+          "dirtyhi": 10,
+          "dirtymid": 10,
+          "dirtylo": 8.7,
+          "dirtygain": 3.5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Range Rock 4",
+        "downloads": 165
+      }
+    ]
   },
   {
     "id": "orange-rockerverb-100",
@@ -18501,29 +19451,41 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "master": 5,
-          "volume": 5,
-          "treble": 5,
-          "bass": 5
+          "master": 2,
+          "volume": 9.5,
+          "treble": 7.5,
+          "bass": 3
         },
         "2": {
-          "master": 5,
-          "volume": 5,
-          "treble": 5,
+          "master": 2,
+          "volume": 6,
+          "treble": 6,
           "middle": 5,
           "bass": 5,
-          "gain": 5
+          "gain": 8
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Range Rverb 5",
+        "downloads": 185
+      },
+      {
+        "channel": 2,
+        "name": "Range Rverb 1",
+        "downloads": 3212
+      }
+    ]
   },
   {
     "id": "orange-thunderverb-50",
@@ -18685,26 +19647,38 @@
       "channel": 1,
       "ch": {
         "1": {
-          "attenuator": 5,
-          "volumea": 5,
-          "treble": 5,
+          "attenuator": 2,
+          "volumea": 8,
+          "treble": 9,
           "middle": 5,
-          "bass": 5,
-          "gain": 5
+          "bass": 10,
+          "gain": 6
         },
         "2": {
-          "attenuator": 5,
-          "gain": 5,
-          "volumeb": 5,
+          "attenuator": 2.5,
+          "gain": 7,
+          "volumeb": 9,
           "shape": 5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Range Stormverb 8",
+        "downloads": 155
+      },
+      {
+        "channel": 2,
+        "name": "Range Stormverb 6",
+        "downloads": 75
+      }
+    ]
   },
   {
     "id": "otsola-mk1",
@@ -18765,15 +19739,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "attack": 5,
-        "level": 5,
+        "attack": 10,
+        "level": 10,
         "qcinputimpedance": "33k"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 14,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Otso Bender Mk1 1",
+        "downloads": 62
+      }
+    ]
   },
   {
     "id": "paul-reed-smith-mt15",
@@ -18941,31 +19922,43 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
           "presence": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "pullboost": true,
-          "volume": 5
+          "bass": 5.5,
+          "middle": 3,
+          "treble": 4.5,
+          "pullboost": false,
+          "volume": 5.5
         },
         "2": {
-          "presence": 5,
-          "masterleadch": 5,
-          "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "gain": 5
+          "presence": 0,
+          "masterleadch": 7.5,
+          "bass": 10,
+          "middle": 6.5,
+          "treble": 10,
+          "gain": 1
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Paul's MT16 8",
+        "downloads": 104
+      },
+      {
+        "channel": 2,
+        "name": "Paul's MT16 5",
+        "downloads": 174
+      }
+    ]
   },
   {
     "id": "pearce-bc-1",
@@ -19363,39 +20356,51 @@
         "1": {
           "input": "1+2",
           "ch1boost": "normal",
-          "ch12boost": 5,
+          "ch12boost": 10,
           "ch2boost": "boost",
-          "drive_1": 5,
-          "bass_1": 5,
-          "midrange_1": 5,
-          "midfreq_1": 5,
+          "drive_1": 6,
+          "bass_1": 6,
+          "midrange_1": 2,
+          "midfreq_1": 190,
           "treble_1": 5,
-          "fxsend_1": 5,
-          "volume_1": 5,
-          "limiter": "out",
-          "threshold": 5
+          "fxsend_1": 0,
+          "volume_1": 8.2,
+          "limiter": "in",
+          "threshold": 4.5
         },
         "2": {
           "input": "1+2",
           "ch1boost": "normal",
-          "ch12boost": 5,
+          "ch12boost": 10,
           "ch2boost": "boost",
-          "drive_2": 5,
+          "drive_2": 5.8,
           "bass_2": 5,
-          "midrange_2": 5,
-          "midfreq_2": 5,
-          "treble_2": 5,
-          "fxsend_2": 5,
-          "volume_2": 5,
-          "fxreturn": 5
+          "midrange_2": 2.5,
+          "midfreq_2": 900,
+          "treble_2": 5.5,
+          "fxsend_2": 0,
+          "volume_2": 3.5,
+          "fxreturn": 0
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 18,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Peace BC1 18",
+        "downloads": 337
+      },
+      {
+        "channel": 2,
+        "name": "Peace BC1 18",
+        "downloads": 337
+      }
+    ]
   },
   {
     "id": "pearce-bc1",
@@ -19411,7 +20416,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 2,
     "category": "Pedals"
   },
@@ -19650,32 +20655,44 @@
       "channel": 1,
       "ch": {
         "1": {
-          "low": 5,
-          "mid": 5,
-          "high": 5,
-          "resonance": 5,
-          "presence": 5,
+          "low": 6.5,
+          "mid": 8,
+          "high": 7.5,
+          "resonance": 7,
+          "presence": 3.5,
           "bright": true,
           "crunch": true,
-          "rhythmpregain": 5,
-          "rhythmpostgain": 5
+          "rhythmpregain": 7,
+          "rhythmpostgain": 6
         },
         "2": {
-          "leadpregain": 5,
-          "low": 5,
-          "mid": 5,
-          "high": 5,
-          "leadpostgain": 5,
-          "resonance": 5,
-          "presence": 5
+          "leadpregain": 6,
+          "low": 7,
+          "mid": 9,
+          "high": 7,
+          "leadpostgain": 6,
+          "resonance": 8,
+          "presence": 6
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "PV 505Sig 8",
+        "downloads": 1232
+      },
+      {
+        "channel": 2,
+        "name": "PV 505Sig 3",
+        "downloads": 845
+      }
+    ]
   },
   {
     "id": "reuss-musical-instruments-germanium-bender",
@@ -19732,15 +20749,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "attack": 5,
-        "level": 5,
+        "attack": 10,
+        "level": 10,
         "qcinputimpedance": "1M"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Reus Bender Mk2 1",
+        "downloads": 75
+      }
+    ]
   },
   {
     "id": "revv-amplification-generator-120-mk3",
@@ -20062,43 +21086,55 @@
       "channel": 1,
       "ch": {
         "1": {
-          "agression": false,
+          "agression": "Red",
           "bright": "Engaged",
           "cut": "Engaged",
-          "fat": "Disabled",
-          "gain": 5,
-          "treble": 5,
-          "mids": 5,
-          "bass": 5,
-          "level": 5,
-          "presence": 5,
-          "depth": 5,
+          "fat": "Disengaged",
+          "gain": 7.5,
+          "treble": 7.8,
+          "mids": 4,
+          "bass": 6,
+          "level": 10,
+          "presence": 8.5,
+          "depth": 4.5,
           "aggression": "Blue",
-          "mid": 5
+          "mid": 4
         },
         "2": {
           "agression": false,
           "bright": "Engaged",
           "cut": "Engaged",
           "fat": "Disabled",
-          "gain": 5,
-          "treble": 5,
-          "mids": 5,
-          "bass": 5,
-          "level": 5,
-          "presence": 5,
-          "depth": 5,
-          "master": 5,
+          "gain": 6,
+          "treble": 6,
+          "mids": 4.5,
+          "bass": 5.5,
+          "level": 10,
+          "presence": 6,
+          "depth": 7,
+          "master": 4.5,
           "aggression": false,
-          "mid": 5
+          "mid": 3.5
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 14,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "RV Amp G120 14",
+        "downloads": 2394
+      },
+      {
+        "channel": 2,
+        "name": "RV Amp G120 1",
+        "downloads": 1434
+      }
+    ]
   },
   {
     "id": "sound-city-b120",
@@ -20196,17 +21232,24 @@
       "ch": {},
       "global": {
         "input": "Normal",
-        "normalvolume": 5,
-        "bass": 5,
-        "middle": 5,
-        "treble": 5,
+        "normalvolume": 10,
+        "bass": 8,
+        "middle": 0,
+        "treble": 10,
         "presence": 5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "SCity B120 3",
+        "downloads": 45
+      }
+    ]
   },
   {
     "id": "supro-thunderbolt-15-two-notes-setup",
@@ -20264,15 +21307,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
+        "volume": 10,
         "tone": 5,
         "tone_bypass": "Bypass"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 16,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Super Bolt 1",
+        "downloads": 699
+      }
+    ]
   },
   {
     "id": "tech-21-sansamp-ged-2112",
@@ -20408,21 +21458,28 @@
       "channel": 1,
       "ch": {
         "1": {
-          "drive": 5,
-          "mid": 5,
-          "midshift": 5,
-          "blend": 5,
-          "bass": 5,
-          "treble": 5,
-          "level": 5
+          "drive": 4.5,
+          "mid": 4,
+          "midshift": 220,
+          "blend": 4,
+          "bass": 2.5,
+          "treble": 4,
+          "level": 7
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 13,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "Tech41 GED12 11",
+        "downloads": 1083
+      }
+    ]
   },
   {
     "id": "tech-21-sansamp-psa-preamp",
@@ -20438,7 +21495,7 @@
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
     "category": "Amps"
   },
@@ -20534,18 +21591,25 @@
       "channel": null,
       "ch": {},
       "global": {
-        "drive": 5,
-        "character": 5,
-        "low": 5,
-        "mid": 5,
+        "drive": 7.5,
+        "character": 2,
+        "low": 1.5,
+        "mid": 8,
         "high": 5,
-        "level": 5
+        "level": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Tech41 VTBassDLX 3",
+        "downloads": 62
+      }
+    ]
   },
   {
     "id": "tone-king-imperial-mkii",
@@ -20654,25 +21718,37 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "volume": 5,
-          "treble": 5,
+          "volume": 3,
+          "treble": 6,
           "bass": 5
         },
         "2": {
-          "volume": 5,
-          "tone": 5,
-          "midbite": 5
+          "volume": 4.8,
+          "tone": 10,
+          "midbite": 9.7
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 13,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "TuneRoyal MK2 9",
+        "downloads": 375
+      },
+      {
+        "channel": 2,
+        "name": "TuneRoyal MK2 1",
+        "downloads": 2591
+      }
+    ]
   },
   {
     "id": "tube-works-tube-driver",
@@ -20727,15 +21803,22 @@
       "channel": null,
       "ch": {},
       "global": {
-        "out": 5,
+        "out": 9,
         "eq": 5,
-        "tubedrive": 5
+        "tubedrive": 3
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 15,
-    "category": "Overdrive"
+    "category": "Overdrive",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "TW Tube Drive 14",
+        "downloads": 1271
+      }
+    ]
   },
   {
     "id": "unsound-circuitry-hyper-pozzum",
@@ -20829,18 +21912,25 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "fuzz": 5,
-        "sweep": 5,
-        "scoop": 5,
-        "shift": 5,
-        "blend": 5
+        "volume": 10,
+        "fuzz": 10,
+        "sweep": 0,
+        "scoop": 0,
+        "shift": 10,
+        "blend": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 31,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Unsound Hyper Pozzum 1",
+        "downloads": 105
+      }
+    ]
   },
   {
     "id": "unsound-circuitry-kato",
@@ -20908,16 +21998,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "gain": 5,
-        "kill": 5,
-        "sens": 5
+        "volume": 10,
+        "gain": 10,
+        "kill": 0,
+        "sens": 0
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 11,
-    "category": "Fuzz"
+    "category": "Fuzz",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Unsound Kato 1",
+        "downloads": 83
+      }
+    ]
   },
   {
     "id": "unsound-circuitry-shivver",
@@ -21031,19 +22128,26 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "distortion": 5,
-        "tightness": 5,
-        "high": 5,
-        "low": 5,
-        "middle": 5,
-        "midq": "Bal"
+        "volume": 10,
+        "distortion": 3,
+        "tightness": 0,
+        "high": 10,
+        "low": 10,
+        "middle": 6,
+        "midq": "High"
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 16,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Unsound Shivver 11",
+        "downloads": 76
+      }
+    ]
   },
   {
     "id": "unverified-bogna-x-101b",
@@ -21314,47 +22418,64 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "volume": 5,
+          "volume": 10,
           "treble": 5,
           "middle": 5,
           "bass": 5,
-          "gain": 5,
+          "gain": 2,
           "preeq": "B1",
-          "presence": 5,
+          "presence": 6.5,
           "gainboost": "Low"
         },
         "2": {
-          "volume": 5,
+          "volume": 4,
           "treble": 5,
-          "middle": 5,
-          "bass": 5,
-          "gain": 5,
-          "boostgain": "Low",
-          "preeq": "B1",
-          "pleximode": 5,
+          "middle": 6,
+          "bass": 7,
+          "gain": 10,
+          "boostgain": "High",
+          "preeq": "N",
+          "pleximode": 0,
           "structure": "High"
         },
         "3": {
-          "volume": 5,
+          "volume": 3.5,
           "treble": 5,
           "middle": 5,
           "bass": 5,
-          "gain": 5,
+          "gain": 8,
           "boostgain": "High",
           "preeq": "B2",
-          "pleximode": 5,
+          "pleximode": 0,
           "structure": "High"
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 5,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "TW's Bogna X Ch1",
+        "downloads": 8167
+      },
+      {
+        "channel": 2,
+        "name": "TW's Bogna X Ch2",
+        "downloads": 13023
+      },
+      {
+        "channel": 3,
+        "name": "TW's Bogna X Ch3",
+        "downloads": 9127
+      }
+    ]
   },
   {
     "id": "unverified-madpro-custom",
@@ -21467,29 +22588,41 @@
       }
     ],
     "defaults": {
-      "channel": 1,
+      "channel": 2,
       "ch": {
         "1": {
-          "gain": 5,
+          "gain": 6.5,
           "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "master": 5
+          "middle": 3.5,
+          "treble": 6,
+          "master": 6.5
         },
         "2": {
-          "gain": 5,
+          "gain": 6.5,
           "bass": 5,
-          "middle": 5,
-          "treble": 5,
-          "master": 5
+          "middle": 3.5,
+          "treble": 6.5,
+          "master": 6
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 5,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "TW's MadPro 1",
+        "downloads": 3376
+      },
+      {
+        "channel": 2,
+        "name": "TW's MadPro 2 w Juhl HB",
+        "downloads": 3539
+      }
+    ]
   },
   {
     "id": "vht-two-fifty-two",
@@ -21564,16 +22697,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "volume": 5,
-        "presence": 5,
-        "voicing": true,
-        "depth": 5
+        "volume": 6,
+        "presence": 7,
+        "voicing": false,
+        "depth": 9
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 14,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "VHD PA-2502 9",
+        "downloads": 44
+      }
+    ]
   },
   {
     "id": "victory-sheriff-22",
@@ -21693,20 +22833,27 @@
       "channel": null,
       "ch": {},
       "global": {
-        "input": 5,
-        "volumei": 5,
-        "treble": 5,
-        "middle": 5,
-        "bass": 5,
-        "presence": 5,
-        "master": 5,
-        "volumeii": 5
+        "input": 1,
+        "volumei": 10,
+        "treble": 10,
+        "middle": 10,
+        "bass": 10,
+        "presence": 2,
+        "master": 2,
+        "volumeii": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Victor Marshal 1",
+        "downloads": 2510
+      }
+    ]
   },
   {
     "id": "victory-super-kraken",
@@ -21860,21 +23007,28 @@
       "channel": null,
       "ch": {},
       "global": {
-        "preampfocus": true,
+        "preampfocus": false,
         "cleancrunch": "Clean",
-        "gain1": 5,
+        "gain1": 4,
         "gain1gain2": "Gain1",
-        "bass": 5,
+        "bass": 8,
         "middle": 5,
-        "treble": 5,
+        "treble": 4,
         "master": 5,
-        "gain2": 5
+        "gain2": 8
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 8,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Victor Mega Squid 1",
+        "downloads": 1870
+      }
+    ]
   },
   {
     "id": "vox-ac10-1964",
@@ -22019,23 +23173,35 @@
       "channel": 1,
       "ch": {
         "1": {
-          "volume": 5,
-          "tone": 5,
+          "volume": 2,
+          "tone": 10,
           "input": "High"
         },
         "2": {
-          "input": "High",
-          "amplitude": 5,
+          "input": "Low",
+          "amplitude": 1.8,
           "speed": 5,
-          "volumevibrato": 5
+          "volumevibrato": 1.8
         }
       },
       "global": {}
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 18,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": 1,
+        "name": "UK C10 64 12",
+        "downloads": 2690
+      },
+      {
+        "channel": 2,
+        "name": "UK C10 64 18",
+        "downloads": 932
+      }
+    ]
   },
   {
     "id": "warwick-pro-set-5-1",
@@ -22234,24 +23400,31 @@
       "channel": null,
       "ch": {},
       "global": {
-        "input": 5,
+        "input": 9,
         "compressor": true,
-        "comprate": 5,
-        "contour": true,
-        "bass": 5,
-        "lowmid": 5,
-        "highmid": 5,
-        "treble": 5,
+        "comprate": 2.5,
+        "contour": false,
+        "bass": 4,
+        "lowmid": -4,
+        "highmid": -5,
+        "treble": 4,
         "deep": true,
         "bright": true,
-        "master": 5,
-        "contrate": 5
+        "master": 6.5,
+        "contrate": 3
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 4,
-    "category": "Amps"
+    "category": "Amps",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Warwitch ProF5 1",
+        "downloads": 66
+      }
+    ]
   },
   {
     "id": "xotic-effects-bb-preamp",
@@ -22319,16 +23492,23 @@
       "channel": null,
       "ch": {},
       "global": {
-        "gain": 5,
-        "volume": 5,
+        "gain": 0,
+        "volume": 6,
         "treble": 5,
         "bass": 5
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 10,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Exotic BB 1",
+        "downloads": 45
+      }
+    ]
   },
   {
     "id": "xotic-effects-sl-drive",
@@ -22383,14 +23563,21 @@
       "channel": null,
       "ch": {},
       "global": {
-        "gain": 5,
+        "gain": 0,
         "tone": 5,
-        "volume": 5
+        "volume": 10
       }
     },
     "definitionSource": "capture descriptions",
-    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel. Reset values are reference positions, not a capture.",
+    "defaultsNote": "Capture-derived controls; numeric ranges assume 0–10 and expand to include recorded values. Not a verified hardware panel.",
     "captureCount": 2,
-    "category": "Pedals"
+    "category": "Pedals",
+    "defaultsFrom": [
+      {
+        "channel": null,
+        "name": "Exotic SL 1",
+        "downloads": 40
+      }
+    ]
   }
 ]

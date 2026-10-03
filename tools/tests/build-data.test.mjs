@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { ROOT, ampIdentity, brandInfo, channelsFromDescription, inferAmp, parseSettings, settingLines, sourceAmpName, toCapture , channelOrder } from '../build-data.mjs';
+import { ROOT, ampIdentity, brandInfo, channelsFromDescription, inferAmp, parseSettings, settingLines, sourceAmpName, toCapture , channelOrder, downloadDefaults } from '../build-data.mjs';
 
 const CUSTOMS = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/custom-amps.json'), 'utf8'));
 const CUSTOM = Object.fromEntries(CUSTOMS.map((d) => [d.id, d]));
@@ -204,4 +204,20 @@ test('parse.readOn keeps reading past a named device header (paired with section
       { key: 'pp', label: 'Power Presence', kind: 'knob', scope: 'global', min: 0, max: 10, step: 0.1, weight: 1 }, { key: 'deep', label: 'Deep', kind: 'switch', scope: 'global', weight: 1, options: [{ v: true, label: 'ON' }, { v: false, label: 'OFF' }] }] };
   const [s, rejected] = parseSettings(row(d), def);
   assert.deepEqual([s.values.volume, s.values.presence, s.values.pp, s.values.deep, rejected], [5, 3, 2.5, true, []]);
+});
+
+test('starting settings: each channel from its most downloaded capture, gaps from the next one', () => {
+  const def = { channels: [{ n: 1, name: 'Clean' }, { n: 2, name: 'Lead' }],
+    controls: [{ key: 'gain', kind: 'knob', scope: 'channel', min: 0, max: 10, step: 0.1 }, { key: 'boost', kind: 'switch', scope: 'channel', options: [{ v: true }, { v: false }] },
+      { key: 'master', kind: 'knob', scope: 'global', min: 0, max: 10, step: 0.1 }],
+    defaults: { channel: 1, ch: { 1: { gain: 5, boost: false }, 2: { gain: 5, boost: false } }, global: { master: 5 } } };
+  const cap = (name, downloads, channel, values) => ({ name, downloads, settings: { channel, values } });
+  const caps = [cap('Clean 1', 10, 1, { gain: 2, master: 3 }), cap('Clean 2', 50, 1, { gain: 3 }), cap('Lead 1', 90, 2, { gain: 8, master: 7 }), cap('Lead 2', 20, 2, { gain: 9, boost: true }), cap('Broken', 999, 1, null)];
+  caps[4].settings = null;
+  const { defaults, from } = downloadDefaults(def, caps);
+  assert.equal(defaults.channel, 2); // the channel of the most downloaded capture
+  assert.deepEqual(defaults.ch[1], { gain: 3, boost: false }); // Clean 2 (50) beats Clean 1 (10); boost never stated: kept
+  assert.deepEqual(defaults.ch[2], { gain: 8, boost: true }); // Lead 1, with boost from the next most downloaded Lead capture
+  assert.equal(defaults.global.master, 7); // shared controls from the starting channel's captures
+  assert.deepEqual(from.map((f) => f.name), ['Clean 2', 'Lead 1']);
 });

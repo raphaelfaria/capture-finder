@@ -1139,8 +1139,10 @@ function renderInfo(){
   let h = '<div class="panel-h"><h2 id="info-h" class="cond" style="margin:0;font-size:20px;font-weight:700;letter-spacing:.03em">Matching on '+esc(chShort())+'</h2>'
     + '<button id="info-close" class="btn sm" data-act="info-close" aria-label="Close matching details"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' + dl(rows);
   if (nm.length) h += '<h3 class="h-kicker" style="margin:0"><span class="nsmark" aria-hidden="true">⊘</span>Not matched</h3>' + dl(nm);
-  return h + '<ul class="infonotes">'+(def.defaultsNote ? '<li>'+esc(def.defaultsNote)+'</li>' : '')
-    + '<li>Drag knobs and sliders up/down, or Tab to one and use the arrow keys. Click a switch\'s position labels to set it.</li>'
+  // where the starting settings come from: each channel's most downloaded capture (set by the build)
+  const from = (def.defaultsFrom || []).map(x => (x.channel !== null && multiCh(def) ? channelLabel(def, x.channel)+': ' : '')+x.name+(x.downloads != null ? ' ('+x.downloads.toLocaleString('en-US')+' downloads)' : ''));
+  return h + '<ul class="infonotes">'+(from.length ? '<li>Starting settings (Reset, double-click): the most downloaded capture'+(from.length > 1 ? ' of each channel' : '')+', with anything it doesn\'t state from the next most downloaded: '+esc(from.join(' · '))+'.</li>' : '')+(def.defaultsNote ? '<li>'+esc(def.defaultsNote)+'</li>' : '')
+    + '<li>Drag knobs and sliders up/down, or Tab to one and use the arrow keys. Click a switch\'s position labels to set it. Double-click a control to return it to its starting value.</li>'
     + '<li>Visual reference only — nothing here controls a physical amp.</li></ul>';
 }
 
@@ -1607,6 +1609,20 @@ document.addEventListener('click', (e) => {
   else if (act === 'amp') pickAmp(t.dataset.id);
   else if (act === 'gear-drill') stepPicker('amp', { kind:'drill', key:t.dataset.key });
   else if (act === 'gear-back') stepPicker('amp', BACK);
+});
+
+// Double-clicking a control (knob, slider, switch, pull, jack…) returns it to the gear's starting value:
+// the same defaults Reset restores (per channel for channel controls).
+function defaultValue(def, c, n){ const d = def.defaults; return c.scope === 'channel' ? (d.ch[n] || d.ch[String(n)] || {})[c.key] : d.global[c.key]; }
+document.addEventListener('dblclick', (e) => {
+  const t = e.target.closest && e.target.closest('#stage .cab [data-ctrl], #stage .cab [data-key]');
+  if (!t || t.dataset.target === 'channel') return;
+  const { def } = cur(), c = ctrlByKey(t.dataset.ctrl || t.dataset.key), n = parseCh(t.dataset.ch);
+  if (!c) return;
+  const v = defaultValue(def, c, c.scope === 'channel' ? n : null);
+  if (v === undefined) return;
+  e.preventDefault();
+  setCtrl(c, c.scope === 'channel' ? n : null, v);
 });
 
 // keyboard / assistive-tech changes on the hidden range inputs
