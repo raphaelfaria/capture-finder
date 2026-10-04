@@ -84,6 +84,23 @@ describe('buttons', () => {
   });
 });
 
+describe('step keys', () => {
+  test('quick presses of a TriAxis key keep stepping the same way (no double-click reset, no stale value)', () => {
+    const s = storeOn('mesa-boogie-triaxis-preamp');
+    const { container } = render(<Bench store={s} />);
+    const key = s.def.value.panelOrder![0]!;
+    s.setControl(s.def.value.controls.find((c) => c.key === key)!, null, 3);
+    const down = container.querySelector<HTMLButtonElement>('#tx-dn-' + key)!;
+    const seen: unknown[] = [];
+    // a fast double press: the browser fires click, click, dblclick
+    for (const ev of ['click', 'click', 'dblClick', 'click', 'click', 'dblClick'] as const) {
+      fireEvent[ev](down);
+      seen.push(g(s, key));
+    }
+    expect(seen).toEqual([2.5, 2, 2, 1.5, 1, 1]);
+  });
+});
+
 describe('pedal scope', () => {
   test('a pedal writes its own values under prefixed ids, and never switches the gear channel', () => {
     const s = storeOn('bogner-uberschall-first-edition');

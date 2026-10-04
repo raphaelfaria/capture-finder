@@ -1,6 +1,7 @@
 // The two kinds of control scope: the gear on the workbench, and a pedal in its chain.
 import type { ChainItem, Control, ControlValue, GearDef } from '../../../shared/schema';
-import { defaultValue } from '../../domain/controls';
+import { pedalValue } from '../../domain/chains';
+import { defaultValue, getValue } from '../../domain/controls';
 import type { GearSettings } from '../../domain/types';
 import type { Store } from '../../state/store';
 import type { ControlScope } from '../primitives/scope';
@@ -11,6 +12,7 @@ export function gearScope(store: Store, def: GearDef, settings: GearSettings): C
     prefix: '',
     def,
     settings,
+    current: (c, n) => getValue(store.settings.peek(), c, n),
     set: (c, n, v) => store.setControl(c, n, v),
     reset: (c, n) => {
       const v = defaultValue(store.baseDef.peek(), c, c.scope === 'channel' ? n : null);
@@ -41,6 +43,7 @@ export function pedalScope(store: Store, i: number, d: GearDef, p: ChainItem): C
     prefix: 'p' + i + ':',
     def: d,
     settings: pedalSettings(d, p),
+    current: (c) => pedalValue(store.chain.peek(), i, c.key, store.catalog.gearById),
     set: (c, _n, v) => set(c, v),
     reset: (c) => {
       const v = d.defaults.global[c.key];

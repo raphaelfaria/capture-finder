@@ -11,6 +11,8 @@ export interface ControlScope {
   prefix: string;
   def: GearDef;
   settings: GearSettings;
+  /** A control's value right now (not as of the last render): for steps that follow each other quickly. */
+  current(c: Control, n: number | null): ControlValue | undefined;
   set(c: Control, n: number | null, v: ControlValue): void;
   /** Back to the starting value (double-click). */
   reset(c: Control, n: number | null): void;

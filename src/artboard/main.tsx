@@ -4,7 +4,7 @@
 import { signal } from '@preact/signals';
 import { render } from 'preact';
 import type { Control, ControlValue, GearDef } from '../../shared/schema';
-import { defaultValue, initialSettings } from '../domain/controls';
+import { defaultValue, getValue, initialSettings } from '../domain/controls';
 import type { GearSettings } from '../domain/types';
 import '../styles/index.css';
 import { GearPanel } from '../ui/panels/registry';
@@ -28,6 +28,7 @@ function Board() {
     prefix: '',
     def,
     settings: as,
+    current: (c, n) => getValue(settings.peek(), c, n),
     set,
     reset: (c, n) => {
       const v = defaultValue(def, c, c.scope === 'channel' ? n : null);

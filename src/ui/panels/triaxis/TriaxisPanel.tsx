@@ -2,11 +2,11 @@
 // preamp modes (RHY G/Y, LD1 G/Y/R, LD2 G/Y/R) used as channels. Lead drives apply only in their lead
 // modes. Optionally followed by the Simul-Class 2:Ninety power amp.
 import type { GearDef, RangeControl } from '../../../../shared/schema';
-import { available, snap } from '../../../domain/controls';
+import { available } from '../../../domain/controls';
 import { chName } from '../../../domain/channels';
 import { f1, nice } from '../../../domain/format';
 import type { GearSettings } from '../../../domain/types';
-import { ChannelButton, KnobControl, PickButton } from '../../primitives/controls';
+import { ChannelButton, KnobControl, StepButton } from '../../primitives/controls';
 import { useScope } from '../../primitives/scope';
 import { Cab, Rack, Simul290, ctl, num, type PanelProps } from '../shared';
 
@@ -75,20 +75,20 @@ function Param({ def, as, c }: { def: GearDef; as: GearSettings; c: RangeControl
       <span class="txlab">{c.label}</span>
       <span class="txkeys">
         {KEYS.map(([d, word, path, id]) => (
-          <PickButton
+          <StepButton
             id={scope.prefix + 'tx-' + id + '-' + c.key}
             class="txkey"
             aria-label={word + ' ' + nice(c.label) + ', now ' + f1(v) + off}
             c={c}
             n={null}
-            v={snap(c, v + d * c.step)}
+            by={d}
           >
             <span class="txcap">
               <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
                 <path d={path} fill="#1b1b1a" />
               </svg>
             </span>
-          </PickButton>
+          </StepButton>
         ))}
       </span>
       {on ? null : <span class="txna">not in mode</span>}

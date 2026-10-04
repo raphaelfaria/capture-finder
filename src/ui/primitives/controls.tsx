@@ -174,6 +174,34 @@ export function PickButton({
   );
 }
 
+/** A button that steps a knob-like value up or down by one step (the TriAxis ◀ ▶ keys). It steps from
+ *  the value as it is when pressed, so quick presses add up, and pressing it twice quickly is two steps,
+ *  not a double-click back to the starting value. */
+export function StepButton({
+  c,
+  n,
+  by,
+  children,
+  ...rest
+}: ButtonAttrs & { c: RangeControl; n: number | null; by: 1 | -1; children?: ComponentChildren }) {
+  const scope = useScope();
+  return (
+    <button
+      {...rest}
+      data-act="step"
+      data-key={keyAttr(scope.prefix, c)}
+      data-ch={chAttr(n)}
+      data-d={by}
+      onClick={() => {
+        const v = scope.current(c, n);
+        if (typeof v === 'number') scope.set(c, n, snap(c, v + by * c.step));
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 /** A button that steps a switch to its next position (the lever of a toggle, a stepped knob's face). */
 export function CycleButton({
   c,
