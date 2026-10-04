@@ -28,7 +28,10 @@ export function pedalBlocks(description: string): PedalBlock[] {
       cur = {
         n: Number(head[1]),
         source: head[2]!.trim(),
-        name: head[2]!.replace(/[®™]/g, '').replace(/\s+/g, ' ').trim(),
+        name: head[2]!
+          .replace(/[®™]/g, '')
+          .replace(/\s+/g, ' ')
+          .trim(),
         rows: [],
       };
       blocks.push(cur);

@@ -9,3 +9,4 @@ docs/
 har/
 *.md
 package-lock.json
+dist-artboard/

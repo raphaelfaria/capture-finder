@@ -22,9 +22,9 @@
     "captures": "tsx tools/har-to-captures/index.ts",
     "build:data": "tsx tools/build-data/index.ts",
     "data": "npm run captures -- har/captures.har && npm run build:data",
-    "verify:gear": "node .claude/skills/gear-panel-generator/scripts/verify-gear.cjs",
-    "capture-values": "node .claude/skills/gear-panel-generator/scripts/capture-values.cjs",
-    "artboard": "node .claude/skills/gear-panel-generator/scripts/make-artboard.mjs",
+    "verify:gear": "vite build --mode legacy-test --logLevel warn && tsx tools/verify-gear.ts",
+    "capture-values": "tsx tools/capture-values.ts",
+    "artboard": "tsx tools/artboard/index.ts",
     "test:visual": "vite build && tsx tests/visual/parity.ts",
     "test:e2e": "vite build && playwright test"
   },

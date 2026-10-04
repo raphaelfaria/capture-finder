@@ -12,3 +12,6 @@ docs
 /dist-bridge/
 /test-results/
 /tests/visual/output/
+
+/dist-artboard/
+/playwright-report/
