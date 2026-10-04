@@ -25,10 +25,12 @@
     "verify:gear": "node .claude/skills/gear-panel-generator/scripts/verify-gear.cjs",
     "capture-values": "node .claude/skills/gear-panel-generator/scripts/capture-values.cjs",
     "artboard": "node .claude/skills/gear-panel-generator/scripts/make-artboard.mjs",
-    "test:visual": "vite build && tsx tests/visual/parity.ts"
+    "test:visual": "vite build && tsx tests/visual/parity.ts",
+    "test:e2e": "vite build && playwright test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
     "@preact/preset-vite": "^2.10.6",
     "@testing-library/preact": "^3.2.4",
     "@types/node": "^26.6.4",
