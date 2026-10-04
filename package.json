@@ -4,7 +4,7 @@
   "description": "Capture Finder: reverse lookup for Neural Captures by written gear settings. A Vite + Preact + TypeScript app deployed to GitHub Pages; tools/ maintain its data.",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
