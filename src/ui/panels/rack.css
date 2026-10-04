@@ -1,0 +1,41 @@
+/* Rack units (TriAxis, Fish, 3+SE, Simul-Class 2:Ninety): rack ears and faces. */
+.txcab {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 6px;
+  border-radius: 0;
+}
+.txrack {
+  display: flex;
+  align-items: stretch;
+  max-width: 100%;
+  background: #1a1a19;
+  border: 1px solid #000;
+  border-radius: 3px;
+}
+.txear {
+  flex: none;
+  width: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+.txear i {
+  display: block;
+  width: 12px;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--bg);
+}
+.txface {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 6px 0;
+  padding: 8px 10px;
+  border: 1px solid #3b3b38;
+  border-radius: 10px;
+  background: #161615;
+}

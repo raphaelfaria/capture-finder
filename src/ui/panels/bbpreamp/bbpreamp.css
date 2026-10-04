@@ -1,0 +1,75 @@
+/* Xotic Effects BB Preamp panel. */
+.bbcab {
+  background: #120c0c;
+  background-image: none;
+  box-shadow: inset 0 0 0 1px #000;
+  border-radius: 14px;
+  padding: 6px;
+}
+.bbface {
+  position: relative;
+  flex: none;
+  width: 228px;
+  height: 236px;
+  border-radius: 12px;
+  background: #e2241b;
+}
+.bbface.compact .bbk .ro {
+  left: 36px;
+  top: 38px;
+}
+.bbface.compact .bbline {
+  inset: 6px 6px -10px;
+}
+.bbline {
+  position: absolute;
+  inset: 8px 8px -10px;
+  border: 2px solid #f6d9d3;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  pointer-events: none;
+}
+.bbface {
+  overflow: hidden;
+}
+.bbk {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.bbk .ro {
+  left: 50px;
+  top: 54px;
+}
+.bbk .knob-in:focus-visible + .kwrap {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.bblab {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: #f9dcd6;
+  white-space: nowrap;
+}
+.bbname {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  color: #fbe3de;
+  line-height: 1;
+}
+.bbname span {
+  font-size: 15px;
+  font-style: normal;
+}

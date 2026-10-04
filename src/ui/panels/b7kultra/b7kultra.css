@@ -1,0 +1,148 @@
+/* Darkglass Microtubes B7K Ultra panel. */
+.b7cab {
+  background: #141414;
+  background-image: none;
+  box-shadow: inset 0 0 0 1px #000;
+  border-radius: 14px;
+  padding: 6px;
+  gap: 0;
+}
+.b7face {
+  padding: 8px;
+  border-radius: 10px;
+  background: #c4cbc8;
+  border: 1px solid #6f7673;
+  max-width: 100%;
+}
+.b7panel {
+  position: relative;
+  width: 330px;
+  height: 200px;
+  border-radius: 6px;
+  background: #0c0c0c;
+}
+.b7panel .kctl,
+.b7panel .kwrap {
+  display: block;
+}
+.b7k {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.b7k .ro {
+  left: auto;
+  right: -8px;
+  top: auto;
+  bottom: -2px;
+}
+.b7lab {
+  position: absolute;
+  transform: translateX(-50%);
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: #e9e9e9;
+  line-height: 1;
+  white-space: nowrap;
+}
+.b7panel .silk {
+  color: #e9e9e9;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.b7panel .tlbl {
+  color: #9a9a9a;
+  font-size: 8.5px;
+}
+.b7panel .tlbl[aria-pressed='true'] {
+  color: #fff;
+}
+.b7fs {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  color: #e9e9e9;
+}
+.b7fs:hover {
+  background: #1c1c1c;
+}
+.b7fs .cap {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #c9cdd0;
+  box-shadow:
+    inset 0 0 0 2px #8e9397,
+    0 0 0 2px #2a2a2a;
+  flex: none;
+}
+.b7fs .led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1b2436;
+  box-shadow: 0 0 0 1px #000;
+  flex: none;
+}
+.b7fs[aria-pressed='true'] .led {
+  background: #4b86ff;
+}
+.b7fs .txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.b7fs .txt span:last-child {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: #b3ab9d;
+}
+.b7name {
+  position: absolute;
+  left: 140px;
+  right: 4px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+  color: #ececec;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  line-height: 1;
+}
+.b7name b {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.b7name span {
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #bdbdbd;
+}
+/* very narrow phones: scale the whole faceplate rather than reflow it (keeps the pedal's layout) */
+@media (max-width: 380px) {
+  .b7face {
+    padding: 5px;
+  }
+  .b7panel {
+    zoom: 0.86;
+  }
+}

@@ -1,0 +1,78 @@
+/* The round buttons beside the gear (power amp version, weights, info), their tooltips and the versions list. */
+.infobtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #47423b;
+  background: #1a1816;
+  color: var(--text);
+}
+.infobtn:hover {
+  border-color: #6b6359;
+  background: #211f1c;
+}
+.infobtn[aria-expanded='true'] {
+  border-color: var(--amber);
+}
+.infobtn.custom {
+  position: relative;
+}
+.infobtn.custom::after {
+  content: '';
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+.infobtn[aria-pressed='true'] {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+/* bench buttons: a tooltip to the left on hover or keyboard focus */
+.infobtn[data-tip] {
+  position: relative;
+}
+.infobtn[data-tip]::before {
+  content: attr(data-tip);
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px 8px;
+  border: 1px solid var(--line2);
+  border-radius: 6px;
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s 0.25s;
+  z-index: 40;
+}
+.infobtn[data-tip]:hover::before,
+.infobtn[data-tip]:focus-visible::before {
+  opacity: 1;
+}
+.infobtn[aria-expanded='true']::before {
+  opacity: 0 !important;
+}
+.varmenu {
+  display: flex;
+}
+.amppop.varpop {
+  left: auto;
+  right: calc(100% + 8px);
+  top: 0;
+  width: min(300px, calc(100vw - 88px));
+  z-index: 45;
+}

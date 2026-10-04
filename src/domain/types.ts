@@ -22,8 +22,7 @@ export interface Reason {
 }
 
 export type Similarity =
-  | { status: 'unparsed' }
-  | { status: 'scored'; score: number; coverage: number; reasons: Reason[] };
+  { status: 'unparsed' } | { status: 'scored'; score: number; coverage: number; reasons: Reason[] };
 
 /** Matching weight overrides for one gear: control key → weight. */
 export type WeightOverrides = Record<string, number>;

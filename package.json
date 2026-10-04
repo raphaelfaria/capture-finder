@@ -24,17 +24,21 @@
     "data": "npm run captures -- har/captures.har && npm run build:data",
     "verify:gear": "node .claude/skills/gear-panel-generator/scripts/verify-gear.cjs",
     "capture-values": "node .claude/skills/gear-panel-generator/scripts/capture-values.cjs",
-    "artboard": "node .claude/skills/gear-panel-generator/scripts/make-artboard.mjs"
+    "artboard": "node .claude/skills/gear-panel-generator/scripts/make-artboard.mjs",
+    "test:visual": "vite build && tsx tests/visual/parity.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@preact/preset-vite": "^2.10.6",
     "@testing-library/preact": "^3.2.4",
     "@types/node": "^26.6.4",
+    "@types/pngjs": "^6.0.5",
     "eslint": "^10.12.0",
     "http-server": "^14.1.1",
     "jsdom": "^30.1.1",
+    "pixelmatch": "^7.2.0",
     "playwright-core": "^1.63.0",
+    "pngjs": "^7.0.0",
     "preact-render-to-string": "^6.8.0",
     "prettier": "^3.9.9",
     "tsx": "^4.23.15",

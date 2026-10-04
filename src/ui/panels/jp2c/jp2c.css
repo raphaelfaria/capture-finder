@@ -1,0 +1,44 @@
+/* Mesa/Boogie JP-2C panel. */
+.cled {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+}
+.chsel {
+  background: transparent;
+  border: 0;
+  padding: 3px 4px;
+  border-radius: 3px;
+}
+.chsel:hover {
+  background: #1f1f1f;
+}
+.ftrack {
+  position: absolute;
+  top: 8px;
+  width: 26px;
+  height: 146px;
+  touch-action: none;
+  cursor: ns-resize;
+  display: block;
+}
+.fslot {
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 14px;
+  height: 146px;
+  border-radius: 2px;
+  background: #050505;
+  border: 1px solid #1e1e1e;
+  display: block;
+}
+.ftrack .fslot {
+  border-color: #4d4d4d;
+} /* JP-2C slots: visible ends */
+.eqoff .ftrack,
+.eqoff .eqline {
+  opacity: 0.4;
+}

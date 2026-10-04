@@ -1,0 +1,140 @@
+/* Panel control primitives: knobs, readouts, levers, position labels, pulls, fader caps. */
+.knobbox {
+  position: relative;
+  width: 56px;
+  height: 56px;
+}
+.kctl {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+.kwrap {
+  display: block;
+  width: 56px;
+  height: 56px;
+  touch-action: none;
+  cursor: ns-resize;
+  border-radius: 50%;
+}
+.kwrap svg {
+  display: block;
+}
+.knob-in:focus-visible + .kwrap {
+  outline: 2px solid #f0b452;
+  outline-offset: 2px;
+}
+.knobbox.pulled::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #9a9a9a;
+  pointer-events: none;
+}
+.ro {
+  position: absolute;
+  left: 40px;
+  top: 41px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 9.5px;
+  line-height: 13px;
+  color: #f0b452;
+  background: #000;
+  border: 1px solid #4a3a22;
+  border-radius: 3px;
+  padding: 0 3px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.togbtn {
+  display: block;
+  width: 22px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.togbtn svg {
+  display: block;
+}
+.tlbl {
+  background: transparent;
+  border: 0;
+  padding: 2px 3px;
+  border-radius: 2px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  color: #8f8f8f;
+  white-space: nowrap;
+  line-height: 1;
+}
+.tlbl:hover {
+  color: #fff;
+  background: #1f1f1f;
+}
+.tlbl[aria-pressed='true'] {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-underline-offset: 2px;
+}
+@media (pointer: coarse) {
+  .tlbl {
+    padding: 6px;
+  }
+}
+.pullbtn {
+  background: transparent;
+  border: 0;
+  padding: 3px 4px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #f0f0f0;
+}
+.pullbtn:hover {
+  background: #1f1f1f;
+}
+.pdot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid #9a9a9a;
+  display: inline-block;
+}
+.pullbtn[aria-pressed='true'] .pdot {
+  background: #f0f0f0;
+  border-color: #f0f0f0;
+}
+.fcap {
+  position: absolute;
+  left: 0;
+  width: 26px;
+  height: 12px;
+  border-radius: 2px;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  display: block;
+}
+.fcap::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+  height: 2px;
+  background: #e6e6e6;
+}
+.fader-in:focus-visible + .ftrack .fcap,
+.fader-in:focus-visible + .gtrack .fcap {
+  outline: 2px solid #f0b452;
+  outline-offset: 2px;
+}

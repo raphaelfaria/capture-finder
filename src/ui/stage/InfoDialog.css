@@ -1,0 +1,71 @@
+/* The (i) dialog: what is matched, and the notes. */
+.infopop {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 61;
+  width: min(520px, calc(100vw - 32px));
+  max-height: min(82vh, 640px);
+  overflow-y: auto;
+  border: 1px solid var(--line2);
+  border-radius: 10px;
+  background: var(--surface2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.infoscrim {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: rgba(5, 5, 4, 0.66);
+  cursor: default;
+}
+.infonotes {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.mrows {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  gap: 4px 18px;
+  margin: 0;
+}
+.mrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #22201d;
+  font-size: 13px;
+}
+.mrow dt {
+  color: var(--muted);
+}
+.mrow dd {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  color: var(--text);
+  text-align: right;
+}
+.panel-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}

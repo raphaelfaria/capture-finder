@@ -1,0 +1,56 @@
+/* The stage header: name, pills, channel tabs. */
+.tagpill.wtpill {
+  border-style: solid;
+  border-color: var(--amber);
+  color: #f6e2bd;
+}
+.tagpill.loadpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-style: solid;
+  border-color: #7a5726;
+  color: #f6d9a5;
+  padding: 0 0 0 10px;
+}
+.loadpill button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 28px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+.loadpill button:hover {
+  background: #2a2013;
+}
+.chtabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chtab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #34312c;
+  background: var(--surface2);
+  border-radius: 8px;
+}
+.chtab:hover {
+  border-color: #5a534a;
+}
+.chtab[aria-pressed='true'] {
+  border-color: var(--amber);
+  background: #221b12;
+}
+.chtab.sm {
+  min-height: 36px;
+  padding: 0 10px;
+}

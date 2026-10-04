@@ -1,0 +1,36 @@
+/* The workbench: the drawn gear, with the buttons beside it. */
+.bench {
+  display: grid;
+  grid-template-columns: minmax(44px, 1fr) minmax(0, max-content) minmax(44px, 1fr);
+  align-items: end;
+  column-gap: 12px;
+  min-width: 0;
+}
+.bench > .cab {
+  grid-column: 2;
+}
+.infowrap {
+  grid-column: 3;
+  justify-self: end;
+  position: relative;
+  z-index: 36;
+}
+.infowrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bench {
+  position: relative;
+}
+@media (max-width: 700px) {
+  .bench {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 8px;
+  }
+  .bench > .cab,
+  .bench > .chainrow,
+  .infowrap {
+    grid-column: 1;
+  }
+}

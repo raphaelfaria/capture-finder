@@ -1,0 +1,108 @@
+/* The capture details drawer: comparison table, recorded settings, description, metadata. */
+.emptyst {
+  border: 1px dashed #4a453e;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 4, 0.66);
+  border: 0;
+  z-index: 40;
+  width: 100%;
+  cursor: default;
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(580px, 100%);
+  background: #141312;
+  border-left: 1px solid var(--line2);
+  z-index: 41;
+  overflow-y: auto;
+  padding: 20px 24px 40px;
+  box-shadow: -24px 0 60px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.desc {
+  white-space: pre-line;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  background: #0b0a09;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 0;
+  color: #e6dfd2;
+}
+.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.cmp th {
+  font-weight: 500;
+  color: var(--dim);
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px;
+  border-bottom: 1px solid var(--line2);
+}
+.cmp td {
+  padding: 7px 6px;
+  border-bottom: 1px solid #24221f;
+  vertical-align: top;
+}
+.cmp td.v {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+}
+.meta {
+  display: grid;
+  grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+  gap: 6px 14px;
+  margin: 0;
+  font-size: 13px;
+}
+.meta dt {
+  color: var(--dim);
+}
+.meta dd {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  color: #e6dfd2;
+}
+.chip {
+  font-size: 12px;
+  padding: 3px 8px;
+  border: 1px solid var(--line2);
+  border-radius: 999px;
+  color: #d8d1c4;
+}
+.drawer .cmp {
+  table-layout: fixed;
+}
+.cmp td {
+  overflow-wrap: anywhere;
+}
+.drawer .meta {
+  grid-template-columns: minmax(0, 100px) minmax(0, 1fr);
+}

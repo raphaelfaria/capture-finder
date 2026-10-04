@@ -1,0 +1,38 @@
+/* All styles, in cascade order. Each component keeps its CSS next to it; they are loaded from here so
+   the order is explicit: base → shell → stage → shared panel parts → each panel → generic panels
+   (whose narrow-screen fixes must come after the panels) → results. */
+@import 'base.css';
+@import '../ui/layout/layout.css';
+@import '../ui/search/pickers.css';
+@import '../ui/stage/Bench.css';
+@import '../ui/stage/BenchActions.css';
+@import '../ui/stage/InfoDialog.css';
+@import '../ui/stage/WeightEditors.css';
+@import '../ui/stage/StageHead.css';
+@import '../ui/panels/cab.css';
+@import '../ui/primitives/controls.css';
+@import '../ui/panels/jp2c/jp2c.css';
+@import '../ui/panels/jcm800/jcm800.css';
+@import '../ui/panels/rack.css';
+@import '../ui/panels/triaxis/triaxis.css';
+@import '../ui/panels/simul290.css';
+@import '../ui/panels/tonehammer/tonehammer.css';
+@import '../ui/panels/ts9/ts9.css';
+@import '../ui/panels/cali76/cali76.css';
+@import '../ui/panels/b7kultra/b7kultra.css';
+@import '../ui/panels/ecstasy/ecstasy.css';
+@import '../ui/panels/mark/mark.css';
+@import '../ui/panels/hotrod/hotrod.css';
+@import '../ui/panels/fish/fish.css';
+@import '../ui/panels/uberschall/uberschall.css';
+@import '../ui/panels/bbpreamp/bbpreamp.css';
+@import '../ui/stage/ChainRow.css';
+@import '../ui/stage/HeaderMenu.css';
+@import '../ui/panels/ge7/ge7.css';
+@import '../ui/panels/sonicstomp/sonicstomp.css';
+@import '../ui/panels/mt15/mt15.css';
+@import '../ui/panels/thunderverb/thunderverb.css';
+@import '../ui/panels/ca3se/ca3se.css';
+@import '../ui/panels/generic/generic.css';
+@import '../ui/results/Results.css';
+@import '../ui/results/CaptureDrawer.css';
