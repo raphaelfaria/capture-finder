@@ -1,0 +1,85 @@
+/* Matching weights: the dimmed, locked panel with an editor over each control. */
+.cab.wedit {
+  opacity: 0.32;
+  filter: saturate(0.4);
+}
+.wlayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+.wed {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  border: 1px solid var(--amber);
+  border-radius: 6px;
+  background: #1b1611;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+.wed:hover,
+.wed:focus-within {
+  z-index: 2;
+}
+.wed .wbtn {
+  display: none;
+}
+.wed:hover .wbtn,
+.wed:focus-within .wbtn {
+  display: block;
+}
+.wed.edited {
+  background: #2a2013;
+}
+.wed.zero {
+  border-color: #6b6359;
+  background: #141312;
+}
+.wbtn {
+  width: 20px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #f6e2bd;
+  font-size: 15px;
+  line-height: 1;
+}
+.wbtn:hover:not(:disabled) {
+  background: rgba(240, 180, 82, 0.15);
+}
+.wbtn:disabled {
+  color: #5a544b;
+  cursor: default;
+}
+.wval {
+  width: 32px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #f0b452;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  text-align: center;
+}
+.wed.zero .wval {
+  color: #8f877b;
+}
+.wval:focus-visible {
+  outline: 2px solid #f0b452;
+  outline-offset: 1px;
+}
+@media (pointer: coarse) {
+  .wbtn {
+    width: 30px;
+    height: 32px;
+  }
+  .wval {
+    height: 32px;
+    width: 34px;
+  }
+}

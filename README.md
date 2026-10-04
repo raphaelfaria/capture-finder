@@ -1,6 +1,6 @@
 # Capture Finder
 
-**Live app: https://raphaelfaria.github.io/neural-capture-finder/**
+**Live app: https://raphaelfaria.github.io/capture-finder/**
 
 Dial in your gear's controls — amps, pedals, compressors, fuzz, overdrive — and find Cortex Cloud captures with similar **written settings**. This is a static app, not an audio model or a physical gear controller.
 
@@ -8,39 +8,69 @@ Dial in your gear's controls — amps, pedals, compressors, fuzz, overdrive — 
 
 The gear picker browses by category (Amps, Compressors, Fuzz, Overdrive, Pedals) or searches everything in one list; capture search finds any capture by its name or its gear. Both keep the last search in their field (focusing a field selects it, so typing replaces it). Both searches are fuzzy: words match across punctuation ("jp2c"), as letters in order ("ecsty", or across two words: "mkiic"), in shorthand (mk = mark, Roman numerals = digits: "mk2c") or with a typo ("ecstacy", "marshal"), best matches first. Lists are sorted by maker, then name. The current gear is in the address (`?amp=<gear id>`), so links open on that gear and the browser's back and forward buttons move between the gear you picked. Every capture links to its own page on Cortex Cloud (built from its author and id, so no extra data is stored).
 
-## Open / publish
+## Run, build and deploy
 
-Publish the repository root with GitHub Pages. No login, API key, install, or runtime build is needed, and the app makes no external requests (fonts use local/system fallbacks).
+Capture Finder is a [Vite](https://vite.dev) + [Preact](https://preactjs.com) + TypeScript app. It needs no login, API key or server: the build is a static site, and the app makes no external requests (fonts use local/system fallbacks).
 
-- `index.html`: markup plus a small loader that fetches `data/gear.json` and `data/captures.json`, then starts the app.
-- `assets/app.css`, `assets/app.js`: styles and the app.
+```sh
+npm install        # once (Node 22+)
+npm run dev        # http://127.0.0.1:5173 with hot reload
+npm run build      # the static site in dist/
+npm run preview    # serve dist/ at http://127.0.0.1:4173
+```
 
-Because the data is fetched, the page must be served over http; opening `index.html` from disk won't load the data. Locally, `npm start` serves it with [`http-server`](https://www.npmjs.com/package/http-server) (via `npx`, installed as a dev dependency) at http://localhost:8080 and opens it in your browser. It only listens on this machine (`-a 127.0.0.1`): it serves the whole folder, including the gitignored `har/` recording, so don't expose it on a network.
+The dev and preview servers only listen on this machine (127.0.0.1). The app fetches its data (`data/gear.json`, `data/captures.json`, from `public/data/`), so it has to be served over http; opening `dist/index.html` from disk won't load the data.
 
-Custom panels: **Mesa/Boogie JP-2C**, **Marshall JCM800 1987** (the non-master-volume model identified in the capture descriptions; Volume I/II, tone controls, selected input and recorded patch-cable routes), **Mesa/Boogie TriAxis** (eight preamp modes as channels; lead drives only in their modes), **TriAxis + Simul-Class 2:Ninety**, **Aguilar Tone Hammer 500**, **Ibanez TS9 Tube Screamer** and **Origin Effects Cali76**. All other gear uses the generic runtime panel (amps with a cabinet and grille; pedals and other effects as just their control area).
+**Deploy:** every push to `main` runs the checks and publishes `dist/` to GitHub Pages (`.github/workflows/deploy.yml`, with GitHub's own Pages actions; no build output is committed). Pull requests run the same checks (`.github/workflows/ci.yml`). One-time setup in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+Custom panels: **Mesa/Boogie JP-2C, Mark IIC+, Mark III Red Stripe, TriAxis** (alone and with a **Simul-Class 2:Ninety**), **Marshall JCM800 1987**, **Bogner Ecstasy 100B** (and its preamp and power amp sections), **Fish** (alone and with a 2:Ninety) and **Überschall**, **Fender Hot Rod Deluxe** (and its power amp section), **Orange Thunderverb 50**, **PRS MT15**, **Custom Audio Amplifiers 3+SE** (alone and with a 2:90), **Aguilar Tone Hammer 500**, **Ibanez TS9**, **Origin Effects Cali76**, the **Darkglass Microtubes B7K Ultra** (Neural DSP Darkglass Ultra and Ultimate), **Xotic Effects BB Preamp**, **Boss GE-7** and **BBE Sonic Stomp**. All other gear uses the generic panel (amps with a cabinet and grille; pedals and other effects as just their control area).
+
+## Architecture
+
+```
+shared/schema.ts      the data model (GearDef, Control, Capture…), shared by the tools and the app
+tools/                the data pipeline and dev tools (TypeScript, run with tsx)
+  har-to-captures/    HAR → data/captures-raw.json (whitelisted fields only)
+  build-data/         raw captures + gear rules → public/data/*.json (identity, settings parsing, inference, chains, defaults)
+  artboard/, verify-gear.ts, capture-values.ts   panel tooling (see Contributing)
+src/
+  main.tsx            fetch the data → catalog → store → render <App/>; saved state and the address follow the store
+  domain/             pure logic, no DOM: matching (similarity), chains, channels, controls, weights, fuzzy search
+  data/               the catalog (indexes and derived lists) and the pickers' rows
+  state/              the store (one Preact Signals signal of AppState, selectors, actions), saved state, URL sync, ranking
+  ui/                 components: layout, search (pickers), stage (header, bench, chain row, weights, info), results
+    primitives/       knob/fader/button/lever primitives: they own every interaction and write through a ControlScope
+    panels/           one folder per custom panel (component + CSS), the generic panel, the panel registry
+  styles/index.css    every component's CSS, in cascade order
+  testing/            the legacy bridge (test builds only)
+tests/                unit/ and component/ (Vitest), e2e/ (Playwright), visual/ (pixel parity), legacy/ (the original suites)
+legacy/app/           the pre-refactor app, kept as the baseline the original tests and the parity check compare against
+```
+
+Data flows one way: the catalog (immutable) → the store's state → computed selectors → components → actions. Panels are pure views of a gear's settings: they draw the gear and build every control from the primitives, which handle keys, dragging, clicks and double-click (back to the starting value) and write through a **control scope** — the gear on the bench, or one pedal in its chain.
 
 ## Data
 
-Two steps, both plain Node (no dependencies). The app itself never needs Node.
+Two steps, both TypeScript run with `tsx` (`npm install` once). The deployed app never needs Node.
 
 ```sh
 npm run captures -- har/captures.har   # 1. HAR → data/captures-raw.json (whitelisted fields only)
-npm run build:data                     # 2. captures-raw.json + custom-amps.json → gear.json, captures.json, mapping-report.json
+npm run build:data                     # 2. captures-raw.json + custom-amps.json → public/data/gear.json, captures.json, mapping-report.json
 npm run data                           # both, with the HAR at har/captures.har
 ```
 
-1. **`tools/har-to-captures.mjs`** joins every Cortex Cloud capture-list page (and any opened detail views) from the HAR and writes the capture list, copying **only the fields on its `FIELDS` whitelist** (public catalogue data the app needs: id, name, description, tags, type, hash, device/instrument/gain/version, publisher username, published flag, like/star/download counts, creator device). Descriptions keep only their gear and settings lines; stock header lines such as "Quad Cortex Factory Captures" are left out. Everything else — the recording account's liked/starred/download state, author ids and avatars, dates, and any field the API adds later — is left out, and each run lists what it didn't copy. Add a field to `FIELDS` only if the app needs it and it can't identify a user. To record the HAR: sign in to Cortex Cloud, open the capture list, load every page, then in the browser's Network tools choose **Save all as HAR with content** and save it as `har/captures.har`. HAR files can contain session cookies, so `*.har` and `har/` are gitignored.
-2. **`tools/build-data.mjs`** reads `data/captures-raw.json` (never modified) and `data/custom-amps.json`, identifies each capture's amp, parses the settings written in its description, and writes the files the app fetches. The app's `captures.json` carries each capture's name, ids, type, description, tags and parsed settings; the details drawer shows the recorded settings, the comparison, the description and the tags.
+1. **`tools/har-to-captures/`** joins every Cortex Cloud capture-list page (and any opened detail views) from the HAR and writes the capture list, copying **only the fields on its `FIELDS` whitelist** (`fields.ts`) (public catalogue data the app needs: id, name, description, tags, type, hash, device/instrument/gain/version, publisher username, published flag, like/star/download counts, creator device). Descriptions keep only their gear and settings lines; stock header lines such as "Quad Cortex Factory Captures" are left out. Everything else — the recording account's liked/starred/download state, author ids and avatars, dates, and any field the API adds later — is left out, and each run lists what it didn't copy. Add a field to `FIELDS` only if the app needs it and it can't identify a user. To record the HAR: sign in to Cortex Cloud, open the capture list, load every page, then in the browser's Network tools choose **Save all as HAR with content** and save it as `har/captures.har`. HAR files can contain session cookies, so `*.har` and `har/` are gitignored.
+2. **`tools/build-data/`** reads `data/captures-raw.json` (never modified), `data/custom-amps.json` and `data/gear-identities.json`, identifies each capture's gear, parses the settings written in its description, and writes the files the app fetches to `public/data/`. The build is deterministic: a test checks that rebuilding from the committed sources gives exactly the committed output, so commit both together. The app's `captures.json` carries each capture's name, ids, type, description, tags and parsed settings; the details drawer shows the recorded settings, the comparison, the description and the tags.
 
-Files in `data/`:
+Files in `data/` (sources) and `public/data/` (generated, fetched by the app):
 
 - `captures-raw.json`: generated by step 1, the raw dataset (whitelisted API fields, under their API names).
 - `gear-identities.json`: **hand-maintained**. Rules for generic gear (controls are still inferred from the captures): identity rules where the automatic naming gets the description wording wrong (`{id, brand, model, match}`), and `valueAliases` for values written several ways (`{id, valueAliases: {"Pre. EQ": {"Normal": "Mid", "Middle": "Mid"}}}` — the Bogner Ecstasy's channel 2/3 Pre. EQ is Dark/Mid/Bright).
-- `custom-amps.json`: **hand-maintained**. Custom panel definitions (any gear, despite the name) plus any gear-specific parsing knowledge, so the build script has none:
+- `custom-amps.json`: **hand-maintained**. Custom panel definitions (any gear, despite the name) plus any gear-specific parsing knowledge, so the build code has none:
   - `match`: how captures are identified as this amp (`source` regex on the described amp; `tags`/`name` when the description names none).
   - `aliases` on controls and on switch options: other spellings used in descriptions (e.g. `Pull Press`, `Shred 2+3`).
   - `parse`: description structure, e.g. TriAxis `channelFromRows: ["RHY","LD1","LD2"]` (the one non-N/A row is the mode), `ignoreWhenNA`, `sections` (rows after `Simul-Class 2` belong to the power amp; its `Presence` becomes `Power Presence`), `assumeWhenMissing` (JP-2C: EQ on unless stated), and `readOn` (keep reading past a device header such as the Fish + 2:Ninety captures' "Power amp: Mesa Boogie® 2:Ninety…" row, then use `sections` to rename its repeated labels).
-- `gear.json`, `captures.json`, `mapping-report.json`: generated by step 2; don't edit by hand.
+- `public/data/gear.json`, `captures.json`, `mapping-report.json`: generated by step 2; don't edit by hand.
 
 ## Interpretation and limitations
 
@@ -71,13 +101,16 @@ The capture list is a snapshot of public Cortex Cloud catalogue data: capture na
 ## Tests
 
 ```sh
-npm start              # serve the app locally at http://localhost:8080 (npx http-server)
-npm test               # data-tool unit tests + app tests (no install needed)
-npm install            # once, for the browser tests (playwright-core, uses your installed Chrome)
-npm run test:browser   # file opening, controls/dragging, search, Load, modal focus, pagination, saved state, desktop/mobile
+npm run typecheck       # TypeScript (app, tools and tests)
+npm run lint            # ESLint
+npm test                # Vitest: data tools (incl. a byte-for-byte rebuild check), matching, search, store, panels, controls
+npm run test:e2e        # Playwright: the main flows through the page, against the production build
+npm run test:legacy:new # the original test suites (tests/legacy), unchanged, against the new app
+npm run test:legacy:old # …and against the frozen pre-refactor app (legacy/app), for comparison
+npm run test:visual     # every gear's panel, pixel-diffed against the pre-refactor app at desktop and phone widths
 ```
 
-The deployed app needs only a browser. Set `CHROME_PATH` if Chrome is not in its default location.
+The browser tests use your installed Google Chrome (no browser download); set `CHROME_PATH` if it isn't in its default location. The original suites read the old app's page globals (`state`, `cur()`, `pickAmp()`…): the new app provides them through a test-only bridge (`src/testing/legacyBridge.tsx`), built with `vite build --mode legacy-test`; the deployed build doesn't include it.
 
 ## Contributing
 
@@ -95,11 +128,11 @@ The easiest way is with [Claude Code](https://claude.com/claude-code): this repo
 
 Prefer doing it by hand? The skill's [`SKILL.md`](.claude/skills/gear-panel-generator/SKILL.md) and its `references/` folder double as the guide. In short:
 
-1. **Find the gear's data.** Look it up in `data/gear.json` (reuse its `id`) and check which settings its captures actually record with `npm run capture-values -- <gearId>`.
+1. **Find the gear's data.** Look it up in `public/data/gear.json` (reuse its `id`) and check which settings its captures actually record with `npm run capture-values -- <gearId>`.
 2. **Define it** in `data/custom-amps.json`: controls, weights, a `match` rule and any `aliases`, then run `npm run build:data`.
-3. **Draw it.** Add a `…PanelHTML` function to `assets/app.js` and its CSS block to `assets/app.css`, and hook it into `renderStage()`. Keep the gear's real shape and layout; only crop away what isn't a setting (footswitches, jacks, LEDs, empty enclosure, logos).
-4. **Generate its artboard** with `npm run artboard -- …` (see the skill for the exact arguments).
-5. **Check it:** `npm test`, `npm run test:browser` and `npm run verify:gear -- <gearId>`, and make sure loading each of its captures scores 100 (or explain why one can't).
+3. **Draw it.** Add a folder in `src/ui/panels/` with the panel component and its CSS (build the controls from `src/ui/primitives`), register it in `src/ui/panels/registry.tsx` and import its CSS in `src/styles/index.css`. Keep the gear's real shape and layout; only crop away what isn't a setting (footswitches, jacks, LEDs, empty enclosure, logos).
+4. **Generate its artboard** with `npm run artboard -- <gearId> <Name>` (a standalone page drawn by the panel component itself).
+5. **Check it:** `npm test`, `npm run test:e2e` and `npm run verify:gear -- <gearId>`, and make sure loading each of its captures scores 100 (or explain why one can't).
 
 ### Opening the pull request
 

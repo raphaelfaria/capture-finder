@@ -1,0 +1,90 @@
+/* Ibanez TS9 Tube Screamer panel. */
+.tscab {
+  background: #141414;
+  background-image: none;
+  box-shadow: inset 0 0 0 1px #000;
+  border-radius: 14px;
+  padding: 6px;
+  gap: 0;
+}
+.tsface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px 12px;
+  border-radius: 10px;
+  background: #62cf3c;
+  border: 1px solid #1c3a12;
+  min-width: 0;
+  max-width: 100%;
+}
+.tsknobs {
+  position: relative;
+  flex: none;
+}
+.tsface.compact {
+  padding: 8px 10px 10px;
+}
+.tsface.compact .tsplate {
+  margin: 0 4px;
+}
+.tsk {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.tsk .kctl,
+.tsk .kwrap {
+  display: block;
+}
+.tslab {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transform: translateX(-50%);
+}
+.tslab .tsl {
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #1b2a16;
+  line-height: 1;
+}
+.tsface .knob-in:focus-visible + .kwrap {
+  outline-color: #111;
+}
+.tsplate {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  align-self: stretch;
+  margin: 0 18px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: #d9dcdf;
+  box-shadow: 0 0 0 3px #161616;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  line-height: 1;
+  white-space: nowrap;
+}
+.tsplate span:first-child {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #1f45b8;
+}
+.tsplate span:last-child {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: #2b2f33;
+}
+@media (max-width: 380px) {
+  .tsface {
+    padding: 8px 6px 10px;
+  }
+}

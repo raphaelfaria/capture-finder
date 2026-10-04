@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capture Finder</title>
+<meta name="description" content="Dial in your gear. Find your capture. Unofficial reverse lookup for Cortex Cloud captures of amps, pedals and more, by their written settings.">
+<!--
+  FROZEN LEGACY APP — the pre-refactor app, kept only as the baseline the old tests and the visual
+  parity check compare against (npm run test:legacy:old). Not deployed. Its data now lives in public/data.
+  Capture Finder — static app for GitHub Pages (no build step at runtime).
+  assets/app.css and assets/app.js hold the styles and the app; the data is fetched from
+  data/gear.json and data/captures.json (built by `npm run build:data`), so the page must be
+  served over http — locally with `npm start`.
+-->
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app">
+
+<header class="topbar">
+  <div class="brand">
+    <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="#1d1c1b" stroke="#5a544b" stroke-width="1.5"/><circle cx="17" cy="17" r="10" fill="#0b0b0a" stroke="#3a3631"/><path d="M17 17 L23.5 9.5" stroke="#f0b452" stroke-width="2.2" stroke-linecap="round"/><circle cx="27.5" cy="6.5" r="2.2" fill="#ff5a3c"/></svg>
+    <div style="display:flex;flex-direction:column;gap:1px">
+      <span class="cond" style="font-size:21px;font-weight:700;letter-spacing:.04em;line-height:1.1">Capture Finder</span>
+      <span style="font-size:12.5px;color:var(--muted)">Dial in your gear. Find your capture.</span>
+    </div>
+  </div>
+  <div class="hsearch">
+    <div class="combo">
+      <label class="field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="10" rx="1.5"/><path d="M7 11h.01M10 11h.01M13 11h4"/></svg>
+        <span class="sr">Gear: browse by category or search amps, pedals and more</span>
+        <input id="ampq" type="search" role="combobox" aria-autocomplete="list" aria-controls="amp-listbox" aria-expanded="false" autocomplete="off">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </label>
+      <div id="amp-listbox" class="amppop" role="listbox" aria-label="Gear" hidden></div>
+    </div>
+    <div class="combo">
+      <label class="field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <span class="sr">Find a capture by name or amp</span>
+        <input id="capq" type="search" role="combobox" aria-autocomplete="list" aria-controls="cap-listbox" aria-expanded="false" autocomplete="off" placeholder="Find a capture">
+      </label>
+      <div id="cap-listbox" class="amppop cappop" role="listbox" aria-label="Captures" hidden></div>
+    </div>
+  </div>
+</header>
+
+<section id="stage" class="stage" aria-label="Gear workbench"></section>
+
+<section class="matches" aria-labelledby="matches-h">
+  <div class="panel-h" style="justify-content:flex-start;flex-wrap:wrap">
+    <h2 id="matches-h" class="cond" style="margin:0;font-size:24px;font-weight:700;letter-spacing:.03em">Best Capture Matches</h2>
+    <span id="count" class="mono" style="margin-left:auto;font-size:12px;color:var(--dim)"></span>
+  </div>
+  <div id="results" class="stack" style="gap:16px"></div>
+</section>
+
+<footer class="foot">Unofficial fan project. Not affiliated with or endorsed by Neural DSP or any gear manufacturer. Product names and trademarks belong to their owners and are used only to identify the gear captured.</footer>
+
+<div id="drawer-root"></div>
+</div>
+
+<script>
+// Fetch the gear and capture data, then start the app script (it reads window.CF_DATA).
+Promise.all(['../../public/data/gear.json', '../../public/data/captures.json'].map(url => fetch(url).then(r => { if (!r.ok) throw new Error(url+' ('+r.status+')'); return r.json(); })))
+  .then(([gear, captures]) => {
+    window.CF_DATA = { gear, captures };
+    const app = document.createElement('script');
+    app.src = 'assets/app.js';
+    document.body.appendChild(app);
+  })
+  .catch(err => {
+    const msg = document.createElement('p');
+    msg.className = 'note';
+    msg.setAttribute('role', 'alert');
+    msg.textContent = 'Could not load the capture data: '+err.message+'. The app has to be served over http (locally: npm start).';
+    document.getElementById('stage').replaceChildren(msg);
+  });
+</script>
+</body>
+</html>

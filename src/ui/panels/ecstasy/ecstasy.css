@@ -1,0 +1,168 @@
+/* Bogner Ecstasy 100B panel. */
+.bgcab {
+  gap: 10px;
+}
+.bggrille {
+  height: 56px;
+  border-radius: 6px;
+  background: #0b0b0d;
+  border: 2px solid #050505;
+  box-shadow: inset 0 0 0 1px #24242a;
+}
+.bgface {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 4px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: #121214;
+  border: 1px solid #000;
+  min-width: 0;
+}
+.bgsec {
+  position: relative;
+  flex: none;
+  height: 132px;
+}
+.bgsec .kctl,
+.bgsec .kwrap {
+  display: block;
+}
+.bgk {
+  position: absolute;
+  top: 82px;
+  transform: translate(-50%, -50%);
+}
+.bgk .ro {
+  left: auto;
+  right: -14px;
+  top: 2px;
+  bottom: auto;
+}
+.bgplate {
+  position: absolute;
+  top: 110px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 56px;
+  height: 15px;
+  background: #d9d9d6;
+  clip-path: polygon(9% 0, 91% 0, 100% 100%, 0 100%);
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 8.5px;
+  letter-spacing: 0.04em;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+.bgplate .bled {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3a3a3a;
+  box-shadow: 0 0 0 1px #6f6f6f;
+}
+.bgtitle {
+  position: absolute;
+  top: 4px;
+  transform: translateX(-50%);
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 8.5px;
+  letter-spacing: 0.03em;
+  color: #ececec;
+  white-space: nowrap;
+}
+.bgtgl {
+  position: absolute;
+  top: 15px;
+  width: 32px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translateX(-50%);
+}
+.bgtgl svg {
+  display: block;
+}
+.bglet {
+  position: absolute;
+  top: 37px;
+  transform: translate(-50%, -50%);
+  min-width: 14px;
+  padding: 1px 2px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 1;
+  color: #8f8f8f;
+}
+.bglet:hover {
+  color: #fff;
+  background: #262626;
+}
+.bglet[aria-pressed='true'] {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--amber);
+  text-underline-offset: 2px;
+}
+@media (pointer: coarse) {
+  .bglet {
+    padding: 5px 3px;
+  }
+}
+/* controls of other channels: dimmed but still adjustable; text says so for screen readers */
+.bgoff {
+  opacity: 0.3;
+}
+.bgk.bgoff .ro {
+  opacity: 0.7;
+}
+.bgbadge {
+  position: absolute;
+  top: 4px;
+  left: 28px;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #ececec;
+  white-space: nowrap;
+}
+.bgbadge span {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  margin: 0 3px;
+}
+.bgrear {
+  position: absolute;
+  left: 4px;
+  top: 114px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  color: #9a9a9a;
+}
+/* narrow screens: the sections wrap; scale them rather than reflow the controls */
+@media (max-width: 480px) {
+  .bgsec {
+    zoom: 0.74;
+  }
+}
+@media (max-width: 380px) {
+  .bgsec {
+    zoom: 0.62;
+  }
+  .bgface {
+    padding: 6px 2px;
+  }
+}

@@ -1,0 +1,105 @@
+/* Mesa/Boogie Simul-Class 2:Ninety face (stacked under the racks captured through it); after the TriAxis rules, whose shared label rule it refines. */
+.s9face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.s9title {
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: #d8cba0;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+}
+.s9row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 22px;
+}
+.s9vent {
+  display: block;
+  flex: none;
+}
+.s9mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.s9leds {
+  display: flex;
+  gap: 2px;
+}
+.s9led {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 54px;
+  min-height: 44px;
+  padding: 3px 4px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #ece9df;
+}
+.s9led:hover {
+  background: #262624;
+}
+.s9led[aria-pressed='true'] {
+  border-color: #5a534a;
+}
+.s9tag {
+  font-size: 8.5px;
+}
+.s9dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3a1512;
+  box-shadow: 0 0 0 1px #000;
+}
+.s9led[aria-pressed='true'] .s9dot {
+  background: #ff3b2a;
+}
+.s9st {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  line-height: 1;
+  color: #b3ab9d;
+}
+.s9knobs {
+  display: flex;
+  gap: 10px;
+}
+.s9k {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 72px;
+}
+.s9k .kctl,
+.s9k .kwrap {
+  width: 56px;
+  height: 56px;
+}
+@media (max-width: 640px) {
+  .s9vent {
+    display: none;
+  }
+  .txear {
+    width: 14px;
+  }
+  .txear i {
+    width: 8px;
+  }
+  .txface {
+    padding: 6px 4px;
+  }
+}

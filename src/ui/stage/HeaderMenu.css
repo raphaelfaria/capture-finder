@@ -1,0 +1,43 @@
+/* Header menus (Pedals, Used with): a search-style field and the search's popup list. */
+.hmenu {
+  position: relative;
+  min-width: 0;
+}
+.hmenubtn {
+  height: 34px;
+  max-width: 300px;
+  gap: 6px;
+  cursor: pointer;
+  font: inherit;
+}
+.hmenubtn:hover {
+  border-color: #6b6359;
+}
+.hmenubtn:focus-visible,
+.hmenubtn[aria-expanded='true'] {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 2px rgba(232, 163, 58, 0.3);
+  outline: 0;
+}
+.hmlab {
+  font-size: 12px;
+  color: var(--dim);
+  white-space: nowrap;
+}
+.hmval {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.hmenubtn svg {
+  flex: none;
+}
+.hmenupop {
+  left: auto;
+  right: 0;
+  width: min(340px, calc(100vw - 32px));
+  z-index: 45;
+}

@@ -1,0 +1,194 @@
+/* Mesa/Boogie TriAxis panel. */
+.txinner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+}
+.txparams {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 0;
+  min-width: 0;
+}
+.txp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 84px;
+}
+.txctl {
+  display: block;
+}
+.txdisp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 40px;
+  background: #070707;
+  border: 1px solid #2e2e2c;
+  border-radius: 2px;
+  touch-action: none;
+  cursor: ns-resize;
+}
+.txdisp svg {
+  display: block;
+}
+.txface .knob-in:focus-visible + .txdisp,
+.s9face .knob-in:focus-visible + .kwrap {
+  outline: 2px solid #f0b452;
+  outline-offset: 2px;
+}
+.txlab,
+.txrow,
+.s9tag,
+.s9lab {
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: #ece9df;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.1;
+  text-align: center;
+}
+.txna {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  color: #a39b8c;
+  line-height: 1;
+}
+.txkeys {
+  display: flex;
+}
+.txkey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+.txcap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 4px;
+  border-radius: 2px;
+  background: #a9a8a2;
+  border: 1px solid #000;
+  color: #1b1b1a;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.03em;
+}
+.txkey:hover .txcap {
+  background: #c6c5be;
+}
+.txkey:active .txcap {
+  background: #8f8e88;
+}
+.txoff .txdisp,
+.txoff .txkeys {
+  opacity: 0.4;
+}
+.txside {
+  display: flex;
+  align-items: center;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.txname {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  color: #ece9df;
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+}
+.txname .txkey {
+  margin-left: -7px;
+}
+.txmodel {
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.txbrand {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.txsub {
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.txmodes {
+  display: grid;
+  grid-template-columns: 30px repeat(3, 40px);
+  grid-auto-rows: 40px;
+  align-items: center;
+  justify-items: center;
+}
+.txrow {
+  justify-self: start;
+  font-weight: 700;
+  font-size: 10px;
+}
+.txled {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.txled:hover {
+  background: #262624;
+}
+.txled.on {
+  border-color: var(--amber);
+}
+.txdot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #2a2a28;
+  box-shadow:
+    inset 0 0 0 2px var(--c),
+    0 0 0 1px #000;
+}
+.txled.on .txdot {
+  background: var(--c);
+}
+.txnow {
+  grid-column: 1/-1;
+  height: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  line-height: 13px;
+  color: #f0b452;
+  background: #000;
+  border: 1px solid #4a3a22;
+  border-radius: 3px;
+  padding: 0 4px;
+  white-space: nowrap;
+}

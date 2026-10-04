@@ -1,0 +1,12 @@
+legacy/
+artboards/
+public/data/
+data/
+dist/
+dist-legacy/
+dist-bridge/
+docs/
+har/
+*.md
+package-lock.json
+dist-artboard/

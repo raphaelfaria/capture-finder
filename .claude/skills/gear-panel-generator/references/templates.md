@@ -1,70 +1,83 @@
-# Code templates (condensed from jcmPanelHTML / jpPanelHTML — copy, then trace from the photo)
+# Code templates (condensed from the existing panels — copy the closest one, then trace from the photo)
 
-Replace `<id>` with the panel id (e.g. `marshall2203`), `<P>` with a short CSS prefix.
+Replace `<Name>`/`<name>` with the panel name (e.g. `Marshall2203` / `marshall2203`), `<id>` with the panel id used in the definition (`"panel": "<id>"`), `<P>` with a short CSS prefix.
 
 ## 1. Definition (single-channel; data/custom-amps.json)
 ```json
-{"id":"<ampId>","brand":"…","model":"…","panel":"<id>","definitionSource":"photo + manual + capture settings","fullName":"…","channels":null,
+{"id":"<gearId>","brand":"…","model":"…","panel":"<id>","definitionSource":"photo + manual + capture settings","fullName":"…","channels":null,
+ "match":{"source":"\\bMODEL\\b"},
  "controls":[
-  {"key":"gain","label":"PRE-AMP VOLUME","aliases":["Preamp Volume","Pre-amp"],"kind":"knob","scope":"global","min":0,"max":10,"step":0.5,"weight":2,"primary":true},
+  {"key":"gain","label":"PRE-AMP VOLUME","aliases":["Preamp Volume","Pre-amp"],"kind":"knob","scope":"global","min":0,"max":10,"step":0.1,"weight":2,"primary":true},
   {"key":"input","label":"Input","kind":"switch","scope":"global","weight":1,"options":[{"v":"High","label":"HIGH"},{"v":"Low","label":"LOW"}]}],
  "panelOrder":["presence","bass","middle","treble","master","gain"],
  "defaults":{"channel":null,"ch":{},"global":{"gain":5,"input":"High"}},"defaultsNote":"…"}
 ```
-Multi-channel: `channels:[{n,name}]`, `scope:'channel'`, `defaults.ch['1']={…}`, see jp2c entry.
+Multi-channel: `channels:[{n,name,aliases}]`, `scope:'channel'` (or `scope:'global'` + `channels:[…]` per physical knob), `defaults.ch['1']={…}`; see the jp2c and ca3se entries.
 
-## 2. renderStage branch (assets/app.js, `function renderStage`)
-`renderStage` builds the amp header (title, Single channel / Loaded-from pills, channel tabs, Reset), then a `cab` string per panel, then wraps it in the `.bench` grid with the (i) info button. Add one branch to the `cab` chain; never add explanation text to the stage (notes go in `renderInfo`, via `defaultsNote`).
-```js
-  if (def.panel === '<id>') {
-    cab = '<div class="cab"><div class="<P>grille" aria-hidden="true"></div>' + <id>PanelHTML(def, as) + '</div>';
-  } else if (/^triaxis/.test(def.panel)) { … }   // keep existing branches untouched
-// amp picker subtitle (renderAmpPopup): a.panel === '<id>' ? '<short descriptor> · ' : …
-// if the panel has its own channel/mode selector, hide the header tabs for it (see the triaxis condition)
-```
+## 2. Panel component (src/ui/panels/<name>/<Name>Panel.tsx)
+```tsx
+// <Brand Model>: what the panel shows (traced from the photo) and what is cropped away.
+import type { RangeControl } from '../../../../shared/schema';
+import { knobAngle } from '../../../domain/controls';
+import { nice } from '../../../domain/format';
+import { KnobControl, Readout } from '../../primitives/controls';
+import { Cab, ctl, num, type PanelProps } from '../shared';
 
-## 3. Renderer skeleton (single channel; globals live in `as.global`)
-```js
-function <id>PanelHTML(def, as){
-  const cs = as.global;
-  let h = '<div class="<P>face" role="group" aria-label="BRAND MODEL front panel">'
-    + '<div class="<P>badge">MODEL NAME (plain text, no logo)</div><div class="<P>knobs">';
-  def.panelOrder.forEach(key => {
-    const c = def.controls.find(x => x.key === key), v = cs[key];
-    const angle = (-150 + (v - c.min)/(c.max - c.min)*300).toFixed(1);
-    h += '<div class="<P>k"><span class="<P>lab">'+esc(c.label)+'</span>'
-      + '<label class="kctl"><input id="k-'+c.key+'-" class="sr knob-in" type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+v+'"'
-      + ' aria-label="'+esc(nice(c.label))+'" aria-valuetext="'+f1(v)+' of '+c.max+'" data-ctrl="'+c.key+'" data-ch="">'
-      + '<span class="kwrap" data-drag="knob" data-ctrl="'+c.key+'" data-ch="">'
-      + '<svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">'/* ticks (JCM_TICKS) */+'<g transform="rotate('+angle+' 32 32)">'/* KNOB SHAPE traced from photo: cap fill/stroke, flute path, pointer line */+'</g></svg>'
-      + /* printed numbers (JCM_NUMS) */''+'</span></label><span class="jro" aria-hidden="true">'+f1(v)+'</span></div>';
-  });
-  h += '</div>';
-  // input jacks (sensitivity): selectable buttons, plugged-in state in text + graphic
-  h += '<div class="jjacks" role="group" aria-label="Input jack (input sensitivity)">';
-  def.controls.find(x => x.key === 'input').options.forEach(o => {
-    const on = cs.input === o.v;
-    h += '<button id="jack-'+o.v+'" class="jjack'+(on ? ' on' : '')+'" aria-pressed="'+on+'" aria-label="'+esc('Plug into the '+nice(o.label).toLowerCase()+' input')+'"'
-      + ' data-act="pick" data-target="ctrl" data-key="input" data-ch="" data-v="'+jattr(o.v)+'"><span class="jgfx" aria-hidden="true"></span>'
-      + '<span style="display:flex;flex-direction:column;gap:2px;text-align:left"><span class="jtxt">'+esc(nice(o.label))+'</span><span class="jstate">'+(on ? '● Plugged in' : '○ Empty')+'</span></span></button>';
-  });
-  return h + '</div></div>';
+const POS: Record<string, [number, number]> = { gain: [42, 0], bass: [132, 0] }; // traced geometry
+
+function Knob({ c, v }: { c: RangeControl; v: number }) {
+  const [x, y] = POS[c.key]!;
+  return (
+    <div class="<P>k" style={{ left: x + 'px', top: y + 'px' }}>
+      <span class="<P>lab">{c.label}</span>
+      <KnobControl c={c} n={null} value={v} label={nice(c.label)} size={44}>
+        <svg viewBox="0 0 44 44" width="44" height="44" aria-hidden="true">
+          <g transform={`rotate(${knobAngle(c, v).toFixed(1)} 22 22)`}>{/* KNOB SHAPE traced from the photo; only this group turns */}</g>
+        </svg>
+      </KnobControl>
+      <Readout v={v} class="jro" />
+    </div>
+  );
+}
+
+/** Amp head: the faceplate over a short grille. */
+export function <Name>Panel({ def, as }: PanelProps) {
+  return (
+    <Cab variant="<P>cab">
+      <div class="<P>grille" aria-hidden="true" />
+      <div class="<P>face" role="group" aria-label={def.brand + ' ' + def.model + ' front panel'}>
+        <span class="<P>name">MODEL NAME</span>
+        {def.panelOrder!.map((k) => <Knob c={ctl(def, k)} v={num(as.global[k])} />)}
+      </div>
+    </Cab>
+  );
 }
 ```
-Jack ids: if two amps could share `jack-<value>` ids, namespace them (`jack-<id>-<value>`) only for the new panel; never rename the JCM1987 ones.
-Position the jacks on the side the photo shows (DOM order left/right in the `face` flex row).
+- Switch positions: `<PickButton c n v id class aria-pressed aria-label>` (jacks, pulls, LEDs, stepped-knob numbers); the lever of a toggle: `<Toggle x y options current control n aria labelPos title titleY>` (or `channel` for a channel selector); a lever without labels: `<CycleButton>` + `<Lever pos horizontal?>`.
+- Channel selectors on the panel: `<ChannelButton n>`; next channel: `<ChannelButton cycle>`. A pedal in a chain can't switch channels (its scope locks them).
+- Faders: `<FaderInput c n value prefix>` + `<FaderTrack class geo c n value>` with the slot and cap inside (geometry in `primitives/drag.ts`).
+- Element ids that aren't built by a primitive: prefix them with the scope's prefix (`const scope = useScope(); id={scope.prefix + 'jack-' + o.v}`).
+- Compact size in a chain (pedals): read `compact` and scale knobs and case, not text and switches (see `BbPreampPanel`, `Ts9Panel`).
+- Dim controls of other channels: `available(c, as.channel)` → an `…off` class (opacity) + ", not used on channel …" in the aria-label.
+- Mixed text and values: render one string (`{'CH' + n}`), not `CH{n}` — separate text nodes lose the kerning between them.
 
-## 4. Pull knob / switch / fader / absolute layout (copy from jpPanelHTML, l.505–545)
-- Pull: `<button id="p-<key>-<n>" class="pullbtn pos" aria-pressed data-act="pick" data-target="ctrl" data-key data-ch data-v="jattr(!on)"><span class="pdot"></span><span class="silk">PULL …</span></button>` and pass `' pulled'` as `extraCls` to `knobHTML`.
-- Lever switch: `jpToggle(x,y,options,current,{key,ch},aria,labelPos,title,titleY)` inside a `position:relative` fixed-size `.panel`.
-- Fader: `faderInput` + `.ftrack[data-drag=fader][data-geo=jp|gen]` (`FG` geometry), `.ro` above cap.
-- `knobHTML(c,n,value,prefix,extraCls,style)` is reusable for any knob (56px) when the panel doesn't need a custom cap — pass `style='position:absolute;left:..;top:..'`.
-
-## 5. CSS block (flat; mirror `.j*` rules l.111–131)
-```css
-/* ---------- <Brand Model> panel ---------- */
-.<P>grille{height:64px;border-radius:4px;background:#0b0b0b;border:3px solid <trim>}   /* flat: no gradients */
-.<P>face{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 22px;padding:6px 18px;border-radius:3px;background:<plate colour traced from photo>;border:1px solid #000;min-width:0}
-.<P>face .knob-in:focus-visible + .kwrap{outline-color:#111}   /* light plates */
+## 3. Register it (src/ui/panels/registry.tsx)
+```ts
+import { <Name>Panel } from './<name>/<Name>Panel';
+// in PANELS:
+  <id>: <Name>Panel,
 ```
-Reuse `.jk/.jlab/.jro/.jnum/.jjack/.jgfx/.jtxt/.jstate` only if the colours suit; otherwise define prefixed copies. Add a `@media(max-width:380px)` tweak if the face overflows at 390px.
+If the panel has its own channel/mode selector, hide the header tabs for it in `StageHead.tsx` (see the triaxis/hotrod condition). A picker subtitle (gear picker, `GearPicker.tsx`) only if useful.
+
+## 4. CSS (src/ui/panels/<name>/<name>.css, imported from src/styles/index.css before generic/generic.css)
+```css
+/* <Brand Model> panel. */
+.<P>cab{gap:10px}
+.<P>grille{height:64px;border-radius:4px;background:#0b0b0b;border:3px solid <trim>}   /* flat: no gradients */
+.<P>face{position:relative;flex:none;width:<px>;height:<px>;border-radius:3px;background:<plate colour traced from the photo>;border:1px solid #000}
+.<P>k{position:absolute;transform:translate(-50%,-50%)}
+.<P>face .knob-in:focus-visible + .kwrap{outline-color:#111}   /* light plates */
+@media (max-width:760px){.<P>face{zoom:.5}}   /* fixed-size faces scale rather than reflow */
+@media (max-width:380px){.<P>face{zoom:.42}}
+```
+Reuse `.jro` for readouts under knobs; `.ro` for readouts beside them.

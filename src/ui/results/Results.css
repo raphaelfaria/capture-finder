@@ -1,0 +1,143 @@
+/* Best capture matches: cards, score bars, reasons and tiers. */
+.banner {
+  margin: 0;
+  border: 1px dashed #4a453e;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #c9c1b3;
+}
+.cgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 16px;
+}
+.mcard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid #2e2b27;
+  border-radius: 8px;
+  background: #171615;
+  min-width: 0;
+}
+.mcard:hover {
+  border-color: #47423b;
+}
+.mcard.best {
+  border-color: #a8742a;
+  background: #1c1712;
+}
+.mcard.noscore {
+  border-style: dashed;
+}
+.mtop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.mscore {
+  margin-left: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: #f6efe2;
+}
+.mbtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.bar {
+  display: block;
+  height: 6px;
+  background: #2a2724;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.bar > span {
+  display: block;
+  height: 100%;
+  background: var(--amber);
+  border-radius: 3px;
+  transition: width 0.25s;
+}
+.bar.low > span {
+  background: #8f877a;
+}
+.reasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.reasons li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #d8d1c4;
+}
+.mk {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 13px;
+  line-height: 18px;
+  height: 18px;
+  border: 1px solid var(--line2);
+  display: inline-block;
+  min-width: 20px;
+}
+.mk.match {
+  color: #f6d9a5;
+  border-color: #7a5726;
+  background: #2a2013;
+}
+.mk.near {
+  color: #d8d1c4;
+}
+.mk.off {
+  color: #ff9d8a;
+  border-color: #5a2c24;
+  background: #22130f;
+}
+.mk.none {
+  color: #8f877a;
+}
+.tier {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #47423b;
+  white-space: nowrap;
+}
+.tier.t1 {
+  border-color: #a8742a;
+  color: #f6d9a5;
+}
+.tier.t3 {
+  border-style: dashed;
+  color: #b9b1a3;
+}
+.tier.best {
+  border-color: #a8742a;
+  color: #f6d9a5;
+  background: #2a2013;
+}
+.rank {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--dim);
+  padding-top: 2px;
+}

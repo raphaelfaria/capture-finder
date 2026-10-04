@@ -1,0 +1,131 @@
+/* Origin Effects Cali76 panel. */
+.cacab {
+  background: #141414;
+  background-image: none;
+  box-shadow: inset 0 0 0 1px #000;
+  border-radius: 14px;
+  padding: 6px;
+  gap: 0;
+}
+.caface {
+  padding: 9px;
+  border-radius: 10px;
+  background: #c9ccce;
+  border: 1px solid #6d7175;
+  max-width: 100%;
+}
+.capanel {
+  position: relative;
+  width: 296px;
+  height: 284px;
+  border-radius: 16px;
+  background: #0d0d0d;
+  box-shadow:
+    inset 0 0 0 2px #d9dcdf,
+    inset 0 0 0 5px #0d0d0d;
+  margin-bottom: 10px;
+}
+.capanel .kctl,
+.capanel .kwrap {
+  display: block;
+}
+.cak {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.cak .ro {
+  left: auto;
+  right: -6px;
+  top: auto;
+  bottom: 2px;
+}
+.calab {
+  position: absolute;
+  transform: translateX(-50%);
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: #ececec;
+  line-height: 1;
+  white-space: nowrap;
+}
+.cadiv {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 113px;
+  height: 2px;
+  background: #d9dcdf;
+}
+.carat {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  min-width: 24px;
+  min-height: 24px;
+  padding: 2px 3px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  line-height: 1;
+  color: #9a9a9a;
+}
+.carat:hover {
+  color: #fff;
+  background: #262626;
+}
+/* the selected ratio doubles as the knob's amber readout */
+.carat[aria-pressed='true'] {
+  color: #f0b452;
+  background: #000;
+  box-shadow: inset 0 0 0 1px #4a3a22;
+}
+.cacycle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.caname {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+}
+.caname b {
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.01em;
+  color: #c9ccce;
+  line-height: 1;
+}
+.caname span {
+  font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #141414;
+  background: #c9ccce;
+  border: 2px solid #0d0d0d;
+  border-radius: 999px;
+  padding: 2px 10px;
+  line-height: 1;
+}
+@media (max-width: 380px) {
+  .caface {
+    padding: 6px;
+  }
+}
