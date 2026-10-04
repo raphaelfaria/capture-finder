@@ -1,6 +1,6 @@
 # Capture Finder
 
-**Live app: https://raphaelfaria.github.io/neural-capture-finder/**
+**Live app: https://raphaelfaria.github.io/capture-finder/**
 
 Dial in your gear's controls — amps, pedals, compressors, fuzz, overdrive — and find Cortex Cloud captures with similar **written settings**. This is a static app, not an audio model or a physical gear controller.
 
