@@ -1,6 +1,5 @@
-// The page: top bar with both pickers, the workbench, the matches and the details drawer. While the drawer
-// is open the rest of the page is inert; while a dialog is open the page doesn't scroll.
-import { useEffect, useRef } from 'preact/hooks';
+// The page: top bar with both pickers, the workbench, the matches and the details drawer.
+import { useLayoutEffect, useRef } from 'preact/hooks';
 import type { ReadonlySignal } from '@preact/signals';
 import type { Ranking } from '../state/results';
 import type { Store } from '../state/store';
@@ -66,16 +65,12 @@ function Page() {
   );
 }
 
-/** Page-level effects of the open dialogs: inert background behind the drawer, no page scrolling. */
-function useDialogEffects(store: Store) {
-  const open = !!store.state.value.openId,
-    info = store.state.value.infoOpen;
-  useEffect(() => {
-    document.querySelectorAll<HTMLElement>('.topbar,#stage,.matches').forEach((region) => {
-      region.inert = open;
-    });
-    document.body.style.overflow = open || info ? 'hidden' : '';
-  }, [open, info]);
+/** While a dialog (details drawer, matching info) is open, the page doesn't scroll. */
+function useNoScrollUnderDialogs(store: Store) {
+  const open = !!store.state.value.openId || store.state.value.infoOpen;
+  useLayoutEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+  }, [open]);
 }
 
 export function App({
@@ -87,7 +82,7 @@ export function App({
   ranking: ReadonlySignal<Ranking>;
   view?: ViewState;
 }) {
-  useDialogEffects(store);
+  useNoScrollUnderDialogs(store);
   return (
     <StoreContext.Provider value={store}>
       <RankingContext.Provider value={ranking}>

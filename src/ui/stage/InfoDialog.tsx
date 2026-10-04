@@ -1,7 +1,7 @@
 // The (i) dialog: what is matched on the selected channel (and what is shown only), where the starting
 // settings come from, and how to use the panel. Opening it focuses Close; Escape or the backdrop closes it
 // and focus returns to the (i) button.
-import { useEffect } from 'preact/hooks';
+import { useLayoutEffect } from 'preact/hooks';
 import { channelLabel } from '../../domain/channels';
 import { available, getValue, multiCh } from '../../domain/controls';
 import { f1, fmtVal, nice } from '../../domain/format';
@@ -101,7 +101,7 @@ function InfoContent() {
 /** The dialog and its dimmed backdrop (rendered while open). */
 export function InfoDialog() {
   const store = useStore();
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.getElementById('info-close')?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && !store.state.peek().openId) {
@@ -113,10 +113,8 @@ export function InfoDialog() {
     return () => {
       document.removeEventListener('keydown', onKey);
       // back to the (i) button, unless focus moved somewhere else on purpose
-      requestAnimationFrame(() => {
-        const a = document.activeElement;
-        if (!a || a === document.body || !document.contains(a)) document.getElementById('info-btn')?.focus();
-      });
+      const a = document.activeElement;
+      if (!a || a === document.body || a.closest('#info-pop')) document.getElementById('info-btn')?.focus();
     };
   }, [store]);
   return (

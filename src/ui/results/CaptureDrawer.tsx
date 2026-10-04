@@ -1,7 +1,7 @@
 // The capture details drawer: load or open the capture, its score, the settings it records, a control-by-
 // control comparison with yours, its description and tags, and its metadata. Opening it focuses Close;
 // Escape or the backdrop closes it, and focus returns to what opened it. Tab stays inside the drawer.
-import { useEffect, useRef } from 'preact/hooks';
+import { useLayoutEffect, useRef } from 'preact/hooks';
 import type { Capture, GearDef } from '../../../shared/schema';
 import { captureTypeLabel } from '../../domain/captures';
 import { chainKey, chainName, pedalValue } from '../../domain/chains';
@@ -305,19 +305,19 @@ export function CaptureDrawer() {
   const c = store.openCapture.value;
   const opener = useRef<string | null>(null);
   const open = !!c;
-  useEffect(() => {
+  // while open: the page behind is inert and focus is on Close; on closing, focus returns to what opened it
+  // (synchronously, as soon as the page is interactive again)
+  useLayoutEffect(() => {
     if (!open) return;
-    // remember what opened it, focus Close, and keep Tab inside the drawer
-    opener.current =
-      document.activeElement && (document.activeElement as HTMLElement).id
-        ? (document.activeElement as HTMLElement).id
-        : null;
+    const active = document.activeElement as HTMLElement | null;
+    opener.current = active && active.id ? active.id : null;
+    const regions = document.querySelectorAll<HTMLElement>('.topbar,#stage,.matches');
+    regions.forEach((r) => (r.inert = true));
     document.getElementById('drawer-close')?.focus();
     return () => {
+      regions.forEach((r) => (r.inert = false));
       const id = opener.current;
-      requestAnimationFrame(() => {
-        if (id) document.getElementById(id)?.focus();
-      });
+      if (id) document.getElementById(id)?.focus();
     };
   }, [open]);
   const onKey = (e: KeyboardEvent) => {

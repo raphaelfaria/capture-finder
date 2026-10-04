@@ -122,7 +122,10 @@ function GenericFace({ def, as }: { def: GearDef; as: GearSettings }) {
     withChain = useContext(WithChainContext);
   const ch = as.channel;
   const secs = sections(def, ch);
-  const plan = gPlan(secs, layoutWidth(view.stageWidth.value, view.chainWidth.value, withChain));
+  const plan = gPlan(
+    secs,
+    layoutWidth(view.measureStage?.() ?? view.stageWidth.value, view.chainWidth.value, withChain),
+  );
   return (
     <div class="gwrap">
       <div class="gname">{def.model}</div>

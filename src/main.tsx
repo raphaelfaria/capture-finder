@@ -8,6 +8,7 @@ import { createStore } from './state/store';
 import { ampFromUrl, connectPersistence, connectUrl } from './state/sync';
 import './styles/index.css';
 import { App } from './ui/App';
+import { createViewState } from './ui/view';
 
 /** localStorage, or null where it can't be used (private windows, blocked site data). */
 function storage(): Storage | null {
@@ -35,7 +36,8 @@ export async function start(root: HTMLElement): Promise<ReturnType<typeof create
   connectPersistence(store, storage());
   connectUrl(store, window);
   const { ranking } = createRanking(store);
-  render(<App store={store} ranking={ranking} />, root);
+  const view = createViewState(() => document.getElementById('stage')?.clientWidth || null);
+  render(<App store={store} ranking={ranking} view={view} />, root);
   // test builds only (vite build --mode legacy-test): the old app's globals, for the original test suites
   if (import.meta.env.MODE === 'legacy-test')
     (await import('./testing/legacyBridge')).installBrowserBridge(store, ranking);

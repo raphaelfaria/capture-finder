@@ -9,7 +9,8 @@ import { MenuList, menuButtonProps, useMenuKeys } from './HeaderMenu';
  *  list of the family's entries. A power tube on the preamp, a 12AX7 on a power amp version. */
 function VersionButton() {
   const store = useStore();
-  const def = store.baseDef.value,
+  const s = store.state.value,
+    def = store.baseDef.value,
     fam = store.catalog.family(def);
   const items = store.menuItems('variant');
   const onKey = useMenuKeys('variant', items);
@@ -33,8 +34,7 @@ function VersionButton() {
       </button>
     );
   }
-  const s = store.state.value,
-    open = s.menu === 'variant',
+  const open = s.menu === 'variant',
     active = Math.max(0, Math.min(s.menuActive, items.length - 1));
   return (
     <div class="hmenu varmenu">

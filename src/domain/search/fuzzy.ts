@@ -15,7 +15,11 @@ export interface FuzzyIndex {
 
 const COMBINING = /[\u0300-\u036f]/g;
 export const fzNorm = (s: string): string =>
-  String(s).toLowerCase().normalize('NFD').replace(COMBINING, '').replace(/[®™]/g, '');
+  String(s)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(COMBINING, '')
+    .replace(/[®™]/g, '');
 export const fzWords = (s: string): string[] =>
   fzNorm(s)
     .split(/[^a-z0-9]+/)
